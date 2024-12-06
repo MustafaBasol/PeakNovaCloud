@@ -80,11 +80,11 @@ export default function ManageSeo() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Yükleniyor...</div>;
   }
 
   if (fetchError) {
-    return <div>Error: {fetchError}</div>;
+    return <div>Error {fetchError}</div>;
   }
 
   return (

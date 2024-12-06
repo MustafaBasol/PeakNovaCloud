@@ -79,7 +79,7 @@ export default function ManageFaq() {
   }
 
   if (fetchError) {
-    return <div>Error: {fetchError}</div>;
+    return <div>Error {fetchError}</div>;
   }
 
   return (
