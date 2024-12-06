@@ -84,7 +84,7 @@ export default function ManageFaq() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">SSS'leri yönet</h1>
+      <h1 className="text-3xl font-bold mb-6">SSS leri yönet</h1>
       <button
         onClick={() => addItem()}
         className="mb-4 px-4 py-2 bg-green-600 text-white rounded"

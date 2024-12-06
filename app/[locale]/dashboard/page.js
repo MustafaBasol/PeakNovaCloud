@@ -35,7 +35,7 @@ export default function Dashboard() {
       link:'projects'
     },
     {
-      name:"SEO'lar",
+      name:"SEO",
       link:'seo'
     }
   ]
