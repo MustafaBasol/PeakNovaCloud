@@ -1,0 +1,110 @@
+{
+    "Header": {
+        "service": "Services",
+        "project": "Projects",
+        "about": "About",
+        "button":"Demand demo",
+        "blog":"Blog"
+    },
+    "SmallHeader":{
+        "service": "Services",
+        "back":"Back",
+        "project": "Projects",
+        "about": "About",
+        "button":"Contact Us",
+        "language":"Language",
+        "blog":"Blog"        
+    },
+    "Footer":{
+        "services":"Services",
+        "links":"Usuful links",
+        "home":"Home",
+        "projects":"Projects",
+        "about":"About",
+        "contact":"Contact",
+        "term":"By using this site, you agree to the terms of use.",
+        "blog":"Blog"    
+    },
+    "Form":{
+        "name":"Name",
+        "surname":"Surname",
+        "email":"E-mail",
+        "tele":"Telephone",
+        "service":"Tell us what you want",
+        "nameError":"Enter your name",
+        "surnameError":"Enter your surname",
+        "emailError":"Enter your email",
+        "emailValidationError":"Please enter a valid email",
+        "teleError":"Enter your phone number",
+        "teleValidationError":"Please enter a valid phone number",
+        "serviceError":"Please fill in this field",
+        "buttonText":"Send"
+    },
+    "OurServices":{
+        "services":"Services We Offer"
+    },
+    "Faq":{
+        "faq":"FAQ"
+    },
+    "Step":{
+        "step":"Step"
+    },  
+    "Project":{
+        "more":"Read more"
+    },
+    "NotFound":{
+        "notFound":"Page not found",
+        "move":"Sorry, the page you are looking for is not available or has been moved.",
+        "back":"Back to home page"
+    },
+    "Loading":{
+        "loading":"Loading, please wait..."
+    },
+    "Toast":{
+        "toast":"Your message was sent successfully"
+    },
+    "LangMenu":{
+        "tr":"Turkish",
+        "en":"English",
+        "fr":"French",
+        "back":"Back"
+    },
+    "HomepageMetaData":{
+        "title": "Le-Na cloud | Professional Salesforce Services",
+        "description": "Optimize your business processes with Salesforce integration, consulting, and customization services. Achieve maximum efficiency in your CRM solutions with our experienced team. Contact us!",
+        "keywords": 
+            "Salesforce, Salesforce consulting, CRM solutions, cloud-based CRM, business process optimization, Salesforce consulting services,Salesforce implementation services, Salesforce integration services, Salesforce support and maintenance, Salesforce development services,Salesforce cloud solutions, Salesforce optimization services, Salesforce CRM consulting, Salesforce platform management, Salesforce data migration, Salesforce data integration, Salesforce API integration, Salesforce app development, Salesforce automation services, Salesforce customization solutions, Salesforce analytics services, Salesforce mobile app development, Salesforce customer 360 solutions, Salesforce AppExchange consulting, Salesforce solutions for finance, Salesforce solutions for manufacturing, Salesforce support services, Salesforce troubleshooting services",
+        "type": "website",
+        "url": "le-na.cloud",
+        "titleOG": "Professional Salesforce Services | Le-Na cloud",
+        "descriptionOG": "Take your business to the next level with customized Salesforce solutions."
+    },
+    "ServiceMetaData":{
+        "errorTitle":"Service cannot found | Le-Na cloud",
+        "errorDescription":"The service you are looking for is not available",
+        "keywords":"Salesforce consulting services, Salesforce implementation services,Salesforce customization,Salesforce integration services,Salesforce support and maintenance,Salesforce managed services,Salesforce development services,Salesforce cloud solutions,Salesforce optimization services,Salesforce CRM consulting,,Salesforce platform management,Salesforce data integration,Salesforce system integration,Salesforce API integration,Salesforce app development,Salesforce automation services,Salesforce analytics services,Salesforce Einstein AI integration,Salesforce Pardot implementation,Salesforce workflow automation,Salesforce customer 360 solutions,Salesforce mobile app development,Salesforce AppExchange consulting,",
+        "consulting":"consulting solutions",
+        "imp":"implementation services",
+        "conf":"configuration and deployment",
+        "tp":"third-party integrations",
+        "api":"API integration services",
+        "e":"with e-commerce integration",
+        "app":"app development",
+        "perf":"performance optimization",
+        "db":"database optimization"
+    },
+    "BlogHolder":{
+        "readMore":"Read more",
+        "title":"Get the latest news from Salesforce"
+    },
+    "BlogsHero":{
+        "title1":"Latest news from",
+        "title2":"Salesforce",
+        "description":"Stay ahead with cutting-edge updates and insights brought to you by",
+        "name":"PeakNova",
+        "button":"Explore"
+    }        
+
+     
+    
+}

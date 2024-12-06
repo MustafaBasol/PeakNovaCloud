@@ -1,0 +1,108 @@
+{
+    "Header": {
+        "service": "Servislerimiz",
+        "project": "Projelerimiz",
+        "about": "Hakkımızda",
+        "button":"Demo talebi",
+        "blog":"Blog"        
+    },
+    "SmallHeader":{
+        "service": "Servisler",
+        "back":"Geri Dön",
+        "project": "Projeler",
+        "about": "Hakkımızda",
+        "button":"İletişime Geçin",
+        "language":"Dil",
+        "blog":"Blog"        
+    },
+    "Footer":{
+        "services":"Servisler",
+        "links":"Faydalı linkler",
+        "home":"Ana sayfa",
+        "projects":"Projelerimiz",
+        "about":"Hakkımızda",
+        "contact":"İletişim",
+        "term":"Bu siteyi kullanarak kullanım koşullarını kabul etmiş olursunuz.",
+        "blog":"Blog"        
+    },
+    "Form":{
+        "name":"İsim",
+        "surname":"Soy isim",
+        "email":"E-mail",
+        "tele":"Telefon",
+        "service":"İstediğiniz servisleri yazın",
+        "nameError":"İsminizi girin",
+        "surnameError":"Soy isminizi girin",
+        "emailError":"E-mailinizi girin",
+        "emailValidationError":"Lütfen geçerli bir e-mail girin",
+        "teleError":"Telefon numaranazı girin",
+        "teleValidationError":"Lütfen geçerli bir numara girin",
+        "serviceError":"Lütfen bu alanı doldurun",
+        "buttonText":"Gönder"
+    },
+    "OurServices":{
+        "services":"Sunduğumuz servisler"
+    },
+    "Faq":{
+        "faq":"SSS"
+    },
+    "Step":{
+        "step":"Adım"
+    },
+    "Project":{
+        "more":"Devamını okuyun"
+    },
+    "NotFound":{
+        "notFound":"Sayfa bulunamadı",
+        "move":"Üzgünüz, aradığınız sayfa mevcut değil veya taşındı.",
+        "back":"Ana sayfaya dönün"
+    },
+    "Loading":{
+        "loading":"Yükleniyor, lütfen bekleyin..."
+    },
+    "Toast":{
+        "toast":"Mesajınız başarıyla gönderildi"
+    },
+    "LangMenu":{
+        "tr":"Türkçe",
+        "en":"İngilizce",
+        "fr":"Fransızca"        
+    },
+    "HomepageMetaData": {
+        "title": "Le-Na cloud | Profesyonel Salesforce Hizmetleri",
+        "description": "Salesforce entegrasyonu, danışmanlık ve özelleştirme hizmetleri ile iş süreçlerinizi optimize edin. CRM çözümlerinizde maksimum verimliliğe deneyimli ekibimizle ulaşın. Bize ulaşın!",
+        "keywords": "Salesforce, Salesforce danışmanlığı, CRM çözümleri, bulut tabanlı CRM, iş süreci optimizasyonu, Salesforce danışmanlık hizmetleri, Salesforce uygulama hizmetleri, Salesforce entegrasyon hizmetleri, Salesforce destek ve bakım, Salesforce geliştirme hizmetleri, Salesforce bulut çözümleri, Salesforce optimizasyon hizmetleri, Salesforce CRM danışmanlığı, Salesforce platform yönetimi, Salesforce veri geçişi, Salesforce veri entegrasyonu, Salesforce API entegrasyonu, Salesforce uygulama geliştirme, Salesforce otomasyon hizmetleri, Salesforce özelleştirme çözümleri, Salesforce analiz hizmetleri, Salesforce mobil uygulama geliştirme, Salesforce müşteri 360 çözümleri, Salesforce AppExchange danışmanlığı, finans için Salesforce çözümleri, üretim için Salesforce çözümleri, Salesforce destek hizmetleri, Salesforce sorun giderme hizmetleri",
+        "type": "website",
+        "url": "le-na.cloud",
+        "titleOG": "Profesyonel Salesforce Hizmetleri | Le-Na cloud",
+        "descriptionOG": "Özelleştirilmiş Salesforce çözümleri ile işinizi bir üst seviyeye taşıyın."
+    },
+    "ServiceMetaData": {
+        "errorTitle": "Hizmet Bulunamadı | Le-Na cloud",
+        "errorDescription": "Aradığınız hizmet mevcut değil",
+        "keywords": "Salesforce danışmanlık hizmetleri, Salesforce uygulama hizmetleri, Salesforce özelleştirme, Salesforce entegrasyon hizmetleri, Salesforce destek ve bakım, Salesforce yönetilen hizmetler, Salesforce geliştirme hizmetleri, Salesforce bulut çözümleri, Salesforce optimizasyon hizmetleri, Salesforce CRM danışmanlığı, Salesforce platform yönetimi, Salesforce veri entegrasyonu, Salesforce sistem entegrasyonu, Salesforce API entegrasyonu, Salesforce uygulama geliştirme, Salesforce otomasyon hizmetleri, Salesforce analiz hizmetleri, Salesforce Einstein AI entegrasyonu, Salesforce Pardot uygulaması, Salesforce iş akışı otomasyonu, Salesforce müşteri 360 çözümleri, Salesforce mobil uygulama geliştirme, Salesforce AppExchange danışmanlığı",
+        "consulting": "danışmanlık çözümleri",
+        "imp": "uygulama hizmetleri",
+        "conf": "konfigürasyon ve dağıtım",
+        "tp": "üçüncü taraf entegrasyonlar",
+        "api": "API entegrasyon hizmetleri",
+        "e": "e-ticaret entegrasyonu ile",
+        "app": "uygulama geliştirme",
+        "perf": "performans optimizasyonu",
+        "db": "veritabanı optimizasyonu"
+    },
+    "BlogHolder":{
+        "readMore":"Devamını okuyun",
+        "title":"Salesforce'tan en son haberleri alın"
+    },
+    "BlogsHero":{
+        "title1":"En son haberler",
+        "title2":"Salesforce",
+        "description":"Size sunulan en son güncellemeler ve içgörülerle bir adım önde olun",
+        "name":"PeakNova",
+        "button":"Keşfedin"
+    } 
+        
+
+                               
+}

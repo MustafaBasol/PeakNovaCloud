@@ -1,0 +1,38 @@
+import React from 'react'
+import { getBlog, getBlogs, getPage } from '@/libs/utils'
+import { getLocale } from 'next-intl/server'
+import BlogPageImage from '@/components/singleBlog-page/BlogPageImage'
+import SingleBlogContent from '@/components/singleBlog-page/SingleBlogContent'
+import BlogHolder from '@/components/blog/BlogHolder'
+import Contact from '@/components/contact/Contact'
+import Footer from '@/components/footer/Footer'
+
+export default async function BlogPage({ params }) {
+
+    const locale = await getLocale()
+    const slug = await params.slug
+    const contact = await getPage(locale, 'single')
+    const blogData = (await getBlog(locale, slug)).data
+    const blogsData = await getBlogs(locale)
+    const filteredArray = await blogsData.data.filter((blog) => blogData._id !== blog._id)
+
+  return (
+    <div className='bg-[--light]'>
+        <BlogPageImage blogData={blogData} />
+        <div className='p-4 w-full sm:w-5/6 mx-auto flex flex-col gap-4 md:px-4 py-12'>
+            {
+                blogData.content.map((blog, index)=> {
+                    return(
+                        <SingleBlogContent key={index} blog={blog} />
+                    )
+                })
+            }
+        </div>
+        <div className='mt-16 md:mt-32'>
+            <BlogHolder blogData={filteredArray} locale={locale} />    
+        </div>
+        <Contact color={'white'} pageData={contact} id={'single-contact'}  />
+        <Footer color='white' />
+    </div>
+  )
+}
