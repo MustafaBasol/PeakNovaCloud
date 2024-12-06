@@ -49,6 +49,7 @@ export default function SmallLanguageMenu({ setIsSmallLanguageMenuOpen }) {
                 data.map((item, index) => {
                     return(
                         <motion.div
+                            key={index}
                             className='w-full px-4 py-2'
                             whileHover={{
                                 backgroundColor:'var(--light)'

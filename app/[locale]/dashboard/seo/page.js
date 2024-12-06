@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { getSeo } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
@@ -90,7 +89,7 @@ export default function ManageSeo() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">SEO'ları yönet</h1>
+      <h1 className="text-3xl font-bold mb-6">SEO ları yönet</h1>
       <button
         onClick={() => addItem()}
         className="mb-4 px-4 py-2 bg-green-600 text-white rounded"
