@@ -163,3 +163,15 @@
       return { data: [] }
     }
   }  
+  export const getSeos = async(locale) => {
+    try{
+      const response = await fetch(`${url}/api/getSeos?lang=${locale}`, {
+          method:'GET',
+      })
+      return await response.json();
+    }
+    catch(err){
+      console.error('Error fetching seo:', err)
+      return { data: [] }
+    }
+  }    

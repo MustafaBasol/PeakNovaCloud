@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getSeo } from '@/libs/utils';
+import { getSeos } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
 import { createSeo, updateSeo, deleteSeo } from '@/libs/postUtils';
@@ -20,7 +20,7 @@ export default function ManageSeo() {
     async function fetchSeo() {
       try {
         setLoading(true)
-        const seoData = await getSeo(locale)
+        const seoData = await getSeos(locale)
         setSeo(seoData.data)
         setLoading(false);
       } catch (err) {
@@ -46,7 +46,7 @@ export default function ManageSeo() {
   const deleteItem = async(_id) => {
     try {
       await deleteSeo({_id:_id})
-      const seoData = await getSeo(locale)
+      const seoData = await getSeos(locale)
       setSeo(seoData.data)
     } catch (err) {
       setError(err.message || 'An error occurred');
@@ -67,7 +67,7 @@ export default function ManageSeo() {
       setError('Success');
       setIsOpen(false);
       
-      const seoData = await getSeo(locale);
+      const seoData = await getSeos(locale);
       setSeo(seoData.data);
     } catch (err) {
         if (err.response && err.response.data && err.response.data.errors) {
