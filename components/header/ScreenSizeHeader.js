@@ -67,7 +67,8 @@ export default function ScreenSizeHeader({ data, locale }) {
               <motion.div 
                   className='flex items-center cursor-pointer'
                   onHoverStart={()=>setIsServiceMenuOpen(true)}
-                  onHoverEnd={()=>setIsServiceMenuOpen(false)}                   
+                  onHoverEnd={()=>setIsServiceMenuOpen(false)}
+                  onClick={()=>setIsServiceMenuOpen(!isServiceMenuOpen)}               
               >
                   <motion.h6 className='text-base'>{t('service')}</motion.h6>
                   <MdOutlineExpandMore className='w-4 h-4' />                      
@@ -99,6 +100,7 @@ export default function ScreenSizeHeader({ data, locale }) {
               className='flex items-center cursor-pointer h-24'
               onHoverStart={()=>setIsLanguageMenuOpen(true)}
               onHoverEnd={()=>setIsLanguageMenuOpen(false)}  
+               onClick={()=>setIsLanguageMenuOpen(!isLanguageMenuOpen)}    
             > 
               <RiGlobalLine className='w-8 h-8' />           
             </motion.div>  
@@ -106,7 +108,7 @@ export default function ScreenSizeHeader({ data, locale }) {
               {
                 isLanguageMenuOpen
                 &&              
-                <LanguageMenu setIsLanguageMenuOpen={setIsLanguageMenuOpen} />
+                <LanguageMenu isLanguageMenuOpen={isLanguageMenuOpen} setIsLanguageMenuOpen={setIsLanguageMenuOpen} />
               }                
             </AnimatePresence>
                        

@@ -151,9 +151,9 @@
     }
   }
   
-  export const getSeo = async(locale) => {
+  export const getSeo = async(locale, page) => {
     try{
-      const response = await fetch(`${url}/api/getSeo?lang=${locale}`, {
+      const response = await fetch(`${url}/api/getSeo?lang=${locale}&page=${page}`, {
           method:'GET',
       })
       return await response.json();
@@ -162,4 +162,4 @@
       console.error('Error fetching seo:', err)
       return { data: [] }
     }
-  }    
+  }  

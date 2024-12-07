@@ -11,7 +11,7 @@ export default function Admin() {
   const locale = useLocale()
 
   const clicked = async() => {
-    if(password.length !== 5) {
+    if(password.length !== 15) {
       return
     }
     const response = await login({ password })

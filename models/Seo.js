@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 
 const SEOSchema = new mongoose.Schema({
+    page:{
+        type:String,
+        required:true
+    },
     language:{
         type:String,
         enum:['en', 'tr', 'fr'],
@@ -15,7 +19,6 @@ const SEOSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
-        maxlength: 160, 
     },
     keywords: {
         type: [String],
@@ -30,29 +33,15 @@ const SEOSchema = new mongoose.Schema({
     },
     URL: {
         type: String,        
-        validate: {
-            validator: function (v) {
-                return /^https?:\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/.*)?$/.test(v);
-            },
-            message: props => `${props.value} is not a valid URL!`,
-        },
     },
     ogTitle: {
-        type: String,
-        maxlength: 70, 
+        type: String, 
     },
     ogDescription: {
         type: String,
-        maxlength: 200,
     },
     ogImage: {
         type: String,
-        validate: {
-            validator: function (v) {
-                return /^https?:\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/.*)?$/.test(v);
-            },
-            message: props => `${props.value} is not a valid URL!`,
-        },
     },
     robots: {
         type: String,

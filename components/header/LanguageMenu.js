@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import ScrollLink from '../ScrollLink'
 
-export default function LanguageMenu({ setIsLanguageMenuOpen }) {
+export default function LanguageMenu({ isLanguageMenuOpen, setIsLanguageMenuOpen }) {
 
     const t = useTranslations('LangMenu')
 
@@ -27,7 +27,8 @@ export default function LanguageMenu({ setIsLanguageMenuOpen }) {
     <motion.div 
         className="absolute -left-8 top-full origin-top w-max h-max  py-2 bg-white border rounded-b-lg shadow-sm z-50 flex flex-col gap-4"
         onHoverStart={()=>setIsLanguageMenuOpen(true)}
-        onHoverEnd={()=>setIsLanguageMenuOpen(false)}     
+        onHoverEnd={()=>setIsLanguageMenuOpen(false)}
+        
         initial={{ scaleY:0 }}
         animate={{ scaleY:1 }}
         exit={{ scaleY:0 }}

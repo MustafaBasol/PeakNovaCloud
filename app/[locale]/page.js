@@ -8,33 +8,35 @@ import ReachMe from "../../components/home-page/ReachMe";
 import Faq from "../../components/faq/Faq";
 import Footer from "../../components/footer/Footer";
 import BlogHolder from "@/components/blog/BlogHolder";
-import { getBlogs, getFaq, getPage } from "@/libs/utils";
+import { getBlogs, getFaq, getPage, getSeo } from "@/libs/utils";
 import { getLocale } from "next-intl/server";
-import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale
-  const t = await getTranslations('HomepageMetaData', locale) 
-
+  const home = await getSeo(locale, 'home')
+  const page = await (home.data)[0]
+  
   return {
-    title: t('title'), 
-    description: t('description'),
-    keywords: t('keywords'), 
+    title: page.title, 
+    description: page.title,
+    keywords: page.keywords, 
     openGraph: {
-      type: t('type'),
-      url: t('url'),
-      title: t('titleOG'),
-      description: t('descriptionOG'),  
+      type: 'website',
+      url:page.URL || 'https://www.peaknovas.com/',
+      title: page.ogTitle || 'Professional Salesforce Services | PeakNova',
+      description: page.description || 'Professional Salesforce Services | PeakNova', 
+      image:page.ogImage || '' 
     },
   };
 }
+
 export default async function Home() {
 
 const locale = await getLocale()
 const FaqData = await getFaq(locale) 
 const pageData = await getPage(locale, 'home') 
 const blogData = await getBlogs(locale)
-console.log(blogData)
+
   return (
     <main className="">   
       <Hero pageData={pageData} />

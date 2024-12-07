@@ -25,7 +25,7 @@ export default function FooterContact() {
         >
             <div className='flex items-center gap-2'> 
                 <MdEmail className='w-4 h-4' />
-                <h6 className='text-sm'>lenacloudinfo@gmail.com</h6>
+                <h6 className='text-sm'>peaknovainfo@gmail.com</h6>
             </div>               
         </motion.div>
      

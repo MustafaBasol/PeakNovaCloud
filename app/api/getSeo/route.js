@@ -7,11 +7,17 @@ import SEO from '@/models/Seo.js'
 export async function GET(req) {
      await connectDB()   
      
-     const searchParams = (req.nextUrl.searchParams)
-     const language = searchParams.get('lang'); 
-
-     const data = await SEO.find({ language }).sort({ createdAt:1 })
-     return NextResponse.json({ data:data }, { status: 200 })         
+    const searchParams = (req.nextUrl.searchParams)
+    const language = searchParams.get('lang'); 
+    const page = searchParams.get('page')
+    if(page) {
+      const data =  await SEO.find({ language:language, page: { $regex: page } }).sort({ createdAt:1 })
+      return NextResponse.json({ data:data }, { status: 200 })    
+    } else {
+        const data =  await SEO.find({ language:language }).sort({ createdAt:1 }) 
+        return NextResponse.json({ data:data }, { status: 200 })        
+    }
+    
 }
 
 export async function POST(request) {
@@ -20,6 +26,7 @@ export async function POST(request) {
           await authenticate(request)
           const req = await request.json()         
           const seo = await SEO.create({ 
+            page:req.page,
             title:req.title, 
             description:req.description, 
             language:req.language, 
@@ -61,6 +68,7 @@ export async function PATCH(request) {
           const about = await ABOUT.findOneAndUpdate(
                { _id:req._id }, 
                {
+                    page:req.page,
                     title:req.title, 
                     description:req.description, 
                     language:req.language, 

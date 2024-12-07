@@ -38,7 +38,7 @@ export default function ManageSeo() {
   }
 
   const addItem = () => {
-    setCurrentItem({ title: '', description: '', keywords:'', slug:'', language: locale, URL:'', ogTitle:'', ogDesription:'', ogImage:'' })
+    setCurrentItem({ page:'', title: '', description: '', keywords:'', slug:'', language: locale, URL:'', ogTitle:'', ogDescription:'', ogImage:'' })
     setIsOpen(true)
     setError('')
   }
@@ -104,8 +104,8 @@ export default function ManageSeo() {
               className="p-4 border-2 border-black flex justify-between gap-8 items-center"
             >
               <div className="flex flex-col">
-                <h6 className="font-bold">{item.title}</h6>
-                <p>{item.description}</p>
+                <h6 className="font-bold">{item.page}</h6>
+                <h6>{item.title}</h6>
               </div>
 
               <div className="flex flex-col gap-2 text-white">

@@ -6,7 +6,26 @@ import { getPage } from '@/libs/utils'
 import Contact from '@/components/contact/Contact'
 import Footer from '@/components/footer/Footer'
 import BlogHero from '@/components/blogs-page/BlogHero'
+import { getSeo } from '@/libs/utils'
 
+export async function generateMetadata({ params }) {
+  const locale = params?.locale
+  const home = await getSeo(locale, 'home')
+  const page = await (home.data)[0]
+  
+  return {
+    title: page.title, 
+    description: page.title,
+    keywords: page.keywords, 
+    openGraph: {
+      type: 'website',
+      url:page.URL || 'https://www.peaknovas.com/',
+      title: page.ogTitle || 'Professional Salesforce Services | PeakNova',
+      description: page.description || 'Professional Salesforce Services | PeakNova', 
+      image:page.ogImage || '' 
+    },
+  };
+}
 
 export default async function Blog() {
   const locale = await getLocale()

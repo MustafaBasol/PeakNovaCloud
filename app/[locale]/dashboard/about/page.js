@@ -1,7 +1,5 @@
 'use client';
-
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { getAboutData } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';

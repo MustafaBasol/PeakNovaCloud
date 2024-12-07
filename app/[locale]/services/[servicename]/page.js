@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
   const serviceName = service.service.split('-').join(' ')
   
   return {
-    title: `${service.service.charAt(0).toUpperCase() + service.service.slice(1)} | Le-Na cloud`,
+    title: `${service.service.charAt(0).toUpperCase() + service.service.slice(1)} | PeakNova`,
     description: service.title,
     keywords: `
       ${t('keywords')},
@@ -44,8 +44,8 @@ export async function generateMetadata({ params }) {
     `,
     openGraph: {
       type: 'article',
-      url: `https://localhost:3000/services/${service.service}`,
-      title: `${service.service} | Le-Na cloud`,
+      url: `https://www.peaknovas.com//services/${service.service}`,
+      title: `${service.service} | PeakNova`,
       description: service.description,
     },
   };
