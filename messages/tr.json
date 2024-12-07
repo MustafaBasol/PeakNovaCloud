@@ -68,15 +68,6 @@
         "en":"İngilizce",
         "fr":"Fransızca"        
     },
-    "HomepageMetaData": {
-        "title": "Le-Na cloud | Profesyonel Salesforce Hizmetleri",
-        "description": "Salesforce entegrasyonu, danışmanlık ve özelleştirme hizmetleri ile iş süreçlerinizi optimize edin. CRM çözümlerinizde maksimum verimliliğe deneyimli ekibimizle ulaşın. Bize ulaşın!",
-        "keywords": "Salesforce, Salesforce danışmanlığı, CRM çözümleri, bulut tabanlı CRM, iş süreci optimizasyonu, Salesforce danışmanlık hizmetleri, Salesforce uygulama hizmetleri, Salesforce entegrasyon hizmetleri, Salesforce destek ve bakım, Salesforce geliştirme hizmetleri, Salesforce bulut çözümleri, Salesforce optimizasyon hizmetleri, Salesforce CRM danışmanlığı, Salesforce platform yönetimi, Salesforce veri geçişi, Salesforce veri entegrasyonu, Salesforce API entegrasyonu, Salesforce uygulama geliştirme, Salesforce otomasyon hizmetleri, Salesforce özelleştirme çözümleri, Salesforce analiz hizmetleri, Salesforce mobil uygulama geliştirme, Salesforce müşteri 360 çözümleri, Salesforce AppExchange danışmanlığı, finans için Salesforce çözümleri, üretim için Salesforce çözümleri, Salesforce destek hizmetleri, Salesforce sorun giderme hizmetleri",
-        "type": "website",
-        "url": "le-na.cloud",
-        "titleOG": "Profesyonel Salesforce Hizmetleri | Le-Na cloud",
-        "descriptionOG": "Özelleştirilmiş Salesforce çözümleri ile işinizi bir üst seviyeye taşıyın."
-    },
     "ServiceMetaData": {
         "errorTitle": "Hizmet Bulunamadı | Le-Na cloud",
         "errorDescription": "Aradığınız hizmet mevcut değil",

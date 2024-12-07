@@ -41,7 +41,7 @@ export default async function ProjectPage() {
         <ProjectsHero pageData={pageData} />
         <Schema pageData={pageData} />
         <ProjectsHolder projectsData={projectsData} pageData={pageData} locale={locale} />
-        <ImageIcons pageData={pageData} /> 
+        <ImageIcons pageData={pageData} />
         <Faq data={faqData} color='primary' />        
         <Contact id={'project-contact'} color='light' pageData={pageData} />
         <Footer color='var(--light)' />

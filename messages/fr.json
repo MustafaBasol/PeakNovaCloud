@@ -69,15 +69,6 @@
         "fr":"Français",
         "back":"Retour"
     },
-    "HomepageMetaData": {
-        "title": "Le-Na cloud | Services Salesforce Professionnels",
-        "description": "Optimisez vos processus métier avec des services d'intégration, de conseil et de personnalisation Salesforce. Atteignez une efficacité maximale dans vos solutions CRM avec notre équipe expérimentée. Contactez-nous !",
-        "keywords": "Salesforce, consultation Salesforce, solutions CRM, CRM basé sur le cloud, optimisation des processus métier, services de consultation Salesforce, services d'implémentation Salesforce, services d'intégration Salesforce, support et maintenance Salesforce, services de développement Salesforce, solutions cloud Salesforce, services d'optimisation Salesforce, consultation CRM Salesforce, gestion de plateforme Salesforce, migration de données Salesforce, intégration de données Salesforce, intégration API Salesforce, développement d'applications Salesforce, services d'automatisation Salesforce, solutions de personnalisation Salesforce, services d'analytique Salesforce, développement d'applications mobiles Salesforce, solutions Customer 360 Salesforce, consultation AppExchange Salesforce, solutions Salesforce pour la finance, solutions Salesforce pour la fabrication, services de support Salesforce, services de dépannage Salesforce",
-        "type": "website",
-        "url": "le-na.cloud",
-        "titleOG": "Services Salesforce Professionnels | Le-Na cloud",
-        "descriptionOG": "Élevez votre entreprise au niveau supérieur avec des solutions Salesforce personnalisées."
-    },
     "ServiceMetaData": {
         "errorTitle": "Service Introuvable | Le-Na cloud",
         "errorDescription": "Le service que vous recherchez n'est pas disponible",

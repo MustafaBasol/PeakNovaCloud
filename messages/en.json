@@ -69,16 +69,6 @@
         "fr":"French",
         "back":"Back"
     },
-    "HomepageMetaData":{
-        "title": "Le-Na cloud | Professional Salesforce Services",
-        "description": "Optimize your business processes with Salesforce integration, consulting, and customization services. Achieve maximum efficiency in your CRM solutions with our experienced team. Contact us!",
-        "keywords": 
-            "Salesforce, Salesforce consulting, CRM solutions, cloud-based CRM, business process optimization, Salesforce consulting services,Salesforce implementation services, Salesforce integration services, Salesforce support and maintenance, Salesforce development services,Salesforce cloud solutions, Salesforce optimization services, Salesforce CRM consulting, Salesforce platform management, Salesforce data migration, Salesforce data integration, Salesforce API integration, Salesforce app development, Salesforce automation services, Salesforce customization solutions, Salesforce analytics services, Salesforce mobile app development, Salesforce customer 360 solutions, Salesforce AppExchange consulting, Salesforce solutions for finance, Salesforce solutions for manufacturing, Salesforce support services, Salesforce troubleshooting services",
-        "type": "website",
-        "url": "le-na.cloud",
-        "titleOG": "Professional Salesforce Services | Le-Na cloud",
-        "descriptionOG": "Take your business to the next level with customized Salesforce solutions."
-    },
     "ServiceMetaData":{
         "errorTitle":"Service cannot found | Le-Na cloud",
         "errorDescription":"The service you are looking for is not available",
