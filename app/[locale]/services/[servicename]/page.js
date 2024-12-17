@@ -10,6 +10,7 @@ import { notFound } from "next/navigation"
 import ReachUs from "@/components/service-page/ReachUs"
 import { getLocale, getTranslations } from "next-intl/server"
 import BlogHolder from "@/components/blog/BlogHolder"
+import CookieAccepter from "@/components/CookieAccepter"
 
 
 export async function generateMetadata({ params }) {
@@ -79,6 +80,7 @@ async function ServicesPage({ params }) {
         <div className=''>
           <Contact color='white' id={'service-contact'} pageData={serviceData} />        
         </div>
+        <CookieAccepter locale={locale} />
         <Footer color='white' />
       </div>      
     </>

@@ -7,6 +7,7 @@ import Contact from '@/components/contact/Contact'
 import Footer from '@/components/footer/Footer'
 import BlogHero from '@/components/blogs-page/BlogHero'
 import { getSeo } from '@/libs/utils'
+import CookieAccepter from '@/components/CookieAccepter'
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale
@@ -46,6 +47,7 @@ export default async function Blog() {
       }
     </div>    
     <Contact color={'white'} pageData={pageData} id={'blogs-contact'}  />
+    <CookieAccepter locale={locale} />
     <Footer color='white' /> 
     </div>
   )

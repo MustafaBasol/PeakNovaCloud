@@ -50,7 +50,7 @@ const blogData = await getBlogs(locale)
       <ServiceCall locale={locale} />  
       <Faq data={FaqData} color={`primary`}/>              
       <Contact id={'home-contact'} color='light' pageData={pageData} />
-      <CookieAccepter />
+      <CookieAccepter locale={locale} />
       <Footer color='var(--light)' />
     </main>
   );
