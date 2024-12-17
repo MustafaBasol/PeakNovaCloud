@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const CookieAccepter = ({ locale }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
     const t = useTranslations('Cookie')
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const CookieAccepter = ({ locale }) => {
       
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 30000); 
+      }, 10000); 
 
       return () => clearTimeout(timer);
     }
