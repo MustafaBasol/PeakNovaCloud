@@ -28,6 +28,10 @@ export default memo(function FooterUsefulLinks({ locale }) {
         {
             link:'blogs',
             name:'blog'
+        },
+        {
+            link:'policy',
+            name:'policy'
         }        
     ]
 

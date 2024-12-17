@@ -23,7 +23,8 @@
         "about":"Hakkımızda",
         "contact":"İletişim",
         "term":"Bu siteyi kullanarak kullanım koşullarını kabul etmiş olursunuz.",
-        "blog":"Blog"        
+        "blog":"Blog",  
+        "policy":"Gizlilik Politikası"      
     },
     "Form":{
         "name":"İsim",
@@ -92,7 +93,58 @@
         "description":"Size sunulan en son güncellemeler ve içgörülerle bir adım önde olun",
         "name":"PeakNova",
         "button":"Keşfedin"
-    } 
+    },
+    "Cookie":{
+        "main":"Deneyiminizi geliştirmek için çerezleri kullanıyoruz. Sitemizi kullanarak, aşağıdakileri kabul etmiş olursunuz",
+        "button":"Kabul et",
+        "policy":"Kullanım koşulları"        
+    },
+  "PrivacyPolicy": {
+    "title": "Gizlilik Politikası",
+    "lastUpdated": "Son güncelleme: 17 Aralık 2024",
+    "description": "Bu Gizlilik Politikası, Hizmeti kullandığınızda bilgilerinizin toplanması, kullanılması ve ifşa edilmesine ilişkin politikalarımızı açıklar ve gizlilik haklarınızı anlatır.",
+    "agreement": "Hizmeti kullanarak, bu Gizlilik Politikası uyarınca bilgilerin toplanmasını ve kullanılmasını kabul edersiniz.",
+    "interpretationTitle": "Yorumlama ve Tanımlar",
+    "interpretationSubtitle": "Yorumlama",
+    "interpretationText": "Baş harfi büyük olan kelimelerin aşağıdaki koşullarda tanımlanmış anlamları vardır.",
+    "definitionsTitle": "Tanımlar",
+    "definitionsIntro": "Bu Gizlilik Politikası amaçları doğrultusunda:",
+    "accountTitle": "Hesap",
+    "accountText": "Hizmetimize veya bir bölümüne erişmek için oluşturulan benzersiz bir hesap.",
+    "affiliateTitle": "Bağlı Kuruluş",
+    "affiliateText": "Bir tarafı kontrol eden, kontrol edilen veya ortak kontrol altında olan bir kuruluş.",
+    "companyTitle": "Şirket",
+    "companyText": "PeakNova'yı ifade eder.",
+    "cookiesTitle": "Çerezler",
+    "cookiesText": "Tarayıcı geçmişinizi izlemek için cihazınıza yerleştirilen küçük dosyalar.",
+    "countryTitle": "Ülke",
+    "countryText": "Türkiye'yi ifade eder.",
+    "deviceTitle": "Cihaz",
+    "deviceText": "Bilgisayar veya cep telefonu gibi hizmete erişebilen herhangi bir cihaz.",
+    "dataCollectionTitle": "Kişisel Verilerinizin Toplanması ve Kullanılması",
+    "dataTypesTitle": "Toplanan Veri Türleri",
+    "personalDataTitle": "Kişisel Veriler",
+    "personalDataText": "Hizmetimizi kullanırken kimliğinizi belirleyebilecek bilgiler isteyebiliriz.",
+    "email": "E-posta adresi",
+    "phone": "Telefon numarası",
+    "usageData": "Kullanım Verileri",
+    "trackingTitle": "İzleme Teknolojileri ve Çerezler",
+    "trackingText": "Hizmetimizde etkinliği izlemek ve bilgi depolamak için çerezler kullanıyoruz.",
+    "cookiesLabel": "Çerezler veya Tarayıcı Çerezleri",
+    "cookiesDescription": "Kullanımı izlemek için cihazınıza yerleştirilen küçük bir dosya.",
+    "webBeaconsLabel": "Web İşaretçileri",
+    "webBeaconsDescription": "Kullanıcıları saymak veya sistem bütünlüğünü doğrulamak için kullanılan elektronik dosyalar.",
+    "cookiesTypes": "Çerezler \"Kalıcı\" veya \"Oturum\" çerezleri olabilir.",
+    "useOfDataTitle": "Kişisel Verilerinizin Kullanımı",
+    "useOfDataText": "Şirket, kişisel verilerinizi aşağıdaki amaçlarla kullanabilir:",
+    "provideService": "Hizmetimizi sağlamak ve sürdürmek.",
+    "manageAccount": "Hesabınızı yönetmek.",
+    "contactYou": "E-posta, telefon veya diğer iletişim yolları ile sizinle iletişime geçmek.",
+    "contactUsTitle": "Bize Ulaşın",
+    "contactUsText": "Bu Gizlilik Politikası hakkında herhangi bir sorunuz varsa, bize ulaşın:",
+    "emailLabel": "E-posta ile",
+    "websiteLabel": "Web sitemizi ziyaret ederek"
+  }           
         
 
                                

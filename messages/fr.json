@@ -23,7 +23,8 @@
         "about":"à propos de",
         "contact":"Contacter",
         "term":"En utilisant ce site, vous acceptez les conditions d'utilisation.",
-        "blog":"Blog"        
+        "blog":"Blog",
+        "policy":"Politique de confidentialité"                
     },
     "Form":{
         "name":"Nom",
@@ -93,5 +94,56 @@
         "description":"Gardez une longueur d'avance grâce aux mises à jour et aux informations de pointe fournies par",
         "name":"PeakNova",
         "button":"Explorer"
-    }                                                                      
+    },
+    "Cookie":{
+        "main":"Nous utilisons des cookies pour améliorer votre expérience. En utilisant notre site, vous acceptez nos",
+        "button":"Accepter",
+        "policy":"Politique de confidentialité"
+    },
+  "PrivacyPolicy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour : 17 décembre 2024",
+    "description": "Cette politique de confidentialité décrit nos politiques et procédures concernant la collecte, l'utilisation et la divulgation de vos informations lorsque vous utilisez le service et vous informe de vos droits en matière de confidentialité.",
+    "agreement": "En utilisant le service, vous acceptez la collecte et l'utilisation des informations conformément à cette politique de confidentialité.",
+    "interpretationTitle": "Interprétation et Définitions",
+    "interpretationSubtitle": "Interprétation",
+    "interpretationText": "Les mots dont la première lettre est en majuscule ont des significations définies dans les conditions suivantes.",
+    "definitionsTitle": "Définitions",
+    "definitionsIntro": "Aux fins de cette politique de confidentialité :",
+    "accountTitle": "Compte",
+    "accountText": "Un compte unique créé pour accéder à notre service ou à certaines de ses parties.",
+    "affiliateTitle": "Affilié",
+    "affiliateText": "Une entité qui contrôle, est contrôlée ou est sous contrôle commun avec une autre partie.",
+    "companyTitle": "Société",
+    "companyText": "Fait référence à PeakNova.",
+    "cookiesTitle": "Cookies",
+    "cookiesText": "Petits fichiers placés sur votre appareil pour suivre votre historique de navigation.",
+    "countryTitle": "Pays",
+    "countryText": "Fait référence à la Turquie.",
+    "deviceTitle": "Appareil",
+    "deviceText": "Tout appareil capable d'accéder au service, comme un ordinateur ou un téléphone mobile.",
+    "dataCollectionTitle": "Collecte et Utilisation de vos Données Personnelles",
+    "dataTypesTitle": "Types de Données Collectées",
+    "personalDataTitle": "Données Personnelles",
+    "personalDataText": "Lors de l'utilisation de notre service, nous pouvons vous demander de fournir des informations permettant de vous identifier.",
+    "email": "Adresse e-mail",
+    "phone": "Numéro de téléphone",
+    "usageData": "Données d'utilisation",
+    "trackingTitle": "Technologies de Suivi et Cookies",
+    "trackingText": "Nous utilisons des cookies et des technologies similaires pour suivre l'activité et stocker des informations.",
+    "cookiesLabel": "Cookies ou Cookies de Navigateur",
+    "cookiesDescription": "Un petit fichier placé sur votre appareil pour suivre l'utilisation.",
+    "webBeaconsLabel": "Balises Web",
+    "webBeaconsDescription": "Petits fichiers électroniques pour compter les utilisateurs ou vérifier l'intégrité du système.",
+    "cookiesTypes": "Les cookies peuvent être \"persistants\" ou \"session\".",
+    "useOfDataTitle": "Utilisation de vos Données Personnelles",
+    "useOfDataText": "La société peut utiliser vos données personnelles aux fins suivantes :",
+    "provideService": "Fournir et maintenir notre service.",
+    "manageAccount": "Gérer votre compte.",
+    "contactYou": "Vous contacter par e-mail, téléphone ou autres moyens de communication.",
+    "contactUsTitle": "Nous Contacter",
+    "contactUsText": "Si vous avez des questions concernant cette politique de confidentialité, contactez-nous :",
+    "emailLabel": "Par e-mail",
+    "websiteLabel": "En visitant notre site Web"
+  }                                                                                  
 }

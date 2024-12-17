@@ -10,6 +10,7 @@ import Footer from "../../components/footer/Footer";
 import BlogHolder from "@/components/blog/BlogHolder";
 import { getBlogs, getFaq, getPage, getSeo } from "@/libs/utils";
 import { getLocale } from "next-intl/server";
+import CookieAccepter from "@/components/CookieAccepter";
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale
@@ -49,6 +50,7 @@ const blogData = await getBlogs(locale)
       <ServiceCall locale={locale} />  
       <Faq data={FaqData} color={`primary`}/>              
       <Contact id={'home-contact'} color='light' pageData={pageData} />
+      <CookieAccepter />
       <Footer color='var(--light)' />
     </main>
   );
