@@ -9,7 +9,7 @@ export async function POST(request) {
     const thePassword = process.env.PASSWORD
     const req = await request.json()
     const password = await req.password
-    
+    console.log(password)
     if (!password) {    
         return NextResponse.json({ success: false, error: 'Password required' }, { status: 400 });
     }
@@ -17,9 +17,6 @@ export async function POST(request) {
         return NextResponse.json({ success: false, error: 'Invalid password.' }, { status: 400 });
     }
     const token = generateToken();
-
-
-
     const response =  NextResponse.json({ success: true, message: 'Login successful', token });   
     
     response.cookies.set('token', token, {
