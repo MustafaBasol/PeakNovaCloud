@@ -1,7 +1,7 @@
 'use client'
-import { FaCaretDown } from "react-icons/fa";
 import { motion } from 'framer-motion';
 import { rightToLeftVariants } from "@/libs/variants";
+import IconRenderer from "../IconRenderer";
 
 export default function FaqQuestion({ item, i, color, activeIndex, setActiveIndex }) {
 
@@ -34,7 +34,7 @@ export default function FaqQuestion({ item, i, color, activeIndex, setActiveInde
                         initial={{ transform:'rotate(0deg)'}}
                         animate={{ transform: activeIndex === i ? 'rotate(180deg)' : 'rotate(0deg)' }}
                     >
-                        <FaCaretDown className={`w-8 h-8`} /> 
+                        <IconRenderer iconName='FaCaretDown' className={`w-8 h-8`} /> 
                     </motion.div>            
                 </div>                  
                     {

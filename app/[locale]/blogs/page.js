@@ -11,8 +11,8 @@ import CookieAccepter from '@/components/CookieAccepter'
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale
-  const home = await getSeo(locale, 'home')
-  const page = await (home.data)[0]
+  const blogs = await getSeo(locale, 'blogs')
+  const page = await (blogs.data)[0]
   
   return {
     title: page.title, 

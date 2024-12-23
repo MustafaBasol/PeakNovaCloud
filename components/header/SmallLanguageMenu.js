@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import ScrollLink from '../ScrollLink'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { MdOutlineKeyboardArrowLeft } from 'react-icons/md' 
+import IconRenderer from '../IconRenderer'
 
 export default function SmallLanguageMenu({ setIsSmallLanguageMenuOpen }) {
     
@@ -42,7 +42,7 @@ export default function SmallLanguageMenu({ setIsSmallLanguageMenuOpen }) {
                 }}
                 onClick={()=>setIsSmallLanguageMenuOpen(false)}
             >
-                <MdOutlineKeyboardArrowLeft className='w-12 h-12 ' />  
+                <IconRenderer iconName='MdOutlineKeyboardArrowLeft' className='w-12 h-12 ' />  
                 <h6>{t('back')}</h6>
             </motion.div>          
             {

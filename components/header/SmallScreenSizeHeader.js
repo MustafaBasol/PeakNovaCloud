@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { RxHamburgerMenu } from "react-icons/rx";
+import IconRenderer from '../IconRenderer';
 import SmallMenu from './SmallMenu';
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -29,7 +29,7 @@ export default function SmallScreenSizeHeader({ data, locale }) {
               alt='logo'       
             />
           </ScrollLink>
-        <RxHamburgerMenu onClick={click} className='h-12 w-12 cursor-pointer'></RxHamburgerMenu>
+        <IconRenderer onClick={click} iconName='RxHamburgerMenu' className='h-12 w-12 cursor-pointer' />
             <AnimatePresence>
                 {
                   isMenuOpen 

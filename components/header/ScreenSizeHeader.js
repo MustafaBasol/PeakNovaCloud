@@ -1,13 +1,12 @@
 'use client'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MdOutlineExpandMore } from "react-icons/md";
+import IconRenderer from '../IconRenderer';
 import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import ServiceMenu from './ServiceMenu';
 import { useTranslations } from 'next-intl';
 import ScrollLink from '../ScrollLink';
-import { RiGlobalLine } from "react-icons/ri";
 import LanguageMenu from './LanguageMenu';
 
 export default function ScreenSizeHeader({ data, locale }) {
@@ -71,7 +70,7 @@ export default function ScreenSizeHeader({ data, locale }) {
                   onClick={()=>setIsServiceMenuOpen(!isServiceMenuOpen)}               
               >
                   <motion.h6 className='text-base'>{t('service')}</motion.h6>
-                  <MdOutlineExpandMore className='w-4 h-4' />                      
+                  <IconRenderer className='w-4 h-4' iconName='MdOutlineExpandMore' />                        
               </motion.div>              
               <ScrollLink href={`/${locale}/projects`} className='flex items-center'>
                 <h6 className='cursor-pointer text-base'>{t('project')}</h6>
@@ -102,7 +101,7 @@ export default function ScreenSizeHeader({ data, locale }) {
               onHoverEnd={()=>setIsLanguageMenuOpen(false)}  
                onClick={()=>setIsLanguageMenuOpen(!isLanguageMenuOpen)}    
             > 
-              <RiGlobalLine className='w-8 h-8' />           
+              <IconRenderer className='w-8 h-8' iconName='RiGlobalLine' />             
             </motion.div>  
             <AnimatePresence>
               {

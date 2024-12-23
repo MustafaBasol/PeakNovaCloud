@@ -26,6 +26,14 @@ const ICONS = {
   RiCustomerService2Line : lazy(() => import("react-icons/ri").then((mod) => ({ default: mod.RiCustomerService2Line  }))),
   FiShoppingBag : lazy(() => import("react-icons/fi").then((mod) => ({ default: mod.FiShoppingBag  }))),
   FaChartArea : lazy(() => import("react-icons/fa").then((mod) => ({ default: mod.FaChartArea  }))),
+  MdOutlineExpandMore : lazy(() => import("react-icons/md").then((mod) => ({ default: mod.MdOutlineExpandMore  }))),
+  RiGlobalLine: lazy(() => import("react-icons/ri").then((mod) => ({ default: mod.RiGlobalLine  }))),
+  RxHamburgerMenu: lazy(() => import("react-icons/rx").then((mod) => ({ default: mod.RxHamburgerMenu  }))),
+  RiArrowDropRightLine: lazy(() => import("react-icons/ri").then((mod) => ({ default: mod.RiArrowDropRightLine  }))),
+  FaCaretDown: lazy(() => import("react-icons/fa").then((mod) => ({ default: mod.FaCaretDown  }))),
+  MdEmail: lazy(() => import("react-icons/md").then((mod) => ({ default: mod.MdEmail  }))),
+  FaAngleDown: lazy(() => import("react-icons/fa").then((mod) => ({ default: mod.FaAngleDown  }))), 
+  MdOutlineKeyboardArrowLeft : lazy(() => import("react-icons/md").then((mod) => ({ default: mod.MdOutlineKeyboardArrowLeft  }))), 
 };
 
 export default memo(function IconRenderer({ iconName, color, ...props }) {

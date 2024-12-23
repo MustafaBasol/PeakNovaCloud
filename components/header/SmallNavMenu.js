@@ -3,6 +3,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
+import IconRenderer from '../IconRenderer'
 
 export default function SmallNavMenu({ title, Icon, setIsOpen, setIsMenuOpen, isMenuOpen, index, locale, setIsSmallLanguageMenuOpen }) {
 
@@ -94,7 +95,7 @@ export default function SmallNavMenu({ title, Icon, setIsOpen, setIsMenuOpen, is
         {
             Icon
             &&
-            <Icon className='w-[52px] h-[52px]' />
+            <IconRenderer iconName={Icon} className='w-[52px] h-[52px]' />
         }
     </motion.div>
   )

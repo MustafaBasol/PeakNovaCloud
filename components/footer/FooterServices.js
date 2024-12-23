@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react'
-import { FaAngleDown } from "react-icons/fa";
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import ScrollLink from '../ScrollLink';
+import IconRenderer from '../IconRenderer';
 
 export default function FooterServices({ data, locale }) {
 
@@ -15,7 +15,7 @@ export default function FooterServices({ data, locale }) {
     <div className='flex flex-col gap-2'>
         <div className='flex items-center justify-center sm:justify-start gap-2 cursor-pointer p-2 sm:p-0' onClick={()=>setIsOpen(!isOpen)}>
           <h5 className='text-lg sm:text-base font-bold'>{t('services')}</h5>
-          <FaAngleDown className='block sm:hidden w-5 h-5' />  
+          <IconRenderer iconName='FaAngleDown' className='block sm:hidden w-5 h-5' />  
         </div>
         <motion.div 
             className={`${isOpen ? 'flex flex-col' : 'hidden'} sm:flex sm:flex-col gap-2 origin-top sm:!opacity-100`}

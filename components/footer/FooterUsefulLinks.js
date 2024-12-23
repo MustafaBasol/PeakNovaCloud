@@ -1,7 +1,6 @@
 'use client'
 import React, { useState, memo } from 'react'
-import Link from 'next/link'
-import { FaAngleDown } from "react-icons/fa";
+import IconRenderer from '../IconRenderer';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import ScrollLink from '../ScrollLink';
@@ -39,7 +38,7 @@ export default memo(function FooterUsefulLinks({ locale }) {
     <div className='flex flex-col gap-2'>
         <div className='flex items-center gap-2 cursor-pointer justify-center sm:justify-start p-2 sm:p-0' onClick={()=>setIsOpen(!isOpen)}>
           <h5 className='text-lg sm:text-base font-bold'>{t('links')}</h5>
-          <FaAngleDown className='block sm:hidden w-5 h-5' />  
+          <IconRenderer iconName='FaAngleDown' className='block sm:hidden w-5 h-5' />  
         </div>
         <motion.div 
             className={ `${isOpen ? 'flex flex-col' : 'hidden'} sm:flex flex-col gap-2 sm:!opacity-100` }

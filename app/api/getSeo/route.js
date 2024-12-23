@@ -65,7 +65,7 @@ export async function PATCH(request) {
      try {
           await authenticate(request)
           const req = await request.json()          
-          const about = await ABOUT.findOneAndUpdate(
+          const seo = await SEO.findOneAndUpdate(
                { _id:req._id }, 
                {
                     page:req.page,
@@ -81,8 +81,9 @@ export async function PATCH(request) {
                },
                { new:true }
           )
-          return NextResponse.json({ success: true, data: about }, { status: 200 });
+          return NextResponse.json({ success: true, data: seo }, { status: 200 });
      } catch (error) {
+          console.log(error.message)
           return NextResponse.json({ success: false, error: error.message }, { status: 400 });
      }     
 }

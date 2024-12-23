@@ -70,14 +70,12 @@ export default function PopUp({ setIsOpen, item = {}, handleSubmit, error }) {
                 {key}
               </Form.Label>
               <Form.Control asChild>
-                {key === 'ogDescription' || key === 'description' || key === 'answer' ? (
+                {key === 'ogDescription' || key === 'keywords' || key === 'description' || key === 'answer' ? (
                   <textarea
                     name={key}
                     value={formData[key] || ''}
                     onChange={handleChange}
                     className="w-full p-2 border rounded"
-                    // Example: If you want this field to be required:
-                    // required
                   />
                 ) : (
                   <input

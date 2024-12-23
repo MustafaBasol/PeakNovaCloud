@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { RiArrowDropRightLine } from "react-icons/ri";
 import SmallNavMenu from './SmallNavMenu';
 import SmallScreenServiceMenu from './SmallScreenServiceMenu';
 import SmallLanguageMenu from './SmallLanguageMenu';
@@ -12,12 +11,12 @@ export default function SmallMenu({ isMenuOpen, setIsMenuOpen, data, locale }) {
   const [isSmallLanguageMenu, setIsSmallLanguageMenuOpen] = useState(false)
 
   const [navs, setNavs] = useState([
-    { title:'service', Icon: RiArrowDropRightLine },
+    { title:'service', Icon: 'RiArrowDropRightLine' },
     { title:'project', Icon:'' },
     { title:'about', Icon:'' },
     { title:'blog', Icon:'' },
     { title:'button', Icon:'' },
-    { title:'language', Icon: RiArrowDropRightLine}
+    { title:'language', Icon: 'RiArrowDropRightLine'}
   ])
 
   const t = useTranslations('SmallHeader')
