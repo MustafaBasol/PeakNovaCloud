@@ -32,7 +32,7 @@ const nextConfig = {
     return config
   },
   images: {
-    domains: ['shared.cloudflare.steamstatic.com'],
+    domains: ['i.imgur.com'],
   },  
     
 }
