@@ -14,7 +14,7 @@ export default function BlogPageImage({ blogData }) {
                     className='rounded-lg'
                     layout='responsive'
                     alt={blogData.title}
-                    src={'/about.jpg'}
+                    src={blogData.coverImage}
                     width={16}
                     height={9}
                 />                
