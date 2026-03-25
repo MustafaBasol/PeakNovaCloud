@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PeakNovaCloud
 
-## Getting Started
+Bu proje Next.js tabanli calisir ve artik dis servis gerektirmeden yerel PostgreSQL ile baslatilabilir.
 
-First, run the development server:
+## Yerel PostgreSQL
+
+Repo icinde self-hosted PostgreSQL kurulumunu Docker Compose ile yapiyoruz.
+
+1. Veritabanini baslat:
+
+```bash
+npm run db:up
+```
+
+2. Prisma semasini yerel veritabanina uygula:
+
+```bash
+npm run prisma:push:local
+```
+
+3. Prisma client'i uret:
+
+```bash
+npm run prisma:generate:local
+```
+
+Yerel veritabani baglantisi:
+
+```bash
+postgresql://postgres:postgres@localhost:5432/peaknova?schema=public
+```
+
+Faydali komutlar:
+
+```bash
+npm run db:logs
+npm run db:down
+npm run db:reset
+```
+
+## Gelistirme Ortami
+
+1. `.env` dosyasi olustur ve `.env.example` icerigini kullan.
+2. Prisma repository modunu ac:
+
+```bash
+USE_PRISMA_REPOSITORIES="true"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/peaknova?schema=public"
+```
+
+3. Uygulamayi baslat:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Uygulama varsayilan olarak [http://localhost:3000](http://localhost:3000) uzerinde calisir.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Mongo -> PostgreSQL Gecisi
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Mongo verisi mevcutsa migration akisi soyledir:
 
-## Learn More
+```bash
+npm run db:up
+npm run prisma:push:local
+USE_PRISMA_REPOSITORIES="true" npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Elinizde Mongo baglantisi varsa ayrica su script kullanilabilir:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npm run migrate:mongo-to-prisma
+```

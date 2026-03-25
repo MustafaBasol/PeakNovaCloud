@@ -7,8 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f postgres",
+    "db:reset": "docker compose down -v && docker compose up -d postgres",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
+    "prisma:push:local": "DATABASE_URL='postgresql://postgres:postgres@localhost:5432/peaknova?schema=public' prisma db push",
+    "prisma:generate:local": "DATABASE_URL='postgresql://postgres:postgres@localhost:5432/peaknova?schema=public' prisma generate",
     "migrate:mongo-to-prisma": "node scripts/migrate-mongo-to-prisma.mjs"
   },
   "dependencies": {
