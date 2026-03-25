@@ -1,7 +1,5 @@
 import prisma from '@/libs/prisma'
-import { loadSeoModel } from '@/repositories/mongoRuntime'
 import { normalizeDocument, normalizeDocuments } from '@/repositories/normalizeDocument'
-import { shouldUsePrisma } from '@/repositories/repositoryRuntime'
 
 function normalizeKeywords(keywords) {
   if (Array.isArray(keywords)) {
@@ -46,100 +44,42 @@ function buildSeoData(data) {
 }
 
 export async function listSeosByLanguage(language) {
-  if (shouldUsePrisma()) {
-    const records = await prisma.seo.findMany({
-      where: { language },
-      orderBy: { createdAt: 'asc' },
-    })
-    return normalizeDocuments(records.map(mapSeoRecord))
-  }
-
-  const SEO = await loadSeoModel()
-  const records = await SEO.find({ language }).sort({ createdAt: 1 })
-  return normalizeDocuments(records)
+  const records = await prisma.seo.findMany({
+    where: { language },
+    orderBy: { createdAt: 'asc' },
+  })
+  return normalizeDocuments(records.map(mapSeoRecord))
 }
 
 export async function listSeosByLanguageAndPage(language, page) {
-  if (shouldUsePrisma()) {
-    const records = await prisma.seo.findMany({
-      where: {
-        language,
-        page: page ? { contains: page } : undefined,
-      },
-      orderBy: { createdAt: 'asc' },
-    })
-    return normalizeDocuments(records.map(mapSeoRecord))
-  }
-
-  const SEO = await loadSeoModel()
-  const records = await SEO.find({ language, page: { $regex: page } }).sort({ createdAt: 1 })
-  return normalizeDocuments(records)
+  const records = await prisma.seo.findMany({
+    where: {
+      language,
+      page: page ? { contains: page } : undefined,
+    },
+    orderBy: { createdAt: 'asc' },
+  })
+  return normalizeDocuments(records.map(mapSeoRecord))
 }
 
 export async function createSeo(data) {
-  if (shouldUsePrisma()) {
-    const record = await prisma.seo.create({
-      data: buildSeoData(data),
-    })
-    return normalizeDocument(mapSeoRecord(record))
-  }
-
-  const SEO = await loadSeoModel()
-  const record = await SEO.create({
-    page: data.page,
-    title: data.title,
-    description: data.description,
-    language: data.language,
-    keywords: data.keywords,
-    URL: data.URL,
-    slug: data.slug,
-    ogTitle: data.ogTitle,
-    ogDescription: data.ogDescription,
-    ogImage: data.ogImage,
-    robots: data.robots,
+  const record = await prisma.seo.create({
+    data: buildSeoData(data),
   })
-  return normalizeDocument(record)
+  return normalizeDocument(mapSeoRecord(record))
 }
 
 export async function deleteSeoById(id) {
-  if (shouldUsePrisma()) {
-    const record = await prisma.seo.delete({
-      where: { id },
-    })
-    return normalizeDocument(mapSeoRecord(record))
-  }
-
-  const SEO = await loadSeoModel()
-  const record = await SEO.findByIdAndDelete({ _id: id })
-  return normalizeDocument(record)
+  const record = await prisma.seo.delete({
+    where: { id },
+  })
+  return normalizeDocument(mapSeoRecord(record))
 }
 
 export async function updateSeoById(id, data) {
-  if (shouldUsePrisma()) {
-    const record = await prisma.seo.update({
-      where: { id },
-      data: buildSeoData(data),
-    })
-    return normalizeDocument(mapSeoRecord(record))
-  }
-
-  const SEO = await loadSeoModel()
-  const record = await SEO.findOneAndUpdate(
-    { _id: id },
-    {
-      page: data.page,
-      title: data.title,
-      description: data.description,
-      language: data.language,
-      keywords: data.keywords,
-      URL: data.URL,
-      slug: data.slug,
-      ogTitle: data.ogTitle,
-      ogDescription: data.ogDescription,
-      ogImage: data.ogImage,
-      robots: data.robots,
-    },
-    { new: true }
-  )
-  return normalizeDocument(record)
+  const record = await prisma.seo.update({
+    where: { id },
+    data: buildSeoData(data),
+  })
+  return normalizeDocument(mapSeoRecord(record))
 }

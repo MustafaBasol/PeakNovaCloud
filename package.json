@@ -14,10 +14,10 @@
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
     "prisma:push:local": "DATABASE_URL='postgresql://postgres:postgres@localhost:5432/peaknova?schema=public' prisma db push",
-    "prisma:generate:local": "DATABASE_URL='postgresql://postgres:postgres@localhost:5432/peaknova?schema=public' prisma generate",
-    "migrate:mongo-to-prisma": "node scripts/migrate-mongo-to-prisma.mjs"
+    "prisma:generate:local": "DATABASE_URL='postgresql://postgres:postgres@localhost:5432/peaknova?schema=public' prisma generate"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
     "@radix-ui/react-form": "^0.1.0",
     "@radix-ui/react-toast": "^1.2.1",
@@ -27,10 +27,10 @@
     "html-react-parser": "^5.1.18",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.8.0",
     "next": "^14.2.13",
     "next-intl": "^3.25.1",
     "nodemailer": "^6.9.14",
+    "pg": "^8.20.0",
     "prisma": "^7.5.0",
     "react": "^18",
     "react-dom": "^18",

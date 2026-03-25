@@ -41,10 +41,9 @@ npm run db:reset
 ## Gelistirme Ortami
 
 1. `.env` dosyasi olustur ve `.env.example` icerigini kullan.
-2. Prisma repository modunu ac:
+2. Veritabani baglantisini tanimla:
 
 ```bash
-USE_PRISMA_REPOSITORIES="true"
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/peaknova?schema=public"
 ```
 
@@ -58,16 +57,10 @@ Uygulama varsayilan olarak [http://localhost:3000](http://localhost:3000) uzerin
 
 ## Mongo -> PostgreSQL Gecisi
 
-Mongo verisi mevcutsa migration akisi soyledir:
+Yeni kurulum akisi soyledir:
 
 ```bash
 npm run db:up
 npm run prisma:push:local
-USE_PRISMA_REPOSITORIES="true" npm run dev
-```
-
-Elinizde Mongo baglantisi varsa ayrica su script kullanilabilir:
-
-```bash
-npm run migrate:mongo-to-prisma
+npm run dev
 ```

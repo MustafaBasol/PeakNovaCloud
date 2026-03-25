@@ -1,99 +1,51 @@
 import prisma from '@/libs/prisma'
-import { loadProjectModel } from '@/repositories/mongoRuntime'
 import { normalizeDocument, normalizeDocuments } from '@/repositories/normalizeDocument'
-import { shouldUsePrisma } from '@/repositories/repositoryRuntime'
 
 export async function listProjectsByLanguage(language) {
-  if (shouldUsePrisma()) {
-    const records = await prisma.project.findMany({
-      where: { language },
-      orderBy: { createdAt: 'desc' },
-    })
-    return normalizeDocuments(records)
-  }
-
-  const PROJECT = await loadProjectModel()
-  const records = await PROJECT.find({ language }).sort({ createdAt: -1 })
+  const records = await prisma.project.findMany({
+    where: { language },
+    orderBy: { createdAt: 'desc' },
+  })
   return normalizeDocuments(records)
 }
 
 export async function getProjectById(id) {
-  if (shouldUsePrisma()) {
-    const record = await prisma.project.findUnique({
-      where: { id },
-    })
-    return normalizeDocument(record)
-  }
-
-  const PROJECT = await loadProjectModel()
-  const record = await PROJECT.findById(id)
-  return normalizeDocument(record)
-}
-
-export async function createProject(data) {
-  if (shouldUsePrisma()) {
-    const record = await prisma.project.create({
-      data: {
-        name: data.name,
-        title: data.title,
-        language: data.language,
-        image: data.image,
-        description: data.description,
-      },
-    })
-    return normalizeDocument(record)
-  }
-
-  const PROJECT = await loadProjectModel()
-  const record = await PROJECT.create({
-    name: data.name,
-    title: data.title,
-    language: data.language,
-    image: data.image,
-    description: data.description,
+  const record = await prisma.project.findUnique({
+    where: { id },
   })
   return normalizeDocument(record)
 }
 
-export async function deleteProjectById(id) {
-  if (shouldUsePrisma()) {
-    const record = await prisma.project.delete({
-      where: { id },
-    })
-    return normalizeDocument(record)
-  }
-
-  const PROJECT = await loadProjectModel()
-  const record = await PROJECT.findOneAndDelete({ _id: id })
-  return normalizeDocument(record)
-}
-
-export async function updateProjectById(id, data) {
-  if (shouldUsePrisma()) {
-    const record = await prisma.project.update({
-      where: { id },
-      data: {
-        name: data.name,
-        title: data.title,
-        language: data.language,
-        image: data.image,
-        description: data.description,
-      },
-    })
-    return normalizeDocument(record)
-  }
-
-  const PROJECT = await loadProjectModel()
-  const record = await PROJECT.findOneAndUpdate(
-    { _id: id },
-    {
+export async function createProject(data) {
+  const record = await prisma.project.create({
+    data: {
       name: data.name,
       title: data.title,
       language: data.language,
       image: data.image,
       description: data.description,
     },
-    { new: true }
-  )
+  })
+  return normalizeDocument(record)
+}
+
+export async function deleteProjectById(id) {
+  const record = await prisma.project.delete({
+    where: { id },
+  })
+  return normalizeDocument(record)
+}
+
+export async function updateProjectById(id, data) {
+  const record = await prisma.project.update({
+    where: { id },
+    data: {
+      name: data.name,
+      title: data.title,
+      language: data.language,
+      image: data.image,
+      description: data.description,
+    },
+  })
   return normalizeDocument(record)
 }

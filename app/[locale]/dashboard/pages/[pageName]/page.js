@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { getPage } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
@@ -32,7 +31,7 @@ export default function ManagePages({ params }) {
       }
     }
     fetchPages()
-  }, [locale])
+  }, [locale, pageName])
 
   const updateItem = (item) => {
     setCurrentItem(item)

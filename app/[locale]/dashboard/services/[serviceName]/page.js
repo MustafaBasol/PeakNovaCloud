@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { getService } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
@@ -32,7 +31,7 @@ export default function ManageServices({ params }) {
       }
     }
     fetchServices()
-  }, [locale])
+  }, [locale, serviceName])
 
   const updateItem = (item) => {
     setCurrentItem(item)

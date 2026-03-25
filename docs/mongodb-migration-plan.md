@@ -12,18 +12,15 @@ Tamamlananlar:
 
 - API route'lari dogrudan Mongoose model import etmek yerine repository katmanini kullaniyor.
 - Prisma altyapisi eklendi: prisma/schema.prisma, prisma.config.ts, libs/prisma.js.
-- About, Faq, Logos, Project, Blog, Page, Service ve Seo repository'leri icin Prisma + Mongoose fallback yapisi kuruldu.
-- Runtime gecisi `USE_PRISMA_REPOSITORIES=true` ve `DATABASE_URL` varligina baglandi.
-- Repository katmani Prisma acikken Mongo baglanti/model kodunu eager import etmiyor; Mongoose fallback lazy-load ediliyor.
+- About, Faq, Logos, Project, Blog, Page, Service ve Seo repository'leri Prisma-only calisiyor.
+- Yerel self-hosted PostgreSQL kurulumu compose.yml ile repo icine alindi.
 - API cevabinda `id` ve `_id` birlikte donmeye devam ediyor.
-- Mongo -> Prisma migration script'i About, Faq, Logos, Project, PageContent, ServicePage, Blog ve Seo koleksiyonlarini kapsiyor.
 
 Hala kalanlar:
 
-- Gercek PostgreSQL ortamina `prisma db push` veya migration akisinin uygulanmasi
-- Canli veri tasimasinin calistirilip dogrulanmasi
 - Frontend write path'lerinde `_id` kullanimlarinin tamamen temizlenmesi
-- Son asamada Mongoose paketinin, models/ klasorunun ve libs/dbConnect.js dosyasinin kaldirilmasi
+- Gerekirse mevcut Mongo verisinin PostgreSQL'e tek seferlik harici script ile tasinmasi
+- Prisma tarafinda kalici migration gecmisi isteniyorsa `prisma migrate` akisinin eklenmesi
 
 ## Mevcut Durum Ozeti
 

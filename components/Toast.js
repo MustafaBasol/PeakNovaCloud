@@ -3,7 +3,7 @@ import React from 'react'
 import * as Toast from '@radix-ui/react-toast';
 import { useTranslations } from 'next-intl';
 
-export default async function Toaster({ isOpen, setIsOpen }) {
+export default function Toaster({ isOpen, setIsOpen }) {
 
   const t = useTranslations('Toast')
 
