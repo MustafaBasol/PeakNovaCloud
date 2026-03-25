@@ -108,9 +108,11 @@ Compose `--build` kullandigi icin uygulama image'i yeniden olusturulur.
 - `deploy:prepare` once production postgres servisini ayaga kaldirir
 - host makinede `.env.production` degerleri ile `next build` calistirir
 - Docker image hazir `.next` ciktisini kullanir
-- `app` servisi acilista `prisma db push` calistirir ve sonra hazir build ciktisi ile `next start` ile baslar
+- `app` servisi acilista `prisma generate` ve `prisma db push` calistirir
+- hazir build ciktisi varsa `next start` ile baslar
+- build artefact'i eksikse once container icinde `next build` dener
 
-`start-production.sh` tekrar build almaz. Production container'i baslamadan once `deploy:prepare` calismis olmalidir.
+Normal akista production container'i baslamadan once `deploy:prepare` calismis olmalidir.
 
 Uygulama build artefact'i yine de eksikse container servis devam etsin diye `next dev` fallback moduna gecer. Bu durum gecici uyumluluk modudur; ideal olan `next start` ile calismasidir.
 

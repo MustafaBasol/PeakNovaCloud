@@ -118,11 +118,12 @@ Production stack su sekilde calisir:
 - `postgres` container'i kalici volume ile veriyi tutar
 - `deploy:prepare` host uzerinde production `.next` build ciktisini uretir
 - Docker image bu hazir build ciktisini icine alir
-- `app` container'i acilista yalnizca Prisma schema senkronizasyonu yapar ve hazir build ile `next start` calistirir
+- `app` container'i acilista Prisma client'i uretir, schema senkronizasyonu yapar ve hazir build varsa `next start` ile baslar
 - healthcheck olarak `/api/health` kullanilir
 
 Not:
 
+- Eger build artefact'i eksikse once container icinde `next build` dener.
 - Eger production build artefact'i olusmazsa container servis kesilmesin diye `next dev` fallback ile ayaga kalkar.
 - Bu fallback acil durum icindir; normal hedef her zaman `next start` ile calismaktir.
 
