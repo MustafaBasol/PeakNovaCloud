@@ -1,6 +1,5 @@
-import connectDB from '@/libs/dbConnect'
 import prisma from '@/libs/prisma'
-import ABOUT from '@/models/About'
+import { loadAboutModel } from '@/repositories/mongoRuntime'
 import { normalizeDocument, normalizeDocuments } from '@/repositories/normalizeDocument'
 import { shouldUsePrisma } from '@/repositories/repositoryRuntime'
 
@@ -13,7 +12,7 @@ export async function listAboutByLanguage(language) {
     return normalizeDocuments(records)
   }
 
-  await connectDB()
+  const ABOUT = await loadAboutModel()
   const records = await ABOUT.find({ language }).sort({ createdAt: 1 })
   return normalizeDocuments(records)
 }
@@ -30,7 +29,7 @@ export async function createAbout(data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const ABOUT = await loadAboutModel()
   const record = await ABOUT.create({
     title: data.title,
     description: data.description,
@@ -47,7 +46,7 @@ export async function deleteAboutById(id) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const ABOUT = await loadAboutModel()
   const record = await ABOUT.findByIdAndDelete({ _id: id })
   return normalizeDocument(record)
 }
@@ -65,7 +64,7 @@ export async function updateAboutById(id, data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const ABOUT = await loadAboutModel()
   const record = await ABOUT.findOneAndUpdate(
     { _id: id },
     {

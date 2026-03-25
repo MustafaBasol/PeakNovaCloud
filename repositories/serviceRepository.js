@@ -1,6 +1,5 @@
-import connectDB from '@/libs/dbConnect'
 import prisma from '@/libs/prisma'
-import SERVICE from '@/models/Service'
+import { loadServiceModel } from '@/repositories/mongoRuntime'
 import { normalizeDocument, normalizeDocuments } from '@/repositories/normalizeDocument'
 import { shouldUsePrisma } from '@/repositories/repositoryRuntime'
 
@@ -26,7 +25,7 @@ export async function listServicesByLanguage(language) {
     return normalizeDocuments(records)
   }
 
-  await connectDB()
+  const SERVICE = await loadServiceModel()
   const records = await SERVICE.find({ language }).sort({ createdAt: 1 })
   return normalizeDocuments(records)
 }
@@ -40,7 +39,7 @@ export async function listServicePagesByNameAndLanguage(service, language) {
     return normalizeDocuments(records)
   }
 
-  await connectDB()
+  const SERVICE = await loadServiceModel()
   const records = await SERVICE.find({ language, service }).sort({ createdAt: 1 })
   return normalizeDocuments(records)
 }
@@ -53,7 +52,7 @@ export async function createServicePage(data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const SERVICE = await loadServiceModel()
   const record = await SERVICE.create({
     service: data.service,
     section: data.section,
@@ -75,7 +74,7 @@ export async function deleteServicePageById(id) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const SERVICE = await loadServiceModel()
   const record = await SERVICE.findOneAndDelete({ _id: id })
   return normalizeDocument(record)
 }
@@ -89,7 +88,7 @@ export async function updateServicePageById(id, data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const SERVICE = await loadServiceModel()
   const record = await SERVICE.findOneAndUpdate(
     { _id: id },
     {
@@ -126,7 +125,7 @@ export async function updateServicePagesBySectionAndLanguage(section, language, 
     })
   }
 
-  await connectDB()
+  const SERVICE = await loadServiceModel()
 
   const updateData = {}
 

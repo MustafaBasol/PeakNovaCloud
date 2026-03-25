@@ -1,6 +1,5 @@
-import connectDB from '@/libs/dbConnect'
 import prisma from '@/libs/prisma'
-import FAQ from '@/models/Faq'
+import { loadFaqModel } from '@/repositories/mongoRuntime'
 import { normalizeDocument, normalizeDocuments } from '@/repositories/normalizeDocument'
 import { shouldUsePrisma } from '@/repositories/repositoryRuntime'
 
@@ -13,7 +12,7 @@ export async function listFaqByLanguage(language) {
     return normalizeDocuments(records)
   }
 
-  await connectDB()
+  const FAQ = await loadFaqModel()
   const records = await FAQ.find({ language }).sort({ createdAt: 1 })
   return normalizeDocuments(records)
 }
@@ -30,7 +29,7 @@ export async function createFaq(data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const FAQ = await loadFaqModel()
   const record = await FAQ.create({
     question: data.question,
     answer: data.answer,
@@ -47,7 +46,7 @@ export async function deleteFaqById(id) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const FAQ = await loadFaqModel()
   const record = await FAQ.findOneAndDelete({ _id: id })
   return normalizeDocument(record)
 }
@@ -65,7 +64,7 @@ export async function updateFaqById(id, data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const FAQ = await loadFaqModel()
   const record = await FAQ.findOneAndUpdate(
     { _id: id },
     {

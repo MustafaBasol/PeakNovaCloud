@@ -14,6 +14,7 @@ Tamamlananlar:
 - Prisma altyapisi eklendi: prisma/schema.prisma, prisma.config.ts, libs/prisma.js.
 - About, Faq, Logos, Project, Blog, Page, Service ve Seo repository'leri icin Prisma + Mongoose fallback yapisi kuruldu.
 - Runtime gecisi `USE_PRISMA_REPOSITORIES=true` ve `DATABASE_URL` varligina baglandi.
+- Repository katmani Prisma acikken Mongo baglanti/model kodunu eager import etmiyor; Mongoose fallback lazy-load ediliyor.
 - API cevabinda `id` ve `_id` birlikte donmeye devam ediyor.
 - Mongo -> Prisma migration script'i About, Faq, Logos, Project, PageContent, ServicePage, Blog ve Seo koleksiyonlarini kapsiyor.
 

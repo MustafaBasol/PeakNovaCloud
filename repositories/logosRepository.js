@@ -1,6 +1,5 @@
-import connectDB from '@/libs/dbConnect'
 import prisma from '@/libs/prisma'
-import LOGOS from '@/models/Logos'
+import { loadLogosModel } from '@/repositories/mongoRuntime'
 import { normalizeDocument, normalizeDocuments } from '@/repositories/normalizeDocument'
 import { shouldUsePrisma } from '@/repositories/repositoryRuntime'
 
@@ -13,7 +12,7 @@ export async function listLogosByLanguage(language) {
     return normalizeDocuments(records.map((record) => ({ ...record, Icon: record.icon })))
   }
 
-  await connectDB()
+  const LOGOS = await loadLogosModel()
   const records = await LOGOS.find({ language }).sort({ createdAt: 1 })
   return normalizeDocuments(records)
 }
@@ -32,7 +31,7 @@ export async function createLogos(data) {
     return normalizeDocument({ ...record, Icon: record.icon })
   }
 
-  await connectDB()
+  const LOGOS = await loadLogosModel()
   const record = await LOGOS.create({
     name: data.name,
     Icon: data.Icon,
@@ -51,7 +50,7 @@ export async function deleteLogosById(id) {
     return normalizeDocument({ ...record, Icon: record.icon })
   }
 
-  await connectDB()
+  const LOGOS = await loadLogosModel()
   const record = await LOGOS.findOneAndDelete({ _id: id })
   return normalizeDocument(record)
 }
@@ -71,7 +70,7 @@ export async function updateLogosById(id, data) {
     return normalizeDocument({ ...record, Icon: record.icon })
   }
 
-  await connectDB()
+  const LOGOS = await loadLogosModel()
   const record = await LOGOS.findOneAndUpdate(
     { _id: id },
     {

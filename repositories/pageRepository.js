@@ -1,6 +1,5 @@
-import connectDB from '@/libs/dbConnect'
 import prisma from '@/libs/prisma'
-import PAGE from '@/models/Page'
+import { loadPageModel } from '@/repositories/mongoRuntime'
 import { normalizeDocument, normalizeDocuments } from '@/repositories/normalizeDocument'
 import { shouldUsePrisma } from '@/repositories/repositoryRuntime'
 
@@ -16,7 +15,7 @@ export async function listPagesByLanguageAndSection(language, section) {
     return normalizeDocuments(records)
   }
 
-  await connectDB()
+  const PAGE = await loadPageModel()
   const records = await PAGE.find({ language, section: { $regex: section } }).sort({ createdAt: 1 })
   return normalizeDocuments(records)
 }
@@ -37,7 +36,7 @@ export async function createPage(data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const PAGE = await loadPageModel()
   const record = await PAGE.create({
     section: data.section,
     title: data.title,
@@ -58,7 +57,7 @@ export async function deletePageById(id) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const PAGE = await loadPageModel()
   const record = await PAGE.findOneAndDelete({ _id: id })
   return normalizeDocument(record)
 }
@@ -80,7 +79,7 @@ export async function updatePageById(id, data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const PAGE = await loadPageModel()
   const record = await PAGE.findOneAndUpdate(
     { _id: id },
     {

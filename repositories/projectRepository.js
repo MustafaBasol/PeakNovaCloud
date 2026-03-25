@@ -1,6 +1,5 @@
-import connectDB from '@/libs/dbConnect'
 import prisma from '@/libs/prisma'
-import PROJECT from '@/models/Project'
+import { loadProjectModel } from '@/repositories/mongoRuntime'
 import { normalizeDocument, normalizeDocuments } from '@/repositories/normalizeDocument'
 import { shouldUsePrisma } from '@/repositories/repositoryRuntime'
 
@@ -13,7 +12,7 @@ export async function listProjectsByLanguage(language) {
     return normalizeDocuments(records)
   }
 
-  await connectDB()
+  const PROJECT = await loadProjectModel()
   const records = await PROJECT.find({ language }).sort({ createdAt: -1 })
   return normalizeDocuments(records)
 }
@@ -26,7 +25,7 @@ export async function getProjectById(id) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const PROJECT = await loadProjectModel()
   const record = await PROJECT.findById(id)
   return normalizeDocument(record)
 }
@@ -45,7 +44,7 @@ export async function createProject(data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const PROJECT = await loadProjectModel()
   const record = await PROJECT.create({
     name: data.name,
     title: data.title,
@@ -64,7 +63,7 @@ export async function deleteProjectById(id) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const PROJECT = await loadProjectModel()
   const record = await PROJECT.findOneAndDelete({ _id: id })
   return normalizeDocument(record)
 }
@@ -84,7 +83,7 @@ export async function updateProjectById(id, data) {
     return normalizeDocument(record)
   }
 
-  await connectDB()
+  const PROJECT = await loadProjectModel()
   const record = await PROJECT.findOneAndUpdate(
     { _id: id },
     {

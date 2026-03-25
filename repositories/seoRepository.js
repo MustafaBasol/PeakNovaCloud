@@ -1,6 +1,5 @@
-import connectDB from '@/libs/dbConnect'
 import prisma from '@/libs/prisma'
-import SEO from '@/models/Seo'
+import { loadSeoModel } from '@/repositories/mongoRuntime'
 import { normalizeDocument, normalizeDocuments } from '@/repositories/normalizeDocument'
 import { shouldUsePrisma } from '@/repositories/repositoryRuntime'
 
@@ -55,7 +54,7 @@ export async function listSeosByLanguage(language) {
     return normalizeDocuments(records.map(mapSeoRecord))
   }
 
-  await connectDB()
+  const SEO = await loadSeoModel()
   const records = await SEO.find({ language }).sort({ createdAt: 1 })
   return normalizeDocuments(records)
 }
@@ -72,7 +71,7 @@ export async function listSeosByLanguageAndPage(language, page) {
     return normalizeDocuments(records.map(mapSeoRecord))
   }
 
-  await connectDB()
+  const SEO = await loadSeoModel()
   const records = await SEO.find({ language, page: { $regex: page } }).sort({ createdAt: 1 })
   return normalizeDocuments(records)
 }
@@ -85,7 +84,7 @@ export async function createSeo(data) {
     return normalizeDocument(mapSeoRecord(record))
   }
 
-  await connectDB()
+  const SEO = await loadSeoModel()
   const record = await SEO.create({
     page: data.page,
     title: data.title,
@@ -110,7 +109,7 @@ export async function deleteSeoById(id) {
     return normalizeDocument(mapSeoRecord(record))
   }
 
-  await connectDB()
+  const SEO = await loadSeoModel()
   const record = await SEO.findByIdAndDelete({ _id: id })
   return normalizeDocument(record)
 }
@@ -124,7 +123,7 @@ export async function updateSeoById(id, data) {
     return normalizeDocument(mapSeoRecord(record))
   }
 
-  await connectDB()
+  const SEO = await loadSeoModel()
   const record = await SEO.findOneAndUpdate(
     { _id: id },
     {
