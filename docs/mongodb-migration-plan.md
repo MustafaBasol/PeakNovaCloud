@@ -6,6 +6,24 @@ Bu proje su anda Mongoose ve MongoDB'ye dogrudan bagli calisiyor. Amac, veri kat
 
 Bu plan, kod tabanindaki mevcut bagimliliklari koruyarak asamali bir gecis tanimlar.
 
+## Guncel Uygulama Durumu
+
+Tamamlananlar:
+
+- API route'lari dogrudan Mongoose model import etmek yerine repository katmanini kullaniyor.
+- Prisma altyapisi eklendi: prisma/schema.prisma, prisma.config.ts, libs/prisma.js.
+- About, Faq, Logos, Project, Blog, Page, Service ve Seo repository'leri icin Prisma + Mongoose fallback yapisi kuruldu.
+- Runtime gecisi `USE_PRISMA_REPOSITORIES=true` ve `DATABASE_URL` varligina baglandi.
+- API cevabinda `id` ve `_id` birlikte donmeye devam ediyor.
+- Mongo -> Prisma migration script'i About, Faq, Logos, Project, PageContent, ServicePage, Blog ve Seo koleksiyonlarini kapsiyor.
+
+Hala kalanlar:
+
+- Gercek PostgreSQL ortamina `prisma db push` veya migration akisinin uygulanmasi
+- Canli veri tasimasinin calistirilip dogrulanmasi
+- Frontend write path'lerinde `_id` kullanimlarinin tamamen temizlenmesi
+- Son asamada Mongoose paketinin, models/ klasorunun ve libs/dbConnect.js dosyasinin kaldirilmasi
+
 ## Mevcut Durum Ozeti
 
 MongoDB bagimliligi uc seviyede bulunuyor:

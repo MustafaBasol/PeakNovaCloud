@@ -19,6 +19,10 @@ const About = mongoose.models.MigrationAbout || mongoose.model('MigrationAbout',
 const Faq = mongoose.models.MigrationFaq || mongoose.model('MigrationFaq', looseSchema, 'faqs')
 const Logos = mongoose.models.MigrationLogos || mongoose.model('MigrationLogos', looseSchema, 'logos')
 const Project = mongoose.models.MigrationProject || mongoose.model('MigrationProject', looseSchema, 'projects')
+const PageContent = mongoose.models.MigrationPageContent || mongoose.model('MigrationPageContent', looseSchema, 'pagecontents')
+const ServicePage = mongoose.models.MigrationServicePage || mongoose.model('MigrationServicePage', looseSchema, 'servicepages')
+const Blog = mongoose.models.MigrationBlog || mongoose.model('MigrationBlog', looseSchema, 'blogs')
+const Seo = mongoose.models.MigrationSeo || mongoose.model('MigrationSeo', looseSchema, 'seos')
 
 function normalizeLanguage(value) {
   if (value === 'en' || value === 'tr' || value === 'fr') {
@@ -26,6 +30,21 @@ function normalizeLanguage(value) {
   }
 
   throw new Error(`Unsupported language value: ${value}`)
+}
+
+function normalizeKeywords(value) {
+  if (Array.isArray(value)) {
+    return value.filter(Boolean)
+  }
+
+  if (typeof value === 'string') {
+    return value
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean)
+  }
+
+  return []
 }
 
 async function migrateCollection({ label, sourceModel, loadTargetIds, mapRecord, write }) {
@@ -119,6 +138,91 @@ async function main() {
     }),
     write: async (id, data) => {
       await prisma.project.create({ data: { id, ...data } })
+    },
+  })
+
+  await migrateCollection({
+    label: 'PageContent',
+    sourceModel: PageContent,
+    loadTargetIds: async () => new Set((await prisma.pageContent.findMany({ select: { id: true } })).map((item) => item.id)),
+    mapRecord: (record) => ({
+      section: record.section,
+      title: record.title ?? null,
+      description: record.description ?? null,
+      image: record.image ?? null,
+      buttonText: record.buttonText ?? null,
+      language: normalizeLanguage(record.language),
+      cards: Array.isArray(record.cards) ? record.cards : [],
+      createdAt: record.createdAt ?? new Date(),
+      updatedAt: record.updatedAt ?? new Date(),
+    }),
+    write: async (id, data) => {
+      await prisma.pageContent.create({ data: { id, ...data } })
+    },
+  })
+
+  await migrateCollection({
+    label: 'ServicePage',
+    sourceModel: ServicePage,
+    loadTargetIds: async () => new Set((await prisma.servicePage.findMany({ select: { id: true } })).map((item) => item.id)),
+    mapRecord: (record) => ({
+      service: record.service,
+      section: record.section,
+      title: record.title ?? null,
+      description: record.description ?? null,
+      image: record.image ?? null,
+      buttonText: record.buttonText ?? null,
+      language: normalizeLanguage(record.language),
+      cards: Array.isArray(record.cards) ? record.cards : [],
+      createdAt: record.createdAt ?? new Date(),
+      updatedAt: record.updatedAt ?? new Date(),
+    }),
+    write: async (id, data) => {
+      await prisma.servicePage.create({ data: { id, ...data } })
+    },
+  })
+
+  await migrateCollection({
+    label: 'Blog',
+    sourceModel: Blog,
+    loadTargetIds: async () => new Set((await prisma.blog.findMany({ select: { id: true } })).map((item) => item.id)),
+    mapRecord: (record) => ({
+      title: record.title,
+      slug: record.slug,
+      content: Array.isArray(record.content) ? record.content : [],
+      coverImage: record.coverImage ?? null,
+      language: normalizeLanguage(record.language),
+      summary: record.summary,
+      seo: record.seo ?? null,
+      createdAt: record.createdAt ?? new Date(),
+      updatedAt: record.updatedAt ?? new Date(),
+    }),
+    write: async (id, data) => {
+      await prisma.blog.create({ data: { id, ...data } })
+    },
+  })
+
+  await migrateCollection({
+    label: 'Seo',
+    sourceModel: Seo,
+    loadTargetIds: async () => new Set((await prisma.seo.findMany({ select: { id: true } })).map((item) => item.id)),
+    mapRecord: (record) => ({
+      page: record.page,
+      language: normalizeLanguage(record.language),
+      title: record.title,
+      description: record.description,
+      keywords: normalizeKeywords(record.keywords),
+      slug: record.slug,
+      url: record.URL ?? record.url ?? null,
+      ogTitle: record.ogTitle ?? null,
+      ogDescription: record.ogDescription ?? null,
+      ogImage: record.ogImage ?? null,
+      robots: record.robots ?? 'index, follow',
+      createdAt: record.createdAt ?? new Date(),
+      updatedAt: record.updatedAt ?? new Date(),
+    }),
+    write: async (id, data) => {
+      await prisma.seo.create({ data: { id, ...data } })
     },
   })
 }

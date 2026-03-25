@@ -109,7 +109,7 @@ model Blog {
   @@index([createdAt])
 }
 
-model SEO {
+model Seo {
   id            String   @id @default(uuid())
   page          String
   language      Language
