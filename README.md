@@ -55,7 +55,75 @@ npm run dev
 
 Uygulama varsayilan olarak [http://localhost:3000](http://localhost:3000) uzerinde calisir.
 
-## Mongo -> PostgreSQL Gecisi
+## Deploy
+
+Production deploy icin repo icinde dogrudan kullanilabilecek dosyalar eklendi:
+
+- [Dockerfile](Dockerfile)
+- [compose.production.yml](compose.production.yml)
+- [.env.production.example](.env.production.example)
+- [scripts/prepare-deployment.sh](scripts/prepare-deployment.sh)
+- [scripts/start-production.sh](scripts/start-production.sh)
+- [app/api/health/route.js](app/api/health/route.js)
+
+Hizli deploy akisi:
+
+1. Production env dosyasini hazirla:
+
+```bash
+cp .env.production.example .env.production
+```
+
+2. Gizli degerleri doldur:
+
+```bash
+POSTGRES_PASSWORD=...
+JWT_SECRET=...
+PASSWORD=...
+NEXT_PUBLIC_SITE_URL=https://alanadiniz.com
+```
+
+3. Production build hazirla:
+
+```bash
+npm run deploy:prepare
+```
+
+4. Servisleri ayağa kaldir:
+
+```bash
+npm run deploy:up
+```
+
+5. Loglari izle:
+
+```bash
+npm run deploy:logs
+```
+
+6. Servisleri durdur:
+
+```bash
+npm run deploy:down
+```
+
+PostgreSQL sifresini veya db/user adini degistirdiysen ve eski volume duruyorsa once tam reset gerekir:
+
+```bash
+npm run deploy:reset
+```
+
+Production stack su sekilde calisir:
+
+- `postgres` container'i kalici volume ile veriyi tutar
+- `deploy:prepare` host uzerinde production `.next` build ciktisini uretir
+- Docker image bu hazir build ciktisini icine alir
+- `app` container'i acilista yalnizca Prisma schema senkronizasyonu yapar ve hazir build ile `next start` calistirir
+- healthcheck olarak `/api/health` kullanilir
+
+Detayli operasyon notlari icin [docs/deployment.md](docs/deployment.md) dosyasina bakin.
+
+## PostgreSQL Gecisi
 
 Yeni kurulum akisi soyledir:
 
@@ -64,3 +132,4 @@ npm run db:up
 npm run prisma:push:local
 npm run dev
 ```
+

@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --font-site: "Montserrat", "Avenir Next", "Segoe UI", sans-serif;
   --text:rgb(3, 45, 96);
   --primary:#0D9DDA;
   --light:#e6f5fb;
@@ -27,6 +28,12 @@
   --white:rgb(255, 255, 255);
 
 }
+
+body,
+.font-site {
+  font-family: var(--font-site);
+}
+
 .card {
   border: 1px solid #eaeaea;
   border-radius: 10px;

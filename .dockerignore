@@ -1,0 +1,10 @@
+.git
+.github
+node_modules
+npm-debug.log*
+compose*.yml
+.env
+.env.*
+coverage
+README.md
+docs
