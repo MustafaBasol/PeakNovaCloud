@@ -46,9 +46,9 @@ export default function ManagePages({ params }) {
     setError('')
   }
 
-  const deleteItem = async(_id) => {
+  const deleteItem = async(id) => {
     try {
-      await deletePage({ _id:_id })
+      await deletePage({ id })
       const pageData = await getPage(locale, pageName)
       setPages(pageData.data)
     } catch (err) {

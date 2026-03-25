@@ -45,9 +45,9 @@ export default function ManageProjects() {
     setError('')
   }
 
-  const deleteItem = async(_id) => {
+  const deleteItem = async(id) => {
     try {
-      await deleteProject({ _id:_id })
+      await deleteProject({ id })
       const projectData = await getProjects(locale)
       setProjects(projectData.data)
     } catch (err) {

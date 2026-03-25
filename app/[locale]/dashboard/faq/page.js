@@ -44,9 +44,9 @@ export default function ManageFaq() {
     setError('')
   }
 
-  const deleteItem = async(_id) => {
+  const deleteItem = async(id) => {
     try {
-      await deleteFaq(locale, {_id:_id})
+      await deleteFaq(locale, { id })
       const faqData = await getFaq(locale)
       setFaqs(faqData.data)
     } catch (err) {

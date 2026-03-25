@@ -43,9 +43,9 @@ export default function ManageAbout() {
     setError('')
   }
 
-  const deleteItem = async(_id) => {
+  const deleteItem = async(id) => {
     try {
-      await deleteAboutData(locale, {_id:_id})
+      await deleteAboutData(locale, { id })
       const aboutData = await getAboutData(locale)
       setAbouts(aboutData.data)
     } catch (err) {

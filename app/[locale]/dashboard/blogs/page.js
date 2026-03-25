@@ -45,9 +45,9 @@ export default function ManageBlogs() {
     setError('')
   }
 
-  const deleteItem = async(_id) => {
+  const deleteItem = async(id) => {
     try {
-      await deleteBlog({_id:_id})
+      await deleteBlog({ id })
       const blogData = await getBlogs(locale)
       setBlogs(blogData.data)
     } catch (err) {

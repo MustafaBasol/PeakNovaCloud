@@ -49,7 +49,7 @@ export async function PATCH(request) {
 
           const existingBlog = await findBlogBySlug(req.slug);
 
-          if (existingBlog && existingBlog._id.toString() !== documentId) {
+          if (existingBlog && existingBlog.id !== documentId) {
                return NextResponse.json({ success: false, error: 'Slug already exists. Please choose a different slug.' }, { status: 400 });
           }          
 

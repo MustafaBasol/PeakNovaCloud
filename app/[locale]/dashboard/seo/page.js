@@ -44,9 +44,9 @@ export default function ManageSeo() {
     setError('')
   }
 
-  const deleteItem = async(_id) => {
+  const deleteItem = async(id) => {
     try {
-      await deleteSeo({_id:_id})
+      await deleteSeo({ id })
       const seoData = await getSeos(locale)
       setSeo(seoData.data)
     } catch (err) {

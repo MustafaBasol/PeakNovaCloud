@@ -44,9 +44,9 @@ export default function ManageLogos() {
     setError('')
   }
 
-  const deleteItem = async(_id) => {
+  const deleteItem = async(id) => {
     try {
-      await deleteLogos(locale, {_id:_id})
+      await deleteLogos(locale, { id })
       const logosData = await getLogos(locale)
       setLogos(logosData.data)
     } catch (err) {

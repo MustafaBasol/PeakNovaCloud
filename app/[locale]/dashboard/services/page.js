@@ -45,9 +45,9 @@ export default function ManageServices() {
     setError('')
   }
 
-  const deleteItem = async(_id) => {
+  const deleteItem = async(id) => {
     try {
-      await deleteServices(locale, {_id:_id})
+      await deleteServices(locale, { id })
       const serviceData = await getServices(locale)
       setServices(serviceData.data)
     } catch (err) {
