@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "migrate:mongo-to-prisma": "node scripts/migrate-mongo-to-prisma.mjs"
   },
   "dependencies": {
+    "@prisma/client": "^7.5.0",
     "@radix-ui/react-form": "^0.1.0",
     "@radix-ui/react-toast": "^1.2.1",
     "cookie": "^1.0.2",
@@ -21,6 +25,7 @@
     "next": "^14.2.13",
     "next-intl": "^3.25.1",
     "nodemailer": "^6.9.14",
+    "prisma": "^7.5.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1"

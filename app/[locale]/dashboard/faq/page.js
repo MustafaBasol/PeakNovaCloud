@@ -5,6 +5,7 @@ import { getFaq } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
 import { createFaq, updateFaq, deleteFaq } from '@/libs/postUtils';
+import { getEntityId } from '@/libs/entityId';
 
 export default function ManageFaq() {
   const [faqs, setFaqs] = useState([])
@@ -58,7 +59,7 @@ export default function ManageFaq() {
     e.preventDefault();    
     console.log(formData)
     try {
-      if(formData._id) {
+      if(getEntityId(formData)) {
         await updateFaq(locale, formData)
       } else {
         await createFaq(locale, formData)
@@ -110,7 +111,7 @@ export default function ManageFaq() {
                 >
                   Edit
                 </button>
-                <button onClick={()=>deleteItem(item._id)} className="bg-[--service] p-2">Sil</button>
+                <button onClick={()=>deleteItem(getEntityId(item))} className="bg-[--service] p-2">Sil</button>
               </div>
             </div>
           ))

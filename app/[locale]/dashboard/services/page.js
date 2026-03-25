@@ -6,6 +6,7 @@ import { getServices } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
 import { createServices, updateServices, deleteServices } from '@/libs/postUtils';
+import { getEntityId } from '@/libs/entityId';
 
 export default function ManageServices() {
   const [services, setServices] = useState([])
@@ -58,7 +59,7 @@ export default function ManageServices() {
   const handleSubmit = async (e, formData) => {
     e.preventDefault();    
     try {
-      if(formData._id) {
+      if(getEntityId(formData)) {
         await updateServices(locale, formData)
       } else {
         await createServices(locale, formData)
@@ -113,7 +114,7 @@ export default function ManageServices() {
                 >
                   düzenle
                 </button>
-                <button onClick={()=>deleteItem(item._id)} className="bg-[--service] p-2">sil</button>
+                <button onClick={()=>deleteItem(getEntityId(item))} className="bg-[--service] p-2">sil</button>
               </div>
             </div>
           ))

@@ -1,34 +1,27 @@
 
 import { NextResponse } from 'next/server'
-import connectDB from '@/libs/dbConnect'
-import BLOG from '@/models/Blog'
+import {
+     createBlog,
+     deleteBlogById,
+     findBlogBySlug,
+     listBlogsByLanguage,
+     updateBlogById,
+} from '@/repositories/blogRepository'
 import { authenticate } from '@/middleware/auth'
 
 export async function GET(request) {
-     await connectDB()   
-     
      const searchParams = (request.nextUrl.searchParams)
      const language = searchParams.get('lang'); 
      
-     const data = await BLOG.find({ language }).sort({ createdAt:-1 })
+     const data = await listBlogsByLanguage(language)
      return NextResponse.json({ data:data }, { status: 200 })         
 }
 
 export async function POST(request) {
-     await connectDB()     
      try {
           await authenticate(request)
           const req = await request.json()                  
-          const blog = await BLOG.create({ 
-            title:req.title, 
-            slug:req.slug, 
-            language:req.language,
-            content:req.content,
-            coverImage:req.coverImage,
-            seo:req.seo,
-            summary:req.summary
-        });
-        console.log(blog)
+          const blog = await createBlog(req);
           return NextResponse.json({ success: true, data: blog }, { status: 201 });
      } catch (error) {
           console.log(error.message)
@@ -37,12 +30,11 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-     await connectDB();
-      
      try {
           await authenticate(request)
-          const req = await request.json()          
-          const blog = await BLOG.findOneAndDelete({ _id:req._id });
+          const req = await request.json()
+          const documentId = req.id || req._id
+          const blog = await deleteBlogById(documentId);
           return NextResponse.json({ success: true, data: blog }, { status: 200 });
      } catch (error) {
           return NextResponse.json({ success: false, error: error.message }, { status: 400 });
@@ -50,32 +42,18 @@ export async function DELETE(request) {
 }
 
 export async function PATCH(request) {
-     await connectDB();
-     
      try {
           await authenticate(request)
           const req = await request.json()
+          const documentId = req.id || req._id
 
-          const existingBlog = await BLOG.findOne({ slug: req.slug });
+          const existingBlog = await findBlogBySlug(req.slug);
 
-          if (existingBlog && existingBlog._id.toString() !== req._id) {
-          // Slug already exists in another document
-               return res.status(400).json({ error: 'Slug already exists. Please choose a different slug.' });
+          if (existingBlog && existingBlog._id.toString() !== documentId) {
+               return NextResponse.json({ success: false, error: 'Slug already exists. Please choose a different slug.' }, { status: 400 });
           }          
 
-          const blog = await BLOG.findOneAndUpdate(
-               { _id:req._id}, 
-                {                     
-                    title:req.title, 
-                    slug:req.slug, 
-                    language:req.language,
-                    content:req.content,
-                    coverImage:req.coverImage,
-                    seo:req.seo,
-                    summary:req.summary                                             
-                },
-               { new:true, runValidators:true }
-          )
+          const blog = await updateBlogById(documentId, req)
           return NextResponse.json({ success: true, data: blog }, { status: 200 });
      } catch (error) {
           console.log(error.message)

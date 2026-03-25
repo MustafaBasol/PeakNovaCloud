@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { belowToTopVariants } from '@/libs/variants'
 import { useTranslations } from 'next-intl'
 import ScrollLink from '../ScrollLink'
+import { getEntityId } from '@/libs/entityId'
 
 export default function ProjectItem({ item, locale }) {
   
@@ -30,7 +31,7 @@ export default function ProjectItem({ item, locale }) {
         <h5 className='text-xl md:text-2xl '>{item.name}</h5>
         <h6 className='text-base md:text-lg font-bold '>{item.title}</h6>
         <p className='line-clamp-3 w-4/6 mx-auto'>{item.description}</p>
-        <ScrollLink href={`/${locale}/projects/${item._id}`} className='text-black underline'>{t('more')}</ScrollLink>
+        <ScrollLink href={`/${locale}/projects/${getEntityId(item)}`} className='text-black underline'>{t('more')}</ScrollLink>
     </motion.div>
   )
 }

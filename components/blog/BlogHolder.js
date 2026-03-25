@@ -2,6 +2,7 @@
 import React from 'react'
 import SingleBlog from './SingleBlog'
 import { useTranslations } from 'next-intl'
+import { getEntityId } from '@/libs/entityId'
 
 export default function BlogHolder({ blogData, locale }) {
   
@@ -15,7 +16,7 @@ export default function BlogHolder({ blogData, locale }) {
             {
                 data.map((blog) => {
                     return(
-                        <SingleBlog blog={blog} key={blog._id} t={t} locale={locale} />
+                        <SingleBlog blog={blog} key={getEntityId(blog)} t={t} locale={locale} />
                     )
                 })
             }

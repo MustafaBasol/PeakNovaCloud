@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react';
+import { getEntityId } from '@/libs/entityId';
 
 export default function PopUpBlog({ setIsOpen, item = {}, handleSubmit, error }) {
  
@@ -76,7 +77,7 @@ export default function PopUpBlog({ setIsOpen, item = {}, handleSubmit, error })
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-xl font-bold mb-4">
-          {item._id ? 'Edit Blog Post' : 'Add New Blog Post'}
+          {getEntityId(item) ? 'Edit Blog Post' : 'Add New Blog Post'}
         </h2>
         {error && <div className="text-red-500 mb-2">{error}</div>}
         <form onSubmit={onSubmit}>
@@ -334,7 +335,7 @@ export default function PopUpBlog({ setIsOpen, item = {}, handleSubmit, error })
               Cancel
             </button>
             <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded">
-              {item._id ? 'Save' : 'Add'}
+              {getEntityId(item) ? 'Save' : 'Add'}
             </button>
           </div>
         </form>

@@ -6,6 +6,7 @@ import { getPage } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
 import { createPage, deletePage, updatePage } from '@/libs/postUtils';
+import { getEntityId } from '@/libs/entityId';
 
 export default function ManagePages({ params }) {
   const [pages, setPages] = useState([])
@@ -60,7 +61,7 @@ export default function ManagePages({ params }) {
     e.preventDefault();
         
     try {
-      if(formData._id) {
+      if(getEntityId(formData)) {
         await updatePage(formData)
       } else {        
         await createPage(formData)
@@ -115,7 +116,7 @@ export default function ManagePages({ params }) {
                 >
                   Edit
                 </button>
-                <button onClick={()=>deleteItem(item._id)} className="bg-[--service] p-2">sil</button>
+                <button onClick={()=>deleteItem(getEntityId(item))} className="bg-[--service] p-2">sil</button>
               </div>
             </div>
           ))

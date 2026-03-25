@@ -8,6 +8,7 @@ import Contact from '@/components/contact/Contact'
 import Footer from '@/components/footer/Footer'
 import { getSeo } from '@/libs/utils'
 import CookieAccepter from '@/components/CookieAccepter'
+import { getEntityId } from '@/libs/entityId'
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale
@@ -36,7 +37,7 @@ export default async function BlogPage({ params }) {
     const contact = await getPage(locale, 'single')
     const blogData = (await getBlog(locale, slug)).data
     const blogsData = await getBlogs(locale)
-    const filteredArray = await blogsData.data.filter((blog) => blogData._id !== blog._id)
+    const filteredArray = await blogsData.data.filter((blog) => getEntityId(blogData) !== getEntityId(blog))
 
   return (
     <div className='bg-[--light]'>

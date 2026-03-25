@@ -5,6 +5,7 @@ import { getSeos } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
 import { createSeo, updateSeo, deleteSeo } from '@/libs/postUtils';
+import { getEntityId } from '@/libs/entityId';
 
 export default function ManageSeo() {
   const [seo, setSeo] = useState([])
@@ -58,7 +59,7 @@ export default function ManageSeo() {
     e.preventDefault();      
     let response 
     try {
-      if(formData._id) {
+      if(getEntityId(formData)) {
         response = await updateSeo(formData)
       } else {
         response = await createSeo(formData)
@@ -115,7 +116,7 @@ export default function ManageSeo() {
                 >
                   Düzenle
                 </button>
-                <button onClick={()=>deleteItem(item._id)} className="bg-[--service] p-2">Sil</button>
+                <button onClick={()=>deleteItem(getEntityId(item))} className="bg-[--service] p-2">Sil</button>
               </div>
             </div>
           ))

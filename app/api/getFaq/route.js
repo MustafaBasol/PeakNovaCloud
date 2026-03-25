@@ -1,17 +1,19 @@
 
 import { NextResponse } from 'next/server'
-import connectDB from '@/libs/dbConnect'
-import FAQ from '@/models/Faq'
+import {
+           createFaq,
+           deleteFaqById,
+           listFaqByLanguage,
+           updateFaqById,
+} from '@/repositories/faqRepository'
 import { authenticate } from '@/middleware/auth'
 
 export async function GET(req) {
-  await connectDB();
-
   try {
     const searchParams = req.nextUrl.searchParams;
     const language = searchParams.get('lang');
 
-    const data = await FAQ.find({ language }).sort({ createdAt: 1 });
+          const data = await listFaqByLanguage(language);
 
     return NextResponse.json({ data: data }, { status: 200 });
   } catch (error) {
@@ -23,12 +25,10 @@ export async function GET(req) {
 }
 
 export async function POST(request) {
-     await connectDB()
- 
      try {
           await authenticate(request); 
           const req = await request.json()             
-          const faq = await FAQ.create({ question:req.question, answer:req.answer, language:req.language });
+          const faq = await createFaq(req);
           return NextResponse.json({ success: true, data: faq }, { status: 201 });
      } catch (error) {
           return NextResponse.json({ success: false, error: error.message }, { status: 400 });
@@ -36,12 +36,11 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-     await connectDB();
-    
      try {
           await authenticate(request); 
-          const req = await request.json()          
-          const faq = await FAQ.findOneAndDelete({ _id:req._id });
+          const req = await request.json()
+          const documentId = req.id || req._id
+          const faq = await deleteFaqById(documentId);
           return NextResponse.json({ success: true, data: faq }, { status: 200 });
      } catch (error) {
           return NextResponse.json({ success: false, error: error.message }, { status: 400 });
@@ -49,16 +48,11 @@ export async function DELETE(request) {
 }
 
 export async function PATCH(request) {
-     await connectDB();
-     
      try {
           await authenticate(request);
-          const req = await request.json() 
-          const faq = await FAQ.findOneAndUpdate(
-               { _id:req._id }, 
-               { question:req.question, answer:req.answer, language:req.language },
-               { new:true }
-          )
+          const req = await request.json()
+          const documentId = req.id || req._id
+          const faq = await updateFaqById(documentId, req)
           return NextResponse.json({ success: true, data: faq }, { status: 200 });
      } catch (error) {
           return NextResponse.json({ success: false, error: error.message }, { status: 400 });

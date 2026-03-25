@@ -1,15 +1,11 @@
 import { generateToken } from "@/libs/auth";
 import { NextResponse } from "next/server";
-import connectDB from "@/libs/dbConnect";
-import { serialize } from 'cookie';
 
 
 export async function POST(request) {
-    await connectDB()
     const thePassword = process.env.PASSWORD
     const req = await request.json()
     const password = await req.password
-    console.log(password)
     if (!password) {    
         return NextResponse.json({ success: false, error: 'Password required' }, { status: 400 });
     }

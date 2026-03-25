@@ -4,6 +4,7 @@ import { getAboutData } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
 import { createAboutData, updateAboutData, deleteAboutData } from '@/libs/postUtils';
+import { getEntityId } from '@/libs/entityId';
 
 export default function ManageAbout() {
   const [abouts, setAbouts] = useState([])
@@ -56,7 +57,7 @@ export default function ManageAbout() {
   const handleSubmit = async (e, formData) => {
     e.preventDefault();    
     try {
-      if(formData._id) {
+      if(getEntityId(formData)) {
         await updateAboutData(locale, formData)
       } else {
         await createAboutData(locale, formData)
@@ -108,7 +109,7 @@ export default function ManageAbout() {
                 >
                   Edit
                 </button>
-                <button onClick={()=>deleteItem(item._id)} className="bg-[--service] p-2">Delete</button>
+                <button onClick={()=>deleteItem(getEntityId(item))} className="bg-[--service] p-2">Delete</button>
               </div>
             </div>
           ))

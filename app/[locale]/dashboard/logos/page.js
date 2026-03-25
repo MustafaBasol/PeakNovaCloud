@@ -5,6 +5,7 @@ import { getLogos } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
 import { createLogos, updateLogos, deleteLogos } from '@/libs/postUtils';
+import { getEntityId } from '@/libs/entityId';
 
 export default function ManageLogos() {
   const [logos, setLogos] = useState([])
@@ -57,7 +58,7 @@ export default function ManageLogos() {
   const handleSubmit = async (e, formData) => {
     e.preventDefault();    
     try {
-      if(formData._id) {
+      if(getEntityId(formData)) {
         await updateLogos(locale, formData)
       } else {
         await createLogos(locale, formData)
@@ -111,7 +112,7 @@ export default function ManageLogos() {
                 >
                   Edit
                 </button>
-                <button onClick={()=>deleteItem(item._id)} className="bg-[--service] p-2">Sil</button>
+                <button onClick={()=>deleteItem(getEntityId(item))} className="bg-[--service] p-2">Sil</button>
               </div>
             </div>
           ))

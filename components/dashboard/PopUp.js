@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import * as Form from '@radix-ui/react-form';
+import { getEntityId } from '@/libs/entityId';
 
 export default function PopUp({ setIsOpen, item = {}, handleSubmit, error }) {
   const [formData, setFormData] = useState(item);
@@ -8,7 +9,7 @@ export default function PopUp({ setIsOpen, item = {}, handleSubmit, error }) {
 
   // Filter out fields we don't want to edit directly
   const editableFields = Object.keys(formData).filter(
-    key => !['_id', 'createdAt', 'updatedAt', '__v', 'language', 'cards'].includes(key)
+    key => !['id', '_id', 'createdAt', 'updatedAt', '__v', 'language', 'cards'].includes(key)
   );
 
   const handleChange = (event) => {
@@ -57,7 +58,7 @@ export default function PopUp({ setIsOpen, item = {}, handleSubmit, error }) {
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-xl font-bold mb-4">
-          {item._id ? 'Edit Item' : 'Add New Item'}
+          {getEntityId(item) ? 'Edit Item' : 'Add New Item'}
         </h2>
 
         {/* Display top-level error if present */}
@@ -101,7 +102,7 @@ export default function PopUp({ setIsOpen, item = {}, handleSubmit, error }) {
             <div className="mb-4">
               <h3 className="text-lg font-semibold mb-2">Cards</h3>
               {cards.map((card, index) => (
-                <div key={card._id || index} className="mb-4 p-4 border rounded">
+                <div key={getEntityId(card) || index} className="mb-4 p-4 border rounded">
                   <div className="flex justify-between items-center mb-2">
                     <h4 className="text-md font-semibold">Card {index + 1}</h4>
                     <button
@@ -177,7 +178,7 @@ export default function PopUp({ setIsOpen, item = {}, handleSubmit, error }) {
             </button>
             <Form.Submit asChild>
               <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded">
-                {item._id ? 'Save' : 'Add'}
+                {getEntityId(item) ? 'Save' : 'Add'}
               </button>
             </Form.Submit>
           </div>

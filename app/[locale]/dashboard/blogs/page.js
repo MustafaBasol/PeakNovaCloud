@@ -6,6 +6,7 @@ import { getBlogs } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUpBlog from '@/components/dashboard/BlogPopUp';
 import { createBlog, updateBlog, deleteBlog } from '@/libs/postUtils';
+import { getEntityId } from '@/libs/entityId';
 
 export default function ManageBlogs() {
   const [blogs, setBlogs] = useState([])
@@ -58,7 +59,7 @@ export default function ManageBlogs() {
   const handleSubmit = async (e, formData) => {
     e.preventDefault();        
     try {
-      if(formData._id) {
+      if(getEntityId(formData)) {
         await updateBlog(formData, formData.slug)
       } else {
         await createBlog(formData)
@@ -110,7 +111,7 @@ export default function ManageBlogs() {
                 >
                   düzenle
                 </button>
-                <button onClick={()=>deleteItem(item._id)} className="bg-[--service] p-2">sil</button>
+                <button onClick={()=>deleteItem(getEntityId(item))} className="bg-[--service] p-2">sil</button>
               </div>
             </div>
           ))

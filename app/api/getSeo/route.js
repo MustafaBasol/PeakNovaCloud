@@ -1,43 +1,33 @@
 
 import { NextResponse } from 'next/server'
-import connectDB from '@/libs/dbConnect'
 import { authenticate } from '../../../middleware/auth.js'
-import SEO from '@/models/Seo.js'
+import {
+           createSeo,
+           deleteSeoById,
+           listSeosByLanguage,
+           listSeosByLanguageAndPage,
+           updateSeoById,
+} from '@/repositories/seoRepository'
 
 export async function GET(req) {
-     await connectDB()   
-     
     const searchParams = (req.nextUrl.searchParams)
     const language = searchParams.get('lang'); 
     const page = searchParams.get('page')
     if(page) {
-      const data =  await SEO.find({ language:language, page: { $regex: page } }).sort({ createdAt:1 })
+               const data = await listSeosByLanguageAndPage(language, page)
       return NextResponse.json({ data:data }, { status: 200 })    
     } else {
-        const data =  await SEO.find({ language:language }).sort({ createdAt:1 }) 
+                    const data = await listSeosByLanguage(language)
         return NextResponse.json({ data:data }, { status: 200 })        
     }
     
 }
 
 export async function POST(request) {
-     await connectDB()
      try {
           await authenticate(request)
           const req = await request.json()         
-          const seo = await SEO.create({ 
-            page:req.page,
-            title:req.title, 
-            description:req.description, 
-            language:req.language, 
-            keywords:req.keywords,
-            URL:req.URL,
-            slug:req.slug,
-            ogTitle:req.ogTitle,
-            ogDescription:req.ogDescription,
-            ogImage:req.ogImage,
-            robots:req.robots
-        });
+                         const seo = await createSeo(req);
         
           return NextResponse.json({ success: true, data: seo }, { status: 201 });
      } catch (error) {
@@ -47,12 +37,11 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-     await connectDB();
-
      try {
           await authenticate(request)
-          const req = await request.json()          
-          const seo = await SEO.findByIdAndDelete({ _id:req._id });
+          const req = await request.json()
+          const documentId = req.id || req._id
+          const seo = await deleteSeoById(documentId);
           return NextResponse.json({ success: true, data: seo }, { status: 200 });
      } catch (error) {
           return NextResponse.json({ success: false, error: error.message }, { status: 400 });
@@ -60,27 +49,11 @@ export async function DELETE(request) {
 }
 
 export async function PATCH(request) {
-     await connectDB();
-     
      try {
           await authenticate(request)
-          const req = await request.json()          
-          const seo = await SEO.findOneAndUpdate(
-               { _id:req._id }, 
-               {
-                    page:req.page,
-                    title:req.title, 
-                    description:req.description, 
-                    language:req.language, 
-                    URL:req.URL,
-                    slug:req.slug,
-                    ogTitle:req.ogTitle,
-                    ogDesription:req.ogDesription,
-                    ogImage:req.ogImage,
-                    robots:req.robots                
-               },
-               { new:true }
-          )
+          const req = await request.json()
+          const documentId = req.id || req._id
+          const seo = await updateSeoById(documentId, req)
           return NextResponse.json({ success: true, data: seo }, { status: 200 });
      } catch (error) {
           console.log(error.message)

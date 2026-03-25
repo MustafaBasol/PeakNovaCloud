@@ -1,32 +1,26 @@
 
 import { NextResponse } from 'next/server'
-import connectDB from '@/libs/dbConnect'
-import LOGOS from '@/models/Logos'
+import {
+     createLogos,
+     deleteLogosById,
+     listLogosByLanguage,
+     updateLogosById,
+} from '@/repositories/logosRepository'
 import { authenticate } from '@/middleware/auth'
 
 export async function GET(req) {
-     await connectDB()     
-
      const searchParams = (req.nextUrl.searchParams)
      const language = searchParams.get('lang');
 
-     const data = await LOGOS.find({ language }).sort({ createdAt:1 })
+     const data = await listLogosByLanguage(language)
      return NextResponse.json({ data:data }, { status: 200 })      
 }
 
 export async function POST(request) {
-     await connectDB()
-     
      try {
           await authenticate(request)
           const req = await request.json()          
-          const logos = await LOGOS.create({ 
-               name:req.name, 
-               Icon:req.Icon, 
-               language:req.language, 
-               color:req.color, 
-               description:req.description
-          });
+          const logos = await createLogos(req);
           return NextResponse.json({ success: true, data: logos }, { status: 201 });
      } catch (error) {
           return NextResponse.json({ success: false, error: error.message }, { status: 400 });
@@ -34,12 +28,11 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-     await connectDB();
-     
      try {
           await authenticate(request)
-          const req = await request.json()          
-          const logos = await LOGOS.findOneAndDelete({ _id:req._id });
+          const req = await request.json()
+          const documentId = req.id || req._id
+          const logos = await deleteLogosById(documentId);
           return NextResponse.json({ success: true, data: logos }, { status: 200 });
      } catch (error) {
           return NextResponse.json({ success: false, error: error.message }, { status: 400 });
@@ -47,16 +40,11 @@ export async function DELETE(request) {
 }
 
 export async function PATCH(request) {
-     await connectDB();
-    
      try {
           await authenticate(request)
-          const req = await request.json()          
-          const logos = await LOGOS.findOneAndUpdate(
-               { _id:req._id }, 
-               { name:req.name, Icon:req.Icon, language:req.language, color:req.color, decription:req.description },
-               { new:true }
-          )
+          const req = await request.json()
+          const documentId = req.id || req._id
+          const logos = await updateLogosById(documentId, req)
           return NextResponse.json({ success: true, data: logos }, { status: 200 });
      } catch (error) {
           return NextResponse.json({ success: false, error: error.message }, { status: 400 });

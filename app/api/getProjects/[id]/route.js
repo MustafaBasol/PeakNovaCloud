@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server"
-import PROJECT from "@/models/Project"
+import { getProjectById } from "@/repositories/projectRepository"
 
 export async function GET(request, { params }) {
     const id = params.id
-    const response = await PROJECT.findById(id)   
+    const response = await getProjectById(id)
     if(!response) {
         return NextResponse.json({ data:'Project cannot found' }, { status:500 })
     }

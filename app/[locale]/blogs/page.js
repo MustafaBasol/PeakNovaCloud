@@ -8,6 +8,7 @@ import Footer from '@/components/footer/Footer'
 import BlogHero from '@/components/blogs-page/BlogHero'
 import { getSeo } from '@/libs/utils'
 import CookieAccepter from '@/components/CookieAccepter'
+import { getEntityId } from '@/libs/entityId'
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale
@@ -41,7 +42,7 @@ export default async function Blog() {
       {
         blogsData.data.map((blog) => {
           return(
-            <BlogItem key={blog._id} blog={blog} locale={locale} />
+            <BlogItem key={getEntityId(blog)} blog={blog} locale={locale} />
           )
         })
       }

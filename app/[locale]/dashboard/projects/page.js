@@ -6,6 +6,7 @@ import { getProjects } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
 import { createProject, updateProject, deleteProject } from '@/libs/postUtils';
+import { getEntityId } from '@/libs/entityId';
 
 export default function ManageProjects() {
   const [projects, setProjects] = useState([])
@@ -58,7 +59,7 @@ export default function ManageProjects() {
   const handleSubmit = async (e, formData) => {
     e.preventDefault();    
     try {
-      if(formData._id) {
+      if(getEntityId(formData)) {
         await updateProject(formData)
       } else {
         await createProject(formData)
@@ -110,7 +111,7 @@ export default function ManageProjects() {
                 >
                   Düzenle
                 </button>
-                <button onClick={()=>deleteItem(item._id)} className="bg-[--service] p-2">Sil</button>
+                <button onClick={()=>deleteItem(getEntityId(item))} className="bg-[--service] p-2">Sil</button>
               </div>
             </div>
           ))
