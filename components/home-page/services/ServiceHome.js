@@ -1,6 +1,6 @@
 import React from 'react'
 import Services from './Services'
-import { getLogos } from '@/libs/utils'
+import { getLogos } from '@/libs/serverData'
 
 
 export default async function ServiceCall({ locale }) {

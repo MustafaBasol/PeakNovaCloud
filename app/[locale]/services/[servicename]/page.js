@@ -5,7 +5,7 @@ import WhyService from '../../../../components/service-page/WhyService'
 import Action from "@/components/service-page/Action"
 import Faq from "@/components/faq/Faq"
 import Footer from "@/components/footer/Footer"
-import { getService, getFaq, getBlogs } from '../../../../libs/utils'
+import { getService, getFaq, getBlogs } from '@/libs/serverData'
 import { notFound } from "next/navigation"
 import ReachUs from "@/components/service-page/ReachUs"
 import { getLocale, getTranslations } from "next-intl/server"

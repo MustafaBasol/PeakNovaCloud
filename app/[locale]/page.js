@@ -8,7 +8,7 @@ import ReachMe from "../../components/home-page/ReachMe";
 import Faq from "../../components/faq/Faq";
 import Footer from "../../components/footer/Footer";
 import BlogHolder from "@/components/blog/BlogHolder";
-import { getBlogs, getFaq, getPage, getSeo } from "@/libs/utils";
+import { getBlogs, getFaq, getPage, getSeo } from "@/libs/serverData";
 import { getLocale } from "next-intl/server";
 import CookieAccepter from "@/components/CookieAccepter";
 

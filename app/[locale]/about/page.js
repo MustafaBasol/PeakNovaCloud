@@ -6,10 +6,9 @@ import Contact from '../../../components/contact/Contact'
 import AboutAction from '../../../components/about-page/AboutAction'
 import Footer from '../../../components/footer/Footer'
 import Faq from '../../../components/faq/Faq'
-import { getAboutData, getBlogs, getFaq, getPage } from '../../../libs/utils'
+import { getAboutData, getBlogs, getFaq, getPage, getSeo } from '@/libs/serverData'
 import { getLocale } from 'next-intl/server'
 import BlogHolder from '@/components/blog/BlogHolder'
-import { getSeo } from '../../../libs/utils'
 import CookieAccepter from '@/components/CookieAccepter'
 
 export async function generateMetadata({ params }) {

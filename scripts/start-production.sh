@@ -6,13 +6,19 @@ if [ -z "${DATABASE_URL:-}" ]; then
   exit 1
 fi
 
-if [ ! -f .next/routes-manifest.json ] || [ ! -f .next/server/app-paths-manifest.json ]; then
-  echo "Production build artifacts are missing. Run 'npm run deploy:prepare' before starting production containers."
-  exit 1
+if [ ! -f .next/BUILD_ID ]; then
+  echo "Production build is missing. Building inside container..."
+  npm run build
 fi
 
 echo "Applying Prisma schema..."
+npx prisma generate
 npx prisma db push
 
-echo "Starting Next.js..."
-exec npx next start -p "${PORT:-3000}"
+if [ -f .next/BUILD_ID ]; then
+  echo "Starting Next.js production server..."
+  exec npx next start -p "${PORT:-3000}" -H 0.0.0.0
+fi
+
+echo "Production build artifacts are still missing after build. Falling back to next dev runtime..."
+exec npx next dev -p "${PORT:-3000}" -H 0.0.0.0

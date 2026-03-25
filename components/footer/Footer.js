@@ -4,7 +4,7 @@ import Image from 'next/image'
 import FooterUsefulLinks from './FooterUsefulLinks'
 import FooterContact from './FooterContact'
 import Link from 'next/link'
-import { getLogos } from '@/libs/utils'
+import { getLogos } from '@/libs/serverData'
 import { getTranslations, getLocale } from 'next-intl/server'
   
 export default async function Footer({ color }) {

@@ -1,6 +1,6 @@
 import SmallScreenSizeHeader from './SmallScreenSizeHeader'
 import ScreenSizeHeader from './ScreenSizeHeader'
-import { getLogos } from '@/libs/utils'
+import { getLogos } from '@/libs/serverData'
 
 export default async function Header({ locale }) {
 

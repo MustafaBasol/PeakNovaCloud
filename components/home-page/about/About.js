@@ -1,6 +1,6 @@
 
 import AboutTexts from './AboutTexts'
-import { getAboutData } from '@/libs/utils'
+import { getAboutData } from '@/libs/serverData'
 import { getLocale } from 'next-intl/server'
 
 export default async function About() {

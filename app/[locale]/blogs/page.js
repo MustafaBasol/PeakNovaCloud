@@ -1,12 +1,10 @@
 import React from 'react'
-import { getBlogs } from '@/libs/utils'
+import { getBlogs, getPage, getSeo } from '@/libs/serverData'
 import { getLocale } from 'next-intl/server'
 import BlogItem from '@/components/blogs-page/BlogItem'
-import { getPage } from '@/libs/utils'
 import Contact from '@/components/contact/Contact'
 import Footer from '@/components/footer/Footer'
 import BlogHero from '@/components/blogs-page/BlogHero'
-import { getSeo } from '@/libs/utils'
 import CookieAccepter from '@/components/CookieAccepter'
 import { getEntityId } from '@/libs/entityId'
 

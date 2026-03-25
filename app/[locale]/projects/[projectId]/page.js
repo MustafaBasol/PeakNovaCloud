@@ -1,7 +1,7 @@
 import React from 'react'
 import SingleProject from '@/components/singleProjectPage/SingleProject'
 import Footer from '@/components/footer/Footer'
-import { getBlogs, getProject } from '../../../../libs/utils'
+import { getBlogs, getProject } from '@/libs/serverData'
 import { notFound } from 'next/navigation'
 import BlogHolder from '@/components/blog/BlogHolder'
 import { getLocale } from 'next-intl/server'

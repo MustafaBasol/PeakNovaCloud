@@ -121,6 +121,11 @@ Production stack su sekilde calisir:
 - `app` container'i acilista yalnizca Prisma schema senkronizasyonu yapar ve hazir build ile `next start` calistirir
 - healthcheck olarak `/api/health` kullanilir
 
+Not:
+
+- Eger production build artefact'i olusmazsa container servis kesilmesin diye `next dev` fallback ile ayaga kalkar.
+- Bu fallback acil durum icindir; normal hedef her zaman `next start` ile calismaktir.
+
 Detayli operasyon notlari icin [docs/deployment.md](docs/deployment.md) dosyasina bakin.
 
 ## PostgreSQL Gecisi

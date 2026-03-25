@@ -112,6 +112,8 @@ Compose `--build` kullandigi icin uygulama image'i yeniden olusturulur.
 
 `start-production.sh` tekrar build almaz. Production container'i baslamadan once `deploy:prepare` calismis olmalidir.
 
+Uygulama build artefact'i yine de eksikse container servis devam etsin diye `next dev` fallback moduna gecer. Bu durum gecici uyumluluk modudur; ideal olan `next start` ile calismasidir.
+
 `deploy:prepare` komutu `POSTGRES_PORT` uzerinden host makineden veritabanina baglanir.
 
 ## Veri kaliciligi

@@ -5,10 +5,9 @@ import Schema from '../../../components/projects-page/Schema'
 import ProjectsHolder from '../../../components/projects-page/ProjectsHolder'
 import Faq from '../../../components/faq/Faq'
 import Footer from '../../../components/footer/Footer'
-import { getProjects, getFaq, getPage } from '../../../libs/utils'
+import { getProjects, getFaq, getPage, getSeo } from '@/libs/serverData'
 import ProjectsHero from '@/components/projects-page/ProjectsHero'
 import { getLocale } from "next-intl/server";
-import { getSeo } from '../../../libs/utils'
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale
