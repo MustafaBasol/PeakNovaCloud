@@ -61,6 +61,7 @@ Production deploy icin repo icinde dogrudan kullanilabilecek dosyalar eklendi:
 
 - [Dockerfile](Dockerfile)
 - [compose.production.yml](compose.production.yml)
+- [Caddyfile](Caddyfile)
 - [.env.production.example](.env.production.example)
 - [scripts/prepare-deployment.sh](scripts/prepare-deployment.sh)
 - [scripts/start-production.sh](scripts/start-production.sh)
@@ -77,31 +78,40 @@ cp .env.production.example .env.production
 2. Gizli degerleri doldur:
 
 ```bash
+DOMAIN=www.peaknovas.com
+ACME_EMAIL=ops@peaknovas.com
 POSTGRES_PASSWORD=...
 JWT_SECRET=...
 PASSWORD=...
-NEXT_PUBLIC_SITE_URL=https://alanadiniz.com
+NEXT_PUBLIC_SITE_URL=https://www.peaknovas.com
 ```
 
-3. Production build hazirla:
+3. DNS kaydini sunucu IP adresine yonlendir:
+
+```text
+www.peaknovas.com -> sunucu_public_ip
+peaknovas.com kullanilacaksa onu da ayri A/AAAA kaydi ile yonlendir
+```
+
+4. Production build hazirla:
 
 ```bash
 npm run deploy:prepare
 ```
 
-4. Servisleri ayağa kaldir:
+5. Servisleri ayağa kaldir:
 
 ```bash
 npm run deploy:up
 ```
 
-5. Loglari izle:
+6. Loglari izle:
 
 ```bash
 npm run deploy:logs
 ```
 
-6. Servisleri durdur:
+7. Servisleri durdur:
 
 ```bash
 npm run deploy:down
@@ -119,6 +129,7 @@ Production stack su sekilde calisir:
 - `deploy:prepare` host uzerinde production `.next` build ciktisini uretir
 - Docker image bu hazir build ciktisini icine alir
 - `app` container'i acilista Prisma client'i uretir, schema senkronizasyonu yapar ve hazir build varsa `next start` ile baslar
+- `caddy` container'i 80 ve 443 portlarinda calisir, Let's Encrypt sertifikasini otomatik alir ve trafigi `app:3000` servisine yonlendirir
 - healthcheck olarak `/api/health` kullanilir
 
 Not:
@@ -126,6 +137,8 @@ Not:
 - Eger build artefact'i eksikse once container icinde `next build` dener.
 - Eger production build artefact'i olusmazsa container servis kesilmesin diye `next dev` fallback ile ayaga kalkar.
 - Bu fallback acil durum icindir; normal hedef her zaman `next start` ile calismaktir.
+- `NEXT_PUBLIC_SITE_URL` degeri `https://DOMAIN` ile birebir ayni olmalidir.
+- `www` canonical adres kullanacaksan `DOMAIN=www.peaknovas.com` ve `NEXT_PUBLIC_SITE_URL=https://www.peaknovas.com` seklinde kalmali.
 
 Detayli operasyon notlari icin [docs/deployment.md](docs/deployment.md) dosyasina bakin.
 

@@ -35,13 +35,31 @@ services:
       PASSWORD: ${PASSWORD}
       MAIL_PASS: ${MAIL_PASS:-}
       EMAIL: ${EMAIL:-}
-    ports:
-      - '${APP_PORT:-3000}:3000'
     healthcheck:
       test: ['CMD-SHELL', 'wget -qO- http://127.0.0.1:3000/api/health >/dev/null 2>&1 || exit 1']
       interval: 15s
       timeout: 5s
       retries: 10
 
+  caddy:
+    image: caddy:2-alpine
+    container_name: peaknova-caddy-prod
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_healthy
+    environment:
+      DOMAIN: ${DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL}
+    ports:
+      - '${HTTP_PORT:-80}:80'
+      - '${HTTPS_PORT:-443}:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
 volumes:
   postgres_prod_data:
+  caddy_data:
+  caddy_config:

@@ -19,8 +19,13 @@ if [ -z "${POSTGRES_PASSWORD:-}" ]; then
   exit 1
 fi
 
-if [ -z "${JWT_SECRET:-}" ] || [ -z "${PASSWORD:-}" ] || [ -z "${NEXT_PUBLIC_SITE_URL:-}" ]; then
-  echo "JWT_SECRET, PASSWORD and NEXT_PUBLIC_SITE_URL are required in .env.production"
+if [ -z "${JWT_SECRET:-}" ] || [ -z "${PASSWORD:-}" ] || [ -z "${NEXT_PUBLIC_SITE_URL:-}" ] || [ -z "${DOMAIN:-}" ] || [ -z "${ACME_EMAIL:-}" ]; then
+  echo "DOMAIN, ACME_EMAIL, JWT_SECRET, PASSWORD and NEXT_PUBLIC_SITE_URL are required in .env.production"
+  exit 1
+fi
+
+if [ "${NEXT_PUBLIC_SITE_URL}" != "https://${DOMAIN}" ]; then
+  echo "NEXT_PUBLIC_SITE_URL must be exactly https://${DOMAIN}"
   exit 1
 fi
 
@@ -36,15 +41,7 @@ echo "Applying Prisma schema..."
 npx prisma db push
 
 echo "Building application for production..."
-npm run build &
-build_pid=$!
-
-while kill -0 "$build_pid" 2>/dev/null; do
-  echo "Waiting for Next.js production build to finish..."
-  sleep 5
-done
-
-wait "$build_pid"
+npm run build
 
 if [ ! -f .next/routes-manifest.json ] || [ ! -f .next/server/app-paths-manifest.json ]; then
   echo "Production build artifacts are incomplete under .next"

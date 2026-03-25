@@ -8,6 +8,7 @@ Bu proje artik Prisma + PostgreSQL ile calisir ve Docker Compose kullanilarak te
 
 - [Dockerfile](../Dockerfile)
 - [compose.production.yml](../compose.production.yml)
+- [Caddyfile](../Caddyfile)
 - [.env.production.example](../.env.production.example)
 - [scripts/prepare-deployment.sh](../scripts/prepare-deployment.sh)
 - [scripts/start-production.sh](../scripts/start-production.sh)
@@ -17,6 +18,8 @@ Bu proje artik Prisma + PostgreSQL ile calisir ve Docker Compose kullanilarak te
 
 Zorunlu:
 
+- `DOMAIN`
+- `ACME_EMAIL`
 - `POSTGRES_PASSWORD`
 - `JWT_SECRET`
 - `PASSWORD`
@@ -26,7 +29,8 @@ Opsiyonel:
 
 - `MAIL_PASS`
 - `EMAIL`
-- `APP_PORT`
+- `HTTP_PORT`
+- `HTTPS_PORT`
 - `POSTGRES_PORT`
 - `POSTGRES_DB`
 - `POSTGRES_USER`
@@ -41,22 +45,48 @@ cp .env.production.example .env.production
 
 2. Gizli degerleri duzenle.
 
-3. Production postgres servisini baslat ve build hazirla:
+Minimum ornek:
+
+```dotenv
+DOMAIN=www.peaknovas.com
+ACME_EMAIL=ops@peaknovas.com
+NEXT_PUBLIC_SITE_URL=https://www.peaknovas.com
+POSTGRES_PASSWORD=guclu-bir-sifre
+JWT_SECRET=uzun-ve-rastgele-bir-deger
+PASSWORD=admin-panel-sifresi
+```
+
+`NEXT_PUBLIC_SITE_URL` degeri tam olarak `https://DOMAIN` olmalidir.
+
+Bu projede eski canonical adres `https://www.peaknovas.com` oldugu icin production ayarinda da ayni format korunabilir.
+
+3. DNS kayitlarini sunucuya yonlendir.
+
+Gerekli minimum kayitlar:
+
+```text
+A     www.peaknovas.com   -> sunucu_ipv4
+AAAA  www.peaknovas.com   -> sunucu_ipv6   # varsa
+```
+
+`peaknovas.com` kok domaini de kullanilacaksa onun icin ayri A/AAAA kaydi eklenmeli ve tercihen `www` adresine yonlendirilmelidir.
+
+4. Production postgres servisini baslat ve build hazirla:
 
 ```bash
 npm run deploy:prepare
 ```
 
-4. Build ve deploy:
+5. Build ve deploy:
 
 ```bash
 npm run deploy:up
 ```
 
-5. Saglik kontrolu:
+6. Saglik kontrolu:
 
 ```bash
-wget -qO- http://localhost:${APP_PORT:-3000}/api/health
+wget -qO- http://localhost/api/health
 ```
 
 Beklenen cevap:
@@ -71,6 +101,12 @@ Loglar:
 
 ```bash
 npm run deploy:logs
+```
+
+Sadece proxy loglari:
+
+```bash
+docker compose -f compose.production.yml --env-file .env.production logs -f caddy
 ```
 
 Servisleri durdur:
@@ -109,6 +145,8 @@ Compose `--build` kullandigi icin uygulama image'i yeniden olusturulur.
 - host makinede `.env.production` degerleri ile `next build` calistirir
 - Docker image hazir `.next` ciktisini kullanir
 - `app` servisi acilista `prisma generate` ve `prisma db push` calistirir
+- `caddy` servisi Let's Encrypt uzerinden TLS sertifikasi alir
+- `caddy` public 80/443 trafigini `app:3000` servisine aktarir
 - hazir build ciktisi varsa `next start` ile baslar
 - build artefact'i eksikse once container icinde `next build` dener
 
@@ -130,16 +168,20 @@ npm run deploy:reset
 
 Not: `POSTGRES_PASSWORD`, `POSTGRES_DB` veya `POSTGRES_USER` degerlerini degistirip ayni volume'u kullanirsaniz auth hatasi alirsiniz. Bu durumda once volume reset gerekir.
 
-## Ters proxy notu
+## HTTPS ve proxy notlari
 
-Bu stack dogrudan `APP_PORT` uzerinden yayin yapar. Gercek production ortaminda Nginx, Caddy veya Traefik arkasina almak daha dogrudur.
+Bu stack artik Caddy ile birlikte gelir. Normal production akisi su sekildedir:
 
-Minimum oneriler:
+- `caddy` 80 portundan ACME dogrulamasini cevaplar
+- sertifika olustuktan sonra 443 uzerinden HTTPS yayinlar
+- gelen trafik internal Docker aginda `app:3000` servisine gider
 
-- TLS terminasyonu ters proxy'de olsun
-- `NEXT_PUBLIC_SITE_URL` public alan adi ile ayni olsun
-- 80 ve 443 proxy tarafinda acik olsun
-- app container'i dogrudan internete degil proxy uzerinden yayinlansin
+Sunucuda su portlar disariya acik olmalidir:
+
+- `80/tcp`
+- `443/tcp`
+
+Eger baska bir web sunucusu bu portlari kullaniyorsa once onu kaldirmaniz gerekir.
 
 ## Ariza notlari
 
@@ -153,4 +195,16 @@ Uygulama acilmiyor ama db hazirsa su komut kontrol icin yeterli olur:
 
 ```bash
 docker compose -f compose.production.yml --env-file .env.production logs app
+```
+
+HTTPS sertifikasi alinmiyorsa tipik nedenler:
+
+- `DOMAIN` DNS kaydi bu sunucuya bakmiyor
+- 80 veya 443 portu firewall tarafinda kapali
+- baska bir servis ayni portlari kullaniyor
+
+Caddy loglari icin:
+
+```bash
+docker compose -f compose.production.yml --env-file .env.production logs caddy
 ```
