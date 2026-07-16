@@ -27,7 +27,7 @@ export default memo(function InfoCards({ data }) {
       viewport={{ once:true }}      
     >
       {
-        data.cards.map((card, index) => {
+        (data.cards ?? []).map((card, index) => {
           return(
             <InfoCard key={index} Icon={card.Icon} title={card.title} desc={card.description} color={card.color}/>
           )

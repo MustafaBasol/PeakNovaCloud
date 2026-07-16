@@ -1,5 +1,5 @@
 import React from 'react'
-import { getBlogs, getPage, getSeo } from '@/libs/serverData'
+import { getBlogs, getPage, getPageMetadata } from '@/libs/serverData'
 import { getLocale } from 'next-intl/server'
 import BlogItem from '@/components/blogs-page/BlogItem'
 import Contact from '@/components/contact/Contact'
@@ -10,21 +10,7 @@ import { getEntityId } from '@/libs/entityId'
 
 export async function generateMetadata({ params }) {
   const locale = params?.locale
-  const blogs = await getSeo(locale, 'blogs')
-  const page = await (blogs.data)[0]
-  
-  return {
-    title: page.title, 
-    description: page.title,
-    keywords: page.keywords, 
-    openGraph: {
-      type: 'website',
-      url:page.URL || 'https://www.peaknovas.com/',
-      title: page.ogTitle || 'Professional Salesforce Services | PeakNova',
-      description: page.description || 'Professional Salesforce Services | PeakNova', 
-      image:page.ogImage || '' 
-    },
-  };
+  return getPageMetadata(locale, 'blogs')
 }
 
 export default async function Blog() {

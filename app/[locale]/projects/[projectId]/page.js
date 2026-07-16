@@ -9,11 +9,10 @@ import { getLocale } from 'next-intl/server'
 export default async function SingleProjectPage({ params }) {
 
   const projectData = await getProject(params.projectId)
-  const locale = await getLocale()  
+  const locale = await getLocale()
   const blogData = await getBlogs(locale)
 
-  
-  if (!projectData) {
+  if (!projectData?.data) {
     notFound()
   }
   

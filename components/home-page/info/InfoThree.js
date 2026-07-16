@@ -6,7 +6,11 @@ import { rightToLeftVariants, leftToRightVariants } from '@/libs/variants'
 
 export default function InfoThree({ pageData }) {
 
-    const data = pageData.data.find((item)=>item.section == 'home-info2')    
+    const data = pageData.data.find((item)=>item.section == 'home-info2')
+
+  if (!data) {
+    return null
+  }
 
   return (
     <div className='flex flex-col-reverse md:grid md:grid-cols-2 gap-4 w-11/12 md:w-5/6 md:h-[85vh] h-max mx-auto py-32 md:py-0'>

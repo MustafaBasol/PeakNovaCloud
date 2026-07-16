@@ -5,7 +5,11 @@ import HeroText from './HeroText'
 export default function Hero({ pageData }) {
 
   const data = pageData.data.find((item)=>item.section == 'home-hero')
-  
+
+  if (!data) {
+    return null
+  }
+
   return (
     <section id='home-home' className="h-max md:h-screen md:min-h-max" 
     >

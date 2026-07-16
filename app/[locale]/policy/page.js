@@ -1,10 +1,9 @@
 
-'use client';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Footer from '@/components/footer/Footer';
 
-export default function PrivacyPolicy() {
-  const t = useTranslations('PrivacyPolicy');
+export default async function PrivacyPolicy() {
+  const t = await getTranslations('PrivacyPolicy');
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">

@@ -5,11 +5,10 @@ import jwt from 'jsonwebtoken';
 import Link from 'next/link';
 import ServicesDropdown from '@/components/dashboard/Dropdown';
 import PagesDropdown from '@/components/dashboard/PageDropdown';
-import { useLocale } from 'next-intl';
 
-export default function Dashboard() {
+export default function Dashboard({ params }) {
 
-  const locale = useLocale()
+  const locale = params.locale
   const cookieStore = cookies();
   const token = cookieStore.get('token')?.value;
 

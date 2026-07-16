@@ -12,7 +12,7 @@ export default function AboutHeroButton({ data }) {
         }}
         onClick={() => {
             let contact = document.getElementById('about-contact')
-            contact.scrollIntoView({ behavior:'smooth' })
+            contact?.scrollIntoView({ behavior:'smooth' })
         }}
     >{data.buttonText}</motion.button>
   )

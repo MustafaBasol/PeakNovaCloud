@@ -8,7 +8,11 @@ import DynamicSvgComponent from '../DynamicSVGComponent'
 export default function ReachMe({ pageData }) {
 
     const data = pageData.data.find((item)=>item.section == 'home-action')
-   
+
+    if (!data) {
+      return null
+    }
+
     return (
     <motion.div
         className='grid grid-cols-1 md:grid-cols-3 gap-2 w-full rounded-lg md:gap-8 h-max p-4 text-white mx-auto bg-[--light] shadow-lg

@@ -7,7 +7,11 @@ export default memo(function AboutHero({ pageData }) {
     
   const data = pageData.data.find((item)=>item.section == 'about-hero')
 
-  return ( 
+  if (!data) {
+    return null
+  }
+
+  return (
     <div className=' h-auto text-white'>
         <div id='about-hero' className='flex flex-col gap-2 md:h-[65vh] h-max md:min-h-max bg-[--primary] pt-8 pb-8 md:pb-0'>
             <h1 className='text-2xl md:text-5xl text-center w-full md:w-4/6 mx-auto'>{data.title}</h1>

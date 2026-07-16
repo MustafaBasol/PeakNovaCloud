@@ -8,6 +8,10 @@ export default function ServiceHero({ serviceData, color }) {
   
   const data = serviceData.data.find((item)=>item.section == 'hero')
 
+  if (!data) {
+    return null
+  }
+
   return (
         <div             
             className="grid grid-cols-1 md:grid-cols-2 h-max md:h-screen px-2 gap-4 md:gap-0 px-2 xl:px-32 pt-4"

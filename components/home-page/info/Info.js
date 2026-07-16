@@ -11,10 +11,12 @@ export default function Info({ pageData }) {
 
   return (
     <div className='h-auto'>
+      {data && (
       <div className='h-max md:h-screen md:min-h-max flex flex-col-reverse md:grid md:grid-cols-2 lg:px-16 mt-8'>
         <InfoCardInfo data={data} />
         <InfoCards data={data} />
-      </div>    
+      </div>
+      )}
       <div className='h-auto'> 
         <InfoTwo pageData={pageData} /> 
       </div>

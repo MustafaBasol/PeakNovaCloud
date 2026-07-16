@@ -9,10 +9,14 @@ export default memo(function AboutTeam({ pageData }) {
 
     const data = pageData.data.find((item)=>item.section == 'about-team')
 
+  if (!data) {
+    return null
+  }
+
   return (
     <div className='flex gap-2 px-2 md:px-32'>
         <AboutTeamText data={data} />
-        <motion.div 
+        <motion.div
             className='px-2 md:px-8 border-l-2 border-black flex flex-col gap-2
             md:[--y-from:100] md:[--y-to:0] md:[--opacity-from:0%] md:[--opacity-to:100%]
             '
@@ -27,7 +31,7 @@ export default memo(function AboutTeam({ pageData }) {
             }}
         >
             {
-                data.cards.map((item, index) => {
+                (data.cards ?? []).map((item, index) => {
                     return(
                         <AboutTeamItem item={item} key={index} />
                     )

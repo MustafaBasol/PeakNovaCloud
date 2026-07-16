@@ -18,7 +18,7 @@ export default function SmallNavMenu({ title, Icon, setIsOpen, setIsMenuOpen, is
         document.body.style.overflowY = "hidden"
     }      
     const contact = document.getElementById(`${path}-contact`)
-    contact.scrollIntoView({ behavior:'smooth' })
+    contact?.scrollIntoView({ behavior:'smooth' })
     return 
   }
 

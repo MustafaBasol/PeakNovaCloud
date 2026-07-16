@@ -19,13 +19,14 @@ export async function generateMetadata({ params }) {
   const serviceData = await getService(params.servicename, locale);
   const t = await getTranslations('ServiceMetaData')
 
-  if (!serviceData) {
+  const service = serviceData?.data?.[0]
+
+  if (!service) {
     return {
       title: t('errorTitle'),
       description: t('errorDescription'),
     };
-  }  
-  const service = (serviceData.data)[0]
+  }
   const serviceName = service.service.split('-').join(' ')
   
   return {
@@ -54,16 +55,16 @@ export async function generateMetadata({ params }) {
 
 async function ServicesPage({ params }) {
   const locale = await getLocale()
-  const serviceData = await getService(params.servicename, locale) 
+  const serviceData = await getService(params.servicename, locale)
   const blogData = await getBlogs(locale)
 
-  if(!serviceData) {
+  if (!serviceData?.data?.length) {
     notFound()
   }
 
-  const FaqData = await getFaq(locale) 
-  
-  const color = (serviceData.data[0].service.split('-'))[0] 
+  const FaqData = await getFaq(locale)
+
+  const color = (serviceData.data[0].service.split('-'))[0]
   
   return (
     <>   

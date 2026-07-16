@@ -5,6 +5,10 @@ import Image from 'next/image';
 export default function ImageIcons({ pageData }) {
   const data = pageData.data.find((item) => item.section === 'project-image');
 
+  if (!data) {
+    return null;
+  }
+
   return (
     <div className="relative w-full h-max md:h-screen overflow-hidden">
       {/* Background Image */}
@@ -19,7 +23,7 @@ export default function ImageIcons({ pageData }) {
         className="relative z-10 flex flex-wrap items-center justify-center gap-6 p-8 md:p-16"
         style={{ background: 'rgba(0, 0, 0, 0.5)' }} // Semi-transparent background for visibility
       >
-        {data.cards.map((item) => (
+        {(data.cards ?? []).map((item) => (
           <div
             key={item.id}
             className="flex flex-col items-center text-center gap-2 text-[--light] max-w-[200px]"

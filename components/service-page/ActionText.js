@@ -12,7 +12,7 @@ export default function ActionText({ data }) {
                 whileHover={{ backgroundColor:'var(--text)', color:'white'}}
                 onClick={()=>{
                     let contact = document.getElementById('service-contact')
-                    contact.scrollIntoView({ behavior:'smooth' })
+                    contact?.scrollIntoView({ behavior:'smooth' })
                 }}                 
             >{data.buttonText}</motion.button>
         </div>

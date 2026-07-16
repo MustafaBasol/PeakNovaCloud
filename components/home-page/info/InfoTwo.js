@@ -8,6 +8,10 @@ export default function InfoTwo({ pageData }) {
 
   const data = pageData.data.find((item)=>item.section == 'home-info1')
 
+  if (!data) {
+    return null
+  }
+
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 h-max py-32 md:py-0 md:h-[85vh] gap-8 md:w-5/6 mx-auto'>
         <motion.div 

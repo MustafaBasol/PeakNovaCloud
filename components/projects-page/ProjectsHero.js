@@ -5,6 +5,10 @@ export default function ProjectsHero({ pageData }) {
 
   const data = pageData.data.find((item)=>item.section == 'project-hero')
 
+  if (!data) {
+    return null
+  }
+
   return (
     <section className="relative w-full h-screen">      
       <Image

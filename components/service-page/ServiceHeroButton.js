@@ -11,7 +11,7 @@ export default function ServiceHeroButton({ data, color }) {
             whileHover={{ backgroundColor:`var(--text)` }}
             onClick={()=>{
                 let contact = document.getElementById('service-contact')
-                contact.scrollIntoView({ behavior:'smooth' })
+                contact?.scrollIntoView({ behavior:'smooth' })
             }}
         >{data.buttonText} 
         </motion.button>        

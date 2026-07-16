@@ -9,7 +9,7 @@ import { rightToLeftVariants, leftToRightVariants } from '@/libs/variants'
 export default function Contact({ id, color, pageData }) {
   
   const [isOpen, setIsOpen] = useState(false)
-  const data = pageData.data.find((item)=>item.section.includes('contact'))
+  const data = pageData?.data?.find((item)=>item.section?.includes('contact')) ?? {}
   
   return (
     <div id={id} className='h-max md:h-screen grid grid-cols-1 md:grid-cols-2 p-8 gap-2 md:min-h-max'>

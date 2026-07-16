@@ -54,3 +54,38 @@ export async function getSeo(locale, page) {
 export async function getSeos(locale) {
   return { data: await listSeosByLanguage(locale) }
 }
+
+const DEFAULT_SITE_URL = 'https://www.peaknovas.com/'
+const DEFAULT_TITLE = 'PeakNova | Professional Salesforce Consulting Services'
+const DEFAULT_DESCRIPTION = 'PeakNova helps growing businesses implement, customize, and get more value from Salesforce.'
+
+export async function getPageMetadata(locale, page) {
+  const seo = (await getSeo(locale, page))?.data?.[0]
+
+  if (!seo) {
+    return {
+      title: DEFAULT_TITLE,
+      description: DEFAULT_DESCRIPTION,
+      openGraph: {
+        type: 'website',
+        url: DEFAULT_SITE_URL,
+        title: DEFAULT_TITLE,
+        description: DEFAULT_DESCRIPTION,
+        image: '',
+      },
+    }
+  }
+
+  return {
+    title: seo.title || DEFAULT_TITLE,
+    description: seo.description || seo.title || DEFAULT_DESCRIPTION,
+    keywords: seo.keywords,
+    openGraph: {
+      type: 'website',
+      url: seo.URL || DEFAULT_SITE_URL,
+      title: seo.ogTitle || DEFAULT_TITLE,
+      description: seo.ogDescription || seo.description || DEFAULT_DESCRIPTION,
+      image: seo.ogImage || '',
+    },
+  }
+}

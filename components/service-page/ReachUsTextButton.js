@@ -11,7 +11,7 @@ export default function ReachUsTextButton({ data, color }) {
             transition={{ duration:0.4, ease:'easeInOut' }}
             onClick={()=>{
                 let contact = document.getElementById('service-contact')
-                contact.scrollIntoView({ behavior:'smooth' })
+                contact?.scrollIntoView({ behavior:'smooth' })
             }}                    
         >
             {data.buttonText}

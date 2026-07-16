@@ -8,6 +8,10 @@ export default function Action({ color, serviceData }) {
   
   const data = serviceData.data.find((item)=>item.section == 'action')
 
+  if (!data) {
+    return null
+  }
+
   return (
     <motion.div 
         className='grid grid-cols-3 h-max md:h-[75vh] w-full px-2 px-0 mx-auto rounded-xl shadow-lg md:min-h-max'

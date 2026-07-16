@@ -20,7 +20,7 @@ export default function ScreenSizeHeader({ data, locale }) {
 
   const nav = (path) => {       
     const contact = document.getElementById(`${path}-contact`)
-    contact.scrollIntoView({ behavior:'smooth' })
+    contact?.scrollIntoView({ behavior:'smooth' })
     return 
   }
 
@@ -86,11 +86,11 @@ export default function ScreenSizeHeader({ data, locale }) {
               </div>
               <div className='flex items-center'>
               <ScrollLink href={`/${locale}/blogs`} className='flex items-center'>
-                <h6 
+                <h6
                   className='cursor-pointer text-base'
                 >
-                  Blog
-                </h6> 
+                  {t('blog')}
+                </h6>
               </ScrollLink>                  
               </div>                                                              
           </div>

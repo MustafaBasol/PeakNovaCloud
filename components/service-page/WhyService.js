@@ -7,6 +7,10 @@ export default function WhyService({ serviceData, color }) {
   
     const data = serviceData.data.find((item)=>item.section == 'why')
 
+  if (!data) {
+    return null
+  }
+
   return (
     <motion.div 
         className='h-max md:h-screen py-16 p-4 text-center px-2 lg:px-16 flex flex-col justify-center gap-4 lg:gap-8 w-full lg:w-11/12 xl:w-5/6 m-auto
@@ -29,7 +33,7 @@ export default function WhyService({ serviceData, color }) {
             className='grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-4 '                       
         >
             {
-                data.cards.map((item, index) => {
+                (data.cards ?? []).map((item, index) => {
                     return(
                         <WhyServicesCard key={index} item={item} color={color}  />
                     )

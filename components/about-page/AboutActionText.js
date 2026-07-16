@@ -27,7 +27,7 @@ export default function AboutActionText({ data }) {
             }}
             onClick={() => {
                 let contact = document.getElementById('home-contact')
-                contact.scrollIntoView({ behavior:'smooth' })
+                contact?.scrollIntoView({ behavior:'smooth' })
         }}
         >{data.buttonText}</motion.button>            
     </motion.div>
