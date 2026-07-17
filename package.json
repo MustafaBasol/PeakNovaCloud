@@ -22,7 +22,9 @@
     "prisma:push:local": "DATABASE_URL='postgresql://postgres:postgres@localhost:5432/peaknova?schema=public' prisma db push",
     "prisma:generate:local": "DATABASE_URL='postgresql://postgres:postgres@localhost:5432/peaknova?schema=public' prisma generate",
     "db:seed": "node prisma/seed.js",
-    "db:seed:local": "DATABASE_URL='postgresql://postgres:postgres@localhost:5432/peaknova?schema=public' node prisma/seed.js"
+    "db:seed:local": "DATABASE_URL='postgresql://postgres:postgres@localhost:5432/peaknova?schema=public' node prisma/seed.js",
+    "content:refresh": "node prisma/refresh-content.js",
+    "content:validate": "node prisma/validate-content.js"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.5.0",
