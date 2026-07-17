@@ -3,6 +3,8 @@ import Header from "../../components/header/Header";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Montserrat } from 'next/font/google';
+import { notFound } from 'next/navigation';
+import { routing } from '../../i18n/routing';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -11,7 +13,11 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
-export default async function RootLayout({ children, params:{locale} }) {
+export default async function RootLayout({ children, params: { locale } }) {
+  if (!routing.locales.includes(locale)) {
+    notFound();
+  }
+
   const messages = await getMessages();
 
   return (
