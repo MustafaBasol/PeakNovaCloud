@@ -29,11 +29,11 @@ export default async function AboutPage() {
   return (
     <div className='h-auto'>
         <AboutHero pageData={pageData} />   
-        <div className='h-max md:h-[65vh] md:min-h-max flex items-start py-16 md:pb-16 lg:pb-2'>
-           <AboutTeam pageData={pageData} /> 
-        </div>        
-        <div className='h-max md:h-[65vh] md:min-h-max py-8 md:py-0'>
-          <AboutAction pageData={pageData} />  
+        <div className='h-auto flex items-start py-14 md:py-16'>
+           <AboutTeam pageData={pageData} />
+        </div>
+        <div className='h-auto py-8 md:py-16'>
+          <AboutAction pageData={pageData} />
         </div>
         <div className='h-auto py-16 md:py-0'>
             {

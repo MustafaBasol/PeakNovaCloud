@@ -73,9 +73,9 @@ async function ServicesPage({ params }) {
         <ReachUs serviceData={serviceData} color={color} />
         <Desc serviceData={serviceData} color={color} />
         <BlogHolder blogData={blogData.data} locale={locale} />        
-        <div className="h-max md:h-[100vh] flex items-center">
+        <div className="h-auto py-8 md:py-16 flex items-center">
           <Action color={color} serviceData={serviceData} />
-        </div>      
+        </div>
         <WhyService serviceData={serviceData} color={color} />
         <Faq data={FaqData} color={color} />    
         <div className=''>

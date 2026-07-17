@@ -6,7 +6,7 @@ import DynamicSvgComponent from '../DynamicSVGComponent'
 export default function ReachUsImage({ data, color }) {
   return (
     <motion.div 
-        className='md:[--x-from:-100] md:[--x-to:0] md:[--opacity-from:0%] md:[--opacity-to:100%]' 
+        className='w-full h-56 sm:h-64 md:h-80 md:[--x-from:-100] md:[--x-to:0] md:[--opacity-from:0%] md:[--opacity-to:100%]'
         style={{ color:`var(--${color})` }}
         variants={leftToRightVariants}
         initial='initial'

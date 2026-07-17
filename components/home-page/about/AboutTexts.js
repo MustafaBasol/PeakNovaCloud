@@ -7,7 +7,7 @@ export default function AboutTexts({ item }) {
       
   return (
     <motion.div         
-        className='flex flex-col gap-4 h-max md:h-[65vh] leading-loose
+        className='flex flex-col gap-4 h-auto py-8 md:py-10 leading-loose
         md:[--x-from:100] md:[--y-to:0] md:[--opacity-from:0%] md:[--opacity-to:100%]
         '
         variants={belowToTopVariants}

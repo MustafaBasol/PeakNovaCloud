@@ -13,7 +13,7 @@ export default function InfoTwo({ pageData }) {
   }
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 h-max py-32 md:py-0 md:h-[85vh] gap-8 md:w-5/6 mx-auto'>
+    <div className='grid grid-cols-1 md:grid-cols-2 h-auto py-16 md:py-20 gap-8 md:w-5/6 mx-auto md:items-center'>
         <motion.div 
             className='flex flex-col items-center gap-8 overflow w-5/6 md:w-4/6 md:w-full mx-auto
             md:[--x-from:-100] md:[--x-to:0] md:[--opacity-from:0%] md:[--opacity-to:100%]
@@ -31,10 +31,12 @@ export default function InfoTwo({ pageData }) {
             <Image
                 src={`/${data.image}`}
                 height={600}
-                width={600}
+                width={800}
                 alt={data.title}
-                className='my-auto rounded-lg shadow-lg'
-            />  
+                sizes='(max-width: 768px) 85vw, 40vw'
+                unoptimized
+                className='my-auto w-full h-auto max-w-md rounded-lg shadow-lg object-contain aspect-[4/3]'
+            />
         </motion.div>   
         <motion.div 
             className='flex flex-col items-start justify-center gap-2

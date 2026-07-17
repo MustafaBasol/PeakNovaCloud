@@ -13,7 +13,7 @@ export default memo(function Schema({ pageData }) {
   }
 
   return (
-    <div className='px-4 md:px-16 w-5/6 sm:w-11/12 md:w-5/6 mx-auto py-16 flex flex-col gap-8 h-max md:h-screen md:min-h-max'>
+    <div className='px-4 md:px-16 w-5/6 sm:w-11/12 md:w-5/6 mx-auto py-14 md:py-20 flex flex-col gap-8 h-auto'>
         <h2 className='text-3xl md:text-4xl lg:text-5xl text-center text-gradient p-4 font-semibold'>{data.title}</h2>
         <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-16'>
             {

@@ -12,7 +12,7 @@ export default function Contact({ id, color, pageData }) {
   const data = pageData?.data?.find((item)=>item.section?.includes('contact')) ?? {}
   
   return (
-    <div id={id} className='h-max md:h-screen grid grid-cols-1 md:grid-cols-2 p-8 gap-2 md:min-h-max'>
+    <div id={id} className='h-auto grid grid-cols-1 md:grid-cols-2 p-8 py-14 md:py-20 gap-8 md:gap-2 md:items-center'>
         <motion.div 
           className=' flex items-center justify-center my-auto
           md:[--x-from:100] md:[--x-to:0] md:[--opacity-from:0%] md:[--opacity-to:100%]

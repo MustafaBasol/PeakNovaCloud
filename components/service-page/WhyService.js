@@ -13,7 +13,7 @@ export default function WhyService({ serviceData, color }) {
 
   return (
     <motion.div 
-        className='h-max md:h-screen py-16 p-4 text-center px-2 lg:px-16 flex flex-col justify-center gap-4 lg:gap-8 w-full lg:w-11/12 xl:w-5/6 m-auto
+        className='h-auto py-14 md:py-20 p-4 text-center px-2 lg:px-16 flex flex-col justify-center gap-4 lg:gap-8 w-full lg:w-11/12 xl:w-5/6 m-auto
         md:[--y-from:100] md:[--y-to:0] md:[--opacity-from:0%] md:[--opacity-to:100%]
         '
         variants={belowToTopVariants}

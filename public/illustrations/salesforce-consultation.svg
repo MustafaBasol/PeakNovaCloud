@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="consultTitle">
+  <title id="consultTitle">A consultation conversation about your Salesforce project</title>
+  <defs>
+    <linearGradient id="consultBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F4FBFE"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#consultBg)"/>
+
+  <rect x="60" y="90" width="180" height="110" rx="20" fill="#FFFFFF" stroke="#0D9DDA" stroke-width="2.5"/>
+  <path d="M100 200 l-10 30 l34 -30 z" fill="#FFFFFF" stroke="#0D9DDA" stroke-width="2.5"/>
+  <g stroke="#0D9DDA" stroke-width="2.4" stroke-linecap="round">
+    <line x1="90" y1="130" x2="200" y2="130"/>
+    <line x1="90" y1="155" x2="170" y2="155"/>
+  </g>
+
+  <rect x="170" y="220" width="170" height="100" rx="20" fill="#021F43"/>
+  <path d="M300 320 l10 26 l-32 -26 z" fill="#021F43"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+    <line x1="200" y1="250" x2="300" y2="250"/>
+    <line x1="200" y1="273" x2="270" y2="273"/>
+  </g>
+
+  <circle cx="205" cy="205" r="16" fill="#0D9DDA"/>
+  <path d="M198 205 l5 5 l10 -11" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

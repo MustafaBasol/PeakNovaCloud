@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="processTitle">
+  <title id="processTitle">Business process discovery leading to Salesforce configuration and user workflow</title>
+  <defs>
+    <linearGradient id="procBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4FBFE"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#procBg)"/>
+
+  <line x1="120" y1="300" x2="680" y2="300" stroke="#BFE6F5" stroke-width="4"/>
+
+  <!-- step 1: Discovery -->
+  <g transform="translate(70,220)">
+    <circle cx="50" cy="0" r="10" fill="#0D9DDA"/>
+    <rect x="0" y="30" width="100" height="100" rx="14" fill="#FFFFFF" stroke="#0D9DDA" stroke-width="2"/>
+    <g transform="translate(32,55)" stroke="#0D9DDA" stroke-width="2.4" fill="none">
+      <circle cx="18" cy="18" r="13"/>
+      <line x1="27" y1="27" x2="38" y2="38"/>
+    </g>
+    <text x="50" y="150" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="600" fill="#032D60">Discovery</text>
+  </g>
+
+  <!-- step 2: Process design -->
+  <g transform="translate(270,180)">
+    <circle cx="50" cy="40" r="10" fill="#0D9DDA"/>
+    <rect x="0" y="70" width="100" height="100" rx="14" fill="#FFFFFF" stroke="#0D9DDA" stroke-width="2"/>
+    <g transform="translate(28,95)" stroke="#0D9DDA" stroke-width="2.4" fill="none" stroke-linecap="round">
+      <path d="M4 10 h20 M4 24 h30 M4 38 h16"/>
+    </g>
+    <text x="50" y="190" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="600" fill="#032D60">Process design</text>
+  </g>
+
+  <!-- step 3: Configuration -->
+  <g transform="translate(470,220)">
+    <circle cx="50" cy="0" r="10" fill="#0D9DDA"/>
+    <rect x="0" y="30" width="100" height="100" rx="14" fill="#FFFFFF" stroke="#0D9DDA" stroke-width="2"/>
+    <g transform="translate(32,55) scale(1)" stroke="#0D9DDA" stroke-width="2.2" fill="none">
+      <circle cx="18" cy="18" r="8"/>
+      <path d="M18 2 v6 M18 28 v6 M2 18 h6 M28 18 h6 M6.5 6.5 l4 4 M25 25 l4 4 M29.5 6.5 l-4 4 M9 25 l-4 4"/>
+    </g>
+    <text x="50" y="150" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="600" fill="#032D60">Configuration</text>
+  </g>
+
+  <!-- step 4: User workflow -->
+  <g transform="translate(650,180)">
+    <circle cx="50" cy="40" r="10" fill="#0D9DDA"/>
+    <rect x="0" y="70" width="100" height="100" rx="14" fill="#0D3C66"/>
+    <g transform="translate(30,95)" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round">
+      <circle cx="20" cy="10" r="7" fill="none"/>
+      <path d="M6 40 v-6 a14 14 0 0 1 28 0 v6"/>
+    </g>
+    <text x="50" y="190" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="600" fill="#FFFFFF">User workflow</text>
+  </g>
+
+  <!-- arrows between steps -->
+  <g fill="#0D9DDA">
+    <path d="M212 292 l16 8 l-16 8 z"/>
+    <path d="M412 292 l16 8 l-16 8 z"/>
+    <path d="M602 292 l16 8 l-16 8 z"/>
+  </g>
+</svg>
