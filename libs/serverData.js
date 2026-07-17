@@ -56,8 +56,8 @@ export async function getSeos(locale) {
 }
 
 const DEFAULT_SITE_URL = 'https://www.peaknovas.com/'
-const DEFAULT_TITLE = 'PeakNova | Professional Salesforce Consulting Services'
-const DEFAULT_DESCRIPTION = 'PeakNova helps growing businesses implement, customize, and get more value from Salesforce.'
+const DEFAULT_TITLE = 'PeakNova | Salesforce Consulting, Implementation and Integration'
+const DEFAULT_DESCRIPTION = 'PeakNova helps companies implement, improve and support Salesforce through process design, automation, integration and ongoing CRM expertise.'
 
 export async function getPageMetadata(locale, page) {
   const seo = (await getSeo(locale, page))?.data?.[0]
