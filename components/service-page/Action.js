@@ -14,7 +14,7 @@ export default function Action({ color, serviceData }) {
 
   return (
     <motion.div 
-        className='grid grid-cols-3 h-max md:h-[75vh] w-full px-2 px-0 mx-auto rounded-xl shadow-lg md:min-h-max'
+        className='grid grid-cols-3 h-auto py-8 md:py-12 w-full px-2 px-0 mx-auto rounded-xl shadow-lg md:items-center'
         style={{             
             background: `linear-gradient(90deg, var(--${color}) 0%, rgba(230,245,251,1) 100%)` 
         }}

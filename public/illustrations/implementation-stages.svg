@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-labelledby="stagesTitle">
+  <title id="stagesTitle">Controlled Salesforce implementation stages, from initial planning to ongoing improvement</title>
+  <defs>
+    <linearGradient id="stagesBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4FBFE"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="500" fill="url(#stagesBg)"/>
+
+  <g font-family="Montserrat, Arial, sans-serif" font-weight="700">
+    <rect x="70" y="360" width="90" height="70" rx="10" fill="#BFE6F5"/>
+    <text x="115" y="402" text-anchor="middle" font-size="22" fill="#032D60">1</text>
+
+    <rect x="185" y="300" width="90" height="130" rx="10" fill="#7FCBEE"/>
+    <text x="230" y="372" text-anchor="middle" font-size="22" fill="#021F43">2</text>
+
+    <rect x="300" y="220" width="90" height="210" rx="10" fill="#0D9DDA"/>
+    <text x="345" y="332" text-anchor="middle" font-size="22" fill="#FFFFFF">3</text>
+
+    <rect x="360" y="120" width="90" height="310" rx="10" fill="#021F43"/>
+    <text x="405" y="272" text-anchor="middle" font-size="22" fill="#FFFFFF">4</text>
+  </g>
+
+  <path d="M70 355 L185 295 L300 215 L360 115" fill="none" stroke="#0D9DDA" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 12"/>
+  <circle cx="360" cy="115" r="8" fill="#0D9DDA"/>
+</svg>

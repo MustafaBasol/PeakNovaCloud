@@ -13,7 +13,7 @@ export default function InfoThree({ pageData }) {
   }
 
   return (
-    <div className='flex flex-col-reverse md:grid md:grid-cols-2 gap-4 w-11/12 md:w-5/6 md:h-[85vh] h-max mx-auto py-32 md:py-0'>
+    <div className='flex flex-col-reverse md:grid md:grid-cols-2 gap-4 w-11/12 md:w-5/6 h-auto mx-auto py-16 md:py-20 md:items-center'>
         <motion.div 
             className='flex flex-col items-start justify-center gap-2 md:pl-2 lg:pl-8 xl:px-16
             md:[--x-from:100] md:[--x-to:0] md:[--opacity-from:0%] md:[--opacity-to:100%]
@@ -50,11 +50,12 @@ export default function InfoThree({ pageData }) {
             <Image
                 src={`/${data.image}`}
                 height={600}
-                width={600}
+                width={800}
                 alt={data.title}
-                className='my-auto rounded-lg shadow-lg'
-
-            />  
+                sizes='(max-width: 768px) 85vw, 40vw'
+                unoptimized
+                className='my-auto w-full h-auto max-w-md rounded-lg shadow-lg object-contain aspect-[4/3]'
+            />
         </motion.div>                    
     </div>  
   )

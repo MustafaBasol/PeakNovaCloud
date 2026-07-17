@@ -7,7 +7,7 @@ export default function FaqImage({ data, color }) {
     
   return (
     <motion.div 
-      className='flex w-5/6 sm:w-full md:h-screen mx-auto' 
+      className='hidden md:flex w-5/6 sm:w-full h-64 lg:h-80 mx-auto'
       style={{ color:`var(--${color})`}}
       initial={{ x:-200, opacity:0 }}
       whileInView={{ x:0, opacity:1 }}

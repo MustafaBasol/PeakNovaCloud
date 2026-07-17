@@ -10,18 +10,18 @@ export default function ImageIcons({ pageData }) {
   }
 
   return (
-    <div className="relative w-full h-max md:h-screen overflow-hidden">
+    <div className="relative w-full min-h-[360px] py-14 md:py-20 overflow-hidden">
       {/* Background Image */}
       <Image
         src={`/${data.image}`}
-        alt="Projelerimiz"
+        alt=""
         fill
         className="z-0 object-center object-cover"
       />
       {/* Content */}
       <div
         className="relative z-10 flex flex-wrap items-center justify-center gap-6 p-8 md:p-16"
-        style={{ background: 'rgba(0, 0, 0, 0.5)' }} // Semi-transparent background for visibility
+        style={{ background: 'rgba(2, 31, 67, 0.55)' }}
       >
         {(data.cards ?? []).map((item) => (
           <div

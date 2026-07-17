@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="scenarioTitle">
+  <title id="scenarioTitle">Abstract representation of a structured Salesforce delivery process</title>
+  <defs>
+    <linearGradient id="scenarioBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EAF7FD"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#scenarioBg)"/>
+
+  <g opacity="0.5" stroke="#0D9DDA" stroke-width="2">
+    <line x1="260" y1="450" x2="620" y2="450"/>
+    <line x1="700" y1="450" x2="1060" y2="450"/>
+    <line x1="1140" y1="450" x2="1360" y2="450"/>
+  </g>
+
+  <g opacity="0.55">
+    <rect x="180" y="380" width="160" height="140" rx="18" fill="none" stroke="#0D9DDA" stroke-width="2"/>
+    <rect x="540" y="380" width="160" height="140" rx="18" fill="none" stroke="#0D9DDA" stroke-width="2"/>
+    <rect x="900" y="380" width="160" height="140" rx="18" fill="none" stroke="#0D9DDA" stroke-width="2"/>
+    <rect x="1260" y="380" width="160" height="140" rx="18" fill="none" stroke="#0D9DDA" stroke-width="2"/>
+  </g>
+
+  <g opacity="0.35" fill="#0D9DDA">
+    <circle cx="260" cy="450" r="7"/>
+    <circle cx="620" cy="450" r="7"/>
+    <circle cx="700" cy="450" r="7"/>
+    <circle cx="1060" cy="450" r="7"/>
+    <circle cx="1140" cy="450" r="7"/>
+    <circle cx="1360" cy="450" r="7"/>
+  </g>
+
+  <circle cx="1450" cy="150" r="220" fill="#0D9DDA" opacity="0.06"/>
+  <circle cx="120" cy="780" r="260" fill="#0D9DDA" opacity="0.06"/>
+</svg>

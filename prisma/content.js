@@ -70,7 +70,7 @@ const PAGE_CONTENT = {
       title: 'Build a Salesforce operation your teams can rely on',
       description: 'PeakNova helps companies implement, improve and support Salesforce around the way their sales, service and operations teams actually work. We combine process design, platform configuration, automation and integration to create a CRM environment that is practical today and ready to scale tomorrow.',
       buttonText: 'Book a Salesforce consultation',
-      image: 'office-workers-2.jpg',
+      image: 'illustrations/crm-operations-hub.svg',
     },
     'home-problem': {
       title: 'Salesforce should reduce operational friction — not create more of it',
@@ -83,12 +83,12 @@ const PAGE_CONTENT = {
       ],
     },
     'home-info1': {
-      image: 'about-action.jpg',
+      image: 'illustrations/process-to-configuration.svg',
       title: 'Business process first. Salesforce configuration second.',
       description: 'We begin by understanding how work moves through your organisation: how leads are qualified, opportunities progress, customers are supported, approvals are made and information moves between teams. Configuration decisions are then tied to those real processes, reducing unnecessary complexity and improving adoption.',
     },
     'home-info2': {
-      image: 'info-two.jpg',
+      image: 'illustrations/crm-architecture-layers.svg',
       title: 'A CRM architecture designed for change',
       description: 'Salesforce should continue supporting the business as teams, products and processes evolve. We favour maintainable configuration, documented automation, controlled permissions and clear integration patterns so future improvements do not require rebuilding the platform from the ground up.',
     },
@@ -106,7 +106,7 @@ const PAGE_CONTENT = {
       title: 'Salesforce expertise focused on how the business actually operates',
       description: 'PeakNova helps organisations turn Salesforce into a dependable part of daily operations. Our work connects business-process analysis, CRM architecture, automation, integration and ongoing improvement so the platform supports the teams using it — not only the project plan that created it. PeakNova is a Salesforce Provisional Consulting Partner, helping organisations implement, improve and integrate Salesforce around real operational requirements.',
       buttonText: 'Talk to PeakNova',
-      image: 'about.jpg',
+      image: 'illustrations/discovery-to-delivery.svg',
     },
     'about-team': {
       title: 'How we work',
@@ -124,7 +124,7 @@ const PAGE_CONTENT = {
       title: 'From initial Salesforce planning to complex improvement projects',
       description: 'PeakNova can support first-time implementations, existing-org reviews, automation, data work, integrations, reporting and ongoing administration. The engagement is shaped around the operational problem rather than a fixed package.',
       buttonText: 'Explore Salesforce services',
-      image: 'about-action.jpg',
+      image: 'illustrations/implementation-stages.svg',
     },
     'about-contact': {
       title: 'Let us review your current Salesforce situation',
@@ -133,7 +133,7 @@ const PAGE_CONTENT = {
     'project-hero': {
       title: 'Representative Salesforce delivery scenarios',
       description: 'The examples below illustrate the type of Salesforce challenges PeakNova can address. They are representative engagement scenarios and must not be presented as named customer case studies or as verified performance claims.',
-      image: 'red.jpg',
+      image: 'illustrations/engagement-scenario.svg',
     },
     'project-step': {
       title: 'How a Salesforce engagement progresses',
@@ -178,7 +178,7 @@ const PAGE_CONTENT = {
       title: 'Ekiplerinizin güvenebileceği bir Salesforce yapısı kurun',
       description: 'PeakNova, satış, hizmet ve operasyon ekiplerinizin gerçek çalışma şekline uygun bir Salesforce kurmanıza, geliştirmenize ve desteklemenize yardımcı olur. Süreç tasarımı, platform yapılandırması, otomasyon ve entegrasyonu bir araya getirerek bugün pratik, yarın büyümeye hazır bir CRM ortamı oluşturuyoruz.',
       buttonText: 'Salesforce görüşmesi planlayın',
-      image: 'office-workers-2.jpg',
+      image: 'illustrations/crm-operations-hub.svg',
     },
     'home-problem': {
       title: 'Salesforce operasyonel sürtünmeyi azaltmalı — artırmamalı',
@@ -191,12 +191,12 @@ const PAGE_CONTENT = {
       ],
     },
     'home-info1': {
-      image: 'about-action.jpg',
+      image: 'illustrations/process-to-configuration.svg',
       title: 'Önce iş süreci, sonra Salesforce yapılandırması',
       description: 'İşin kuruluşunuz içinde nasıl ilerlediğini anlayarak başlarız: müşteri adayları nasıl nitelendiriliyor, fırsatlar nasıl ilerliyor, müşterilere nasıl destek veriliyor, onaylar nasıl alınıyor ve bilgi ekipler arasında nasıl akıyor. Yapılandırma kararları bu gerçek süreçlere bağlanır; böylece gereksiz karmaşıklık azalır ve benimseme artar.',
     },
     'home-info2': {
-      image: 'info-two.jpg',
+      image: 'illustrations/crm-architecture-layers.svg',
       title: 'Değişime göre tasarlanmış bir CRM mimarisi',
       description: 'Ekipler, ürünler ve süreçler geliştikçe Salesforce işletmeyi desteklemeye devam etmelidir. Sürdürülebilir yapılandırmayı, belgelenmiş otomasyonu, kontrollü yetkilendirmeyi ve net entegrasyon modellerini tercih ediyoruz; böylece gelecekteki geliştirmeler platformu sıfırdan yeniden kurmayı gerektirmez.',
     },
@@ -214,7 +214,7 @@ const PAGE_CONTENT = {
       title: 'İşletmenin gerçekte nasıl çalıştığına odaklanan Salesforce uzmanlığı',
       description: 'PeakNova, Salesforce\'u günlük operasyonların güvenilir bir parçası haline getirmenize yardımcı olur. Çalışmalarımız iş süreci analizini, CRM mimarisini, otomasyonu, entegrasyonu ve sürekli geliştirmeyi bir araya getirir; böylece platform yalnızca onu kuran proje planını değil, onu kullanan ekipleri de destekler. PeakNova, kuruluşların gerçek operasyonel ihtiyaçları etrafında Salesforce\'u kurmasına, geliştirmesine ve entegre etmesine yardımcı olan bir Salesforce Geçici (Provisional) Danışmanlık Ortağı\'dır.',
       buttonText: 'PeakNova ile görüşün',
-      image: 'about.jpg',
+      image: 'illustrations/discovery-to-delivery.svg',
     },
     'about-team': {
       title: 'Nasıl çalışıyoruz',
@@ -232,7 +232,7 @@ const PAGE_CONTENT = {
       title: 'İlk Salesforce planlamasından karmaşık geliştirme projelerine',
       description: 'PeakNova; ilk kurulumları, mevcut ortam incelemelerini, otomasyonu, veri çalışmalarını, entegrasyonları, raporlamayı ve sürekli yönetimi destekleyebilir. Çalışma, sabit bir paket yerine operasyonel soruna göre şekillendirilir.',
       buttonText: 'Salesforce hizmetlerini keşfedin',
-      image: 'about-action.jpg',
+      image: 'illustrations/implementation-stages.svg',
     },
     'about-contact': {
       title: 'Mevcut Salesforce durumunuzu birlikte inceleyelim',
@@ -241,7 +241,7 @@ const PAGE_CONTENT = {
     'project-hero': {
       title: 'Temsili Salesforce proje senaryoları',
       description: 'Aşağıdaki örnekler PeakNova\'nın ele alabileceği Salesforce zorluklarının türünü göstermektedir. Bunlar temsili proje senaryolarıdır ve isimlendirilmiş müşteri vaka çalışmaları ya da doğrulanmış performans iddiaları olarak sunulmamalıdır.',
-      image: 'red.jpg',
+      image: 'illustrations/engagement-scenario.svg',
     },
     'project-step': {
       title: 'Bir Salesforce projesi nasıl ilerler',
@@ -286,7 +286,7 @@ const PAGE_CONTENT = {
       title: 'Construisez un environnement Salesforce sur lequel vos équipes peuvent compter',
       description: 'PeakNova aide les entreprises à implémenter, améliorer et accompagner Salesforce en fonction de la façon dont leurs équipes commerciales, service client et opérations travaillent réellement. Nous combinons conception des processus, configuration de la plateforme, automatisation et intégration pour créer un environnement CRM à la fois opérationnel aujourd\'hui et prêt à évoluer demain.',
       buttonText: 'Réserver une consultation Salesforce',
-      image: 'office-workers-2.jpg',
+      image: 'illustrations/crm-operations-hub.svg',
     },
     'home-problem': {
       title: 'Salesforce devrait réduire les frictions opérationnelles — pas en créer davantage',
@@ -299,12 +299,12 @@ const PAGE_CONTENT = {
       ],
     },
     'home-info1': {
-      image: 'about-action.jpg',
+      image: 'illustrations/process-to-configuration.svg',
       title: 'Le processus métier d\'abord. La configuration Salesforce ensuite.',
       description: 'Nous commençons par comprendre comment le travail circule dans votre organisation : comment les leads sont qualifiés, comment les opportunités progressent, comment les clients sont accompagnés, comment les validations sont réalisées et comment l\'information circule entre les équipes. Les décisions de configuration sont ensuite reliées à ces processus réels, ce qui réduit la complexité inutile et améliore l\'adoption.',
     },
     'home-info2': {
-      image: 'info-two.jpg',
+      image: 'illustrations/crm-architecture-layers.svg',
       title: 'Une architecture CRM conçue pour évoluer',
       description: 'Salesforce doit continuer à soutenir l\'entreprise à mesure que les équipes, les produits et les processus évoluent. Nous privilégions une configuration maintenable, une automatisation documentée, des permissions maîtrisées et des schémas d\'intégration clairs afin que les évolutions futures ne nécessitent pas de reconstruire la plateforme depuis zéro.',
     },
@@ -322,7 +322,7 @@ const PAGE_CONTENT = {
       title: 'Une expertise Salesforce centrée sur le fonctionnement réel de l\'entreprise',
       description: 'PeakNova aide les organisations à faire de Salesforce un pilier fiable de leurs opérations quotidiennes. Notre travail relie l\'analyse des processus métiers, l\'architecture CRM, l\'automatisation, l\'intégration et l\'amélioration continue, afin que la plateforme serve les équipes qui l\'utilisent — et pas seulement le plan de projet qui l\'a créée. PeakNova est un partenaire de conseil Salesforce en statut provisoire (Provisional Consulting Partner), qui aide les organisations à implémenter, améliorer et intégrer Salesforce autour de besoins opérationnels réels.',
       buttonText: 'Contacter PeakNova',
-      image: 'about.jpg',
+      image: 'illustrations/discovery-to-delivery.svg',
     },
     'about-team': {
       title: 'Notre façon de travailler',
@@ -340,7 +340,7 @@ const PAGE_CONTENT = {
       title: 'De la planification Salesforce initiale aux projets d\'amélioration complexes',
       description: 'PeakNova peut accompagner les premières implémentations, les audits d\'environnements existants, l\'automatisation, les travaux sur la donnée, les intégrations, le reporting et l\'administration continue. La mission est façonnée autour du problème opérationnel plutôt que d\'un forfait figé.',
       buttonText: 'Découvrir les services Salesforce',
-      image: 'about-action.jpg',
+      image: 'illustrations/implementation-stages.svg',
     },
     'about-contact': {
       title: 'Faisons le point sur votre situation Salesforce actuelle',
@@ -349,7 +349,7 @@ const PAGE_CONTENT = {
     'project-hero': {
       title: 'Scénarios représentatifs de missions Salesforce',
       description: 'Les exemples ci-dessous illustrent le type de défis Salesforce que PeakNova peut traiter. Ce sont des scénarios de mission représentatifs et ils ne doivent pas être présentés comme des études de cas clients nommées ni comme des résultats de performance vérifiés.',
-      image: 'red.jpg',
+      image: 'illustrations/engagement-scenario.svg',
     },
     'project-step': {
       title: 'Déroulement d\'une mission Salesforce',
@@ -1284,7 +1284,7 @@ const SERVICE_ACTION_CONTACT = {
       title: `Ready to strengthen your ${name} setup?`,
       description: `Share your current situation and objectives — we will help you define the right next step for ${name}.`,
       buttonText: `Discuss your ${name} project`,
-      image: 'action.jpg',
+      image: 'illustrations/salesforce-consultation.svg',
     },
     contact: {
       title: `Talk to us about ${name}`,
@@ -1297,7 +1297,7 @@ const SERVICE_ACTION_CONTACT = {
       title: `${name} kurulumunuzu güçlendirmeye hazır mısınız?`,
       description: `Mevcut durumunuzu ve hedeflerinizi paylaşın — ${name} için doğru sonraki adımı birlikte belirleyelim.`,
       buttonText: `${name} projenizi görüşelim`,
-      image: 'action.jpg',
+      image: 'illustrations/salesforce-consultation.svg',
     },
     contact: {
       title: `${name} hakkında bizimle konuşun`,
@@ -1310,7 +1310,7 @@ const SERVICE_ACTION_CONTACT = {
       title: `Prêt à renforcer votre environnement ${name} ?`,
       description: `Partagez votre situation actuelle et vos objectifs — nous vous aiderons à définir la prochaine étape pour ${name}.`,
       buttonText: `Discuter de votre projet ${name}`,
-      image: 'action.jpg',
+      image: 'illustrations/salesforce-consultation.svg',
     },
     contact: {
       title: `Parlons de ${name}`,

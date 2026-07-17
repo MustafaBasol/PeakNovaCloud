@@ -3,13 +3,15 @@ import Image from 'next/image'
 
 export default function ActionImage({ data }) {
   return (
-        <div className='relative'>
-            <Image  
+        <div className='relative h-40 sm:h-48 md:h-full min-h-[160px]'>
+            <Image
                 src={`/${data.image}`}
-                fill               
+                fill
+                sizes='(max-width: 768px) 30vw, 15vw'
                 alt={data.title}
-                className='object-contain md:object-cover rounded-lg'
-            />            
+                unoptimized
+                className='object-contain rounded-lg'
+            />
         </div>
   )
 }

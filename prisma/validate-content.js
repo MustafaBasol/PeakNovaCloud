@@ -51,7 +51,22 @@ function extractSvgIconMapKeys() {
 }
 
 function extractPublicFiles() {
-  return new Set(fs.readdirSync(path.join(ROOT, 'public')))
+  const publicDir = path.join(ROOT, 'public')
+  const files = new Set()
+
+  function walk(dir, prefix) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const relPath = prefix ? `${prefix}/${entry.name}` : entry.name
+      if (entry.isDirectory()) {
+        walk(path.join(dir, entry.name), relPath)
+      } else {
+        files.add(relPath)
+      }
+    }
+  }
+
+  walk(publicDir, '')
+  return files
 }
 
 const ICON_KEYS = extractIconRendererKeys()

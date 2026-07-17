@@ -20,7 +20,7 @@ export default memo(function InfoCards({ data }) {
 
   return (
     <motion.div 
-      className='grid grid-cols-2 gap-2 p-2 md:p-8 h-full md:h-5/6 py-16 md:py-0 px-0 sm:px-8 md:px-2'      
+      className='grid grid-cols-2 gap-2 p-2 md:p-8 h-auto py-16 md:py-0 px-0 sm:px-8 md:px-2'
       variants={variants}
       initial='initial'   
       whileInView='show'

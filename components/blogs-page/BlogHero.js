@@ -10,13 +10,13 @@ export default function BlogHero() {
     const t = useTranslations('BlogsHero')
 
   return (
-    <div className="relative text-white min-h-screen flex items-center justify-center">
+    <div className="relative text-white min-h-[420px] md:min-h-[520px] py-16 md:py-20 flex items-center justify-center">
       <div className="absolute inset-0 ">
         <Image
-          src="/blogs.jpg" 
-          alt="Salesforce News"
-          layout="fill"
-          objectFit="cover"
+          src="/blogs.jpg"
+          alt=""
+          fill
+          style={{ objectFit:'cover' }}
           priority
         />
       </div>

@@ -11,12 +11,12 @@ export default function Hero({ pageData }) {
   }
 
   return (
-    <section id='home-home' className="h-max md:h-screen md:min-h-max" 
+    <section id='home-home' className="h-auto py-10 md:py-16 lg:py-20"
     >
-      <div className='flex flex-col-reverse md:grid md:grid-cols-2 h-max lg:h-5/6 sm:px-16 pb-4'>
+      <div className='flex flex-col-reverse md:grid md:grid-cols-2 md:items-center gap-8 h-auto sm:px-16'>
         <HeroText data={data} />
         <HeroImages data={data} />
-      </div>        
+      </div>
     </section>
   )
 }
