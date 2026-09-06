@@ -1,26 +1,19 @@
-// middleware.js
-import { NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 
+// Called directly from API route handlers (not wired up as real Next.js
+// middleware, despite the file's location) — it must throw on failure so the
+// caller's try/catch actually rejects the request instead of silently
+// continuing with an unused NextResponse return value.
 export function authenticate(request) {
   const token = request.cookies.get('token')?.value;
 
-  const url = request.nextUrl.clone();
-
   if (!token) {
-    url.pathname = '/admin';
-    return NextResponse.redirect(url);
+    throw new Error('Unauthorized');
   }
 
   try {
     jwt.verify(token, process.env.JWT_SECRET);
-    return NextResponse.next();
-  } catch (err) {
-    url.pathname = '/admin';
-    return NextResponse.redirect(url);
+  } catch {
+    throw new Error('Unauthorized');
   }
 }
-
-export const config = {
-  matcher: ['/dashboard*'],
-};
