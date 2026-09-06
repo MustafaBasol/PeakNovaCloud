@@ -159,7 +159,7 @@ export default function ContactForm({ isOpen, setIsOpen, setToastVariant, color 
                     }}
                     transition={{
                         duration:0.3,
-                        ease:'easeInOut'
+                        ease: [0.16, 1, 0.3, 1]
                     }}
                     className='border-2 w-5/6 sm:w-3/6 md:w-2/6 mx-auto p-2 md:p-4 rounded-full bg-[--primary] text-white flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed'>
                     {isSubmitting && (

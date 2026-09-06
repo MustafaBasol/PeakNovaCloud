@@ -16,7 +16,7 @@ export default function InfoCardInfo({ data }) {
         viewport={{ once:true }}
         transition={{
             duration:0.5,
-            ease:'easeInOut',
+            ease: [0.16, 1, 0.3, 1],
             delay:0.2
         }}       
     >     

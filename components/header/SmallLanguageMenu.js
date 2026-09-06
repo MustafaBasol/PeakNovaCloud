@@ -35,7 +35,7 @@ export default function SmallLanguageMenu({ setIsSmallLanguageMenuOpen }) {
         animate={{ scaleX:1 }}
         exit={{ scaleX:0 }}
         transition={{
-            duration:0.5, ease:'easeInOut'
+            duration:0.5, ease: [0.16, 1, 0.3, 1]
         }}         
         >
             <motion.button
@@ -59,7 +59,7 @@ export default function SmallLanguageMenu({ setIsSmallLanguageMenuOpen }) {
                             whileHover={{
                                 backgroundColor:'var(--light)'
                             }}    
-                            transition={{ duration:0.5, ease:'easeInOut' }}                
+                            transition={{ duration:0.5, ease: [0.16, 1, 0.3, 1] }}                
                         >
                             <ScrollLink
                                 className='flex gap-2 cursor-pointer'

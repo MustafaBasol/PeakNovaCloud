@@ -28,7 +28,7 @@ export default function SmallMenu({ isMenuOpen, setIsMenuOpen, data, locale }) {
           animate={{ scaleX:1 }}
           exit={{ scaleX:0 }}
           transition={{
-            duration:0.5, ease:'easeInOut'
+            duration:0.5, ease: [0.16, 1, 0.3, 1]
           }}
       >      
         {

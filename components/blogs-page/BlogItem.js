@@ -14,7 +14,7 @@ export default function BlogItem({ blog, locale }) {
       initial={{ y:100 }}
       whileInView={{ y:0 }}
       viewport={{ once:true }}
-      transition={{ duration:0.4, ease:'easeInOut', delay:0.1 }}
+      transition={{ duration:0.4, ease: [0.16, 1, 0.3, 1], delay:0.1 }}
     >
         <ScrollLink 
           href={`/${locale}/blogs/${blog.slug}`} 

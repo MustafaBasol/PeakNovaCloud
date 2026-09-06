@@ -15,7 +15,7 @@ export default function DescReasons({ reason, color }) {
       variants={belowToTopVariants}
       initial='initial'
       whileInView='onView'
-      transition={{ duration:0.5, ease:'easeInOut' }}
+      transition={{ duration:0.5, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once:true }}
     >
           <h6 

@@ -23,11 +23,11 @@ export default function ServiceCard({ name, Icon, desc, color, locale }) {
       }}
       transition={{
         duration:0.6,
-        ease:'easeInOut',
+        ease: [0.16, 1, 0.3, 1],
         delay:0.2,
         translateY: { 
           duration:0.3,
-          ease:'linear',                 
+          ease: [0.16, 1, 0.3, 1],                 
         }
       }}
     > 

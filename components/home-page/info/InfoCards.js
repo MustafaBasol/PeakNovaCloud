@@ -11,7 +11,7 @@ export default memo(function InfoCards({ data }) {
       opacity:1,
       x:0,
       transition: {        
-        ease:'easeInOut',
+        ease: [0.16, 1, 0.3, 1],
         duration:0.5,        
         staggerChildren:0.5
       }

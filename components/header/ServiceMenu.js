@@ -14,7 +14,7 @@ export default function ServiceMenu({ data, setIsServiceMenuOpen, locale }) {
         animate={{ scaleY:1 }}
         exit={{ scaleY:0 }}
         transition={{
-            duration:0.5, ease:'easeInOut', delay:0.2
+            duration:0.35, ease: [0.16, 1, 0.3, 1]
         }}
     >
       <div className='grid grid-cols-3 grid-rows-3 gap-2 p-4 text-white w-4/6 mx-auto'>
@@ -31,7 +31,7 @@ export default function ServiceMenu({ data, setIsServiceMenuOpen, locale }) {
                         backgroundColor:'var(--grey)',                    
                       }}
                       transition={{
-                        duration:0.3, ease:'linear'
+                        duration:0.3, ease: [0.16, 1, 0.3, 1]
                       }}
                     >
                       <IconRenderer iconName={item.Icon} className='w-10 h-10 mx-auto' />

@@ -19,7 +19,7 @@ export default function ProjectItem({ item, locale }) {
         initial='initial'
         whileInView='onView'
         whileHover={{ y: -6 }}
-        transition={{ duration:0.4, ease:'easeInOut' }}
+        transition={{ duration:0.4, ease: [0.16, 1, 0.3, 1] }}
         viewport={{ once:true }}
     >
         <Image 

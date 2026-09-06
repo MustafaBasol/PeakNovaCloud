@@ -14,7 +14,7 @@ export default function AboutActionText({ data }) {
         whileInView='onView'
         transition={{
             duration:0.5,
-            ease:'easeInOut'
+            ease: [0.16, 1, 0.3, 1]
         }}
     >
         <h2 className='text-lg md:text-3xl lg:text-4xl text-center'>{data.title}</h2>

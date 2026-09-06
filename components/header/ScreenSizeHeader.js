@@ -150,7 +150,7 @@ export default function ScreenSizeHeader({ data, locale }) {
               type='button'
               className='cursor-pointer border-2 p-2 px-4 rounded-full bg-[--primary] text-white text-base focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[--hovered]'
               whileHover={{ backgroundColor:'var(--hovered)' }}
-              transition={{ duration:0.3, ease:'easeInOut' }}
+              transition={{ duration:0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={click}
             >
                 {t('button')}

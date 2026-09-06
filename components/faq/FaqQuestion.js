@@ -18,7 +18,7 @@ export default function FaqQuestion({ item, i, color, activeIndex, setActiveInde
         variants={rightToLeftVariants}
         initial='initial'
         whileInView='onView'
-        transition={{ duration:0.5, ease:'easeInOut' }}
+        transition={{ duration:0.5, ease: [0.16, 1, 0.3, 1] }}
         viewport={{ once:true }}        
     >
             <div
@@ -50,7 +50,7 @@ export default function FaqQuestion({ item, i, color, activeIndex, setActiveInde
                             style={{  borderColor:`var(--${color})` }}
                             initial={{ scaleY:0 }}
                             animate={{ scaleY:1 }}
-                            transition={{ duration:0.3, ease:'linear' }}
+                            transition={{ duration:0.3, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <p>{item.answer}</p>
                         </motion.div>

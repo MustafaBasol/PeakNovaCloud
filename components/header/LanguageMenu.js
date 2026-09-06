@@ -36,7 +36,7 @@ export default function LanguageMenu({ isLanguageMenuOpen, setIsLanguageMenuOpen
         animate={{ scaleY:1 }}
         exit={{ scaleY:0 }}
         transition={{
-            duration:0.5, ease:'easeInOut', delay:0.2
+            duration:0.35, ease: [0.16, 1, 0.3, 1]
         }}             
     >
         {
@@ -47,7 +47,7 @@ export default function LanguageMenu({ isLanguageMenuOpen, setIsLanguageMenuOpen
                         whileHover={{
                             backgroundColor:'var(--light)'
                         }}    
-                        transition={{ duration:0.5, ease:'easeInOut' }}    
+                        transition={{ duration:0.5, ease: [0.16, 1, 0.3, 1] }}    
                         key={index}            
                     >
                         <ScrollLink

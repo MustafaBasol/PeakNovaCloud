@@ -12,7 +12,7 @@ export default function AboutActionImage({ variants, classes, data }) {
         whileInView='onView'
         transition={{
             duration:0.8,
-            ease:'easeInOut'
+            ease: [0.16, 1, 0.3, 1]
         }}            
     >
         <Image

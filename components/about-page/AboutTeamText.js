@@ -14,7 +14,7 @@ export default function AboutTeamText({ data }) {
         whileInView='onView'
         transition={{
             duration:0.6,
-            ease:'easeInOut'
+            ease: [0.16, 1, 0.3, 1]
         }}
     >
         <h2 className='text-xl md:text-2xl'>{data.title}</h2>

@@ -20,7 +20,7 @@ export default function Action({ color, serviceData }) {
         }}
         initial={{ opacity:0 }}
         whileInView={{ opacity:1 }}
-        transition={{ duration:0.5, ease:'easeInOut', delay:0.2 }}
+        transition={{ duration:0.5, ease: [0.16, 1, 0.3, 1], delay:0.2 }}
         viewport={{ once:true }}
     >
         <ActionImage data={data} />

@@ -19,7 +19,7 @@ export default function SchemaItem({ item, index }) {
         initial='initial'
         whileInView='onView'
         viewport={{ once:true }}
-        transition={{ duration:0.4, ease:'easeInOut' }}
+        transition={{ duration:0.4, ease: [0.16, 1, 0.3, 1] }}
     >
         <div 
             className='flex items-center flex-col gap-2'
