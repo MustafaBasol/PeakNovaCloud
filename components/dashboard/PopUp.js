@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import * as Form from '@radix-ui/react-form';
 import { getEntityId } from '@/libs/entityId';
 
+const humanizeKey = (key) => key
+  .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+  .replace(/^./, (char) => char.toUpperCase());
+
 export default function PopUp({ setIsOpen, item = {}, handleSubmit, error }) {
   const [formData, setFormData] = useState(item);
   const [cards, setCards] = useState(formData.cards || []);
@@ -68,7 +72,7 @@ export default function PopUp({ setIsOpen, item = {}, handleSubmit, error }) {
           {editableFields.map((key) => (
             <Form.Field key={key} name={key} className="mb-4">
               <Form.Label className="block text-gray-700 capitalize">
-                {key}
+                {humanizeKey(key)}
               </Form.Label>
               <Form.Control asChild>
                 {key === 'ogDescription' || key === 'keywords' || key === 'description' || key === 'answer' ? (

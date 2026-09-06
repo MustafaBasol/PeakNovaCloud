@@ -12,12 +12,13 @@ export default function ProjectItem({ item, locale }) {
   const t = useTranslations('Project')
   return (
     <motion.div
-        className='p-2 sm:p-4 md:p-8 flex flex-col gap-2 text-center justify-center rounded-lg shadow-xl z-10 w-5/6 mx-auto bg-[--light] text-[--text]
+        className='p-2 sm:p-4 md:p-8 flex flex-col gap-2 text-center justify-center rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 z-10 w-5/6 mx-auto bg-[--light] text-[--text]
         md:[--y-from:100] md:[--y-to:0] md:[--opacity-from:0%] md:[--opacity-to:100%]
         '
         variants={belowToTopVariants}
         initial='initial'
         whileInView='onView'
+        whileHover={{ y: -6 }}
         transition={{ duration:0.4, ease:'easeInOut' }}
         viewport={{ once:true }}
     >
@@ -31,7 +32,7 @@ export default function ProjectItem({ item, locale }) {
         <h5 className='text-xl md:text-2xl '>{item.name}</h5>
         <h6 className='text-base md:text-lg font-bold '>{item.title}</h6>
         <p className='line-clamp-3 w-4/6 mx-auto'>{item.description}</p>
-        <ScrollLink href={`/${locale}/projects/${getEntityId(item)}`} className='text-black underline'>{t('more')}</ScrollLink>
+        <ScrollLink href={`/${locale}/projects/${getEntityId(item)}`} className='text-[--text] underline'>{t('more')}</ScrollLink>
     </motion.div>
   )
 }

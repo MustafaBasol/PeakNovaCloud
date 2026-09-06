@@ -26,12 +26,33 @@
   --dark-slack:rgba(236, 178, 46, 0.3);
   --grey:rgb(242, 242, 242);
   --white:rgb(255, 255, 255);
+  --pale:rgb(230, 245, 251);
 
+}
+
+.dark {
+  --text:rgb(226, 232, 240);
+  --light:rgb(15, 23, 42);
+  --white:rgb(30, 41, 59);
+  --grey:rgb(51, 65, 85);
 }
 
 body,
 .font-site {
   font-family: var(--font-site);
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .card {

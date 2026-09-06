@@ -30,7 +30,27 @@ module.exports = {
       fontFamily: {
         site: ["var(--font-montserrat)", "Avenir Next", "Segoe UI", "sans-serif"],
       },
+      keyframes: {
+        slideIn: {
+          from: { transform: "translateX(calc(100% + 25px))", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
+        hide: {
+          from: { opacity: "1" },
+          to: { opacity: "0" },
+        },
+        swipeOut: {
+          from: { transform: "translateX(var(--radix-toast-swipe-end-x))" },
+          to: { transform: "translateX(calc(100% + 25px))" },
+        },
+      },
+      animation: {
+        slideIn: "slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+        hide: "hide 0.2s ease-in",
+        swipeOut: "swipeOut 0.2s ease-out",
+      },
     },
   },
+  darkMode: "class",
   plugins: [],
 };

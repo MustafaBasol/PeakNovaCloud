@@ -7,7 +7,7 @@ export default function ServiceMenu({ data, setIsServiceMenuOpen, locale }) {
   
   return (
     <motion.div         
-        className='h-max w-full bg-white origin-top z-50'
+        className='h-max w-full bg-white dark:bg-gray-900 origin-top z-50'
         onHoverStart={()=>setIsServiceMenuOpen(true)}
         onHoverEnd={()=>setIsServiceMenuOpen(false)}           
         initial={{ scaleY:0 }}

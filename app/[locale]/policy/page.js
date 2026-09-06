@@ -8,7 +8,7 @@ export default async function PrivacyPolicy() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{t('title')}</h1>
-      <p className="text-sm text-gray-600 mb-6">{t('lastUpdated')}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">{t('lastUpdated')}</p>
       <p className="mb-4">{t('description')}</p>
       <p className="mb-4">{t('agreement')}</p>
       
@@ -74,7 +74,7 @@ export default async function PrivacyPolicy() {
       <ul className="list-disc list-inside mt-4">
         <li>
           {t('emailLabel')}: 
-          <a href="mailto:info@peaknovas.com" className="text-blue-600 hover:underline">
+          <a href="mailto:info@peaknovas.com" className="text-blue-600 dark:text-blue-400 hover:underline">
             info@peaknovas.com
           </a>
         </li>

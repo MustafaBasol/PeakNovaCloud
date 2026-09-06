@@ -18,16 +18,17 @@ export default function BlogItem({ blog, locale }) {
     >
         <ScrollLink 
           href={`/${locale}/blogs/${blog.slug}`} 
-          className='w-full flex flex-col gap-4 shadow-lg bg-white hover:scale-105 transition-transform duration-500 rounded-lg shadow-lg'
+          className='w-full flex flex-col gap-4 shadow-lg hover:shadow-2xl bg-white dark:bg-gray-800 hover:scale-[1.03] transition-all duration-300 ease-out rounded-lg'
         >
-            <Image 
-                src={blog.coverImage}
-                alt={blog.title}
-                layout='responsive'
-                width={16}
-                height={9}
-                className='rounded-lg shadow-lg'
-            />  
+            <div className='relative w-full aspect-video overflow-hidden rounded-lg shadow-lg'>
+                <Image
+                    src={blog.coverImage}
+                    alt={blog.title}
+                    fill
+                    sizes='(min-width: 768px) 50vw, 100vw'
+                    className='object-cover'
+                />
+            </div>
             <div className='w-full flex flex-col gap-4 p-2 '>
               <h4 className='text-base font-bold text-[--primary]'>{blog.title}</h4>
               <h5 className='text-sm'>{blog.summary}</h5>

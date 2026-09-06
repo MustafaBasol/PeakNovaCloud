@@ -4,20 +4,22 @@ import * as Form from '@radix-ui/react-form';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
-export default function ContactForm({ isOpen, setIsOpen, color }) {
+export default function ContactForm({ isOpen, setIsOpen, setToastVariant, color }) {
 
     const [data, setData] = useState({
         name:'',
         surname:'',
         email:'',
         telefon:'',
-        servis:'',        
+        servis:'',
     })
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const t = useTranslations('Form')
 
     const formSubmit = async(event) => {
         event.preventDefault()
+        setIsSubmitting(true)
         try{
             const response = await fetch('/api/sendMail', {
                 method: 'POST',
@@ -26,20 +28,30 @@ export default function ContactForm({ isOpen, setIsOpen, color }) {
                 },
                 body: JSON.stringify({
                     data
-                })      
-            })                   
+                })
+            })
+
+            if (!response.ok) {
+                throw new Error('Failed to send message')
+            }
+
             setData({
                 name:'',
                 surname:'',
                 email:'',
                 telefon:'',
-                servis:'', 
-            })  
-            setIsOpen(true)              
+                servis:'',
+            })
+            setToastVariant?.('success')
+            setIsOpen(true)
         }
         catch(err){
-            throw new Error(err)            
-        }        
+            setToastVariant?.('error')
+            setIsOpen(true)
+        }
+        finally {
+            setIsSubmitting(false)
+        }
     }
     const changeValue = (event) => {
         const value = event.target.value
@@ -51,7 +63,7 @@ export default function ContactForm({ isOpen, setIsOpen, color }) {
     <div>
         <Form.Root 
             onSubmit={formSubmit} 
-            className='w-5/6 lg:w-4/6 mx-auto  h-fit text-black p-8 flex flex-col gap-4 rounded-lg shadow-lg pb-16'
+            className='w-5/6 lg:w-4/6 mx-auto  h-fit text-[--text] p-8 flex flex-col gap-4 rounded-lg shadow-lg pb-16'
             style={{ backgroundColor:`var(--${color})`}}
         >
             <div className='grid grid-cols-2 gap-4'>
@@ -140,16 +152,20 @@ export default function ContactForm({ isOpen, setIsOpen, color }) {
                 </Form.Control>
             </Form.Field>            
             <Form.Submit asChild>
-                <motion.button   
-                    whileHover={{
-                        backgroundColor:'var(--text)'
-                    }}              
+                <motion.button
+                    disabled={isSubmitting}
+                    whileHover={isSubmitting ? {} : {
+                        backgroundColor:'var(--hovered)'
+                    }}
                     transition={{
                         duration:0.3,
                         ease:'easeInOut'
-                    }}    
-                    className='border-2 w-5/6 sm:w-3/6 md:w-2/6 mx-auto p-2 md:p-4 rounded-full bg-[--primary] text-white '>
-                    {t('buttonText')}
+                    }}
+                    className='border-2 w-5/6 sm:w-3/6 md:w-2/6 mx-auto p-2 md:p-4 rounded-full bg-[--primary] text-white flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed'>
+                    {isSubmitting && (
+                        <span className='w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin' aria-hidden='true' />
+                    )}
+                    {isSubmitting ? t('sending') : t('buttonText')}
                 </motion.button>
             </Form.Submit>
            

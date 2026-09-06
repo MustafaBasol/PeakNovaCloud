@@ -8,7 +8,7 @@ export default async function Header({ locale }) {
 
   return (
         <div 
-          className='z-50 h-24 bg-text top-0 left-0 bg-white w-full sticky text-sm text-main my-auto shadow-sm'
+          className='z-50 h-24 top-0 left-0 bg-white dark:bg-gray-900 w-full sticky text-sm text-main my-auto shadow-sm'
         >           
           <ScreenSizeHeader data={data} locale={locale} />
           <SmallScreenSizeHeader data={data} locale={locale} />

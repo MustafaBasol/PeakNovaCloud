@@ -9,6 +9,7 @@ import { rightToLeftVariants, leftToRightVariants } from '@/libs/variants'
 export default function Contact({ id, color, pageData }) {
   
   const [isOpen, setIsOpen] = useState(false)
+  const [toastVariant, setToastVariant] = useState('success')
   const data = pageData?.data?.find((item)=>item.section?.includes('contact')) ?? {}
   
   return (
@@ -34,9 +35,9 @@ export default function Contact({ id, color, pageData }) {
           viewport={{ once:true }} 
           transition={{ duration:0.6, ease:'easeInOut', delay:0.2 }}       
         >
-            <ContactForm isOpen={isOpen} setIsOpen={setIsOpen} color={color} />
+            <ContactForm isOpen={isOpen} setIsOpen={setIsOpen} setToastVariant={setToastVariant} color={color} />
         </motion.div>
-        <Toaster isOpen={isOpen} setIsOpen={setIsOpen} />
+        <Toaster isOpen={isOpen} setIsOpen={setIsOpen} variant={toastVariant} />
     </div>
   )
 }

@@ -26,7 +26,7 @@ export default function ImageIcons({ pageData }) {
         {(data.cards ?? []).map((item) => (
           <div
             key={item.id}
-            className="flex flex-col items-center text-center gap-2 text-[--light] max-w-[200px]"
+            className="flex flex-col items-center text-center gap-2 text-[--pale] max-w-[200px]"
           >
             <IconRenderer
               iconName={item.Icon}

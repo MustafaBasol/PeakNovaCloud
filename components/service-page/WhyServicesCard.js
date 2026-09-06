@@ -4,7 +4,7 @@ import IconRenderer from '../IconRenderer'
 export default function WhyServicesCard({ item, color }) {
   return (
     <div                            
-        className='flex flex-col gap-4 w-full service-card mx-auto border-2 border-light shadow-lg rounded-lg p-2 bg-white'                            
+        className='flex flex-col gap-4 w-full service-card mx-auto border-2 border-light shadow-lg rounded-lg p-2 bg-white dark:bg-gray-800'
         style={{ color:`var(--${color})`}}      
                         
     >

@@ -4,10 +4,13 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import ScrollLink from '../ScrollLink'
+import { usePathname } from '@/i18n/routing'
 
 export default function LanguageMenu({ isLanguageMenuOpen, setIsLanguageMenuOpen }) {
 
     const t = useTranslations('LangMenu')
+    const pathname = usePathname()
+    const restOfPath = pathname === '/' ? '' : pathname
 
     const data = [
         {
@@ -25,7 +28,7 @@ export default function LanguageMenu({ isLanguageMenuOpen, setIsLanguageMenuOpen
     ]
   return (
     <motion.div 
-        className="absolute -left-8 top-full origin-top w-max h-max  py-2 bg-white border rounded-b-lg shadow-sm z-50 flex flex-col gap-4"
+        className="absolute -left-8 top-full origin-top w-max h-max  py-2 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-b-lg shadow-sm z-50 flex flex-col gap-4"
         onHoverStart={()=>setIsLanguageMenuOpen(true)}
         onHoverEnd={()=>setIsLanguageMenuOpen(false)}
         
@@ -47,10 +50,10 @@ export default function LanguageMenu({ isLanguageMenuOpen, setIsLanguageMenuOpen
                         transition={{ duration:0.5, ease:'easeInOut' }}    
                         key={index}            
                     >
-                        <ScrollLink 
-                            className='flex gap-2 cursor-pointer' 
+                        <ScrollLink
+                            className='flex gap-2 cursor-pointer'
                             key={index}
-                            href={`/${item.lang}`}
+                            href={`/${item.lang}${restOfPath}`}
                         >
                             <Image 
                                 width={20}

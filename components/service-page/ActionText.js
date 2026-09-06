@@ -9,7 +9,7 @@ export default function ActionText({ data }) {
             <p className='text-xs md:text-base w-full md:w-5/6'>{data.description} </p>
             <motion.button 
                 className='text-xs md:text-lg border-2 shadow-lg w-max py-2 px-4 rounded-lg'
-                whileHover={{ backgroundColor:'var(--text)', color:'white'}}
+                whileHover={{ backgroundColor:'var(--hovered)', color:'white'}}
                 onClick={()=>{
                     let contact = document.getElementById('service-contact')
                     contact?.scrollIntoView({ behavior:'smooth' })

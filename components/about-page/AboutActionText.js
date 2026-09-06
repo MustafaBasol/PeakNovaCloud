@@ -23,7 +23,7 @@ export default function AboutActionText({ data }) {
             className='mt-2 md:mt-8 bg-[--light] text-xs sm:text-base rounded-full text-[--text] shadow w-max h-max p-4 mx-auto whitespace-nowrap'
             whileHover={{
                 backgroundColor:'var(--hovered)',
-                color:'var(--light)'
+                color:'var(--pale)'
             }}
             onClick={() => {
                 let contact = document.getElementById('home-contact')
