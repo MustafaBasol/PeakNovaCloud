@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { getService } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
@@ -15,7 +15,7 @@ export default function ManageServices({ params }) {
   const [loading, setLoading] = useState(true)
   const [fetchError, setFetchError] = useState('')
 
-  const serviceName = params.serviceName
+  const { serviceName } = use(params)
   const locale = useLocale();
 
   useEffect(() => {

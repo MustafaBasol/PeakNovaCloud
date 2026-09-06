@@ -6,10 +6,10 @@ import Link from 'next/link';
 import ServicesDropdown from '@/components/dashboard/Dropdown';
 import PagesDropdown from '@/components/dashboard/PageDropdown';
 
-export default function Dashboard({ params }) {
+export default async function Dashboard({ params }) {
 
-  const locale = params.locale
-  const cookieStore = cookies();
+  const { locale } = await params
+  const cookieStore = await cookies();
   const token = cookieStore.get('token')?.value;
 
   const data = [

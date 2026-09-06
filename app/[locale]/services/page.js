@@ -7,7 +7,7 @@ import { getLogos, getPage, getPageMetadata } from '@/libs/serverData'
 import { getLocale } from 'next-intl/server'
 
 export async function generateMetadata({ params }) {
-  const locale = params?.locale
+  const { locale } = await params
   return getPageMetadata(locale, 'home')
 }
 
@@ -29,7 +29,7 @@ export default async function ServicesIndexPage() {
       <Services services={data} locale={locale} />
       <Contact color='white' id={'services-contact'} pageData={pageData} />
       <CookieAccepter locale={locale} />
-      <Footer color='white' />
+      <Footer color='var(--white)' />
     </div>
   )
 }

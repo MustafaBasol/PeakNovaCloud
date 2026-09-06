@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { getPage } from '@/libs/utils';
 import { useLocale } from 'next-intl';
 import PopUp from '@/components/dashboard/PopUp';
@@ -15,7 +15,7 @@ export default function ManagePages({ params }) {
   const [loading, setLoading] = useState(true)
   const [fetchError, setFetchError] = useState('')
 
-  const pageName = params.pageName
+  const { pageName } = use(params)
   const locale = useLocale();
 
   useEffect(() => {

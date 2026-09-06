@@ -12,7 +12,7 @@ import BlogHolder from '@/components/blog/BlogHolder'
 import CookieAccepter from '@/components/CookieAccepter'
 
 export async function generateMetadata({ params }) {
-  const locale = params?.locale
+  const { locale } = await params
   return getPageMetadata(locale, 'about')
 }
 
