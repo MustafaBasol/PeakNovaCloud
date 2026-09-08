@@ -15,7 +15,7 @@ export default function AboutVision({ item }) {
         whileInView='onView'
         transition={{
           duration:0.6,
-          ease:'easeInOut'
+          ease: [0.16, 1, 0.3, 1]
         }}
       >
         <h1 className='text-lg md:text-4xl text-gradient'>{item.title}</h1>        
@@ -27,7 +27,7 @@ export default function AboutVision({ item }) {
         whileInView={{ opacity:1, y:0 }}
         transition={{
           duration:0.6,
-          ease:'easeInOut'
+          ease: [0.16, 1, 0.3, 1]
         }}        
       >
         <p className='text-xs md:text-base md:leading-loose'>{item.description}</p>

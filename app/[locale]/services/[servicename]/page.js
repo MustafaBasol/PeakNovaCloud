@@ -14,9 +14,9 @@ import CookieAccepter from "@/components/CookieAccepter"
 
 
 export async function generateMetadata({ params }) {
-  
-  const locale = params?.locale
-  const serviceData = await getService(params.servicename, locale);
+
+  const { locale, servicename } = await params
+  const serviceData = await getService(servicename, locale);
   const t = await getTranslations('ServiceMetaData')
 
   const service = serviceData?.data?.[0]
@@ -55,7 +55,8 @@ export async function generateMetadata({ params }) {
 
 async function ServicesPage({ params }) {
   const locale = await getLocale()
-  const serviceData = await getService(params.servicename, locale)
+  const { servicename } = await params
+  const serviceData = await getService(servicename, locale)
   const blogData = await getBlogs(locale)
 
   if (!serviceData?.data?.length) {
@@ -82,7 +83,7 @@ async function ServicesPage({ params }) {
           <Contact color='white' id={'service-contact'} pageData={serviceData} />        
         </div>
         <CookieAccepter locale={locale} />
-        <Footer color='white' />
+        <Footer color='var(--white)' />
       </div>      
     </>
 

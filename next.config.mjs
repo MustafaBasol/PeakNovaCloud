@@ -5,6 +5,14 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: process.env.NEXT_DIST_DIR || '.next',
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+  },
   webpack(config) {
     
     const fileLoaderRule = config.module.rules.find((rule) =>
@@ -33,8 +41,13 @@ const nextConfig = {
     return config
   },
   images: {
-    domains: ['i.imgur.com'],
-  },  
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+      },
+    ],
+  },
     
 }
 

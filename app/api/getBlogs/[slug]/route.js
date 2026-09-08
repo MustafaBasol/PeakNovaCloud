@@ -7,18 +7,19 @@ import { authenticate } from '@/middleware/auth'
 
 export async function GET(req, { params }) {
     const searchParams = (req.nextUrl.searchParams)
-    const language = searchParams.get('lang'); 
-    const slug = params.slug
+    const language = searchParams.get('lang');
+    const { slug } = await params
 
      const data = await getBlogBySlugAndLanguage(slug, language)
-     return NextResponse.json({ data:data }, { status: 200 })         
+     return NextResponse.json({ data:data }, { status: 200 })
 }
 
 export async function PATCH(request, { params }) {
      try {
           await authenticate(request)
-          const req = await request.json()         
-          const blog = await updateBlogBySlug(params.slug, req)
+          const req = await request.json()
+          const { slug } = await params
+          const blog = await updateBlogBySlug(slug, req)
           return NextResponse.json({ success: true, data: blog }, { status: 200 });
      } catch (error) {
           console.log(error.message)

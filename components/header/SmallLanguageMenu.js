@@ -5,10 +5,13 @@ import ScrollLink from '../ScrollLink'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import IconRenderer from '../IconRenderer'
+import { usePathname } from '@/i18n/routing'
 
 export default function SmallLanguageMenu({ setIsSmallLanguageMenuOpen }) {
-    
+
     const t = useTranslations('LangMenu')
+    const pathname = usePathname()
+    const restOfPath = pathname === '/' ? '' : pathname
 
     const data = [
         {
@@ -32,19 +35,21 @@ export default function SmallLanguageMenu({ setIsSmallLanguageMenuOpen }) {
         animate={{ scaleX:1 }}
         exit={{ scaleX:0 }}
         transition={{
-            duration:0.5, ease:'easeInOut'
+            duration:0.5, ease: [0.16, 1, 0.3, 1]
         }}         
         >
-            <motion.div 
-                className='flex items-center cursor-pointer w-full p-2'
+            <motion.button
+                type='button'
+                className='flex items-center cursor-pointer w-full p-2 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-[--primary] focus-visible:outline-offset-2 rounded'
                 whileHover={{
                 translateY:-8
                 }}
                 onClick={()=>setIsSmallLanguageMenuOpen(false)}
             >
-                <IconRenderer iconName='MdOutlineKeyboardArrowLeft' className='w-12 h-12 ' />  
+                <IconRenderer iconName='MdOutlineKeyboardArrowLeft' className='w-12 h-12 ' />
                 <h6>{t('back')}</h6>
-            </motion.div>          
+            </motion.button>
+
             {
                 data.map((item, index) => {
                     return(
@@ -54,12 +59,12 @@ export default function SmallLanguageMenu({ setIsSmallLanguageMenuOpen }) {
                             whileHover={{
                                 backgroundColor:'var(--light)'
                             }}    
-                            transition={{ duration:0.5, ease:'easeInOut' }}                
+                            transition={{ duration:0.5, ease: [0.16, 1, 0.3, 1] }}                
                         >
-                            <ScrollLink 
-                                className='flex gap-2 cursor-pointer' 
+                            <ScrollLink
+                                className='flex gap-2 cursor-pointer'
                                 key={index}
-                                href={`/${item.lang}`}
+                                href={`/${item.lang}${restOfPath}`}
                             >
                                 <Image 
                                     width={40}

@@ -5,7 +5,7 @@ import { routing } from './i18n/routing';
 const intlMiddleware = createMiddleware(routing);
 const supportedLocales = new Set(routing.locales);
 
-export default function middleware(request) {
+export default function proxy(request) {
   const { pathname } = request.nextUrl;
 
   // Root path is handled by next-intl and redirected/re-written

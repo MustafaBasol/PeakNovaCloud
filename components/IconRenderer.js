@@ -33,7 +33,12 @@ const ICONS = {
   FaCaretDown: lazy(() => import("react-icons/fa").then((mod) => ({ default: mod.FaCaretDown  }))),
   MdEmail: lazy(() => import("react-icons/md").then((mod) => ({ default: mod.MdEmail  }))),
   FaAngleDown: lazy(() => import("react-icons/fa").then((mod) => ({ default: mod.FaAngleDown  }))), 
-  MdOutlineKeyboardArrowLeft : lazy(() => import("react-icons/md").then((mod) => ({ default: mod.MdOutlineKeyboardArrowLeft  }))), 
+  MdOutlineKeyboardArrowLeft : lazy(() => import("react-icons/md").then((mod) => ({ default: mod.MdOutlineKeyboardArrowLeft  }))),
+  IoMdClose: lazy(() => import("react-icons/io").then((mod) => ({ default: mod.IoMdClose }))),
+  FaCircleCheck: lazy(() => import("react-icons/fa6").then((mod) => ({ default: mod.FaCircleCheck }))),
+  FaCircleExclamation: lazy(() => import("react-icons/fa6").then((mod) => ({ default: mod.FaCircleExclamation }))),
+  MdOutlineDarkMode: lazy(() => import("react-icons/md").then((mod) => ({ default: mod.MdOutlineDarkMode }))),
+  MdOutlineLightMode: lazy(() => import("react-icons/md").then((mod) => ({ default: mod.MdOutlineLightMode }))),
 };
 
 export default memo(function IconRenderer({ iconName, color, ...props }) {

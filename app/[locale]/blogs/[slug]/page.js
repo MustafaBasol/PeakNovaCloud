@@ -11,15 +11,14 @@ import CookieAccepter from '@/components/CookieAccepter'
 import { getEntityId } from '@/libs/entityId'
 
 export async function generateMetadata({ params }) {
-  const locale = params?.locale
+  const { locale } = await params
   return getPageMetadata(locale, 'home')
 }
 
 export default async function BlogPage({ params }) {
 
-
     const locale = await getLocale()
-    const slug = await params.slug
+    const { slug } = await params
     const contact = await getPage(locale, 'single')
     const blogData = (await getBlog(locale, slug)).data
     const blogsData = await getBlogs(locale)
@@ -47,7 +46,7 @@ export default async function BlogPage({ params }) {
         </div>
         <Contact color={'white'} pageData={contact} id={'single-contact'}  />
       <CookieAccepter locale={locale} />        
-        <Footer color='white' />
+        <Footer color='var(--white)' />
     </div>
   )
 }

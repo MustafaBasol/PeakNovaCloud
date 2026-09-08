@@ -4,7 +4,11 @@
         "project": "Projelerimiz",
         "about": "Hakkımızda",
         "button":"Demo talebi",
-        "blog":"Blog"        
+        "blog":"Blog",
+        "language":"Dili değiştir",
+        "menu":"Menüyü aç",
+        "darkMode":"Karanlık moda geç",
+        "lightMode":"Aydınlık moda geç"
     },
     "SmallHeader":{
         "service": "Servisler",
@@ -39,7 +43,8 @@
         "teleError":"Telefon numaranazı girin",
         "teleValidationError":"Lütfen geçerli bir numara girin",
         "serviceError":"Lütfen bu alanı doldurun",
-        "buttonText":"Gönder"
+        "buttonText":"Gönder",
+        "sending":"Gönderiliyor..."
     },
     "OurServices":{
         "services":"Sunduğumuz servisler"
@@ -53,6 +58,12 @@
     "Project":{
         "more":"Devamını okuyun"
     },
+    "Error":{
+        "title": "Bir şeyler ters gitti",
+        "message": "Beklenmedik bir hata oluştu. Lütfen tekrar deneyin veya ana sayfaya dönün.",
+        "retry": "Tekrar dene",
+        "back": "Ana sayfaya dönün"
+    },
     "NotFound":{
         "notFound":"Sayfa bulunamadı",
         "move":"Üzgünüz, aradığınız sayfa mevcut değil veya taşındı.",
@@ -62,7 +73,8 @@
         "loading":"Yükleniyor, lütfen bekleyin..."
     },
     "Toast":{
-        "toast":"Mesajınız başarıyla gönderildi"
+        "toast":"Mesajınız başarıyla gönderildi",
+        "errorToast":"Bir şeyler ters gitti. Lütfen tekrar deneyin."
     },
     "LangMenu":{
         "tr":"Türkçe",
@@ -97,7 +109,8 @@
     "Cookie":{
         "main":"Deneyiminizi geliştirmek için çerezleri kullanıyoruz. Sitemizi kullanarak, aşağıdakileri kabul etmiş olursunuz",
         "button":"Kabul et",
-        "policy":"Kullanım koşulları"        
+        "decline":"Reddet",
+        "policy":"Kullanım koşulları"
     },
   "PrivacyPolicy": {
     "title": "Gizlilik Politikası",

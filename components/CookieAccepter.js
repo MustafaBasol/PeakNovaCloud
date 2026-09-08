@@ -12,10 +12,10 @@ const CookieAccepter = ({ locale }) => {
     const consent = Cookies.get("cookie-consent");
 
     if (!consent) {
-      
+
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 10000); 
+      }, 1500);
 
       return () => clearTimeout(timer);
     }
@@ -26,19 +26,34 @@ const CookieAccepter = ({ locale }) => {
     setIsVisible(false);
   };
 
+  const handleDecline = () => {
+    Cookies.set("cookie-consent", "false", { expires: 365 })
+    setIsVisible(false);
+  };
+
   if (!isVisible) return null;
 
   return (
-    <div className="z-50 fixed bottom-4 left-4 right-4 bg-[--primary] text-white p-4 rounded-lg shadow-lg flex flex-col sm:flex-row sm:items-center justify-between">
-      <p className="mb-2 sm:mb-0">
-        {t('main')} <Link href={`/${locale}/policy`} className="text-[--text] underline">{t('policy')}</Link>.
+    <div className="z-50 fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md bg-white dark:bg-gray-800 text-[--text] dark:text-gray-100 p-5 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 flex flex-col gap-4">
+      <p className="text-sm leading-relaxed">
+        {t('main')} <Link href={`/${locale}/policy`} className="text-[--primary] underline">{t('policy')}</Link>.
       </p>
-      <button
-        onClick={handleAccept}
-        className="bg-[--text] text-white py-2 px-4 rounded-lg"
-      >
-        {t('button')}
-      </button>
+      <div className="flex gap-3 justify-end">
+        <button
+          type="button"
+          onClick={handleDecline}
+          className="py-2 px-4 rounded-lg border-2 border-gray-300 dark:border-gray-600 text-[--text] dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        >
+          {t('decline')}
+        </button>
+        <button
+          type="button"
+          onClick={handleAccept}
+          className="bg-[--primary] text-white py-2 px-4 rounded-lg hover:bg-[--hovered] transition-colors"
+        >
+          {t('button')}
+        </button>
+      </div>
     </div>
   );
 };

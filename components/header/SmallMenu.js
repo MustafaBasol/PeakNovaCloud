@@ -23,12 +23,12 @@ export default function SmallMenu({ isMenuOpen, setIsMenuOpen, data, locale }) {
 
   return (
       <motion.div 
-          className='overflow-y-auto flex flex-col items-start justify-start gap-2 px-8 py-4 text-3xl md:text-4xl text-black w-full h-full left-0 right-0 bottom-0 top-20 overflow-hidden	bg-[--light] fixed zk z-50 origin-right' 
+          className='overflow-y-auto flex flex-col items-start justify-start gap-2 px-8 py-4 text-3xl md:text-4xl text-[--text] w-full h-full left-0 right-0 bottom-0 top-20 overflow-hidden bg-[--light] fixed zk z-50 origin-right'
           initial={{ scaleX:0 }}
           animate={{ scaleX:1 }}
           exit={{ scaleX:0 }}
           transition={{
-            duration:0.5, ease:'easeInOut'
+            duration:0.5, ease: [0.16, 1, 0.3, 1]
           }}
       >      
         {

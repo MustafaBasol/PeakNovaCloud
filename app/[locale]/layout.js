@@ -13,7 +13,9 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
-export default async function RootLayout({ children, params: { locale } }) {
+export default async function RootLayout({ children, params }) {
+  const { locale } = await params;
+
   if (!routing.locales.includes(locale)) {
     notFound();
   }
@@ -21,8 +23,15 @@ export default async function RootLayout({ children, params: { locale } }) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={montserrat.variable}>
-      <body className={`font-site md:!overflow-y-scroll overflow-x-hidden smooth-scrool`}>
+    <html lang={locale} className={montserrat.variable} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body className={`font-site md:!overflow-y-scroll overflow-x-hidden smooth-scrool bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors`}>
         <NextIntlClientProvider messages={messages}>
           <Header locale={locale} />
           {children}

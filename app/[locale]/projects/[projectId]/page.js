@@ -8,7 +8,8 @@ import { getLocale } from 'next-intl/server'
 
 export default async function SingleProjectPage({ params }) {
 
-  const projectData = await getProject(params.projectId)
+  const { projectId } = await params
+  const projectData = await getProject(projectId)
   const locale = await getLocale()
   const blogData = await getBlogs(locale)
 
@@ -20,7 +21,7 @@ export default async function SingleProjectPage({ params }) {
     <div className='bg-[--light]'>
       <SingleProject projectData={projectData.data} />
       <BlogHolder blogData={blogData.data} locale={locale} />        
-      <Footer color='white' />
+      <Footer color='var(--white)' />
     </div>
   )
 }

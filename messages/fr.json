@@ -4,7 +4,11 @@
         "project": "Projets",
         "about": "A propos de",
         "button":"Démonstration",
-        "blog":"Blog"    
+        "blog":"Blog",
+        "language":"Changer de langue",
+        "menu":"Ouvrir le menu",
+        "darkMode":"Passer en mode sombre",
+        "lightMode":"Passer en mode clair"
     },
     "SmallHeader":{
         "service": "Services",
@@ -39,7 +43,8 @@
         "teleError":"Entrez votre numéro de téléphone",
         "teleValidationError":"Veuillez saisir un numéro valide",
         "serviceError":"Veuillez remplir ce champ",
-        "buttonText":"Envoyer"
+        "buttonText":"Envoyer",
+        "sending":"Envoi en cours..."
     },
     "OurServices":{
         "services":"Les services que nous proposons"
@@ -53,6 +58,12 @@
     "Project":{
         "more":"En savoir plus"
     },
+    "Error":{
+        "title": "Un problème est survenu",
+        "message": "Une erreur inattendue s'est produite. Veuillez réessayer ou retourner à la page d'accueil.",
+        "retry": "Réessayer",
+        "back": "Retour à la page d'accueil"
+    },
     "NotFound":{
         "notFound":"Page non trouvée",
         "move":"Désolé, la page que vous recherchez n'est pas disponible ou a été déplacée.",
@@ -62,7 +73,8 @@
         "loading":"Chargement, veuillez patienter..."
     },
     "Toast":{
-        "toast":"Votre message a été envoyé avec succès"
+        "toast":"Votre message a été envoyé avec succès",
+        "errorToast":"Une erreur s'est produite. Veuillez réessayer."
     },
     "LangMenu":{
         "tr":"Turc",
@@ -98,6 +110,7 @@
     "Cookie":{
         "main":"Nous utilisons des cookies pour améliorer votre expérience. En utilisant notre site, vous acceptez nos",
         "button":"Accepter",
+        "decline":"Refuser",
         "policy":"Politique de confidentialité"
     },
   "PrivacyPolicy": {

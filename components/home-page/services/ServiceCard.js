@@ -23,16 +23,16 @@ export default function ServiceCard({ name, Icon, desc, color, locale }) {
       }}
       transition={{
         duration:0.6,
-        ease:'easeInOut',
+        ease: [0.16, 1, 0.3, 1],
         delay:0.2,
         translateY: { 
           duration:0.3,
-          ease:'linear',                 
+          ease: [0.16, 1, 0.3, 1],                 
         }
       }}
     > 
       <ScrollLink href={`${locale}/services/${href}`} className='flex flex-col h-full justify-between' >
-        <div className='bg-white w-max p-4 rounded-full mx-auto tp'>
+        <div className='bg-white dark:bg-gray-800 w-max p-4 rounded-full mx-auto tp'>
           <IconRenderer iconName={Icon} className={`w-12 h-12 lg:w-16 lg:h-16 `} />
         </div>          
           <h6 className='text-2xl sm:text-xl md:text-xl lg:text-4xl text-center'>{name}</h6>

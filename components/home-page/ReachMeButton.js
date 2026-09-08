@@ -7,8 +7,8 @@ export default function ReachMeButton({ data }) {
     <motion.button 
         className='text-xs md:text-base p-4 rounded-lg text-center md:text-start w-max cursor-pointer bg-[--primary] shadow-lg outline-none ml-4'
         whileHover={{
-            color:'var(--light)',
-            backgroundColor:'var(--text)'                    
+            color:'var(--pale)',
+            backgroundColor:'var(--hovered)'
         }}
         onClick={()=> {
             const contact = document.getElementById('home-contact')

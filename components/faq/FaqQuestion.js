@@ -18,38 +18,43 @@ export default function FaqQuestion({ item, i, color, activeIndex, setActiveInde
         variants={rightToLeftVariants}
         initial='initial'
         whileInView='onView'
-        transition={{ duration:0.5, ease:'easeInOut' }}
+        transition={{ duration:0.5, ease: [0.16, 1, 0.3, 1] }}
         viewport={{ once:true }}        
     >
-            <div 
-                className='flex flex-col cursor-pointer' 
-                onClick={()=>clicked(i)}
-                style={{ color:`var(--${color})`}}                                        
+            <div
+                className='flex flex-col'
+                style={{ color:`var(--${color})`}}
             >
-                <div 
-                    className='flex justify-between items-center p-2 md:p-4'
+                <button
+                    type='button'
+                    onClick={()=>clicked(i)}
+                    aria-expanded={activeIndex === i}
+                    aria-controls={`faq-answer-${i}`}
+                    className='flex justify-between items-center p-2 md:p-4 w-full text-left cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[--primary] focus-visible:outline-offset-2 rounded'
                 >
                     <h5 className='text-sm lg:text-base text-[--text] font-semibold'>{item.question}</h5>
                     <motion.div
                         initial={{ transform:'rotate(0deg)'}}
                         animate={{ transform: activeIndex === i ? 'rotate(180deg)' : 'rotate(0deg)' }}
                     >
-                        <IconRenderer iconName='FaCaretDown' className={`w-8 h-8`} /> 
-                    </motion.div>            
-                </div>                  
+                        <IconRenderer iconName='FaCaretDown' className={`w-8 h-8`} />
+                    </motion.div>
+                </button>
                     {
-                        (activeIndex === i) 
+                        (activeIndex === i)
                         &&
-                        <motion.div 
+                        <motion.div
+                            id={`faq-answer-${i}`}
+                            role='region'
                             className='py-2 px-8 text-xs md:text-base text-start origin-top text-[--text]'
                             style={{  borderColor:`var(--${color})` }}
                             initial={{ scaleY:0 }}
-                            animate={{ scaleY:1 }}                                                       
-                            transition={{ duration:0.3, ease:'linear' }}
+                            animate={{ scaleY:1 }}
+                            transition={{ duration:0.3, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <p>{item.answer}</p>
-                        </motion.div>                                                                     
-                    }                                                                                                              
+                        </motion.div>
+                    }
             </div>
         </motion.div>
   )

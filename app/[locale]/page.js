@@ -13,7 +13,7 @@ import { getLocale } from "next-intl/server";
 import CookieAccepter from "@/components/CookieAccepter";
 
 export async function generateMetadata({ params }) {
-  const locale = params?.locale
+  const { locale } = await params
   return getPageMetadata(locale, 'home')
 }
 

@@ -22,7 +22,7 @@ export default function ReachMe({ pageData }) {
         initial='initial'
         whileInView='onView'
         viewport={{ once:true }}
-        transition={{ duration:0.4, ease:'easeInOut', delay:0.1 }}
+        transition={{ duration:0.4, ease: [0.16, 1, 0.3, 1], delay:0.1 }}
         
     >
         <div className='h-48 sm:h-56 md:h-64 lg:h-auto my-0 md:my-auto lg:my-0 mx-auto'>

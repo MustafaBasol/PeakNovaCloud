@@ -8,7 +8,7 @@ export default function AboutHeroButton({ data }) {
         className='mt-6 bg-[--light] sm:text-base rounded-full text-[--text] shadow w-max h-max p-4 mx-auto whitespace-nowrap'
         whileHover={{
             backgroundColor:'var(--hovered)',
-            color:'var(--light)'
+            color:'var(--pale)'
         }}
         onClick={() => {
             let contact = document.getElementById('about-contact')

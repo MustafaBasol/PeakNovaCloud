@@ -20,7 +20,7 @@ export default function WhyService({ serviceData, color }) {
         initial='initial'
         whileInView='onView'
         viewport={{ once:true }}
-        transition={{ duration:0.5, ease:'easeInOut' }}
+        transition={{ duration:0.5, ease: [0.16, 1, 0.3, 1] }}
     >
         <h1 
             style={{ color:`var(--${color})`}} 

@@ -20,7 +20,7 @@ export default async function Footer({ color }) {
             <FooterUsefulLinks locale={locale} />
             <FooterContact />            
         </div>
-        <hr className='w-5/6 text-black ' />
+        <hr className='w-5/6 border-gray-300 dark:border-gray-700' />
         <div className='flex flex-col md:flex-row justify-between items-center p-4 gap-2'>
             <div>
                 <Image 

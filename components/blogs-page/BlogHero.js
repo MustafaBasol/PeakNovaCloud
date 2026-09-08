@@ -33,7 +33,7 @@ export default function BlogHero() {
           <motion.button
             className={`px-6 py-3 rounded-lg font-medium text-white `}
             initial={{ backgroundColor:'var(--slack)'}}
-            whileHover={{ backgroundColor:'var(--text)'}}
+            whileHover={{ backgroundColor:'var(--hovered)'}}
           >
             {t('button')}
           </motion.button>

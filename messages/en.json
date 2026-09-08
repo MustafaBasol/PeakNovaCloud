@@ -4,7 +4,11 @@
         "project": "Projects",
         "about": "About",
         "button":"Demand demo",
-        "blog":"Blog"
+        "blog":"Blog",
+        "language":"Change language",
+        "menu":"Open menu",
+        "darkMode":"Switch to dark mode",
+        "lightMode":"Switch to light mode"
     },
     "SmallHeader":{
         "service": "Services",
@@ -39,7 +43,8 @@
         "teleError":"Enter your phone number",
         "teleValidationError":"Please enter a valid phone number",
         "serviceError":"Please fill in this field",
-        "buttonText":"Send"
+        "buttonText":"Send",
+        "sending":"Sending..."
     },
     "OurServices":{
         "services":"Services We Offer"
@@ -53,6 +58,12 @@
     "Project":{
         "more":"Read more"
     },
+    "Error":{
+        "title": "Something went wrong",
+        "message": "An unexpected error occurred. Please try again, or head back to the home page.",
+        "retry": "Try again",
+        "back": "Back to home page"
+    },
     "NotFound":{
         "notFound":"Page not found",
         "move":"Sorry, the page you are looking for is not available or has been moved.",
@@ -62,7 +73,8 @@
         "loading":"Loading, please wait..."
     },
     "Toast":{
-        "toast":"Your message was sent successfully"
+        "toast":"Your message was sent successfully",
+        "errorToast":"Something went wrong. Please try again."
     },
     "LangMenu":{
         "tr":"Turkish",
@@ -98,6 +110,7 @@
     "Cookie":{
         "main":"We use cookies to improve your experience. By using our site, you agree to our",
         "button":"Accept",
+        "decline":"Decline",
         "policy":"Privacy Policy"
     },
     "PrivacyPolicy": {

@@ -21,7 +21,7 @@ export default function FooterServices({ data, locale }) {
             className={`${isOpen ? 'flex flex-col' : 'hidden'} sm:flex sm:flex-col gap-2 origin-top sm:!opacity-100`}
             initial={{ opacity:0 }}
             animate={ isOpen ? { opacity:1 } : { opacity:0 } }
-            transition={{ duration:0.3, ease:'easeInOut' }}
+            transition={{ duration:0.3, ease: [0.16, 1, 0.3, 1] }}
         >
             {
                 data.map((service, i) => {

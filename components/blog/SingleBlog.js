@@ -11,7 +11,7 @@ export default function SingleBlog({ blog, t, locale }) {
       initial={{ y:100, opacity:0 }}
       whileInView={{ y:0, opacity:1 }}
       viewport={{ once:true }}
-      transition={{ duration:0.4, delay:0.1, ease:'easeInOut' }}
+      transition={{ duration:0.4, delay:0.1, ease: [0.16, 1, 0.3, 1] }}
     >
         <div className='relative h-80'>
             <Image 

@@ -9,7 +9,7 @@ import {
 import { authenticate } from '@/middleware/auth'
 
 export async function GET(req, { params }) {
-     const name = params.serviceName
+     const { serviceName: name } = await params
      const searchParams = (req.nextUrl.searchParams)
      const language = searchParams.get('lang');
 

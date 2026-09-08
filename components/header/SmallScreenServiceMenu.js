@@ -5,7 +5,7 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-export default function SmallScreenServiceMenu({ data, setIsOpen, isMenuOpen, setIsMenuOpen, locale }) {
+export default function SmallScreenServiceMenu({ data, setIsOpen, setIsMenuOpen, locale }) {
 
   const router = useRouter()
 
@@ -14,11 +14,6 @@ export default function SmallScreenServiceMenu({ data, setIsOpen, isMenuOpen, se
   const click = (href) => {
     router.push(`/${locale}/services/${href}`)
     setIsMenuOpen(false)
-    if(isMenuOpen) {
-        document.body.style.overflowY = "scroll"
-    } else{            
-        document.body.style.overflowY = "hidden"
-    }       
   }
   return (
     <motion.div
@@ -27,35 +22,37 @@ export default function SmallScreenServiceMenu({ data, setIsOpen, isMenuOpen, se
       animate={{ scaleX:1 }}
       exit={{ scaleX:0 }}
       transition={{
-        duration:0.5, ease:'easeInOut'
+        duration:0.5, ease: [0.16, 1, 0.3, 1]
       }}      
     >
-      <motion.div 
-        className='flex items-center cursor-pointer w-full p-2'
+      <motion.button
+        type='button'
+        className='flex items-center cursor-pointer w-full p-2 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-[--primary] focus-visible:outline-offset-2 rounded'
         whileHover={{
           translateY:-8
         }}
         onClick={()=>setIsOpen(false)}
       >
-        <MdOutlineKeyboardArrowLeft className='w-12 h-12 ' />  
+        <MdOutlineKeyboardArrowLeft className='w-12 h-12 ' />
         <h6>{t('back')}</h6>
-      </motion.div>      
+      </motion.button>
         {
           data.map((item, i) => {
             let href = (item.name.split(' ').join('-')).toLowerCase()
-            return(              
-                <motion.div   
-                  key={i}                 
-                  className='flex gap-4 p-2 text-lg cursor-pointer w-full rounded-lg'
+            return(
+                <motion.button
+                  type='button'
+                  key={i}
+                  className='flex gap-4 p-2 text-lg cursor-pointer w-full rounded-lg text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-[--primary] focus-visible:outline-offset-2'
                   whileHover={{
-                    backgroundColor:'var(--text)',
+                    backgroundColor:'var(--hovered)',
                     color:'var(--light)'
                   }}
                   onClick={()=>click(href)}
                 >
                   <IconRenderer iconName={item.Icon} color={item.color} className='w-8 h-8' />
                   <h6>{item.name}</h6>
-                </motion.div>              
+                </motion.button>
             )
           })
         }
