@@ -1,0 +1,107 @@
+---
+description: Specification for the 3D scroll-driven mountain journey on the home page (React Three Fiber + GSAP ScrollTrigger). Apply to any work in src/components/scene or the home journey wrapper.
+globs: src/components/scene/**,src/lib/scroll-progress.ts,src/components/sections/home/**
+alwaysApply: false
+---
+
+# 3D Summit Journey
+
+## Concept
+The home page is a climb. Night in the valley at the top of the page, dawn at the summit at the bottom. The mountain is the PeakNova logo mark brought into 3D. The DOM content scrolls over a fixed full-viewport canvas; scroll progress drives the camera up the mountain. At the summit the two gold stars from the logo ignite beside the contact CTA.
+
+**The scene is atmosphere, not content.** All information lives in the DOM. The page must be complete and beautiful with the scene absent.
+
+## Mountain geometry (must read as the logo)
+Reference: `public/brand/logo-full-transparent.png`.
+- **Main peak**: left of center, tallest, a slightly asymmetric spire whose right face is steeper than the left.
+- **Secondary peak**: right of the main peak, roughly 75% of its height, separated by a saddle.
+- **Long shoulder**: the left flank descends in a long gentle ridge; the right flank of the secondary peak falls off more steeply.
+- **Snow**: a jagged, irregular snow cap on the main peak's upper third (the white inner shape in the logo) with broken edges, and lighter snow patches on the secondary peak.
+- **Stars**: two four-point sparkles above and between the two peaks, the upper one larger, positioned as in the logo.
+
+Build approach, in order of preference:
+1. **Procedural (default, no asset dependency):** a `PlaneGeometry` (~200x200 segments desktop, 96x96 mobile) displaced by a heightfield = sum of two ridged-Gaussian peaks at the logo proportions + low-amplitude fBm noise (seeded, deterministic) + a ridge-line term for the left shoulder. `flatShading: true` for a crisp low-poly read. Vertex colors by height and slope: `scene-rock-low` to `scene-rock-high` below the snow line; `scene-snow` above a noisy snow line and only on faces with slope < ~38°.
+2. **Optional GLB later** (owner may commission a Blender model): Draco or Meshopt compressed, ≤ 600 KB, same materials. Keep the procedural version as fallback.
+
+Do not use photorealistic textures. Stylized, faceted, calm. Think premium product render, not a game.
+
+## Sky, light, atmosphere
+- Sky: inverted sphere with a small custom shader gradient. Night (`bg` color at zenith and horizon) at progress 0; at progress ≥ 0.8 the horizon warms toward `scene-horizon-dawn` with a thin `scene-sun-dawn` band. Subtle, never orange-sunset kitsch.
+- Starfield: `Points`, 1500 desktop / 600 mobile, size attenuation, twinkle in shader via time uniform. Fades out between progress 0.7 and 0.95 (dawn), except the two logo stars.
+- Lights: `hemisphereLight` (cool sky / near-black ground) + one `directionalLight` acting as moon (cool, from upper left) that rotates and warms toward gold-white as progress approaches 1. No shadows on mobile; on desktop a single 1024 shadow map at most, or baked AO via vertex color instead.
+- Fog: `FogExp2` with color = `bg`; density 0.035 at progress 0, easing down to 0.012 at the summit (the view clears as you climb).
+- Clouds: 3 to 5 large soft billboard planes at mid altitude; the camera passes through them around progress 0.5 to 0.6 (the "above the clouds" moment that coincides with the NoraMedi product section).
+- Logo stars: two additive-blended sprites (four-point sparkle texture generated once to a small canvas, not an image download), color `brand-gold`. Dim (opacity 0.15) all the way, ignite between progress 0.9 and 1.0 (scale 0.6 to 1, opacity to 1, slow 4 s shimmer loop after ignition; loop stops under reduced motion). No postprocessing bloom on mobile; on desktop optional `@react-three/postprocessing` Bloom with `luminanceThreshold` high enough that only the stars bloom. Drop it if it costs > 2 ms/frame.
+
+## Camera path
+- Define 6 keyframes as a `CatmullRomCurve3` for position and a second curve for the look-at target. Approximate narrative:
+  | progress | Position | Looks at | DOM section |
+  |---|---|---|---|
+  | 0.00 | valley floor, far, low | the whole massif, peaks framed right of the text column | Hero |
+  | 0.20 | climbing the left shoulder | main peak | Capabilities |
+  | 0.40 | switchback on the shoulder, side view of the spire | saddle | How we work |
+  | 0.58 | inside / above the cloud layer | secondary peak | NoraMedi |
+  | 0.80 | high ridge just below the snow cap | summit | Engineering principles + CRM |
+  | 1.00 | just above and behind the summit, looking out toward dawn with the stars in frame | horizon + stars | Summit / contact |
+- Keep the mountain on the right half of the frame on desktop so the left text column stays readable (the content column is left-aligned). On mobile frame the mountain behind the text and rely on the scrim.
+- FOV 35 to 40, no roll, no sudden yaw. The movement should feel like a slow, steady crane shot.
+
+## Scroll wiring (single source of truth)
+- `src/lib/scroll-progress.ts` exports a tiny mutable store: `{ target: number, current: number }` (plain object or zustand vanilla store, no React state).
+- One `ScrollTrigger` on the home `#journey` wrapper (`start: "top top"`, `end: "bottom bottom"`, `scrub: true`) writes `target` in `onUpdate`. No pinning of the canvas; the canvas is `position: fixed; inset: 0; z-index: var(--z-scene); pointer-events: none`.
+- Inside R3F `useFrame`, damp `current` toward `target` with `maath/easing.damp` (lambda ~0.25, framerate-independent), then sample both curves with `getPointAt(current)`.
+- DOM sections use their own Motion reveals; they never read the scene store. The scene never reads DOM layout.
+- Native scrolling stays native. No Lenis or scroll-jacking by default; the damping inside the scene gives the smooth feel.
+
+## Loading strategy (protect LCP)
+1. Server-render the home page with the hero text as the LCP element.
+2. Behind the content show a static poster: `public/scene/poster-{desktop,mobile}.avif` (a render of the progress-0 frame, generated once with a script that renders the scene headlessly, or exported manually from the running scene). Poster is a CSS background of the fixed layer, not a `<img>` competing for LCP.
+3. After `requestIdleCallback` (fallback `setTimeout 1200`) **and** only if WebGL2 is available, `next/dynamic(() => import("@/components/scene/Journey"), { ssr: false })`.
+4. When the first frame renders, crossfade poster to canvas over 400 ms.
+
+## Quality presets
+| Preset | When | Settings |
+|---|---|---|
+| full | `pointer: fine` and width ≥ 1024 and `navigator.hardwareConcurrency ≥ 8` | dpr [1, 1.75], 200x200 terrain, 1500 stars, optional bloom, soft shadow or baked AO |
+| light | everything else with WebGL2 | dpr [1, 1.25], 96x96 terrain, 600 stars, no bloom, no shadows |
+| none | no WebGL2, `prefers-reduced-motion: reduce`, `Save-Data`, or drei `PerformanceMonitor` reports sustained < 30 fps after downgrading | static posters: 4 stills (`still-0`, `still-1`, `still-2`, `still-3`) that crossfade at section boundaries with opacity only |
+
+Use drei `PerformanceMonitor` to step down from full to light automatically, and from light to none if still failing.
+
+## Lifecycle and cleanup
+- Pause rendering (`frameloop="demand"` + invalidate on progress change, or `setFrameloop("never")`) when the tab is hidden or when the summit section has been passed and nothing is animating.
+- On unmount: dispose geometries, materials, textures, render targets; kill the ScrollTrigger; `gsap.context().revert()`.
+- No allocations inside `useFrame` (reuse vectors).
+
+## Budgets
+- Scene chunk (three + r3f + drei parts + scene code), gzip: ≤ 280 KB. Import drei helpers individually.
+- Desktop: steady 60 fps on an M1 MacBook Air at 1440p. Mobile: ≥ 45 fps on iPhone 12 / Pixel 6 class with the light preset.
+- GPU memory: no texture larger than 1024px (star sprite 64px).
+- Main-thread per frame: < 4 ms on desktop.
+
+## Accessibility
+- Canvas and poster layers are `aria-hidden="true"` and not focusable.
+- Text over the scene always sits on the readability scrim from DESIGN.md; verify contrast of `text-muted` over the brightest part of the scene (snow) at every keyframe. If it fails, strengthen the scrim for that section, never lighten text tokens.
+- The star shimmer and twinkle stop under reduced motion.
+
+## Non-home pages
+No live canvas. Use a small static summit still (`public/scene/still-3.avif`) in the page header band where useful (About, Contact). Keeps inner pages at Performance ≥ 95.
+
+## Acceptance
+```gherkin
+Scenario: Scene never blocks content
+  Given a throttled "Slow 4G" network and 4x CPU slowdown
+  When I open the home page
+  Then the hero headline is painted before any three.js code is requested
+
+Scenario: Logo likeness
+  Given the summit keyframe
+  When I compare the rendered silhouette with public/brand/logo-full-transparent.png
+  Then the main peak is left of the secondary peak, taller, with a jagged snow cap
+  And the two gold stars sit above and between the peaks as in the logo
+
+Scenario: Mobile fallback
+  Given a phone that sends Save-Data or prefers reduced motion
+  When I open the home page
+  Then static stills are shown and no WebGL context is created
+```

@@ -1,0 +1,54 @@
+---
+description: Core engineering rules for the PeakNova rebuild under src/. The current app/ site stays as it is until that shell replaces it.
+globs: src/**,DESIGN.md,docs/site-spec.json,docs/content-brief.md
+alwaysApply: false
+---
+
+# Core rules
+
+## Source of truth
+- Read `AGENTS.md`, `DESIGN.md`, `docs/site-spec.json`, `docs/content-brief.md` before any task. Re-read the relevant part before touching a page.
+- If information is missing (legal data, screenshots, client names, metrics), stop and ask the owner. Never invent it.
+
+## Next.js and React
+- App Router, TypeScript `strict`, Server Components by default.
+- Static export: `output: "export"`, `trailingSlash: true`, `images.unoptimized: true`. Therefore never use middleware, route handlers, server actions, ISR, `cookies()`, `headers()`.
+- Every dynamic route implements `generateStaticParams` for all 4 locales.
+- Interactive code lives in small leaf client components (`"use client"` at the top). Pages and sections stay server components.
+- Continuous values (scroll progress, pointer, time) never go into React state. Use refs, Motion values, or the scroll-progress store in `src/lib/scroll-progress.ts`.
+- No `window.addEventListener("scroll")`. Use ScrollTrigger, Motion `useScroll`, IntersectionObserver or CSS scroll-driven animations.
+- Every `useEffect` that creates listeners, GSAP contexts, observers or WebGL resources returns a cleanup.
+
+## Styling
+- Tailwind v4 utilities mapped to CSS variables from `src/styles/tokens.css` (generated from `DESIGN.md` frontmatter). No raw hex/rgb outside `tokens.css`.
+- `min-h-[100dvh]` instead of `h-screen`.
+- Grid over flex math. No `calc(33% - ...)` widths.
+- One radius rule: actions pill, containers/media 16px, inputs 10px.
+- Z-index only from the scale in `src/styles/tokens.css` (`--z-scene: 0`, `--z-content: 10`, `--z-nav: 50`, `--z-overlay: 80`, `--z-skip: 100`).
+- Never `transition: all`. List properties.
+
+## Accessibility (WCAG 2.2 AA minimum)
+- Semantic HTML first: `<header> <nav> <main id="main"> <footer>`, one `<h1>` per page, no skipped heading levels.
+- Skip link as the first focusable element.
+- Visible `:focus-visible` ring on every interactive element; sticky nav must never cover focused elements (`scroll-margin-top` on targets).
+- Icon-only buttons have `aria-label`; decorative icons and the 3D canvas are `aria-hidden`.
+- `<a>` for navigation, `<button>` for actions. Never clickable divs.
+- Contrast: text ≥ 4.5:1, large text and UI edges ≥ 3:1. Tokens in DESIGN.md are pre-checked; do not introduce new colors.
+- `prefers-reduced-motion` respected everywhere.
+- Never disable zoom.
+
+## Performance
+- Targets: LCP < 2.5 s, CLS < 0.1, INP < 200 ms on mobile.
+- The LCP element on every page is text (headline), never the canvas or an image that waits on JS.
+- Fonts self-hosted, preloaded (Latin + Latin Extended subsets), `font-display: swap`, size-adjusted fallback to avoid CLS.
+- Images: AVIF/WebP from `scripts/optimize-images.ts`, explicit `width`/`height`, `loading="lazy"` below the fold, `fetchpriority="high"` only on the above-the-fold image.
+- Three.js, R3F, GSAP and the scene code are dynamically imported and must not appear in the initial chunk of any page.
+
+## Code quality
+- Small, named components. One section per file in `src/components/sections/`.
+- Props typed explicitly. No `any`. No unused exports.
+- Content and UI strings never hard-coded in components: UI strings in `messages/{locale}.json`, long-form content in `content/{locale}/`.
+- Commits are small and descriptive. Do not commit secrets, `config.php`, or `.env*`.
+
+## Banned outright
+`lucide-react`, Bootstrap, default-styled UI kits, Google Fonts `<link>`, custom cursors, preloader screens, scroll-jacking by default, autoplaying audio, emoji in UI, em dash (—) and en dash (–) in any visible string, the word "Autoviseo", any statement of team size.

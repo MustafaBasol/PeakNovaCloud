@@ -1,0 +1,55 @@
+---
+description: Visual design and anti-slop rules for all UI work (sections, pages, components). Distilled from taste-skill, Apple DESIGN.md and Vercel Web Interface Guidelines.
+globs: src/components/**,src/app/**,src/styles/**
+alwaysApply: false
+---
+
+# Design taste rules
+
+## Design read (state it before building a page)
+"Reading this as: AI-native engineering studio site for EU and TR operations and technical leaders, with an Apple-calm, dark night-to-dawn language, leaning toward Next.js + Tailwind v4 + R3F scene + restrained Motion."
+Dials: DESIGN_VARIANCE 7, MOTION_INTENSITY 7 (home) / 4 (inner pages), VISUAL_DENSITY 3.
+
+## Layout
+- Hero: max 4 text elements (optional eyebrow, headline ≤ 2 lines, subtext ≤ 20 words, max 2 CTAs). Fits the first viewport at 1440x900 and 390x844. Top padding ≤ 96px.
+- Home content is left-aligned over the scene. Centered layout only for the summit/contact section (manifesto moment).
+- At least 4 distinct layout families on the home page; never the same family in two consecutive sections; max 2 consecutive image/text splits.
+- No three equal cards in a row. Capabilities use a pinned, scroll-synced list (see site-spec), not a card grid.
+- Bento grids: exact cell count for the content, varied cell sizes, at least 2 cells with real visual variation.
+- No split headers (big headline left, small paragraph floating right). Stack headline and body vertically.
+- Eyebrows: max 1 per 3 sections. No section numbers ("01", "002 /").
+- Lists over 5 items use grouped columns, tabs or a different component, not hairline-per-row lists.
+
+## Color and surface
+- Only tokens from DESIGN.md. One accent family. Gold only in summit/logo moments, max one gold element per viewport.
+- No gradients in UI except the readability scrim and the summit dawn glow defined in DESIGN.md.
+- No neon glows, no glassmorphism on content cards (frosted is allowed on the scrolled nav only), no gradient text.
+
+## Typography and copy
+- Geist + Geist Mono only. Display 600 with negative tracking, body 17px.
+- Copy comes from `docs/content-brief.md` and `messages/*.json`. If you must write new copy: short, concrete verbs, second person, no hype words (elevate, seamless, unleash, revolutionize, next-gen, cutting-edge, empower, harness).
+- Zero em dashes and en dashes in visible text (use a period, comma, colon or parentheses). Ranges use a hyphen.
+- Use `…` not `...`, curly quotes, non-breaking spaces in "PeakNova AI", numbers with units.
+- Brand names and code tokens wrapped in `translate="no"`.
+- One label per intent. The contact intent has exactly one label per locale (see content brief), used everywhere.
+- CTA labels ≤ 3 words and never wrap on desktop.
+
+## Imagery
+- Real assets only: NoraMedi screenshots (demo data), scene stills, real photos the owner provides. Missing asset = labeled placeholder in dev, build failure in production.
+- No div-built fake UI, no stock illustrations, no hand-drawn decorative SVG, no avatar placeholders, no pills or labels overlaid on images.
+- Logo files in `public/brand/` are used as-is.
+
+## Interaction states (every interactive element)
+default, hover, focus-visible, active, disabled, loading (where async). Hover/focus increase contrast. Press = `scale(0.98)`.
+
+## Motion
+- Every animation must answer: hierarchy, storytelling, feedback or state change. Otherwise remove it.
+- Reveal: once, opacity + 16px translate, 600ms ease-out, 50ms stagger.
+- Max one marquee per site (default: none).
+- Reduced motion: no transforms, opacity-only or none.
+
+## Forbidden "AI tells"
+Version labels in hero, "Trusted by" without real logos, city/time/weather strips, scroll cues, decorative status dots, step labels like "Step 1 / Phase 01", micro-meta sentences under headings, photo-credit captions on non-credited images, "Quietly trusted by", fake precise numbers (92%, 4.1x) without a real source.
+
+## Pre-flight (before saying a page is done)
+Run `design-taste-frontend` Section 14 checklist and `web-design-guidelines` on changed files. Report the result as a checklist in your summary. A single failed box means not done.

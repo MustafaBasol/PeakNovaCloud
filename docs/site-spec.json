@@ -1,0 +1,216 @@
+{
+  "$comment": "Single source of truth for routes, page structure, redirects, contact form and SEO. Copy lives in docs/content-brief.md and messages/*.json. Section ids are stable anchors and analytics keys; do not rename without owner approval.",
+  "site": {
+    "name": "PeakNova",
+    "origin": "https://www.peaknovas.com",
+    "locales": ["tr", "en", "fr", "de"],
+    "defaultLocale": "en",
+    "localeDetection": "Accept-Language at / via .htaccess; never IP-based",
+    "theme": "dark (default D1, see AGENTS.md)",
+    "output": "static export (default D2, see AGENTS.md)"
+  },
+
+  "navigation": {
+    "primary": [
+      { "key": "services", "href": "/{locale}/services/", "children": ["ai-agents", "ai-solutions", "automation", "full-stack", "crm-salesforce"] },
+      { "key": "work", "href": "/{locale}/work/" },
+      { "key": "blog", "href": "/{locale}/blog/" },
+      { "key": "about", "href": "/{locale}/about/" }
+    ],
+    "cta": { "intent": "contact", "href": "/{locale}/contact/" },
+    "utility": ["localeSwitcher"],
+    "footer": {
+      "columns": [
+        { "key": "services", "links": ["ai-agents", "ai-solutions", "automation", "full-stack", "crm-salesforce"] },
+        { "key": "company", "links": ["work", "blog", "about", "contact"] },
+        { "key": "legal", "links": ["privacy", "legal"] }
+      ],
+      "bottom": ["copyright", "email", "socialLinks (owner input #7)", "localeSwitcher"]
+    }
+  },
+
+  "routes": [
+    {
+      "id": "home",
+      "path": "/{locale}/",
+      "scene": "live (see .cursor/rules/20-scene.mdc)",
+      "journeyWrapper": "#journey wraps sections hero..summit",
+      "sections": [
+        {
+          "id": "hero",
+          "sceneProgress": 0.0,
+          "layout": "Left-aligned text column (cols 1-7) over the scene, mountain framed on the right.",
+          "content": ["headline", "subtext (<=20 words)", "primary CTA (contact intent)", "secondary text link to /work/noramedi/"],
+          "rules": "No eyebrow. No trust strip, no scroll cue. Must fit 1440x900 and 390x844."
+        },
+        {
+          "id": "capabilities",
+          "sceneProgress": 0.2,
+          "layout": "Scroll-synced list: a sticky left column holds the section headline; on the right 4 capability blocks scroll past, the active one at full opacity and the others at text-subtle. Not cards.",
+          "content": ["section headline", "4 capability blocks: ai-agents, ai-solutions, automation, full-stack. Each: title, 1 sentence, 3 concrete examples as plain text, link to service page"],
+          "mobile": "Simple vertical stack, no sticky.",
+          "rules": "CRM/Salesforce is NOT listed here; it has its own compact section later."
+        },
+        {
+          "id": "approach",
+          "sceneProgress": 0.4,
+          "layout": "Horizontal 4-column timeline on desktop (single row, thin connecting hairline), vertical on mobile. Verb-led labels, no 'Step 1'.",
+          "content": ["section headline", "4 stages: Understand, Design, Build, Run. Each: verb label + 1-2 sentences"]
+        },
+        {
+          "id": "product-noramedi",
+          "sceneProgress": 0.58,
+          "layout": "Full-bleed band, the camera is above the clouds here. Large framed product screenshot (real, demo data) with a short text block and link to the case study. This is the one place brand-blue may appear as a large surface (screenshot backdrop).",
+          "content": ["eyebrow allowed here ('Our product' / localized)", "headline", "2 sentences", "link to /work/noramedi/", "screenshot slot: noramedi-dashboard (owner input #4)"],
+          "rules": "No fake UI. If the screenshot is missing, the section shows a labeled placeholder in dev and the production build fails."
+        },
+        {
+          "id": "principles",
+          "sceneProgress": 0.75,
+          "layout": "Asymmetric bento, exactly 4 cells: one large (2x2) + three small. At least 2 cells with visual variation (a real architecture diagram image, a tinted surface, a code excerpt in Geist Mono).",
+          "content": ["section headline", "4 principles from content brief: privacy by design, multi-tenant isolation, reliable automation (idempotency, retries), human in the loop"]
+        },
+        {
+          "id": "crm",
+          "sceneProgress": 0.85,
+          "layout": "Compact single-row band: one sentence + link to /services/crm-salesforce/. Quiet, secondary.",
+          "content": ["one sentence about CRM and Salesforce expertise", "text link"]
+        },
+        {
+          "id": "writing",
+          "sceneProgress": 0.9,
+          "layout": "Latest 3 posts as a simple 3-row list with date and title (not cards), link to /blog/.",
+          "content": ["section headline", "3 latest posts in this locale"],
+          "rules": "If the locale has fewer than 2 posts, hide this section."
+        },
+        {
+          "id": "summit",
+          "sceneProgress": 1.0,
+          "layout": "Centered manifesto moment, the only centered section. Gold appears in the heading accent word or a thin gold rule, nowhere else. Stars ignite in the scene behind.",
+          "content": ["headline", "1 sentence", "primary CTA (contact intent)"]
+        }
+      ]
+    },
+    {
+      "id": "services-index",
+      "path": "/{locale}/services/",
+      "sections": ["page header (headline + lead)", "5 services as a 2-column list with large titles and one sentence each, ordered by positioning hierarchy", "summit CTA band (static still)"]
+    },
+    {
+      "id": "service",
+      "path": "/{locale}/services/{slug}/",
+      "slugs": ["ai-agents", "ai-solutions", "automation", "full-stack", "crm-salesforce"],
+      "template": [
+        "header: headline + lead (<= 30 words) + contact CTA",
+        "problems we solve: 3 concrete situations (text, no icons-in-circles)",
+        "what we build: 4-6 deliverables grouped in 2 columns",
+        "how we work on this: 3-4 sentences specific to the service",
+        "technology: stack chips in Geist Mono (plain text, no logos unless real SVGs from simple-icons)",
+        "related case study or post (only if one exists)",
+        "FAQ: 4-6 questions, native <details>, unique questions only",
+        "contact CTA band"
+      ],
+      "crmSalesforce": "Hub only. Existing Salesforce offering pages are linked from this page. They are not removed and not merged into this page."
+    },
+    {
+      "id": "salesforce-offering",
+      "path": "/{locale}/services/crm-salesforce/{slug}/",
+      "slugs": ["sales-cloud", "service-cloud", "marketing-cloud", "commerce-cloud", "tableau-analytics", "einstein-ai", "mulesoft-integration", "slack"],
+      "source": "Existing service-page copy for that slug. Keep the substance. Restyle with the new site template.",
+      "template": "Same service template as the other services. Reached from the crm-salesforce hub, not from the primary nav."
+    },
+    {
+      "id": "work-index",
+      "path": "/{locale}/work/",
+      "sections": ["page header", "case study list (cards allowed: browsable items) with cover image, title, 1-line summary, tags"],
+      "rules": "Only real projects. At launch: NoraMedi. Add more only when the owner provides them."
+    },
+    {
+      "id": "case-study",
+      "path": "/{locale}/work/{slug}/",
+      "slugs": ["noramedi"],
+      "source": "content/{locale}/work/{slug}.mdx",
+      "template": ["hero: title, one-line summary, meta row (role, services, stack, year, live link)", "context", "problem", "approach", "architecture (real diagram image)", "key decisions (3-5)", "result / current status (no invented metrics)", "screenshots (real, demo data)", "next case study or contact CTA"]
+    },
+    {
+      "id": "blog-index",
+      "path": "/{locale}/blog/",
+      "sections": ["page header", "tag filter (URL query param ?tag=, client-side, works without JS by showing all)", "post list"]
+    },
+    {
+      "id": "blog-post",
+      "path": "/{locale}/blog/{slug}/",
+      "source": "content/{locale}/blog/{slug}.mdx",
+      "template": ["title, date, reading time, tags", "720px article column", "table of contents on wide screens (sticky, left)", "related posts (same tag, max 2)", "contact CTA band"]
+    },
+    {
+      "id": "about",
+      "path": "/{locale}/about/",
+      "sections": ["header with summit still", "why PeakNova exists (name story: peak + nova)", "how we work (principles)", "what we believe about AI in operations", "contact CTA"],
+      "rules": "No team size, no team grid unless owner supplies photos and names."
+    },
+    {
+      "id": "contact",
+      "path": "/{locale}/contact/",
+      "sections": ["header (headline + one sentence on what happens next)", "contact form (2/3 width) + side column: what to expect (reply within 2 business days, owner to confirm), email address", "privacy note linking to /privacy/"]
+    },
+    { "id": "privacy", "path": "/{locale}/privacy/", "source": "content/{locale}/legal/privacy.mdx", "rules": "GDPR + KVKK. Owner/lawyer must review. Lists: controller, data collected via form, purpose, legal basis, retention, rights, contact." },
+    { "id": "legal", "path": "/{locale}/legal/", "source": "content/{locale}/legal/legal-notice.mdx", "rules": "Impressum / mentions légales. Requires owner input #2. Production build fails if placeholders remain." },
+    { "id": "not-found", "path": "/{locale}/404.html", "sections": ["short message", "links to home, services, contact"] }
+  ],
+
+  "redirects": {
+    "$comment": "Legacy URLs from the old peaknovas.com. ':locale' matches tr|en (and any other locale the old site served; owner to confirm). All are 301. gen-htaccess.ts compiles these to RewriteRules.",
+    "rules": [
+      { "from": "/:locale/projects", "to": "/:locale/work/" },
+      { "from": "/:locale/blogs", "to": "/:locale/blog/" },
+      { "from": "/:locale/blogs/:slug", "to": "/:locale/blog/:slug/" },
+      { "from": "/:locale/policy", "to": "/:locale/privacy/" },
+      { "from": "/:locale/services/salesforce-consulting", "to": "/:locale/services/crm-salesforce/" },
+      { "from": "/:locale/services/sales-cloud", "to": "/:locale/services/crm-salesforce/sales-cloud/" },
+      { "from": "/:locale/services/service-cloud", "to": "/:locale/services/crm-salesforce/service-cloud/" },
+      { "from": "/:locale/services/marketing-cloud", "to": "/:locale/services/crm-salesforce/marketing-cloud/" },
+      { "from": "/:locale/services/commerce-cloud", "to": "/:locale/services/crm-salesforce/commerce-cloud/" },
+      { "from": "/:locale/services/tableau-analytics", "to": "/:locale/services/crm-salesforce/tableau-analytics/" },
+      { "from": "/:locale/services/einstein-ai", "to": "/:locale/services/crm-salesforce/einstein-ai/" },
+      { "from": "/:locale/services/mulesoft-integration", "to": "/:locale/services/crm-salesforce/mulesoft-integration/" },
+      { "from": "/:locale/services/slack", "to": "/:locale/services/crm-salesforce/slack/" },
+      { "from": "/:locale/services/workflow-automation", "to": "/:locale/services/automation/" },
+      { "from": "/:locale/services/digital-solutions", "to": "/:locale/services/full-stack/" }
+    ],
+    "legacyBlogSlugs": [
+      "salesforcede-einstein-ai-ile-baslangic",
+      "sales-cloud-mi-service-cloud-mu",
+      "salesforce-projeleri-neden-basarisiz-olur"
+    ],
+    "legacyBlogNote": "Keep these slugs unchanged in /tr/blog/. English versions use their own slugs; ask the owner for the old /en/ slugs before launch."
+  },
+
+  "contactForm": {
+    "endpoint": "/api/contact.php",
+    "method": "POST",
+    "contentType": "application/json",
+    "fields": [
+      { "name": "firstName", "type": "text", "required": true, "autocomplete": "given-name", "maxLength": 80 },
+      { "name": "lastName", "type": "text", "required": true, "autocomplete": "family-name", "maxLength": 80 },
+      { "name": "email", "type": "email", "required": true, "autocomplete": "email", "maxLength": 254, "spellCheck": false },
+      { "name": "company", "type": "text", "required": false, "autocomplete": "organization", "maxLength": 120 },
+      { "name": "interest", "type": "checkbox-group", "required": true, "minSelected": 1, "options": ["ai-agents", "ai-solutions", "automation", "full-stack", "crm-salesforce", "other"] },
+      { "name": "message", "type": "textarea", "required": true, "minLength": 20, "maxLength": 4000, "rows": 6 },
+      { "name": "consent", "type": "checkbox", "required": true, "label": "privacy consent with link to /{locale}/privacy/" },
+      { "name": "website", "type": "honeypot", "hidden": true, "tabIndex": -1, "autocomplete": "off" },
+      { "name": "startedAt", "type": "hidden", "note": "timestamp set on first interaction; server rejects submissions faster than 3 s" },
+      { "name": "locale", "type": "hidden" }
+    ],
+    "states": ["idle", "submitting (button keeps label + spinner)", "success (inline panel replaces form, aria-live polite, focus moved to it)", "error-validation (inline per field, focus first error)", "error-network (inline banner with retry, form data preserved)"],
+    "serverErrors": { "required": "required", "invalid": "invalid", "tooShort": "too_short", "tooLong": "too_long", "rateLimited": "rate_limited", "spam": "rejected" }
+  },
+
+  "seo": {
+    "titlePattern": "{pageTitle} | PeakNova",
+    "homeTitle": { "en": "PeakNova | AI Agents, Automation & Custom Software", "tr": "PeakNova | AI Ajanları, Otomasyon ve Özel Yazılım", "fr": "PeakNova | Agents IA, automatisation et logiciels sur mesure", "de": "PeakNova | KI-Agenten, Automatisierung und Individualsoftware" },
+    "jsonLd": ["Organization", "WebSite", "Service (service pages)", "Article + BreadcrumbList (blog, work)"],
+    "hreflang": "all available locales + x-default -> /en/",
+    "ogImage": "generated per page and locale, 1200x630"
+  }
+}

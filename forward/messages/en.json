@@ -1,0 +1,167 @@
+{
+  "meta": { "site": "PeakNova" },
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Start a project",
+    "menu": "Menu",
+    "close": "Close",
+    "skip": "Skip to content"
+  },
+  "footer": {
+    "services": "Services",
+    "studio": "Studio",
+    "note": "AI agents, automation, and custom software."
+  },
+  "shell": {
+    "note": "This page is part of the site foundation. Copy arrives in the next phase."
+  },
+  "home": {
+    "metaTitle": "PeakNova | AI Agents, Automation & Custom Software",
+    "hero": {
+      "headline": "AI agents that do real work.",
+      "subtext": "We design and build AI agents, automations and custom software that fit how your company actually operates.",
+      "cta": "Start a project",
+      "secondary": "See NoraMedi"
+    },
+    "capabilities": {
+      "headline": "What we build",
+      "ai-agents": {
+        "title": "AI agents",
+        "sentence": "Agents that answer customers, qualify requests, update your systems and hand off to a person when it matters.",
+        "examples": [
+          "Messaging agents on WhatsApp, Instagram and email",
+          "Back-office agents that read documents and update CRM or ERP records",
+          "Internal assistants grounded in your own data"
+        ]
+      },
+      "ai-solutions": {
+        "title": "AI solutions",
+        "sentence": "AI features inside your product or tools: search over your documents, classification, extraction and summarization, with evaluation and guardrails.",
+        "examples": [
+          "Retrieval over internal knowledge",
+          "Document extraction and classification",
+          "LLM features inside existing software"
+        ]
+      },
+      "automation": {
+        "title": "Automation",
+        "sentence": "Processes that run without copy and paste: triggers, integrations and scheduled jobs, with retries, logs and clear ownership.",
+        "examples": [
+          "Lead routing and follow-up",
+          "Reminders, notifications and data sync between tools",
+          "n8n or custom workers, depending on scale"
+        ]
+      },
+      "full-stack": {
+        "title": "Custom software",
+        "sentence": "Web platforms and SaaS products built for production: multi-tenant architecture, secure APIs, background workers and interfaces people enjoy using.",
+        "examples": [
+          "SaaS platforms",
+          "Customer and partner portals",
+          "Internal tools and dashboards"
+        ]
+      }
+    },
+    "approach": {
+      "headline": "How we work",
+      "understand": {
+        "label": "Understand",
+        "text": "We map how work actually flows: who decides, where data lives, what breaks."
+      },
+      "design": {
+        "label": "Design",
+        "text": "We choose the smallest system that solves the problem, and where a person stays in the loop."
+      },
+      "build": {
+        "label": "Build",
+        "text": "We ship in short iterations to a real environment, with tests, logging and access control from day one."
+      },
+      "run": {
+        "label": "Run",
+        "text": "We monitor, measure and improve after launch. You own the code and the data."
+      }
+    },
+    "product": {
+      "eyebrow": "Our product",
+      "headline": "NoraMedi: the operating platform for clinics",
+      "text": "A multi-tenant platform for dental clinics and clinic groups. Appointments, treatment, finance and patient messaging in one place, with AI that answers WhatsApp and Instagram at any hour.",
+      "link": "Read the case study",
+      "pending": "NoraMedi dashboard screenshot is not in the repo yet. Demo data only.",
+      "imageAlt": "NoraMedi dashboard"
+    },
+    "principles": {
+      "headline": "How we engineer",
+      "privacy": {
+        "title": "Privacy by design",
+        "text": "Personal data is minimized. Where records must be kept, it is anonymized instead of deleted, and every sensitive action leaves an audit trail. Designed with GDPR and KVKK requirements in mind."
+      },
+      "isolation": {
+        "title": "Tenant isolation",
+        "text": "Every query is scoped to what the user may access, not to a default value in a token."
+      },
+      "automation": {
+        "title": "Reliable automation",
+        "text": "Webhooks are idempotent, jobs retry with backoff, and failures are visible, never silent."
+      },
+      "human": {
+        "title": "Human in the loop",
+        "text": "Agents act within clear limits. When a case is ambiguous or urgent, a person decides."
+      },
+      "diagram": {
+        "label": "Organization to clinic to domain records, with the API and the worker kept separate",
+        "organization": "Organization",
+        "clinic": "Clinic",
+        "records": "Records",
+        "api": "API",
+        "worker": "Worker"
+      }
+    },
+    "crm": {
+      "sentence": "We also design and fix Salesforce and CRM platforms, and connect them to the AI and automation we build.",
+      "link": "CRM and Salesforce"
+    },
+    "summit": {
+      "headline": "Have a process worth automating?",
+      "sentence": "Tell us how it works today. We'll reply with a clear next step.",
+      "cta": "Start a project"
+    }
+  },
+  "pages": {
+    "services": "Services",
+    "work": "Work",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Start a project",
+    "privacy": "Privacy",
+    "legal": "Legal",
+    "missing": "Page not found"
+  },
+  "services": {
+    "ai-agents": "AI agents",
+    "ai-solutions": "AI solutions",
+    "automation": "Automation",
+    "full-stack": "Custom software",
+    "crm-salesforce": "CRM and Salesforce"
+  },
+  "offerings": {
+    "sales-cloud": "Sales Cloud",
+    "service-cloud": "Service Cloud",
+    "marketing-cloud": "Marketing Cloud",
+    "commerce-cloud": "Commerce Cloud",
+    "tableau-analytics": "Tableau",
+    "einstein-ai": "Einstein AI",
+    "mulesoft-integration": "MuleSoft",
+    "slack": "Slack"
+  },
+  "work": { "noramedi": "NoraMedi" },
+  "locale": {
+    "tr": "TR",
+    "en": "EN",
+    "fr": "FR",
+    "de": "DE",
+    "label": "Language"
+  }
+}

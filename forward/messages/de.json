@@ -1,0 +1,167 @@
+{
+  "meta": { "site": "PeakNova" },
+  "nav": {
+    "services": "Leistungen",
+    "work": "Projekte",
+    "blog": "Blog",
+    "about": "Über uns",
+    "contact": "Projekt starten",
+    "menu": "Menü",
+    "close": "Schließen",
+    "skip": "Zum Inhalt springen"
+  },
+  "footer": {
+    "services": "Leistungen",
+    "studio": "Studio",
+    "note": "KI-Agenten, Automatisierung und Individualsoftware."
+  },
+  "shell": {
+    "note": "Diese Seite gehört zum Grundgerüst der Website. Der Text folgt in der nächsten Phase."
+  },
+  "home": {
+    "metaTitle": "PeakNova | KI-Agenten, Automatisierung und Individualsoftware",
+    "hero": {
+      "headline": "KI-Agenten, die echte Arbeit erledigen.",
+      "subtext": "Wir entwerfen KI-Agenten, Automatisierung und Individualsoftware, die zur realen Arbeit Ihres Unternehmens passen.",
+      "cta": "Projekt starten",
+      "secondary": "NoraMedi ansehen"
+    },
+    "capabilities": {
+      "headline": "Was wir bauen",
+      "ai-agents": {
+        "title": "KI-Agenten",
+        "sentence": "Agenten, die Kunden antworten, Anfragen qualifizieren, Ihre Systeme aktualisieren und die Aufgabe einer Person übergeben, wenn es darauf ankommt.",
+        "examples": [
+          "Nachrichtenagenten auf WhatsApp, Instagram und E-Mail",
+          "Backoffice-Agenten, die Dokumente lesen und CRM- oder ERP-Daten aktualisieren",
+          "Interne Assistenten auf Basis Ihrer eigenen Daten"
+        ]
+      },
+      "ai-solutions": {
+        "title": "KI-Lösungen",
+        "sentence": "KI-Funktionen in Ihrem Produkt oder Ihren Werkzeugen: Suche in Ihren Dokumenten, Klassifikation, Extraktion und Zusammenfassung, mit Auswertung und Grenzen.",
+        "examples": [
+          "Suche über internes Wissen",
+          "Extraktion und Klassifikation aus Dokumenten",
+          "LLM-Funktionen in bestehender Software"
+        ]
+      },
+      "automation": {
+        "title": "Automatisierung",
+        "sentence": "Abläufe ohne Kopieren und Einfügen: Auslöser, Integrationen und geplante Jobs, mit Wiederholung, Protokollen und klarer Verantwortung.",
+        "examples": [
+          "Lead-Verteilung und Nachfassen",
+          "Erinnerungen, Hinweise und Datenabgleich zwischen Werkzeugen",
+          "n8n oder eigene Worker, je nach Maßstab"
+        ]
+      },
+      "full-stack": {
+        "title": "Individualsoftware",
+        "sentence": "Webplattformen und SaaS-Produkte für den Betrieb: mandantenfähige Architektur, sichere APIs, Hintergrundjobs und Oberflächen, die sich gut bedienen lassen.",
+        "examples": [
+          "SaaS-Plattformen",
+          "Portale für Kunden und Partner",
+          "Interne Werkzeuge und Übersichten"
+        ]
+      }
+    },
+    "approach": {
+      "headline": "Wie wir arbeiten",
+      "understand": {
+        "label": "Verstehen",
+        "text": "Wir zeichnen den realen Arbeitsfluss auf: wer entscheidet, wo Daten liegen, was bricht."
+      },
+      "design": {
+        "label": "Entwerfen",
+        "text": "Wir wählen das kleinste System, das das Problem löst, und die Stelle, an der eine Person in der Schleife bleibt."
+      },
+      "build": {
+        "label": "Bauen",
+        "text": "Wir liefern in kurzen Zyklen in eine echte Umgebung, mit Tests, Protokollen und Zugriffskontrolle ab dem ersten Tag."
+      },
+      "run": {
+        "label": "Betreiben",
+        "text": "Nach dem Start beobachten, messen und verbessern wir. Code und Daten gehören Ihnen."
+      }
+    },
+    "product": {
+      "eyebrow": "Unser Produkt",
+      "headline": "NoraMedi: die Betriebsplattform für Kliniken",
+      "text": "Eine mandantenfähige Plattform für Zahnkliniken und Klinikgruppen. Termine, Behandlung, Finanzen und Patientennachrichten an einem Ort, mit KI, die WhatsApp und Instagram zu jeder Stunde beantwortet.",
+      "link": "Fallstudie lesen",
+      "pending": "Der NoraMedi-Dashboard-Screenshot liegt noch nicht im Repo. Nur Demodaten.",
+      "imageAlt": "NoraMedi-Dashboard"
+    },
+    "principles": {
+      "headline": "Wie wir entwickeln",
+      "privacy": {
+        "title": "Datenschutz durch Technik",
+        "text": "Personenbezogene Daten werden minimiert. Wo eine Akte bleiben muss, werden sie anonymisiert statt gelöscht, und jede sensible Aktion hinterlässt eine Spur. Entworfen mit Blick auf DSGVO und KVKK."
+      },
+      "isolation": {
+        "title": "Mandantenisolation",
+        "text": "Jede Abfrage gilt nur für das, worauf die Person zugreifen darf, nicht für einen Standardwert im Token."
+      },
+      "automation": {
+        "title": "Zuverlässige Automatisierung",
+        "text": "Webhooks sind idempotent, Jobs werden mit wachsendem Abstand wiederholt, Fehler bleiben sichtbar."
+      },
+      "human": {
+        "title": "Menschliche Kontrolle",
+        "text": "Agenten handeln in klaren Grenzen. Ist ein Fall unklar oder dringend, entscheidet eine Person."
+      },
+      "diagram": {
+        "label": "Von der Organisation zur Klinik und zu den Akten. API und Worker bleiben getrennt.",
+        "organization": "Organisation",
+        "clinic": "Klinik",
+        "records": "Akten",
+        "api": "API",
+        "worker": "Worker"
+      }
+    },
+    "crm": {
+      "sentence": "Wir entwerfen und reparieren auch Salesforce- und CRM-Plattformen und verbinden sie mit der KI und der Automatisierung, die wir bauen.",
+      "link": "CRM und Salesforce"
+    },
+    "summit": {
+      "headline": "Ein Prozess, der Automatisierung verdient?",
+      "sentence": "Erzählen Sie uns, wie er heute läuft. Wir antworten mit einem klaren nächsten Schritt.",
+      "cta": "Projekt starten"
+    }
+  },
+  "pages": {
+    "services": "Leistungen",
+    "work": "Projekte",
+    "blog": "Blog",
+    "about": "Über uns",
+    "contact": "Projekt starten",
+    "privacy": "Datenschutz",
+    "legal": "Impressum",
+    "missing": "Seite nicht gefunden"
+  },
+  "services": {
+    "ai-agents": "KI-Agenten",
+    "ai-solutions": "KI-Lösungen",
+    "automation": "Automatisierung",
+    "full-stack": "Individualsoftware",
+    "crm-salesforce": "CRM und Salesforce"
+  },
+  "offerings": {
+    "sales-cloud": "Sales Cloud",
+    "service-cloud": "Service Cloud",
+    "marketing-cloud": "Marketing Cloud",
+    "commerce-cloud": "Commerce Cloud",
+    "tableau-analytics": "Tableau",
+    "einstein-ai": "Einstein AI",
+    "mulesoft-integration": "MuleSoft",
+    "slack": "Slack"
+  },
+  "work": { "noramedi": "NoraMedi" },
+  "locale": {
+    "tr": "TR",
+    "en": "EN",
+    "fr": "FR",
+    "de": "DE",
+    "label": "Sprache"
+  }
+}

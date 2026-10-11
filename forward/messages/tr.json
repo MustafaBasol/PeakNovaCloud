@@ -1,0 +1,167 @@
+{
+  "meta": { "site": "PeakNova" },
+  "nav": {
+    "services": "Hizmetler",
+    "work": "Çalışmalar",
+    "blog": "Blog",
+    "about": "Hakkımızda",
+    "contact": "Proje başlatın",
+    "menu": "Menü",
+    "close": "Kapat",
+    "skip": "İçeriğe geç"
+  },
+  "footer": {
+    "services": "Hizmetler",
+    "studio": "Stüdyo",
+    "note": "Yapay zeka ajanları, otomasyon ve özel yazılım."
+  },
+  "shell": {
+    "note": "Bu sayfa sitenin iskeletinin parçası. Metin sonraki aşamada gelecek."
+  },
+  "home": {
+    "metaTitle": "PeakNova | AI Ajanları, Otomasyon ve Özel Yazılım",
+    "hero": {
+      "headline": "Gerçek iş yapan AI ajanları.",
+      "subtext": "Şirketinizin gerçekte nasıl çalıştığına uyan AI ajanları, otomasyonlar ve özel yazılımlar tasarlıyor ve geliştiriyoruz.",
+      "cta": "Proje başlatın",
+      "secondary": "NoraMedi'yi inceleyin"
+    },
+    "capabilities": {
+      "headline": "Neler inşa ediyoruz",
+      "ai-agents": {
+        "title": "AI ajanları",
+        "sentence": "Müşteriye yanıt veren, talepleri ayıklayan, sistemlerinizi güncelleyen ve gerektiğinde işi bir kişiye devreden ajanlar.",
+        "examples": [
+          "WhatsApp, Instagram ve e-posta üzerinde çalışan mesajlaşma ajanları",
+          "Belge okuyup CRM veya ERP kayıtlarını güncelleyen operasyon ajanları",
+          "Kendi verinizle çalışan şirket içi asistanlar"
+        ]
+      },
+      "ai-solutions": {
+        "title": "AI çözümleri",
+        "sentence": "Ürününüze veya araçlarınıza eklenen AI özellikleri: belgeleriniz üzerinde arama, sınıflandırma, veri çıkarma ve özetleme. Değerlendirme ve güvenlik sınırlarıyla birlikte.",
+        "examples": [
+          "Kurum içi bilgi üzerinde arama",
+          "Belgelerden veri çıkarma ve sınıflandırma",
+          "Mevcut yazılıma eklenen LLM özellikleri"
+        ]
+      },
+      "automation": {
+        "title": "Otomasyon",
+        "sentence": "Kopyala yapıştır olmadan işleyen süreçler: tetikleyiciler, entegrasyonlar ve zamanlanmış işler. Yeniden deneme, kayıt ve net sahiplikle.",
+        "examples": [
+          "Lead yönlendirme ve takip",
+          "Hatırlatmalar, bildirimler, araçlar arası veri senkronizasyonu",
+          "Ölçeğe göre n8n veya özel worker'lar"
+        ]
+      },
+      "full-stack": {
+        "title": "Özel yazılım",
+        "sentence": "Üretim için tasarlanmış web platformları ve SaaS ürünleri: çok kiracılı mimari, güvenli API'ler, arka plan işleri ve kullanması keyifli arayüzler.",
+        "examples": [
+          "SaaS platformları",
+          "Müşteri ve iş ortağı portalları",
+          "Şirket içi araçlar ve paneller"
+        ]
+      }
+    },
+    "approach": {
+      "headline": "Nasıl çalışıyoruz",
+      "understand": {
+        "label": "Anlamak",
+        "text": "İşin gerçekte nasıl aktığını çıkarıyoruz: kim karar veriyor, veri nerede duruyor, ne aksıyor."
+      },
+      "design": {
+        "label": "Tasarlamak",
+        "text": "Sorunu çözen en küçük sistemi ve bir kişinin nerede devrede kalacağını belirliyoruz."
+      },
+      "build": {
+        "label": "Geliştirmek",
+        "text": "Kısa döngülerle gerçek bir ortama teslim ediyoruz. Testler, kayıtlar ve erişim kontrolü ilk günden var."
+      },
+      "run": {
+        "label": "Yürütmek",
+        "text": "Yayından sonra izliyor, ölçüyor ve iyileştiriyoruz. Kodun ve verinin sahibi sizsiniz."
+      }
+    },
+    "product": {
+      "eyebrow": "Ürünümüz",
+      "headline": "NoraMedi: klinikler için işletim platformu",
+      "text": "Diş klinikleri ve klinik grupları için çok kiracılı bir platform. Randevu, tedavi, finans ve hasta mesajlaşması tek yerde; WhatsApp ve Instagram'ı günün her saati yanıtlayan AI ile.",
+      "link": "Vaka çalışmasını okuyun",
+      "pending": "NoraMedi pano görseli henüz repoda yok. Yalnızca demo veri.",
+      "imageAlt": "NoraMedi panosu"
+    },
+    "principles": {
+      "headline": "Mühendislik ilkelerimiz",
+      "privacy": {
+        "title": "Tasarımdan gizlilik",
+        "text": "Kişisel veri en aza indirilir. Kayıt saklama zorunluluğu olan yerde silmek yerine anonimleştirilir ve her hassas işlem iz bırakır. KVKK ve GDPR gereklilikleri göz önünde tutularak tasarlanır."
+      },
+      "isolation": {
+        "title": "Kiracı yalıtımı",
+        "text": "Her sorgu, kullanıcının erişebildiği kapsamla sınırlanır; varsayılan değerlerle değil."
+      },
+      "automation": {
+        "title": "Güvenilir otomasyon",
+        "text": "Webhook'lar idempotent, işler artan aralıklarla yeniden denenir, hatalar sessiz kalmaz."
+      },
+      "human": {
+        "title": "İnsan denetimi",
+        "text": "Ajanlar net sınırlar içinde çalışır. Belirsiz veya acil bir durumda karar bir kişiye kalır."
+      },
+      "diagram": {
+        "label": "Organizasyondan kliniğe, klinik kayıtlara. API ve worker ayrı.",
+        "organization": "Organizasyon",
+        "clinic": "Klinik",
+        "records": "Kayıtlar",
+        "api": "API",
+        "worker": "Worker"
+      }
+    },
+    "crm": {
+      "sentence": "Salesforce ve CRM platformlarını da tasarlıyor, düzeltiyor ve geliştirdiğimiz AI ve otomasyonlarla birbirine bağlıyoruz.",
+      "link": "CRM ve Salesforce"
+    },
+    "summit": {
+      "headline": "Otomatikleştirmeye değer bir süreciniz mi var?",
+      "sentence": "Bugün nasıl işlediğini anlatın. Size net bir sonraki adımla dönelim.",
+      "cta": "Proje başlatın"
+    }
+  },
+  "pages": {
+    "services": "Hizmetler",
+    "work": "Çalışmalar",
+    "blog": "Blog",
+    "about": "Hakkımızda",
+    "contact": "Proje başlatın",
+    "privacy": "Gizlilik",
+    "legal": "Yasal bilgiler",
+    "missing": "Sayfa bulunamadı"
+  },
+  "services": {
+    "ai-agents": "AI ajanları",
+    "ai-solutions": "AI çözümleri",
+    "automation": "Otomasyon",
+    "full-stack": "Özel yazılım",
+    "crm-salesforce": "CRM ve Salesforce"
+  },
+  "offerings": {
+    "sales-cloud": "Sales Cloud",
+    "service-cloud": "Service Cloud",
+    "marketing-cloud": "Marketing Cloud",
+    "commerce-cloud": "Commerce Cloud",
+    "tableau-analytics": "Tableau",
+    "einstein-ai": "Einstein AI",
+    "mulesoft-integration": "MuleSoft",
+    "slack": "Slack"
+  },
+  "work": { "noramedi": "NoraMedi" },
+  "locale": {
+    "tr": "TR",
+    "en": "EN",
+    "fr": "FR",
+    "de": "DE",
+    "label": "Dil"
+  }
+}
