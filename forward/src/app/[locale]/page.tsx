@@ -28,5 +28,12 @@ export default async function Page({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <HomePage content={homeTr} homeHref={`/${locale}/`} />;
+  const content = {
+    ...homeTr,
+    products: {
+      ...homeTr.products,
+      items: homeTr.products.items.filter((item) => item.id !== "yapifin"),
+    },
+  };
+  return <HomePage content={content} homeHref={`/${locale}/`} />;
 }

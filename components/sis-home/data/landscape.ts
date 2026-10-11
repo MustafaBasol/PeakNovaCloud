@@ -34,7 +34,7 @@ export const CLIMB_STARS_ORIGIN = { x: 663, y: 6 } as const;
 export const CLIMB_BASELINE_Y = 238;
 
 /**
- * Four stops on the left ridge of the logo mountain. (x, y) is the marker on the ridge,
+ * APPROVED preset: four stops on the left ridge of the logo mountain (hand-placed on the canvas). (x, y) is the marker on the ridge,
  * (sx, sy) is where the stone's centre rests (slightly above the ridge). Index = service index.
  */
 export const CLIMB_STOPS = [
@@ -43,3 +43,107 @@ export const CLIMB_STOPS = [
   { x: 528, y: 53, sx: 535, sy: 39 },
   { x: 594, y: 15, sx: 595, sy: 0 },
 ] as const;
+
+/**
+ * Left ridge of the logo mountain in climb coordinates (logo path point * 0.6 + (330, 15)),
+ * from the foot of the ridge to the main summit. Used to place stops for any item count.
+ */
+const LEFT_RIDGE: readonly (readonly [number, number])[] = [
+  [62.3, 290.1], [128.0, 234.3], [164.3, 206.7], [197.6, 186.3], [277.6, 108.5],
+  [343.7, 51.9], [372.7, 30.3], [400.8, 12.5], [423.3, 2.6], [442.7, 0.0],
+].map(([x, y]) => [330 + x * 0.6, 15 + y * 0.6] as const);
+
+export type ClimbStop = { x: number; y: number; sx: number; sy: number };
+
+/**
+ * Stops for the services climb. 4 items use the approved preset exactly.
+ * Any other count (3 to 6) is spread evenly by arc length from the ridge foot (x = 384) to the summit,
+ * so the last item always lands on the summit.
+ */
+export function climbStops(count: number): readonly ClimbStop[] {
+  if (count === 4) return CLIMB_STOPS;
+  if (count < 3 || count > 6) throw new Error(`climbStops: ${count} items is outside the supported 3 to 6`);
+  const start = 384;
+  const pts: [number, number][] = [];
+  for (let i = 0; i < LEFT_RIDGE.length - 1; i++) {
+    const [x1, y1] = LEFT_RIDGE[i];
+    const [x2, y2] = LEFT_RIDGE[i + 1];
+    if (x2 < start) continue;
+    pts.push(x1 < start ? [start, y1 + ((start - x1) / (x2 - x1)) * (y2 - y1)] : [x1, y1]);
+  }
+  pts.push([...LEFT_RIDGE[LEFT_RIDGE.length - 1]] as [number, number]);
+  const seg = pts.slice(1).map(([x, y], i) => Math.hypot(x - pts[i][0], y - pts[i][1]));
+  const total = seg.reduce((a, b) => a + b, 0);
+  return Array.from({ length: count }, (_, k) => {
+    let d = (total * k) / (count - 1);
+    let i = 0;
+    while (i < seg.length - 1 && d > seg[i]) { d -= seg[i]; i++; }
+    const t = seg[i] === 0 ? 0 : Math.min(1, d / seg[i]);
+    const x = pts[i][0] + (pts[i + 1][0] - pts[i][0]) * t;
+    const y = pts[i][1] + (pts[i + 1][1] - pts[i][1]) * t;
+    const last = k === count - 1;
+    return { x: Math.round(x), y: Math.round(y), sx: Math.round(x + (last ? 1 : 5)), sy: Math.round(y - 15) };
+  });
+}
+
+/**
+ * "Nasıl çalışıyoruz" blueprint: construction geometry drawn before the logo mountain outline.
+ * Same 1000 x 371 space as LOGO_MOUNTAIN_PATH. Order = draw order.
+ */
+export const BLUEPRINT_VIEWBOX = "-60 -110 1120 520";
+export const BLUEPRINT_CIRCLES: readonly { cx: number; cy: number; r: number }[] = [
+  { cx: 442, cy: 186, r: 186 },
+  { cx: 693, cy: 240, r: 132 },
+  { cx: 232, cy: 275, r: 96 },
+  { cx: 880, cy: 300, r: 70 },
+];
+export const BLUEPRINT_LINES: readonly string[] = [
+  "M-40 371 L1040 371",
+  "M-40 0 L1040 0",
+  "M442 -80 L442 400",
+  "M693 -80 L693 400",
+  "M0 348 L442 0",
+  "M442 0 L1000 356",
+  "M538 281 L693 107 L880 294",
+];
+/** Logo star positions in the same space: large star, small star. */
+export const BLUEPRINT_STARS = [
+  { cx: 555, cy: -3, core: 13, size: 27, halo: 90 },
+  { cx: 624, cy: 45, core: 9, size: 20, halo: 64 },
+] as const;
+
+/** Left ridge of the logo, foot to main summit. The process stone climbs this line. */
+const ASCENT_RIDGE: readonly (readonly [number, number])[] = [
+  [62.3, 290.1], [128.0, 234.3], [164.3, 206.7], [197.6, 186.3], [277.6, 108.5],
+  [343.7, 51.9], [372.7, 30.3], [400.8, 12.5], [423.3, 2.6], [442.7, 0.0],
+];
+
+export const ASCENT_RIDGE_PATH = `M${ASCENT_RIDGE.map(([x, y]) => `${x} ${y}`).join(" L")}`;
+
+function pointOnRidge(t: number): [number, number] {
+  const pts = ASCENT_RIDGE;
+  const seg = pts.slice(1).map(([x, y], i) => Math.hypot(x - pts[i][0], y - pts[i][1]));
+  const total = seg.reduce((sum, length) => sum + length, 0);
+  let distance = Math.min(1, Math.max(0, t)) * total;
+  let i = 0;
+  while (i < seg.length - 1 && distance > seg[i]) {
+    distance -= seg[i];
+    i += 1;
+  }
+  const [x1, y1] = pts[i];
+  const [x2, y2] = pts[i + 1];
+  const u = seg[i] === 0 ? 0 : distance / seg[i];
+  return [x1 + (x2 - x1) * u, y1 + (y2 - y1) * u];
+}
+
+/** Six stops, evenly spaced by ridge length. Index matches the process step. */
+export const ASCENT_STOPS: readonly (readonly [number, number])[] = Array.from(
+  { length: 6 },
+  (_, k) => pointOnRidge(k / 5),
+);
+
+/** Stone centre for progress 0..1. Sits just above the ridge. */
+export function ascentPoint(t: number): [number, number] {
+  const [x, y] = pointOnRidge(t);
+  return [x, y - 16];
+}

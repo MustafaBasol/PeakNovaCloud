@@ -1,0 +1,289 @@
+/*
+ * PeakNova home page motion (approved 2026-10-11: "Seçilen ana sayfa" = E3 Cam + E4 İnşa + E2 products).
+ * Import AFTER sis.css and sis-patterns.css.
+ *
+ * Rules:
+ *  - Only transform, opacity, filter, clip-path, stroke-dashoffset and background-position are animated.
+ *  - Every looping animation obeys the pause control: <html data-motion="paused"> (MotionToggle.tsx).
+ *  - prefers-reduced-motion: reduce shows every element in its final state, nothing moves.
+ *  - Entrance animations of below-the-fold sections run once, when Reveal.tsx sets data-reveal="play".
+ *    Without JavaScript the section is shown in its final state.
+ * Timings are copied 1:1 from the canvas artboard. Do not change them without owner approval.
+ */
+
+/* ---------- Pause control ---------- */
+html[data-motion="paused"] .pn-page *,
+html[data-motion="paused"] .pn-page *::before,
+html[data-motion="paused"] .pn-page *::after { animation-play-state: paused !important; }
+html[data-motion="paused"] .pn-blueprint,
+html[data-motion="paused"] .pn-blueprint * { animation-play-state: running !important; }
+
+/* ---------- 1. Hero: Nova glow breathes, lights drift behind the glass ---------- */
+.pn-stage .pn-nova__glow { transform-box: fill-box; transform-origin: center; animation: pn-breathe 6s ease-in-out infinite; }
+.pn-stage .pn-nova__glow--small { animation-delay: -3s; }
+.pn-stage__light--blue { animation: pn-orb 18s ease-in-out infinite alternate; }
+.pn-stage__light--white { animation: pn-orb 24s ease-in-out -8s infinite alternate-reverse; }
+
+@keyframes pn-breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.14); opacity: 0.75; } }
+@keyframes pn-orb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-60px, 40px) scale(1.1); }
+  100% { transform: translate(30px, -20px) scale(0.95); }
+}
+
+/* ---------- 2. Agent panel: 12 s loop ---------- */
+.pn-agent__pebble { animation: pn-bob 7s ease-in-out infinite; }
+.pn-agent__pebble--2 { animation-duration: 8.5s; animation-delay: -3s; }
+.pn-agent__pebble--3 { animation-duration: 9.5s; animation-delay: -5s; }
+@keyframes pn-bob {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
+}
+
+.pn-agent__live { animation: pn-live 2s ease-in-out infinite; }
+@keyframes pn-live { 0%, 100% { box-shadow: 0 0 0 0 rgba(42, 111, 194, 0.45); } 50% { box-shadow: 0 0 0 6px rgba(42, 111, 194, 0); } }
+
+.pn-agent__flow { animation: pn-flow 12s linear infinite; }
+@keyframes pn-flow { 0%, 90% { opacity: 1; } 95%, 100% { opacity: 0; } }
+
+.pn-agent__r1 { animation: pn-r1 12s var(--pn-soft) infinite; }
+.pn-agent__r2 { animation: pn-r2 12s var(--pn-soft) infinite; }
+.pn-agent__r3 { animation: pn-r3 12s var(--pn-soft) infinite; }
+.pn-agent__r4 { animation: pn-r4 12s var(--pn-soft) infinite; }
+.pn-agent__r5 { animation: pn-r5 12s var(--pn-soft) infinite; }
+@keyframes pn-r1 { 0%, 4% { opacity: 0; transform: translateY(12px); } 10%, 100% { opacity: 1; transform: none; } }
+@keyframes pn-r2 { 0%, 18% { opacity: 0; transform: translateY(12px); } 24%, 100% { opacity: 1; transform: none; } }
+@keyframes pn-r3 { 0%, 30% { opacity: 0; transform: translateY(12px); } 36%, 100% { opacity: 1; transform: none; } }
+@keyframes pn-r4 { 0%, 50% { opacity: 0; transform: translateY(12px); } 56%, 100% { opacity: 1; transform: none; } }
+@keyframes pn-r5 { 0%, 66% { opacity: 0; transform: translateY(12px); } 72%, 100% { opacity: 1; transform: none; } }
+
+.pn-agent__typing { animation: pn-typing 12s linear infinite; }
+@keyframes pn-typing { 0%, 40% { opacity: 0; max-height: 0; } 42%, 49% { opacity: 1; max-height: 30px; } 51%, 100% { opacity: 0; max-height: 0; } }
+.pn-agent__typing span { animation: pn-dot 900ms ease-in-out infinite; }
+.pn-agent__typing span:nth-child(2) { animation-delay: 150ms; }
+.pn-agent__typing span:nth-child(3) { animation-delay: 300ms; }
+@keyframes pn-dot { 0%, 100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(-3px); opacity: 1; } }
+
+.pn-agent__shimmer {
+  background: linear-gradient(90deg, var(--pn-blue) 0%, var(--pn-blue) 40%, #6fa0da 50%, var(--pn-blue) 60%, var(--pn-blue) 100%);
+  background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: pn-shimmer 2.4s linear infinite;
+}
+@keyframes pn-shimmer { from { background-position: 100% 0; } to { background-position: -150% 0; } }
+
+/* ---------- 3. How we work: the logo mountain draws itself (once, on reveal) ---------- */
+.pn-blueprint__guide, .pn-blueprint__mountain { stroke-dasharray: 1; stroke-dashoffset: 0; }
+
+.pn-process[data-reveal="armed"] .pn-blueprint__guide { stroke-dashoffset: 1; opacity: 1; }
+.pn-process[data-reveal="armed"] .pn-blueprint__mountain { stroke-dashoffset: 1; fill-opacity: 0; }
+.pn-process[data-reveal="armed"] .pn-blueprint__halo,
+.pn-process[data-reveal="armed"] .pn-blueprint__star,
+.pn-process[data-reveal="armed"] .pn-blueprint__summit,
+.pn-process[data-reveal="armed"] .pn-process__step { opacity: 0; }
+
+.pn-process[data-reveal="play"] .pn-blueprint__guide {
+  animation: pn-draw 1400ms var(--pn-ease) both, pn-dim 900ms ease 3200ms both;
+  animation-delay: calc(var(--i, 0) * 150ms), 3200ms;
+}
+.pn-process[data-reveal="play"] .pn-blueprint__mountain {
+  animation: pn-draw 2600ms var(--pn-ease) 900ms both, pn-fill 1200ms ease 3100ms both;
+}
+.pn-process[data-reveal="play"] .pn-blueprint__halo,
+.pn-process[data-reveal="play"] .pn-blueprint__star {
+  transform-box: fill-box; transform-origin: center;
+  animation: pn-pop 900ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(3700ms + var(--i, 0) * 200ms);
+}
+.pn-process[data-reveal="play"] .pn-blueprint__summit {
+  transform-box: fill-box; transform-origin: center;
+  animation: pn-pop 900ms cubic-bezier(0.34, 1.56, 0.64, 1) 4200ms both;
+}
+.pn-process[data-reveal="play"] .pn-process__step {
+  animation: pn-fade 900ms var(--pn-soft) both;
+  animation-delay: calc(4300ms + var(--i, 0) * 140ms);
+}
+/* After the entrance, the halos keep breathing like the hero stars. */
+.pn-blueprint__halo { transform-box: fill-box; transform-origin: center; }
+.pn-process:not([data-reveal="armed"]) .pn-blueprint__halo { animation: pn-breathe 6s ease-in-out 5s infinite; }
+.pn-process[data-reveal="play"] .pn-blueprint__halo {
+  animation: pn-pop 1200ms ease both, pn-breathe 6s ease-in-out infinite;
+  animation-delay: calc(3700ms + var(--i, 0) * 200ms), 5s;
+}
+
+@keyframes pn-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes pn-dim { from { opacity: 1; } to { opacity: 0.35; } }
+@keyframes pn-fill { from { fill-opacity: 0; } to { fill-opacity: 1; } }
+@keyframes pn-pop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: none; } }
+@keyframes pn-fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* ---------- 4. Product screens: slow 6 s loops ---------- */
+.pn-screen__slot { animation: pn-slot 6s var(--pn-soft) infinite; }
+@keyframes pn-slot {
+  0%, 8% { transform: scaleX(0); opacity: 0; }
+  22%, 80% { transform: scaleX(1); opacity: 1; }
+  92%, 100% { transform: scaleX(1); opacity: 0; }
+}
+.pn-screen__col { transform-box: fill-box; transform-origin: bottom; animation: pn-bar 6s var(--pn-soft) infinite; }
+@keyframes pn-bar { 0%, 6% { transform: scaleY(0.08); } 26%, 82% { transform: scaleY(1); } 96%, 100% { transform: scaleY(0.08); } }
+.pn-screen__trend { stroke-dasharray: 1; stroke-dashoffset: 1; animation: pn-trend 6s var(--pn-ease) infinite; }
+@keyframes pn-trend { 0%, 10% { stroke-dashoffset: 1; } 40%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1; } }
+.pn-screen__bubble, .pn-screen__label { animation: pn-msg 6s var(--pn-soft) infinite; }
+@keyframes pn-msg { 0%, 12% { opacity: 0; transform: translateY(8px); } 24%, 82% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; } }
+
+/* ---------- Reduced motion: final state, no movement ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .pn-page *, .pn-page *::before, .pn-page *::after { animation: none !important; transition: none !important; }
+  .pn-agent__typing { display: none; }
+  .pn-blueprint__guide { stroke-dashoffset: 0; opacity: 0.35; }
+  .pn-screen__trend { stroke-dashoffset: 0; }
+}
+
+/*
+ * The pattern sheet turns every .pn-process into a 3-column step list.
+ * On the home page this class is the section: title and drawing on top, cards below.
+ */
+section.pn-process {
+  display: block;
+  list-style: none;
+  margin: 0;
+  background: var(--pn-white);
+  padding: 128px var(--pn-gutter) 120px;
+}
+section.pn-process .pn-process__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+section.pn-process .pn-blueprint { width: min(640px, 100%); margin-top: 8px; }
+section.pn-process .pn-process__steps {
+  max-width: 1200px;
+  margin: 56px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+section.pn-process .pn-process__step {
+  padding: 28px 24px 26px;
+  background: var(--pn-mist);
+  border: 1px solid var(--pn-haze-2);
+  border-radius: 24px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 18px 40px -28px rgba(21, 88, 165, 0.55);
+}
+section.pn-process .pn-process__step::before { content: none; }
+
+.pn-ascent {
+  background: var(--pn-white);
+  padding: 128px var(--pn-gutter) 80px;
+}
+.pn-ascent__intro {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+.pn-ascent__title {
+  margin: 0;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+}
+.pn-ascent__title em { font-style: italic; }
+.pn-ascent__lead {
+  margin: 0;
+  max-width: 520px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--pn-muted);
+}
+.pn-ascent__grid {
+  max-width: 1180px;
+  margin: 56px auto 0;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 64px;
+  align-items: start;
+}
+.pn-ascent__stage {
+  position: sticky;
+  top: 96px;
+}
+.pn-ascent__mountain { width: 100%; height: auto; display: block; overflow: visible; }
+.pn-ascent__guides { fill: none; stroke: var(--pn-haze-4); stroke-width: 1.15; }
+.pn-ascent__outline { fill: var(--pn-haze-2); stroke: var(--pn-blue); stroke-width: 2.4; stroke-linejoin: round; }
+.pn-ascent__route { fill: none; stroke: var(--pn-haze-3); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.pn-ascent__trail { fill: none; stroke: var(--pn-point); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.pn-ascent__stop { fill: var(--pn-white); stroke: var(--pn-haze-3); stroke-width: 2; }
+.pn-ascent__stop[data-reached="true"] { fill: var(--pn-point); stroke: var(--pn-point); }
+.pn-ascent__stone { fill: var(--pn-blue); stroke: #fff; stroke-width: 5; }
+.pn-ascent__stars { opacity: 0; }
+.pn-ascent[data-ready="true"] .pn-ascent__stars { transition: opacity 700ms var(--pn-ease); }
+.pn-ascent__stars[data-on="true"] { opacity: 1; }
+.pn-ascent__sparkle { fill: var(--pn-gold); }
+.pn-ascent__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  min-height: 22px;
+  font-size: 14px;
+  color: var(--pn-muted);
+}
+.pn-ascent__dot { width: 8px; height: 8px; border-radius: 9px; background: var(--pn-point); flex: none; }
+.pn-ascent__meter { display: flex; gap: 6px; margin-top: 12px; }
+.pn-ascent__meter-seg { flex: 1; height: 3px; border-radius: 99px; background: var(--pn-haze-2); overflow: hidden; }
+.pn-ascent__meter-fill { display: block; height: 100%; background: var(--pn-point); transform-origin: left center; }
+.pn-ascent__steps { list-style: none; margin: 0; padding: 12vh 0 18vh; }
+.pn-ascent__step {
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  opacity: 0.38;
+}
+.pn-ascent[data-ready="true"] .pn-ascent__step { transition: opacity 420ms var(--pn-ease); }
+.pn-ascent__step[data-active="true"] { opacity: 1; }
+.pn-ascent__altitude {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pn-haze-4);
+}
+.pn-ascent__altitude span { width: 28px; height: 1px; background: currentColor; }
+.pn-ascent__verb { margin: 0; font-size: clamp(40px, 4.6vw, 64px); line-height: 1.02; font-weight: 400; letter-spacing: -0.02em; }
+.pn-ascent__text { margin: 0; max-width: 28rem; font-size: 18px; line-height: 1.55; color: var(--pn-muted); text-wrap: pretty; }
+.pn-ascent[data-reduce="true"] .pn-ascent__step,
+.pn-ascent:not([data-ready="true"]) .pn-ascent__step { opacity: 1; transition: none; }
+.pn-ascent[data-reduce="true"] .pn-ascent__stars { transition: none; }
+@media (max-width: 860px) {
+  .pn-ascent { padding: 88px var(--pn-gutter) 48px; }
+  .pn-ascent__title { font-size: 40px; }
+  .pn-ascent__grid { grid-template-columns: 1fr; gap: 8px; margin-top: 32px; }
+  .pn-ascent__stage {
+    top: 64px;
+    z-index: 2;
+    background: linear-gradient(var(--pn-white) 78%, transparent);
+    padding-bottom: 8px;
+  }
+  .pn-ascent__mountain { max-height: 200px; }
+  .pn-ascent__step { min-height: 64vh; }
+  .pn-ascent__verb { font-size: 36px; }
+}
+@media (max-width: 1180px) {
+  section.pn-process .pn-process__steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  section.pn-process { padding: 88px var(--pn-gutter) 88px; }
+  section.pn-process .pn-process__steps { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
+}

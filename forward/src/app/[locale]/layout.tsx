@@ -3,11 +3,13 @@ import { hasLocale } from "next-intl";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { instrumentSans, newsreader } from "@/features/home/components/fonts";
+import { fragmentMono, instrumentSans, newsreader } from "@/features/home/components/fonts";
 import { routing } from "@/i18n/routing";
 import { localeParams } from "@/lib/pages";
 import "@/styles/globals.css";
 import "@/styles/sis.css";
+import "@/styles/sis-patterns.css";
+import "@/styles/sis-motion.css";
 
 export function generateStaticParams() {
   return localeParams();
@@ -36,7 +38,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${newsreader.variable} ${instrumentSans.variable}`}>
+    <html lang={locale} className={`${newsreader.variable} ${instrumentSans.variable} ${fragmentMono.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>

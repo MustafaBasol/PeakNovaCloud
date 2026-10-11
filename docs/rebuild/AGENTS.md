@@ -1,12 +1,13 @@
 # PeakNova Website Rebuild: Agent Handbook
 
 > Read this file completely before writing any code. Then read, in order:
-> 1. `DESIGN.md` (design system, tokens, visual rules)
-> 2. `docs/site-spec.json` (routes, page sections, redirects, form schema, SEO)
-> 3. `docs/content-brief.md` (positioning, voice, source copy, glossary)
-> 4. `.cursor/rules/*.mdc` (enforced rules, auto-attached by Cursor)
+> 1. `docs/rebuild/senior-brief.md` (senior review, 11 Oct 2026). Binding for every later development and content change. It overrides this file where they conflict: no Hostinger static export, no PHP contact form, no dark theme, no scroll-driven 3D mountain, Salesforce is a practice and not the company identity.
+> 2. `DESIGN.md` (design system, tokens, visual rules)
+> 3. `docs/site-spec.json` (routes, page sections, redirects, form schema, SEO)
+> 4. `docs/content-brief.md` (positioning, voice, source copy, glossary)
+> 5. `.cursor/rules/*.mdc` (enforced rules, auto-attached by Cursor)
 >
-> If anything in these files conflicts, priority is: owner instruction in chat > AGENTS.md > DESIGN.md > .cursor/rules > docs/*.
+> If anything in these files conflicts, priority is: owner instruction in chat > `docs/rebuild/senior-brief.md` > AGENTS.md > DESIGN.md > .cursor/rules > docs/*.
 
 ---
 

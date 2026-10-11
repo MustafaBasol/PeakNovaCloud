@@ -1,5 +1,7 @@
 import "./globals.css";
 import "./sis.css";
+import "./sis-patterns.css";
+import "./sis-motion.css";
 import Header from "../../components/header/Header";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';

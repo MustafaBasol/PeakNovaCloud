@@ -36,8 +36,8 @@ export function NovaStars({ x, y, tone, id, className }: Props) {
           <stop offset="1" stopColor={glow.mid} stopOpacity={0} />
         </radialGradient>
       </defs>
-      <circle cx={0} cy={0} r={72} fill={`url(#${id}-glow)`} />
-      <circle cx={sx} cy={sy} r={52} fill={`url(#${id}-glow)`} />
+      <circle className="pn-nova__glow" cx={0} cy={0} r={72} fill={`url(#${id}-glow)`} />
+      <circle className="pn-nova__glow pn-nova__glow--small" cx={sx} cy={sy} r={52} fill={`url(#${id}-glow)`} />
       <g className="pn-nova__rays">
         {NOVA_RAYS.map(([x1, y1, x2, y2], i) => (
           <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />

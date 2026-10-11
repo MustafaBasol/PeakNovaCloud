@@ -14,32 +14,17 @@ test.describe("desktop", () => {
     });
   });
 
-  test("the stone climbs to the summit", async ({ page }) => {
-    await page.goto("/tr/");
-    await page.evaluate(() => document.fonts.ready);
-    const next = page.getByRole("button", { name: "Sonraki hizmet" });
-    await next.click();
-    await next.click();
-    await next.click();
-
-    await expect(page.getByRole("tab", { name: "Özel yazılım" })).toHaveAttribute("aria-selected", "true");
-    await expect(page.locator(".pn-climb__map")).toHaveAttribute("aria-label", "Taş zirvede, yıldızlar yandı");
-    await expect(page.locator(".pn-climb__stars")).toHaveCSS("opacity", "1");
-    await expect(next).toBeDisabled();
-    await expect(page.locator(".pn-climb")).toHaveScreenshot("sis-desktop-1440-services-summit.png", {
-      maxDiffPixelRatio: 0.01,
-    });
-  });
-
-  test("arrow key moves the selected service", async ({ page }) => {
+  test("arrow key moves the selected service area", async ({ page }) => {
     await page.goto("/tr/");
     const agents = page.getByRole("tab", { name: "AI ajanları" });
     await agents.focus();
-    await page.keyboard.press("ArrowRight");
-    const solutions = page.getByRole("tab", { name: "AI çözümleri" });
-    await expect(solutions).toHaveAttribute("aria-selected", "true");
-    await expect(solutions).toBeFocused();
-    await expect(page.locator(".pn-climb__map")).toHaveAttribute("aria-label", "Taş omuzda");
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+    const automation = page.getByRole("tab", { name: "Otomasyon" });
+    await expect(automation).toHaveAttribute("aria-selected", "true");
+    await expect(automation).toBeFocused();
+    await expect(page.locator("#pn-build-panel-automation")).toBeVisible();
+    await expect(page.locator("#pn-build-panel-ai-agents")).toBeHidden();
   });
 });
 
