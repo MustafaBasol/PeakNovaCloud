@@ -1,0 +1,57 @@
+---
+description: Rules for translations, copy, MDX content (blog, case studies), SEO metadata. Apply when editing messages, content or page metadata.
+globs: messages/**,content/**,src/app/**/page.tsx,src/app/**/layout.tsx,src/lib/seo*
+alwaysApply: false
+---
+
+# i18n, content and SEO
+
+## Locales
+- `tr`, `en`, `fr`, `de`. Every page exists in all four. Default for unknown languages: `en`.
+- URL shape: `/{locale}/{english-slug}/` (slugs stay English in every locale for simplicity and stable redirects). Example: `/de/services/ai-agents/`.
+- Source language for copy is Turkish and English (`docs/content-brief.md`). French and German are translated by you, then reviewed by a native speaker before launch. Mark machine-translated strings in a `translation-status.json` file so the owner can track review.
+
+## Translation quality
+- Translate meaning, not words. Respect each locale's business register:
+  - TR: "siz" form, direct, no anglicism where a natural Turkish word exists (but keep "AI ajanı" as the established term).
+  - EN: plain, confident, British/American neutral (use American spelling).
+  - FR: "vous", concise; avoid literal calques of English marketing phrases.
+  - DE: "Sie", precise; watch length (German UI strings run ~30% longer; test every button and nav item).
+- Use the glossary in `docs/content-brief.md` §7. Never translate brand or product names (PeakNova, NoraMedi, Salesforce, n8n, WhatsApp).
+- Typography per locale: French uses a non-breaking space before `: ; ? !` and «guillemets»; German uses „Anführungszeichen“; Turkish and English use “curly quotes”.
+- Dates and numbers via `Intl.DateTimeFormat` / `Intl.NumberFormat` with the page locale.
+- Turkish casing: use `toLocaleUpperCase("tr")` (i becomes İ). Never CSS `text-transform: uppercase` on Turkish strings without `lang="tr"` on the element.
+
+## Copy rules (all locales)
+- No em dash or en dash. No hype words (see design rules). No exclamation marks in headlines.
+- No numbers, clients, results, certifications or partner badges unless they appear in `docs/content-brief.md` as verified.
+- Never state team size. Use "we" / "biz" / "nous" / "wir" freely, but no "a team of N".
+- Never mention "Autoviseo".
+- One contact label per locale (content brief §3), used everywhere.
+
+## MDX content
+- Blog posts: `content/{locale}/blog/{slug}.mdx`. Case studies: `content/{locale}/work/{slug}.mdx`.
+- Frontmatter (validated by schema, build fails on errors):
+  ```yaml
+  title: string            # ≤ 60 chars
+  description: string      # 120-160 chars, used for meta description
+  date: YYYY-MM-DD
+  updated: YYYY-MM-DD?
+  tags: string[]           # from: ai-agents, ai-solutions, automation, full-stack, crm-salesforce, engineering, product
+  cover: string?           # path in public/, must exist
+  coverAlt: string?
+  translationOf: string    # shared key across locales for hreflang pairing
+  draft: boolean
+  ```
+- A post missing in a locale is not rendered in that locale's index and has no hreflang entry for it. The 3 migrated Salesforce posts may exist only in tr and en at first.
+- MDX components allowed: `Figure`, `Callout`, `CodeBlock` (Shiki, build-time), `Steps`. No raw HTML embeds.
+
+## SEO
+- `<title>` pattern: `{Page title} | PeakNova` (home: `PeakNova | AI Agents, Automation & Custom Software` localized).
+- Unique meta description per page and locale.
+- `hreflang` alternates for all available locales + `x-default` pointing to `/en/`.
+- Canonical URL per page (with trailing slash, `https://www.peaknovas.com`).
+- JSON-LD: `Organization` (name PeakNova, url, logo, sameAs from owner), `WebSite`, `Service` on service pages, `Article` + `BreadcrumbList` on posts and case studies.
+- `sitemap.xml` and `robots.txt` generated at build (`scripts/gen-sitemap.ts`).
+- OG images: generated at build per page and locale (`scripts/gen-og.ts`, satori or similar), 1200x630, dark canvas, logo, page title. No stock imagery.
+- Brand disambiguation: another company uses the name "PeakNova" on peaknova.com. Use "PeakNova" together with "AI" or the service name in titles and the `Organization` JSON-LD `description` so search engines separate the entities.

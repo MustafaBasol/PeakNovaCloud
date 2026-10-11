@@ -2,6 +2,10 @@
 
 # dependencies
 /node_modules
+forward/node_modules
+forward/.next
+forward/test-results
+forward/playwright-report
 /.pnp
 .pnp.js
 .yarn/install-state.gz

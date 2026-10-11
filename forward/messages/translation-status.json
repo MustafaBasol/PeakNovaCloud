@@ -1,0 +1,7 @@
+{
+  "tr": "source",
+  "en": "source",
+  "fr": "machine",
+  "de": "machine",
+  "note": "French and German strings are machine translated and need a native review before launch. Turkish and English home copy follows docs/content-brief.md. The Run stage states that the client owns the code and the data. That sentence is marked confirm in the brief."
+}

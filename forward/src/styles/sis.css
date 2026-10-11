@@ -1,0 +1,195 @@
+/*
+ * PeakNova home page, design direction "E. Sis".
+ * This file is the visual source of truth for the home page. Values are copied 1:1 from the
+ * approved design canvas. Do not "improve" spacing, sizes or colors; compare against
+ * handoff/sis-home/reference/*.png instead.
+ *
+ * Fonts are injected as CSS variables by next/font (see components/fonts.ts):
+ *   --pn-font-serif  Newsreader (variable, with italics and the opsz axis)
+ *   --pn-font-sans   Instrument Sans (variable)
+ */
+
+:root {
+  --pn-ink: #1b2433;
+  --pn-muted: #4b5668;
+  --pn-blue: #1558a5;
+  --pn-nova: #2a6fc2;
+  --pn-gold: #bba43f;
+  --pn-point: #e0592a;
+  --pn-white: #ffffff;
+  --pn-on-blue: #d6e2f2;
+  --pn-on-blue-soft: #c5d6ee; /* was #AFC6E4 on canvas; raised to pass WCAG AA (4.79:1) */
+  --pn-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --pn-gutter: 40px;
+  color-scheme: light;
+}
+
+.pn-page {
+  font-family: var(--pn-font-sans), "Instrument Sans", system-ui, sans-serif;
+  color: var(--pn-ink);
+  background: var(--pn-white);
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+.pn-page a { color: var(--pn-ink); text-decoration: none; }
+.pn-page a:hover { color: var(--pn-blue); }
+.pn-page :focus-visible { outline: 2px solid var(--pn-blue); outline-offset: 3px; border-radius: 4px; }
+.pn-serif { font-family: var(--pn-font-serif), "Newsreader", Georgia, serif; }
+.pn-skip { position: absolute; left: -9999px; top: 8px; background: var(--pn-ink); color: #fff !important; padding: 10px 16px; border-radius: 999px; z-index: 100; }
+.pn-skip:focus { left: 16px; }
+
+/* ---------- Header ---------- */
+.pn-header__inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 var(--pn-gutter); height: 76px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.pn-header__logo { display: flex; align-items: center; }
+.pn-header__logo img { height: 24px; width: auto; display: block; }
+.pn-header__links { display: flex; gap: 36px; font-size: 15px; list-style: none; margin: 0; padding: 0; }
+.pn-header__links a { color: var(--pn-muted); }
+.pn-header__cta {
+  font-size: 15px; font-weight: 500; color: var(--pn-ink);
+  border: 1px solid var(--pn-ink); padding: 9px 18px; border-radius: 999px; white-space: nowrap;
+}
+.pn-header__menu { display: none; position: relative; }
+.pn-header__menu summary {
+  list-style: none; cursor: pointer; font-size: 15px; font-weight: 500; padding: 9px 4px;
+}
+.pn-header__menu summary::-webkit-details-marker { display: none; }
+.pn-header__menu ul {
+  position: absolute; right: 0; top: 44px; z-index: 20; list-style: none; margin: 0; padding: 12px;
+  background: #fff; border: 1px solid rgba(27, 36, 51, 0.12); border-radius: 16px;
+  display: flex; flex-direction: column; gap: 4px; min-width: 200px;
+  box-shadow: 0 18px 40px rgba(27, 36, 51, 0.12);
+}
+.pn-header__menu li a { display: block; padding: 10px 12px; font-size: 16px; }
+
+/* ---------- Hero text ---------- */
+.pn-hero {
+  max-width: 1280px; margin: 0 auto; padding: 64px var(--pn-gutter) 0;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 28px;
+}
+.pn-hero__title {
+  grid-column: 1 / span 9; margin: 0;
+  font-size: clamp(52px, 6.4vw, 96px); line-height: 1.02; letter-spacing: -0.025em; font-weight: 300;
+  text-wrap: balance;
+}
+.pn-hero__title em { font-style: italic; font-weight: 400; }
+.pn-hero__lead {
+  grid-column: 1 / span 6; margin: 0; font-size: 19px; line-height: 1.55; color: var(--pn-muted); text-wrap: pretty;
+}
+.pn-hero__actions { grid-column: 1 / span 6; display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.pn-btn {
+  display: inline-block; background: var(--pn-ink); color: #fff !important; font-size: 16px; font-weight: 500;
+  padding: 14px 24px; border-radius: 999px; white-space: nowrap;
+  transition: transform 160ms var(--pn-ease), background-color 160ms ease;
+}
+.pn-btn:hover { background: #0f1724; }
+.pn-btn:active { transform: scale(0.98); }
+.pn-link { font-size: 16px; font-weight: 500; color: var(--pn-blue) !important; }
+
+/* ---------- Hero landscape ---------- */
+.pn-landscape { margin-top: 24px; }
+.pn-landscape svg { width: 100%; height: auto; display: block; }
+
+/* ---------- Nova stars ---------- */
+.pn-nova__rays { stroke-width: 0.6; opacity: 0.4; }
+.pn-nova--on-light .pn-nova__rays { stroke: var(--pn-nova); }
+.pn-nova--on-light .pn-nova__particles { fill: var(--pn-nova); }
+.pn-nova--on-blue .pn-nova__rays { stroke: #ffffff; }
+.pn-nova--on-blue .pn-nova__particles { fill: #ffffff; }
+.pn-nova__orbit, .pn-nova__sparkle { fill: var(--pn-gold); }
+.pn-nova__core { fill: #ffffff; }
+
+/* ---------- Services band ("climb" carousel) ---------- */
+.pn-climb { background: var(--pn-blue); color: #fff; padding: 24px var(--pn-gutter) 120px; }
+.pn-climb__inner { max-width: 1200px; margin: 0 auto; }
+.pn-climb__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: 40px; }
+.pn-climb__title { margin: 0; font-size: 56px; line-height: 1.05; letter-spacing: -0.02em; font-weight: 300; }
+.pn-climb__title em { font-style: italic; }
+.pn-climb__arrows { display: flex; gap: 10px; }
+.pn-climb__arrow {
+  width: 52px; height: 52px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.85);
+  background: transparent; color: #fff; font-size: 20px; cursor: pointer;
+  transition: border-color 200ms ease, color 200ms ease, background-color 200ms ease;
+}
+.pn-climb__arrow:hover:not(:disabled) { background: rgba(255, 255, 255, 0.08); }
+.pn-climb__arrow:disabled { border-color: rgba(255, 255, 255, 0.25); color: rgba(255, 255, 255, 0.35); cursor: default; }
+.pn-climb__arrow:focus-visible, .pn-climb__tab:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.pn-climb__map { width: 100%; height: auto; display: block; margin-bottom: 8px; overflow: visible; }
+.pn-climb__baseline { stroke: rgba(255, 255, 255, 0.28); stroke-width: 1; }
+.pn-climb__mountain { fill: rgba(255, 255, 255, 0.08); stroke: rgba(255, 255, 255, 0.75); stroke-width: 2.4; stroke-linejoin: round; }
+.pn-climb__stop { fill: rgba(255, 255, 255, 0.45); transition: fill 400ms ease; }
+.pn-climb__stop[data-reached="true"] { fill: var(--pn-point); }
+.pn-climb__stone { transition: transform 900ms var(--pn-ease); }
+.pn-climb__stone circle { fill: var(--pn-point); }
+.pn-climb__stars { opacity: 0; transition: opacity 900ms ease; }
+.pn-climb[data-step="3"] .pn-climb__stars { opacity: 1; }
+
+.pn-climb__viewport { overflow: hidden; }
+.pn-climb__track {
+  display: flex; gap: 48px;
+  transform: translateX(calc(var(--pn-step, 0) * -1 * (64% + 48px)));
+  transition: transform 700ms var(--pn-ease);
+}
+.pn-climb__card {
+  flex: 0 0 64%; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px;
+  padding: 28px 0 8px; border-top: 1px solid rgba(255, 255, 255, 0.28); opacity: 0.38;
+  transition: opacity 500ms ease, border-color 500ms ease;
+}
+.pn-climb__card[data-active="true"] { opacity: 1; border-top-color: rgba(255, 255, 255, 0.85); }
+.pn-climb__card-title { margin: 0; font-size: 44px; line-height: 1.05; font-weight: 400; }
+.pn-climb__card-text { margin: 0; font-size: 17px; line-height: 1.55; color: var(--pn-on-blue); }
+.pn-climb__card-examples { margin: 0; font-size: 14px; line-height: 1.6; color: var(--pn-on-blue-soft); }
+
+.pn-climb__tabs {
+  display: flex; gap: 28px; flex-wrap: wrap; margin-top: 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.28); padding-top: 18px;
+}
+.pn-climb__tab {
+  background: none; border: none; padding: 0 0 4px; cursor: pointer; font: inherit; font-size: 15px; font-weight: 500;
+  color: var(--pn-on-blue-soft); border-bottom: 1px solid transparent;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+.pn-climb__tab[aria-selected="true"] { color: #fff; border-bottom-color: #fff; }
+
+/* ---------- Closing CTA ---------- */
+.pn-cta { padding: 128px var(--pn-gutter) 136px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.pn-cta__dot { fill: var(--pn-point); }
+.pn-cta__title { margin: 0; max-width: 820px; font-size: 60px; line-height: 1.05; letter-spacing: -0.02em; font-weight: 300; text-wrap: balance; }
+.pn-cta__title em { font-style: italic; }
+.pn-cta__lead { margin: 0; font-size: 18px; color: var(--pn-muted); }
+.pn-cta .pn-btn { margin-top: 8px; }
+
+/* ---------- Responsive (not on the desktop canvas; defined here so mobile is intentional) ---------- */
+@media (max-width: 900px) {
+  .pn-header__links { display: none; }
+  .pn-header__menu { display: block; }
+}
+@media (max-width: 768px) {
+  :root { --pn-gutter: 20px; }
+  .pn-header__inner { height: 64px; }
+  .pn-header__cta { display: none; }
+  .pn-hero { padding-top: 40px; row-gap: 22px; }
+  .pn-hero__title, .pn-hero__lead, .pn-hero__actions { grid-column: 1 / -1; }
+  .pn-hero__title { font-size: clamp(40px, 11vw, 52px); }
+  .pn-hero__lead { font-size: 17px; }
+  /* Crop the landscape around the main peak instead of shrinking it to a strip. */
+  .pn-landscape svg { height: 300px; }
+  .pn-climb { padding-bottom: 88px; }
+  .pn-climb__title { font-size: 40px; }
+  .pn-climb__head { margin-bottom: 24px; }
+  /* Crop the climb map around the logo mountain (x 330-930) so it reads at phone width. */
+  .pn-climb__map { height: 180px; }
+  .pn-climb__track { gap: 24px; transform: translateX(calc(var(--pn-step, 0) * -1 * (86% + 24px))); }
+  .pn-climb__card { flex-basis: 86%; }
+  .pn-climb__card-title { font-size: 34px; }
+  .pn-climb__tabs { gap: 18px; }
+  .pn-cta { padding: 88px var(--pn-gutter) 96px; }
+  .pn-cta__title { font-size: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pn-climb__track, .pn-climb__stone, .pn-climb__stars, .pn-climb__card, .pn-climb__stop, .pn-btn { transition: none; }
+}

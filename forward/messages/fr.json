@@ -1,0 +1,167 @@
+{
+  "meta": { "site": "PeakNova" },
+  "nav": {
+    "services": "Services",
+    "work": "Réalisations",
+    "blog": "Blog",
+    "about": "À propos",
+    "contact": "Démarrer un projet",
+    "menu": "Menu",
+    "close": "Fermer",
+    "skip": "Aller au contenu"
+  },
+  "footer": {
+    "services": "Services",
+    "studio": "Studio",
+    "note": "Agents IA, automatisation et logiciel sur mesure."
+  },
+  "shell": {
+    "note": "Cette page fait partie de la structure du site. Le texte viendra à l’étape suivante."
+  },
+  "home": {
+    "metaTitle": "PeakNova | Agents IA, automatisation et logiciels sur mesure",
+    "hero": {
+      "headline": "Des agents IA qui font le vrai travail.",
+      "subtext": "Nous concevons des agents IA, des automatisations et des logiciels adaptés au travail réel de votre entreprise.",
+      "cta": "Démarrer un projet",
+      "secondary": "Voir NoraMedi"
+    },
+    "capabilities": {
+      "headline": "Ce que nous construisons",
+      "ai-agents": {
+        "title": "Agents IA",
+        "sentence": "Des agents qui répondent aux clients, qualifient les demandes, mettent vos systèmes à jour et passent la main à une personne quand il le faut.",
+        "examples": [
+          "Agents de messagerie sur WhatsApp, Instagram et l’e-mail",
+          "Agents de back-office qui lisent des documents et mettent à jour le CRM ou l’ERP",
+          "Assistants internes ancrés dans vos propres données"
+        ]
+      },
+      "ai-solutions": {
+        "title": "Solutions IA",
+        "sentence": "Des fonctions IA dans votre produit ou vos outils : recherche dans vos documents, classification, extraction et résumé, avec évaluation et garde-fous.",
+        "examples": [
+          "Recherche sur la connaissance interne",
+          "Extraction et classification de documents",
+          "Fonctions LLM dans un logiciel existant"
+        ]
+      },
+      "automation": {
+        "title": "Automatisation",
+        "sentence": "Des processus sans copier-coller : déclencheurs, intégrations et tâches planifiées, avec nouvelles tentatives, journaux et un responsable clair.",
+        "examples": [
+          "Routage et suivi des leads",
+          "Rappels, notifications et synchro des données entre outils",
+          "n8n ou workers dédiés, selon l’échelle"
+        ]
+      },
+      "full-stack": {
+        "title": "Logiciel sur mesure",
+        "sentence": "Plateformes web et produits SaaS conçus pour la production : architecture multi-locataire, API sûres, workers et interfaces agréables à utiliser.",
+        "examples": [
+          "Plateformes SaaS",
+          "Portails clients et partenaires",
+          "Outils internes et tableaux de bord"
+        ]
+      }
+    },
+    "approach": {
+      "headline": "Comment nous travaillons",
+      "understand": {
+        "label": "Comprendre",
+        "text": "Nous cartographions le flux réel du travail : qui décide, où vivent les données, ce qui casse."
+      },
+      "design": {
+        "label": "Concevoir",
+        "text": "Nous choisissons le plus petit système qui résout le problème, et où une personne reste dans la boucle."
+      },
+      "build": {
+        "label": "Construire",
+        "text": "Nous livrons par courtes itérations dans un environnement réel, avec tests, journaux et contrôle d’accès dès le premier jour."
+      },
+      "run": {
+        "label": "Exploiter",
+        "text": "Après la mise en ligne, nous surveillons, mesurons et améliorons. Le code et les données vous appartiennent."
+      }
+    },
+    "product": {
+      "eyebrow": "Notre produit",
+      "headline": "NoraMedi : la plateforme d’exploitation des cliniques",
+      "text": "Une plateforme multi-locataire pour les cliniques dentaires et les groupes. Rendez-vous, soins, finance et messages patients au même endroit, avec une IA qui répond sur WhatsApp et Instagram à toute heure.",
+      "link": "Lire l’étude de cas",
+      "pending": "La capture du tableau de bord NoraMedi n’est pas encore dans le dépôt. Données de démo uniquement.",
+      "imageAlt": "Tableau de bord NoraMedi"
+    },
+    "principles": {
+      "headline": "Nos principes d'ingénierie",
+      "privacy": {
+        "title": "Confidentialité dès la conception",
+        "text": "Les données personnelles sont réduites au minimum. Là où un dossier doit être conservé, elles sont anonymisées plutôt que supprimées, et chaque action sensible laisse une trace. Conçu avec le RGPD et la KVKK en tête."
+      },
+      "isolation": {
+        "title": "Isolation des locataires",
+        "text": "Chaque requête est limitée à ce que l’utilisateur peut voir, pas à une valeur par défaut dans un jeton."
+      },
+      "automation": {
+        "title": "Automatisation fiable",
+        "text": "Les webhooks sont idempotents, les tâches sont relancées avec un délai croissant, et les échecs restent visibles."
+      },
+      "human": {
+        "title": "Supervision humaine",
+        "text": "Les agents agissent dans des limites claires. Si un cas est ambigu ou urgent, une personne décide."
+      },
+      "diagram": {
+        "label": "De l’organisation à la clinique, puis aux dossiers. L’API et le worker restent séparés.",
+        "organization": "Organisation",
+        "clinic": "Clinique",
+        "records": "Dossiers",
+        "api": "API",
+        "worker": "Worker"
+      }
+    },
+    "crm": {
+      "sentence": "Nous concevons et remettons aussi en ordre des plateformes Salesforce et CRM, puis nous les relions à l’IA et à l’automatisation que nous construisons.",
+      "link": "CRM et Salesforce"
+    },
+    "summit": {
+      "headline": "Un processus qui mérite d’être automatisé\u00a0?",
+      "sentence": "Dites-nous comment il fonctionne aujourd’hui. Nous répondons avec une prochaine étape claire.",
+      "cta": "Démarrer un projet"
+    }
+  },
+  "pages": {
+    "services": "Services",
+    "work": "Réalisations",
+    "blog": "Blog",
+    "about": "À propos",
+    "contact": "Démarrer un projet",
+    "privacy": "Confidentialité",
+    "legal": "Mentions légales",
+    "missing": "Page introuvable"
+  },
+  "services": {
+    "ai-agents": "Agents IA",
+    "ai-solutions": "Solutions IA",
+    "automation": "Automatisation",
+    "full-stack": "Logiciel sur mesure",
+    "crm-salesforce": "CRM et Salesforce"
+  },
+  "offerings": {
+    "sales-cloud": "Sales Cloud",
+    "service-cloud": "Service Cloud",
+    "marketing-cloud": "Marketing Cloud",
+    "commerce-cloud": "Commerce Cloud",
+    "tableau-analytics": "Tableau",
+    "einstein-ai": "Einstein AI",
+    "mulesoft-integration": "MuleSoft",
+    "slack": "Slack"
+  },
+  "work": { "noramedi": "NoraMedi" },
+  "locale": {
+    "tr": "TR",
+    "en": "EN",
+    "fr": "FR",
+    "de": "DE",
+    "label": "Langue"
+  }
+}

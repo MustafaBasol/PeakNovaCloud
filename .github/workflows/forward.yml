@@ -1,0 +1,28 @@
+name: Forward site
+
+on:
+  push:
+    paths:
+      - "forward/**"
+      - ".github/workflows/forward.yml"
+  pull_request:
+    paths:
+      - "forward/**"
+      - ".github/workflows/forward.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: forward
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: forward/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
