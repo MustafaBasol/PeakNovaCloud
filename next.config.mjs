@@ -40,6 +40,14 @@ const nextConfig = {
 
     return config
   },
+  async redirects() {
+    return [
+      { source: '/:locale(en|fr|tr)/work', destination: '/:locale/projects', permanent: false },
+      { source: '/:locale(en|fr|tr)/work/:path*', destination: '/:locale/projects', permanent: false },
+      { source: '/:locale(en|fr|tr)/blog', destination: '/:locale/blogs', permanent: false },
+      { source: '/:locale(en|fr|tr)/blog/:path*', destination: '/:locale/blogs/:path*', permanent: false },
+    ]
+  },
   images: {
     remotePatterns: [
       {

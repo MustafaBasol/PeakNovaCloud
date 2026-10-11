@@ -1,10 +1,15 @@
-import React from 'react'
-import Services from '@/components/home-page/services/Services'
-import Contact from '@/components/contact/Contact'
-import Footer from '@/components/footer/Footer'
-import CookieAccepter from '@/components/CookieAccepter'
-import { getLogos, getPage, getPageMetadata } from '@/libs/serverData'
-import { getLocale } from 'next-intl/server'
+import Hero from "@/components/home-page/hero/Hero"
+import ServiceCall from "@/components/home-page/services/ServiceHome"
+import Contact from "@/components/contact/Contact"
+import Info from "@/components/home-page/info/Info"
+import About from "@/components/home-page/about/About"
+import ReachMe from "@/components/home-page/ReachMe"
+import Faq from "@/components/faq/Faq"
+import Footer from "@/components/footer/Footer"
+import BlogHolder from "@/components/blog/BlogHolder"
+import { getBlogs, getFaq, getPage, getPageMetadata } from "@/libs/serverData"
+import { getLocale } from "next-intl/server"
+import CookieAccepter from "@/components/CookieAccepter"
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -13,23 +18,24 @@ export async function generateMetadata({ params }) {
 
 export default async function ServicesIndexPage() {
   const locale = await getLocale()
-  const { data } = await getLogos(locale)
+  const FaqData = await getFaq(locale)
   const pageData = await getPage(locale, 'home')
+  const blogData = await getBlogs(locale)
 
   return (
-    <div className='bg-[--light]'>
-      <div className='h-max pt-24 pb-8 px-4'>
-        <h1 className='text-center text-3xl md:text-5xl text-gradient font-semibold py-4'>
-          Salesforce Services
-        </h1>
-        <p className='text-center max-w-2xl mx-auto text-[--text]'>
-          Explore our full range of Salesforce consulting, implementation, and support services.
-        </p>
+    <main>
+      <Hero pageData={pageData} />
+      <Info pageData={pageData} />
+      <div className="h-max flex items-center">
+        <ReachMe pageData={pageData} />
       </div>
-      <Services services={data} locale={locale} />
-      <Contact color='white' id={'services-contact'} pageData={pageData} />
+      <About />
+      <BlogHolder blogData={blogData.data} locale={locale} />
+      <ServiceCall locale={locale} />
+      <Faq data={FaqData} color={`primary`} />
+      <Contact id={'home-contact'} color='light' pageData={pageData} />
       <CookieAccepter locale={locale} />
-      <Footer color='var(--white)' />
-    </div>
+      <Footer color='var(--light)' />
+    </main>
   )
 }

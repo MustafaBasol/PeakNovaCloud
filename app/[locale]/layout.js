@@ -1,7 +1,9 @@
 import "./globals.css";
+import "./sis.css";
 import Header from "../../components/header/Header";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { headers } from 'next/headers';
 import { Montserrat } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { routing } from '../../i18n/routing';
@@ -21,6 +23,8 @@ export default async function RootLayout({ children, params }) {
   }
 
   const messages = await getMessages();
+  const pathname = (await headers()).get('x-pn-path') || '';
+  const isHome = /^\/(en|fr|tr)\/?$/.test(pathname);
 
   return (
     <html lang={locale} className={montserrat.variable} suppressHydrationWarning>
@@ -33,7 +37,7 @@ export default async function RootLayout({ children, params }) {
       </head>
       <body className={`font-site md:!overflow-y-scroll overflow-x-hidden smooth-scrool bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors`}>
         <NextIntlClientProvider messages={messages}>
-          <Header locale={locale} />
+          {isHome ? null : <Header locale={locale} />}
           {children}
         </NextIntlClientProvider>
       </body>

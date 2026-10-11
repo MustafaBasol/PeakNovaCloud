@@ -42,6 +42,16 @@ body,
   font-family: var(--font-site);
 }
 
+html:has(.pn-page) {
+  line-height: normal;
+  color-scheme: light;
+}
+
+html:has(.pn-page) body {
+  background: #ffffff;
+  color: #1b2433;
+}
+
 a:focus-visible,
 button:focus-visible,
 [role="button"]:focus-visible,

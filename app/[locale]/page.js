@@ -1,43 +1,33 @@
+import { HomePage } from "@/components/sis-home/components/HomePage";
+import { homeTr } from "@/components/sis-home/content/home.tr";
+import { instrumentSans, newsreader } from "@/components/sis-home/components/fonts";
 
-import Hero from "../../components/home-page/hero/Hero"
-import ServiceCall from "../../components/home-page/services/ServiceHome";
-import Contact from "../../components/contact/Contact";
-import Info from "../../components/home-page/info/Info";
-import About from "../../components/home-page/about/About";
-import ReachMe from "../../components/home-page/ReachMe";
-import Faq from "../../components/faq/Faq";
-import Footer from "../../components/footer/Footer";
-import BlogHolder from "@/components/blog/BlogHolder";
-import { getBlogs, getFaq, getPage, getPageMetadata } from "@/libs/serverData";
-import { getLocale } from "next-intl/server";
-import CookieAccepter from "@/components/CookieAccepter";
-
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return getPageMetadata(locale, 'home')
+function withLocale(content, locale) {
+  const swap = (href) => href.replace(/^\/tr(?=\/)/, `/${locale}`);
+  return {
+    ...content,
+    nav: content.nav.map((item) => ({ ...item, href: swap(item.href) })),
+    contactHref: swap(content.contactHref),
+    hero: { ...content.hero, secondaryHref: swap(content.hero.secondaryHref) },
+  };
 }
 
-export default async function Home() {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
+    title: "PeakNova | AI Ajanları, Otomasyon ve Özel Yazılım",
+    description: homeTr.hero.lead,
+    alternates: {
+      canonical: `https://www.peaknovas.com/${locale}`,
+    },
+  };
+}
 
-const locale = await getLocale()
-const FaqData = await getFaq(locale) 
-const pageData = await getPage(locale, 'home') 
-const blogData = await getBlogs(locale)
-
+export default async function Home({ params }) {
+  const { locale } = await params;
   return (
-    <main className="">   
-      <Hero pageData={pageData} />
-      <Info pageData={pageData} />
-      <div className="h-max flex items-center">
-        <ReachMe pageData={pageData} />
-      </div>       
-      <About />
-      <BlogHolder blogData={blogData.data} locale={locale} />
-      <ServiceCall locale={locale} />  
-      <Faq data={FaqData} color={`primary`}/>              
-      <Contact id={'home-contact'} color='light' pageData={pageData} />
-      <CookieAccepter locale={locale} />
-      <Footer color='var(--light)' />
-    </main>
+    <div className={`${newsreader.variable} ${instrumentSans.variable}`}>
+      <HomePage content={withLocale(homeTr, locale)} homeHref={`/${locale}`} />
+    </div>
   );
 }

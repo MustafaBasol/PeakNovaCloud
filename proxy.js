@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
 const intlMiddleware = createMiddleware(routing);
@@ -10,8 +10,12 @@ export default function proxy(request) {
 
   // Root path is handled by next-intl and redirected/re-written
   // according to the configured default locale.
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-pn-path', pathname);
+  const withPath = new NextRequest(request, { headers: requestHeaders });
+
   if (pathname === '/') {
-    return intlMiddleware(request);
+    return intlMiddleware(withPath);
   }
 
   const firstSegment = pathname.split('/').filter(Boolean)[0];
@@ -19,7 +23,7 @@ export default function proxy(request) {
   // Only explicitly supported locale prefixes may enter
   // the localized application routes.
   if (supportedLocales.has(firstSegment)) {
-    return intlMiddleware(request);
+    return intlMiddleware(withPath);
   }
 
   // Prevent arbitrary paths such as /xmlrpc.php, /sitemap.xml,
