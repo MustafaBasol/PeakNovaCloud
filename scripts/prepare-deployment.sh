@@ -37,9 +37,6 @@ export DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@127.0.0.
 echo "Generating Prisma client..."
 npx prisma generate
 
-echo "Applying Prisma schema..."
-npx prisma db push
-
 echo "Building application for production..."
 npm run build
 

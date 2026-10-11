@@ -7,6 +7,7 @@ import {
      updateServicePageById,
 } from '@/repositories/serviceRepository'
 import { authenticate } from '@/middleware/auth'
+import { writeFailure } from '@/libs/writeFailure'
 
 export async function GET(req, { params }) {
      const { serviceName: name } = await params
@@ -25,7 +26,7 @@ export async function POST(request) {
           const service = await createServicePage(req);
           return NextResponse.json({ success: true, data: service }, { status: 201 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -37,7 +38,7 @@ export async function DELETE(request) {
           const page = await deleteServicePageById(documentId);
           return NextResponse.json({ success: true, data: page }, { status: 200 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -49,6 +50,6 @@ export async function PATCH(request) {
           const page = await updateServicePageById(documentId, req)
           return NextResponse.json({ success: true, data: page }, { status: 200 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }

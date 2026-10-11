@@ -11,9 +11,8 @@ if [ ! -f .next/BUILD_ID ]; then
   npm run build
 fi
 
-echo "Applying Prisma schema..."
+echo "Generating Prisma client..."
 npx prisma generate
-npx prisma db push
 
 if [ -f .next/BUILD_ID ]; then
   echo "Starting Next.js production server..."

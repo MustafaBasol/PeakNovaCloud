@@ -10,7 +10,7 @@ export async function POST(request) {
         return NextResponse.json({ success: false, error: 'Password required' }, { status: 400 });
     }
     if (password !== thePassword) {
-        return NextResponse.json({ success: false, error: 'Invalid password.' }, { status: 400 });
+        return NextResponse.json({ success: false, error: 'Invalid password.' }, { status: 401 });
     }
     const token = generateToken();
     const response =  NextResponse.json({ success: true, message: 'Login successful', token });   

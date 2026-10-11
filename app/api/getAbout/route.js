@@ -7,6 +7,7 @@ import {
      updateAboutById,
 } from '@/repositories/aboutRepository'
 import { authenticate } from '../../../middleware/auth.js'
+import { writeFailure } from '@/libs/writeFailure'
 
 export async function GET(req) {
      const searchParams = (req.nextUrl.searchParams)
@@ -23,7 +24,7 @@ export async function POST(request) {
           const about = await createAbout(req);
           return NextResponse.json({ success: true, data: about }, { status: 201 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -35,7 +36,7 @@ export async function DELETE(request) {
           const about = await deleteAboutById(documentId);
           return NextResponse.json({ success: true, data: about }, { status: 200 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -47,6 +48,6 @@ export async function PATCH(request) {
           const about = await updateAboutById(documentId, req)
           return NextResponse.json({ success: true, data: about }, { status: 200 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }

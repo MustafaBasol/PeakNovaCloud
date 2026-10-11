@@ -1,41 +1,31 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer'
-import 'dotenv/config'
+import { processContact } from '@/libs/contactRequest'
 
-export async function POST(request) {
-    try {
-        const { data } = await request.json();
-
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true,
-            auth: {
-                user: 'sadikvurmaz@gmail.com',
-                pass: process.env.MAIL_PASS
-            }
-        })
-
-        const mailOption = {
-            from:`${data.email}`,
-            to: process.env.EMAIL,
-            subject: "Potansiyel Müşteri",
-            html: `
-                <h3>YENİ MÜSTERİ</h3>
-                <li> isim: ${data.name}</li>
-                <li> soyisim: ${data.surname}</li>
-                <li> email: ${data.email}</li>
-                <li> tel: ${data.telefon}</li>
-                <p> istek: ${data.servis}</p> 
-            `
-        }
-
-        await transporter.sendMail(mailOption)
-
-        return NextResponse.json({ message: "Email Sent Successfully" }, { status: 200 })
-    } catch (error) {
-        return NextResponse.json({ message: "Failed to Send Email" }, { status: 500 })
-    }
+async function sendWithSmtp(message) {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS,
+    },
+  })
+  await transporter.sendMail(message)
 }
 
+export async function POST(request) {
+  const raw = await request.text()
+  const result = await processContact({
+    raw,
+    headers: request.headers,
+    send: sendWithSmtp,
+    env: process.env,
+  })
+  if (result.log) console.error(JSON.stringify(result.log))
+  const response = NextResponse.json(result.body, { status: result.status })
+  if (result.retryAfter) response.headers.set('Retry-After', String(result.retryAfter))
+  return response
+}

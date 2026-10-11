@@ -7,6 +7,7 @@ import {
      updatePageById,
 } from '@/repositories/pageRepository'
 import { authenticate } from '@/middleware/auth'
+import { writeFailure } from '@/libs/writeFailure'
 
 export async function GET(req) {
      const searchParams = (req.nextUrl.searchParams)
@@ -25,7 +26,7 @@ export async function POST(request) {
           const page = await createPage(req);
           return NextResponse.json({ success: true, data: page }, { status: 201 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -37,7 +38,7 @@ export async function DELETE(request) {
           const page = await deletePageById(documentId);
           return NextResponse.json({ success: true, data: page }, { status: 200 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -49,6 +50,6 @@ export async function PATCH(request) {
           const page = await updatePageById(documentId, req)
           return NextResponse.json({ success: true, data: page }, { status: 200 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }

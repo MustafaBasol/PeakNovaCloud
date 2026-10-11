@@ -7,6 +7,7 @@ import {
            updateFaqById,
 } from '@/repositories/faqRepository'
 import { authenticate } from '@/middleware/auth'
+import { writeFailure } from '@/libs/writeFailure'
 
 export async function GET(req) {
   try {
@@ -31,7 +32,7 @@ export async function POST(request) {
           const faq = await createFaq(req);
           return NextResponse.json({ success: true, data: faq }, { status: 201 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -43,7 +44,7 @@ export async function DELETE(request) {
           const faq = await deleteFaqById(documentId);
           return NextResponse.json({ success: true, data: faq }, { status: 200 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -55,6 +56,6 @@ export async function PATCH(request) {
           const faq = await updateFaqById(documentId, req)
           return NextResponse.json({ success: true, data: faq }, { status: 200 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }

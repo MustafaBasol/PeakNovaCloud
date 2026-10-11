@@ -4,6 +4,7 @@ import {
      updateBlogBySlug,
 } from '@/repositories/blogRepository'
 import { authenticate } from '@/middleware/auth'
+import { writeFailure } from '@/libs/writeFailure'
 
 export async function GET(req, { params }) {
     const searchParams = (req.nextUrl.searchParams)
@@ -23,6 +24,6 @@ export async function PATCH(request, { params }) {
           return NextResponse.json({ success: true, data: blog }, { status: 200 });
      } catch (error) {
           console.log(error.message)
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }

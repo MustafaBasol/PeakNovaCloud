@@ -27,8 +27,11 @@ Zorunlu:
 
 Opsiyonel:
 
+- `MAIL_USER`
 - `MAIL_PASS`
 - `EMAIL`
+- `TRUST_CLOUDFLARE` (`true` only when the process is reached solely through Cloudflare Tunnel)
+- `TURNSTILE_SECRET_KEY` (leave empty until the contact form sends a Turnstile token)
 - `HTTP_PORT`
 - `HTTPS_PORT`
 - `POSTGRES_PORT`
@@ -144,7 +147,7 @@ Compose `--build` kullandigi icin uygulama image'i yeniden olusturulur.
 - `deploy:prepare` once production postgres servisini ayaga kaldirir
 - host makinede `.env.production` degerleri ile `next build` calistirir
 - Docker image hazir `.next` ciktisini kullanir
-- `app` servisi acilista `prisma generate` ve `prisma db push` calistirir
+- `app` servisi acilista yalnizca `prisma generate` calistirir. Sema degistirmez.
 - `caddy` servisi Let's Encrypt uzerinden TLS sertifikasi alir
 - `caddy` public 80/443 trafigini `app:3000` servisine aktarir
 - hazir build ciktisi varsa `next start` ile baslar
@@ -208,3 +211,23 @@ Caddy loglari icin:
 ```bash
 docker compose -f compose.production.yml --env-file .env.production logs caddy
 ```
+
+## Canli mimari ve sema degisikligi
+
+11 Ekim 2026 production'i VPS uzerinde PM2 ile `127.0.0.1:3000` dinler. Onunde Cloudflare Tunnel vardir. Bu Docker Compose dosyasi ayni uygulamayi paketler; PM2 komutunu veya tunnel yapilandirmasini degistirmez.
+
+`forward/` statik export sitesidir. PM2'nin calistirdigi uygulama depo kokundeki Next.js uygulamasidir.
+
+Uygulama baslangici (`scripts/start-production.sh` ve `npm start`) veritabanina sema yazmaz. `prisma db push` production baslangicindan cikarildi.
+
+Sema degisikligi ayri ve elle yapilir:
+
+1. Veritabaninin yedegini al.
+2. Migration SQL'ini incele (`prisma/migrations`).
+3. Bos bir veritabaninda `npm run db:migrate` (`prisma migrate deploy`) calistir.
+4. Mevcut production veritabaninda init migration'i daha once uygulandiysa SQL'i tekrar calistirma. Sema zaten bu haliyle duruyorsa yalnizca `npx prisma migrate resolve --applied 20261012000000_init` ile gecmisi isaretle. Bu komut tablo olusturmaz.
+5. Uygulamayi yeniden baslat.
+
+Rollback: basarisiz bir migration PostgreSQL transaction icinde geri alinir. Uygulanan bir migration'dan donmek icin yedegi geri yukle, onceki git commit'ine gec ve PM2 surecini yeniden baslat. Production veritabanina bu depodan otomatik yazma yoktur.
+
+Iletisim formu SMTP kullanicisi `MAIL_USER` ortam degiskenindedir. Kod icinde sabit adres yoktur. `TRUST_CLOUDFLARE=true` yalnizca istegin dogrudan cloudflared'den geldigi makinede acilir; o zaman hiz siniri `CF-Connecting-IP` kullanir.

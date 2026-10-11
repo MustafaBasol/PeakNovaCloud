@@ -1,6 +1,7 @@
 
 import { NextResponse } from 'next/server'
 import { authenticate } from '../../../middleware/auth.js'
+import { writeFailure } from '@/libs/writeFailure'
 import {
            createSeo,
            deleteSeoById,
@@ -32,7 +33,7 @@ export async function POST(request) {
           return NextResponse.json({ success: true, data: seo }, { status: 201 });
      } catch (error) {
         console.log(error.message)
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -44,7 +45,7 @@ export async function DELETE(request) {
           const seo = await deleteSeoById(documentId);
           return NextResponse.json({ success: true, data: seo }, { status: 200 });
      } catch (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
 
@@ -57,6 +58,6 @@ export async function PATCH(request) {
           return NextResponse.json({ success: true, data: seo }, { status: 200 });
      } catch (error) {
           console.log(error.message)
-          return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+          return writeFailure(error);
      }     
 }
