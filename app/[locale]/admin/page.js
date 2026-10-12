@@ -7,44 +7,42 @@ import { useLocale } from 'next-intl'
 export default function Admin() {
 
   const [password, setPassword] = useState('')
+  const [failed, setFailed] = useState(false)
   const router = useRouter();
   const locale = useLocale()
 
-  const clicked = async() => {
-    if(password.length !== 15) {
-      return
-    }
+  const clicked = async (event) => {
+    event.preventDefault()
+    if (!password) return
     const response = await login({ password })
-    
+
     if (response.ok) {
-      const data = await response.json();
       router.push(`/${locale}/dashboard`);
-      
     } else {
-      const data = await response.json();
-      console.log(data.message);
+      setFailed(true)
     }
   }
 
   return (
-    <div className='w-1/2 mx-auto'>
-      <div className='flex flex-col gap-4 items-center justify-center'>
-          <input 
+    <form onSubmit={clicked} className='w-full max-w-sm mx-auto px-4 pt-24'>
+      <div className='flex flex-col gap-4'>
+          <input
+              type="password"
+              name="password"
+              autoComplete="current-password"
               placeholder='password'
               value={password}
-              onChange={(e)=>setPassword(e.target.value)}
-              className='border-2'
-          >
-
-          </input>
+              onChange={(e)=>{ setPassword(e.target.value); setFailed(false) }}
+              className='w-full border-2 p-3'
+          />
           <button
-            className='w-max h-max border-2 border-black p-4 rounded-lg'
-            onClick={clicked}
+            type="submit"
+            className='border-2 border-black p-4 rounded-lg'
           >
             Login
           </button>
-      </div>      
-    </div>
-
+          {failed ? <p className="text-sm">Giriş başarısız.</p> : null}
+      </div>
+    </form>
   )
 }

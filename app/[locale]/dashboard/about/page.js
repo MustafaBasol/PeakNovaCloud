@@ -95,7 +95,7 @@ export default function ManageAbout() {
           abouts.map((item, i) => (
             <div
               key={i}
-              className="p-4 border-2 border-black flex justify-between gap-8 items-center"
+              className="p-4 border-2 border-black flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
             >
               <div className="flex flex-col">
                 <h6 className="font-bold">{item.title}</h6>

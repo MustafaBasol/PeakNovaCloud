@@ -50,14 +50,14 @@ export default async function Dashboard({ params }) {
   }  
 
   return ( 
-    <div className='grid grid-cols-3 grid-rows-3'>
+    <div className='grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 lg:grid-cols-3'>
 
           {
             data.map((item, i) => {
               return(
                 <Link 
                   key={i}
-                  href={`dashboard/${item.link}`}
+                  href={`/${locale}/dashboard/${item.link}`}
                   className='p-4 border-2 bg-[--primary] text-white'
                 >
                   <button className="w-full">{item.name}</button>

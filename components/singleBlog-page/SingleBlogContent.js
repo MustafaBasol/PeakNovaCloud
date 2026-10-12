@@ -1,9 +1,11 @@
 import React from 'react'
 import parse from 'html-react-parser';
 import Image from 'next/image';
+import { publicSrc } from '@/libs/imageSrc';
 
 export default function SingleBlogContent({ blog }) {
     const content = (typeof blog.content) == 'string' ? blog.content : ''
+    const image = publicSrc(blog.imageUrl)
     
   return (
     <div         
@@ -19,15 +21,17 @@ export default function SingleBlogContent({ blog }) {
 
             :
             <div className='p-4 flex flex-col gap-2 w-full md:w-5/6 mx-auto'>
+                {image ? (
                 <div className='w-full'>
                     <Image 
-                        src={blog.imageUrl}                                                
+                        src={image}                                                
                         layout='responsive'
                         width={16}
                         height={9}                        
-                        alt={blog.caption}
+                        alt={blog.caption || ''}
                     />            
-                </div>     
+                </div>
+                ) : null}
                 <h6 className='text-center'>{blog.caption}</h6>              
             </div>                       
         }

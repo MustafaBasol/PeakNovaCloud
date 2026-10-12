@@ -4,10 +4,12 @@ import React from 'react'
 import ScrollLink from '../ScrollLink'
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
+import { publicSrc } from '@/libs/imageSrc'
 
 export default function BlogItem({ blog, locale }) {
 
     const t = useTranslations('BlogHolder')
+    const cover = publicSrc(blog.coverImage)
 
   return (
     <motion.div
@@ -20,15 +22,17 @@ export default function BlogItem({ blog, locale }) {
           href={`/${locale}/blogs/${blog.slug}`} 
           className='w-full flex flex-col gap-4 shadow-lg hover:shadow-2xl bg-white dark:bg-gray-800 hover:scale-[1.03] transition-all duration-300 ease-out rounded-lg'
         >
+            {cover ? (
             <div className='relative w-full aspect-video overflow-hidden rounded-lg shadow-lg'>
                 <Image
-                    src={blog.coverImage}
+                    src={cover}
                     alt={blog.title}
                     fill
                     sizes='(min-width: 768px) 50vw, 100vw'
                     className='object-cover'
                 />
             </div>
+            ) : null}
             <div className='w-full flex flex-col gap-4 p-2 '>
               <h4 className='text-base font-bold text-[--primary]'>{blog.title}</h4>
               <h5 className='text-sm'>{blog.summary}</h5>
