@@ -1,12 +1,32 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
+import { NotFoundPage } from "@/features/home/components/NotFoundPage";
+import { headerFor, localizeHeader } from "@/features/home/content/header";
+import { homeFor, localizeHome } from "@/features/home/content/home";
+import { localizeNotFound, notFoundFor } from "@/features/home/content/not-found";
+
+async function requestLocale() {
+  return getLocale();
+}
+
+export async function generateMetadata() {
+  const locale = await requestLocale();
+  const content = localizeNotFound(notFoundFor(locale), locale);
+  return {
+    title: content.metaTitle,
+    robots: { index: false, follow: true },
+  };
+}
 
 export default async function NotFound() {
-  const t = await getTranslations("pages");
+  const locale = await requestLocale();
+  const content = localizeNotFound(notFoundFor(locale), locale);
   return (
-    <main id="main" className="mx-auto px-[clamp(16px,4vw,40px)] py-24" style={{ maxWidth: "var(--max-width)" }}>
-      <h1 className="text-[clamp(2rem,1.4rem+2.4vw,3.25rem)] font-semibold tracking-[-0.03em]">
-        {t("missing")}
-      </h1>
-    </main>
+    <NotFoundPage
+      content={content}
+      headerContent={localizeHome(homeFor(locale), locale)}
+      header={localizeHeader(headerFor(locale), locale)}
+      homeHref={`/${locale}/`}
+      locale={locale}
+    />
   );
 }

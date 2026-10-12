@@ -1,23 +1,38 @@
-import React from 'react';
-import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
+import { headers } from 'next/headers'
+import { NotFoundPage } from '@/components/sis-home/components/NotFoundPage'
+import { fragmentMono, instrumentSans, newsreader } from '@/components/sis-home/components/fonts'
+import { headerFor, localizeHeader } from '@/components/sis-home/content/header'
+import { homeFor, localizeHome } from '@/components/sis-home/content/home'
+import { localizeNotFound, notFoundFor } from '@/components/sis-home/content/not-found'
+import { routing } from '@/i18n/routing'
+
+async function requestLocale() {
+  const path = (await headers()).get('x-pn-path') || ''
+  const first = path.split('/').filter(Boolean)[0]
+  return routing.locales.includes(first) ? first : routing.defaultLocale
+}
+
+export async function generateMetadata() {
+  const locale = await requestLocale()
+  const content = localizeNotFound(notFoundFor(locale), locale)
+  return {
+    title: content.metaTitle,
+    robots: { index: false, follow: true },
+  }
+}
 
 export default async function NotFound() {
-
-  const t = await getTranslations('NotFound')
-
+  const locale = await requestLocale()
+  const content = localizeNotFound(notFoundFor(locale), locale)
   return (
-    <div className="flex flex-col items-center justify-center h-screen px-4">
-      <h1 className="text-5xl font-bold text-gray-800 dark:text-gray-100 mb-4">404</h1>
-      <h2 className="text-2xl text-gray-700 dark:text-gray-300 mb-2">{t('notFound')}</h2>
-      <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
-        {t('move')}
-      </p>
-      <Link href="/">
-        <h6 className="px-6 py-3 bg-[--primary] text-white rounded-md hover:bg-[--hovered] transition duration-300">
-          {t('back')}
-        </h6>
-      </Link>
+    <div className={`${newsreader.variable} ${instrumentSans.variable} ${fragmentMono.variable}`}>
+      <NotFoundPage
+        content={content}
+        headerContent={localizeHome(homeFor(locale), locale)}
+        header={localizeHeader(headerFor(locale), locale)}
+        homeHref={`/${locale}/`}
+        locale={locale}
+      />
     </div>
-  );
+  )
 }

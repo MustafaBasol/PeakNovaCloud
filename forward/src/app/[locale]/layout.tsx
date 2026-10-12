@@ -8,6 +8,8 @@ import { routing } from "@/i18n/routing";
 import { localeParams } from "@/lib/pages";
 import "@/styles/globals.css";
 import "@/styles/sis.css";
+import "@/styles/sis-header.css";
+import "@/styles/sis-404.css";
 import "@/styles/sis-patterns.css";
 import "@/styles/sis-motion.css";
 

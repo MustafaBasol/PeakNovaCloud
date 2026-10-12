@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { HomePage } from "@/features/home/components/HomePage";
+import { headerFor, localizeHeader } from "@/features/home/content/header";
 import { homeFor, localizeHome } from "@/features/home/content/home";
 import { localeParams } from "@/lib/pages";
 
@@ -28,5 +29,5 @@ export default async function Page({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <HomePage content={localizeHome(homeFor(locale), locale)} homeHref={`/${locale}/`} locale={locale} />;
+  return <HomePage content={localizeHome(homeFor(locale), locale)} header={localizeHeader(headerFor(locale), locale)} homeHref={`/${locale}/`} locale={locale} />;
 }

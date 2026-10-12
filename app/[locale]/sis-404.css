@@ -1,0 +1,43 @@
+/*
+ * 404 page, design "404 C. ASCII" (approved 2026-10-12), pattern P17. Load after sis.css.
+ * Scoped to .pn-nf. Values copied from the canvas artboard. Do not tune by eye.
+ */
+.pn-nf { max-width: 1280px; margin: 0 auto; padding: 16px var(--pn-gutter) 80px; }
+.pn-nf .pn-nf__panel { position: relative; height: 470px; border-radius: 28px; background: var(--pn-blue); overflow: hidden; }
+.pn-nf .pn-nf__canvas { display: block; width: 100%; height: 100%; }
+.pn-nf .pn-nf__term { position: absolute; left: 28px; top: 24px; font-size: 12px; line-height: 1.8; color: var(--pn-on-blue-soft); pointer-events: none; }
+.pn-nf .pn-nf__term b { font-weight: 400; color: #fff; }
+.pn-nf .pn-nf__term i { font-style: normal; color: var(--pn-gold); }
+.pn-nf .pn-nf__cursor { display: inline-block; width: 7px; height: 13px; background: #fff; vertical-align: -2px; animation: pn-nf-blink 1s steps(2) infinite; }
+@keyframes pn-nf-blink { 50% { opacity: 0; } }
+.pn-nf .pn-motion-toggle { position: absolute; right: 24px; bottom: 18px; }
+.pn-nf .pn-motion-toggle--on-blue { background: var(--pn-blue); border-color: rgba(255, 255, 255, 0.35); color: #fff; font-size: 12px; }
+.pn-nf .pn-motion-toggle--on-blue:hover { color: #fff; border-color: #fff; }
+.pn-nf .pn-motion-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.pn-nf .pn-nf__copy { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 24px; margin-top: 48px; align-items: start; }
+.pn-nf .pn-nf__title { grid-column: 1 / span 7; margin: 0; font-size: 64px; line-height: 1.03; letter-spacing: -0.025em; font-weight: 300; }
+.pn-nf .pn-nf__title em { font-style: italic; font-weight: 400; }
+.pn-nf .pn-nf__side { grid-column: 8 / span 5; display: flex; flex-direction: column; gap: 20px; }
+.pn-nf .pn-nf__lead { margin: 0; font-size: 18px; line-height: 1.55; color: var(--pn-muted); }
+.pn-nf .pn-nf__actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.pn-page .pn-nf .pn-nf__btn { background: var(--pn-ink); color: #fff; font-size: 16px; font-weight: 500; padding: 14px 24px; border-radius: 999px; }
+.pn-page .pn-nf .pn-nf__btn:hover { background: #0f1724; color: #fff; }
+.pn-page .pn-nf .pn-nf__link { font-size: 16px; font-weight: 500; color: var(--pn-blue); }
+.pn-nf .pn-nf__link:hover .pn-arrow { transform: translateX(4px); }
+
+@media (max-width: 900px) {
+  .pn-nf .pn-nf__title, .pn-nf .pn-nf__side { grid-column: 1 / -1; }
+}
+@media (max-width: 768px) {
+  .pn-nf { padding-top: 8px; padding-bottom: 64px; }
+  .pn-nf .pn-nf__panel { height: 340px; border-radius: 22px; }
+  .pn-nf .pn-nf__term { left: 18px; top: 16px; font-size: 11px; }
+  .pn-nf .pn-motion-toggle { right: 14px; bottom: 12px; }
+  .pn-nf .pn-nf__copy { margin-top: 32px; }
+  .pn-nf .pn-nf__title { font-size: clamp(38px, 10.5vw, 48px); }
+  .pn-nf .pn-nf__lead { font-size: 17px; }
+}
+
+html[data-motion="paused"] .pn-nf *, html[data-motion="paused"] .pn-nf *::before, html[data-motion="paused"] .pn-nf *::after { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) { .pn-nf .pn-nf__cursor { animation: none; } }

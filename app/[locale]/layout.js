@@ -1,5 +1,7 @@
 import "./globals.css";
 import "./sis.css";
+import "./sis-header.css";
+import "./sis-404.css";
 import "./sis-patterns.css";
 import "./sis-motion.css";
 import Header from "../../components/header/Header";

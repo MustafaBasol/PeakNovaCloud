@@ -1,4 +1,5 @@
 import { HomePage } from "@/components/sis-home/components/HomePage";
+import { headerFor, localizeHeader } from "@/components/sis-home/content/header";
 import { homeFor, localizeHome } from "@/components/sis-home/content/home";
 import { fragmentMono, instrumentSans, newsreader } from "@/components/sis-home/components/fonts";
 
@@ -25,7 +26,7 @@ export default async function Home({ params }) {
   const { locale } = await params;
   return (
     <div className={`${newsreader.variable} ${instrumentSans.variable} ${fragmentMono.variable}`}>
-      <HomePage content={localizeHome(homeFor(locale), locale)} homeHref={`/${locale}/`} locale={locale} />
+      <HomePage content={localizeHome(homeFor(locale), locale)} header={localizeHeader(headerFor(locale), locale)} homeHref={`/${locale}/`} locale={locale} />
     </div>
   );
 }
