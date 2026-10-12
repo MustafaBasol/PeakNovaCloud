@@ -25,7 +25,7 @@ type Props = {
 export function NotFoundPage({ content, headerContent, header, homeHref, locale, logoSrc, withHeader = true }: Props) {
   return (
     <div className="pn-page">
-      {withHeader && <SiteHeader content={headerContent} header={header} homeHref={homeHref} locale={locale} logoSrc={logoSrc} />}
+      {withHeader && header ? <SiteHeader content={headerContent} header={header} homeHref={homeHref} locale={locale} logoSrc={logoSrc} /> : null}
       <main id="main" className="pn-nf">
         <div className="pn-nf__panel">
           <Ascii404 className="pn-nf__canvas" />

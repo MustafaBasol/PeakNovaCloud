@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { HomeContent } from "../content/home.tr";
-import { headerTr, type HeaderContent } from "../content/header.tr";
+import type { HeaderContent } from "../content/header.tr";
 
 const LOCALES = [
   { code: "en", label: "English", short: "EN" },
@@ -17,8 +17,8 @@ type Props = {
   homeHref: string;
   locale: string;
   logoSrc?: string;
-  /** Mega menus and mobile sheet copy. Defaults to Turkish. */
-  header?: HeaderContent;
+  /** Mega menus and mobile sheet copy. */
+  header: HeaderContent;
 };
 
 type MenuKey = "solutions" | "products";
@@ -59,7 +59,7 @@ function LangNav({ locale, label }: { locale: string; label: string }) {
   );
 }
 
-export function SiteHeader({ content, homeHref, locale, logoSrc = "/brand/logo-horizontal.png", header = headerTr }: Props) {
+export function SiteHeader({ content, homeHref, locale, logoSrc = "/brand/logo-horizontal.png", header }: Props) {
   const [open, setOpen] = useState<MenuKey | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [sheet, setSheet] = useState(false);
@@ -180,7 +180,7 @@ export function SiteHeader({ content, homeHref, locale, logoSrc = "/brand/logo-h
   const logo = (cls: string) => (
     <a className={cls} href={homeHref} aria-label={header.homeLabel}>
       {/* Horizontal lockup built from the original logo pieces. 950x200 source. Unchanged. */}
-      <img src={logoSrc} alt="PeakNova" width={114} height={24} />
+      <img src={logoSrc} alt="PeakNova" width={152} height={32} />
     </a>
   );
   const menuButton = (cls: string) => (
@@ -266,23 +266,25 @@ export function SiteHeader({ content, homeHref, locale, logoSrc = "/brand/logo-h
           </div>
         </div>
 
-        <div className="pn-hdr__mega pn-hdr__mega--narrow pn-hdr__glass" id={megaId("products")} data-show={open === "products" || undefined} onKeyDown={onMegaKey("products")}>
-          <ul className="pn-hdr__prods">
-            {header.products.items.map((p) => (
-              <li key={p.href}>
-                <a className="pn-hdr__prod" href={p.href} aria-current={isCurrent(p.href)}>
-                  <small>{p.status}</small>
-                  <b className="pn-serif">{p.name}</b>
-                  <span>{p.text}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="pn-hdr__foot">
-            <span>{header.products.footText}</span>
-            <a href={header.products.footLink.href}>{header.products.footLink.label}<span aria-hidden="true">  →</span></a>
+        {header.products.items.length > 0 && (
+          <div className="pn-hdr__mega pn-hdr__mega--narrow pn-hdr__glass" id={megaId("products")} data-show={open === "products" || undefined} onKeyDown={onMegaKey("products")}>
+            <ul className="pn-hdr__prods">
+              {header.products.items.map((p) => (
+                <li key={p.href}>
+                  <a className="pn-hdr__prod" href={p.href} aria-current={isCurrent(p.href)}>
+                    <small>{p.status}</small>
+                    <b className="pn-serif">{p.name}</b>
+                    <span>{p.text}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className="pn-hdr__foot">
+              <span>{header.products.footText}</span>
+              <a href={header.products.footLink.href}>{header.products.footLink.label}<span aria-hidden="true">  →</span></a>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Scrolled state: out of flow, hidden from AT and focus until shown. */}

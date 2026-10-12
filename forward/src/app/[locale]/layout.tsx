@@ -12,6 +12,7 @@ import "@/styles/sis-header.css";
 import "@/styles/sis-404.css";
 import "@/styles/sis-patterns.css";
 import "@/styles/sis-motion.css";
+import "@/styles/sis-tech.css";
 
 export function generateStaticParams() {
   return localeParams();
@@ -24,7 +25,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: t("site") };
+  return {
+    title: t("site"),
+    icons: {
+      icon: [
+        { url: "/icon.svg", type: "image/svg+xml" },
+        { url: "/favicon.ico", sizes: "any" },
+      ],
+      apple: "/apple-touch-icon.png",
+    },
+  };
 }
 
 export default async function LocaleLayout({

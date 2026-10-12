@@ -14,7 +14,7 @@ export function Hero({ content }: Props) {
       <p className="pn-hero__lead">{hero.lead}</p>
       <div className="pn-hero__actions">
         <a className="pn-btn" href={content.contactHref}>{content.contactLabel}</a>
-        <a className="pn-link" href={hero.secondaryHref}>{hero.secondaryLabel}{"  →"}</a>
+        {hero.secondaryHref ? <a className="pn-link" href={hero.secondaryHref}>{hero.secondaryLabel}{"  →"}</a> : null}
       </div>
     </section>
   );

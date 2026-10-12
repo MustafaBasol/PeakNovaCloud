@@ -4,6 +4,7 @@ import "./sis-header.css";
 import "./sis-404.css";
 import "./sis-patterns.css";
 import "./sis-motion.css";
+import "./sis-tech.css";
 import Header from "../../components/header/Header";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -33,6 +34,9 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={locale} className={montserrat.variable} suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`,
