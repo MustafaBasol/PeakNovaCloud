@@ -86,7 +86,7 @@ export function WhatWeBuild({ content }: Props) {
                 <span className="pn-mono">{item.code}</span>
                 {item.proof ? <span className="pn-build__proof">{item.proof}</span> : null}
               </div>
-              <p className="pn-build__problem pn-serif">“{item.problem}”</p>
+              <p className="pn-build__problem pn-serif">{s.quoteOpen}{item.problem}{s.quoteClose}</p>
               <p className="pn-build__solution">{item.solution}</p>
               <ul className="pn-build__deliverables">
                 {item.deliverables.map((d) => <li key={d}>{d}</li>)}
@@ -94,7 +94,7 @@ export function WhatWeBuild({ content }: Props) {
               <ul className="pn-build__blocks pn-mono" aria-label={s.blocksLabel}>
                 {item.blocks.map((b) => <li key={b}>{b}</li>)}
               </ul>
-              <a className="pn-build__link" href={item.href}>{item.title} {s.linkSuffix}<span className="pn-arrow" aria-hidden="true">→</span></a>
+              <a className="pn-build__link" href={item.href}>{s.linkBefore}{item.title}{s.linkAfter}<span className="pn-arrow" aria-hidden="true">→</span></a>
             </div>
           ))}
         </div>

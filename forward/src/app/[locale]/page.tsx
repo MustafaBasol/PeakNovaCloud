@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { HomePage } from "@/features/home/components/HomePage";
-import { homeTr } from "@/features/home/content/home.tr";
+import { homeFor, localizeHome } from "@/features/home/content/home";
 import { localeParams } from "@/lib/pages";
 
 export function generateStaticParams() {
@@ -14,10 +14,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "home" });
+  const content = homeFor(locale);
   return {
-    title: t("metaTitle"),
-    description: t("hero.subtext"),
+    title: content.metaTitle,
+    description: content.hero.lead,
   };
 }
 
@@ -28,12 +28,5 @@ export default async function Page({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const content = {
-    ...homeTr,
-    products: {
-      ...homeTr.products,
-      items: homeTr.products.items.filter((item) => item.id !== "yapifin"),
-    },
-  };
-  return <HomePage content={content} homeHref={`/${locale}/`} />;
+  return <HomePage content={localizeHome(homeFor(locale), locale)} homeHref={`/${locale}/`} locale={locale} />;
 }

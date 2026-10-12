@@ -1,0 +1,163 @@
+{
+    "Header": {
+        "service": "Leistungen",
+        "project": "Projekte",
+        "about": "Über uns",
+        "button": "Demo anfragen",
+        "blog": "Blog",
+        "language": "Sprache ändern",
+        "menu": "Menü öffnen",
+        "darkMode": "Zum dunklen Modus wechseln",
+        "lightMode": "Zum hellen Modus wechseln"
+    },
+    "SmallHeader": {
+        "service": "Leistungen",
+        "back": "Zurück",
+        "project": "Projekte",
+        "about": "Über uns",
+        "button": "Kontakt",
+        "language": "Sprache",
+        "blog": "Blog"
+    },
+    "Footer": {
+        "services": "Leistungen",
+        "links": "Nützliche Links",
+        "home": "Startseite",
+        "projects": "Projekte",
+        "about": "Über uns",
+        "contact": "Kontakt",
+        "term": "Mit der Nutzung dieser Website akzeptieren Sie die Nutzungsbedingungen.",
+        "blog": "Blog",
+        "policy": "Datenschutzerklärung"
+    },
+    "Form": {
+        "name": "Vorname",
+        "surname": "Nachname",
+        "email": "E-Mail",
+        "tele": "Telefon",
+        "service": "Schreiben Sie, welche Leistungen Sie brauchen",
+        "nameError": "Geben Sie Ihren Vornamen ein",
+        "surnameError": "Geben Sie Ihren Nachnamen ein",
+        "emailError": "Geben Sie Ihre E-Mail ein",
+        "emailValidationError": "Bitte geben Sie eine gültige E-Mail ein",
+        "teleError": "Geben Sie Ihre Telefonnummer ein",
+        "teleValidationError": "Bitte geben Sie eine gültige Telefonnummer ein",
+        "serviceError": "Bitte füllen Sie dieses Feld aus",
+        "buttonText": "Senden",
+        "sending": "Wird gesendet..."
+    },
+    "OurServices": {
+        "services": "Unsere Leistungen"
+    },
+    "Faq": {
+        "faq": "FAQ"
+    },
+    "Step": {
+        "step": "Schritt"
+    },
+    "Project": {
+        "more": "Weiterlesen"
+    },
+    "Error": {
+        "title": "Etwas ist schiefgelaufen",
+        "message": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder kehren Sie zur Startseite zurück.",
+        "retry": "Erneut versuchen",
+        "back": "Zur Startseite"
+    },
+    "NotFound": {
+        "notFound": "Seite nicht gefunden",
+        "move": "Die gesuchte Seite ist nicht verfügbar oder wurde verschoben.",
+        "back": "Zur Startseite"
+    },
+    "Loading": {
+        "loading": "Wird geladen, bitte warten..."
+    },
+    "Toast": {
+        "toast": "Ihre Nachricht wurde gesendet",
+        "errorToast": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    },
+    "LangMenu": {
+        "tr": "Türkisch",
+        "en": "Englisch",
+        "fr": "Französisch",
+        "de": "Deutsch",
+        "back": "Zurück"
+    },
+    "ServiceMetaData": {
+        "errorTitle": "Leistung nicht gefunden | PeakNova",
+        "errorDescription": "Die gesuchte Leistung ist nicht verfügbar",
+        "keywords": "Salesforce Beratung, Salesforce Einführung, Salesforce Anpassung, Salesforce Integration, Salesforce Support und Wartung, Salesforce Managed Services, Salesforce Entwicklung, Salesforce Cloud Lösungen, Salesforce Optimierung, Salesforce CRM Beratung, Salesforce Plattformverwaltung, Salesforce Datenintegration, Salesforce Systemintegration, Salesforce API Integration, Salesforce App Entwicklung, Salesforce Automatisierung, Salesforce Analyse, Salesforce Einstein AI Integration, Salesforce Pardot Einführung, Salesforce Workflow Automatisierung, Salesforce Customer 360, Salesforce mobile App Entwicklung, Salesforce AppExchange Beratung",
+        "consulting": "Beratung",
+        "imp": "Einführung",
+        "conf": "Konfiguration und Bereitstellung",
+        "tp": "Integrationen von Drittanbietern",
+        "api": "API-Integration",
+        "e": "mit E-Commerce-Integration",
+        "app": "App-Entwicklung",
+        "perf": "Leistungsoptimierung",
+        "db": "Datenbankoptimierung"
+    },
+    "BlogHolder": {
+        "readMore": "Weiterlesen",
+        "title": "Aktuelles von Salesforce"
+    },
+    "BlogsHero": {
+        "title1": "Aktuelles von",
+        "title2": "Salesforce",
+        "description": "Bleiben Sie auf dem Stand mit Updates und Einordnungen von",
+        "name": "PeakNova",
+        "button": "Entdecken"
+    },
+    "Cookie": {
+        "main": "Wir verwenden Cookies, um Ihre Nutzung zu verbessern. Mit der Nutzung der Website akzeptieren Sie unsere",
+        "button": "Akzeptieren",
+        "decline": "Ablehnen",
+        "policy": "Datenschutzerklärung"
+    },
+    "PrivacyPolicy": {
+        "title": "Datenschutzerklärung",
+        "lastUpdated": "Zuletzt aktualisiert: 17. Dezember 2024",
+        "description": "Diese Datenschutzerklärung beschreibt, wie wir Ihre Daten erheben, nutzen und weitergeben, wenn Sie den Dienst verwenden, und welche Rechte Sie haben.",
+        "agreement": "Mit der Nutzung des Dienstes stimmen Sie der Erhebung und Nutzung von Daten gemäß dieser Datenschutzerklärung zu.",
+        "interpretationTitle": "Auslegung und Begriffsbestimmungen",
+        "interpretationSubtitle": "Auslegung",
+        "interpretationText": "Wörter mit großem Anfangsbuchstaben haben die unten festgelegte Bedeutung. Dieselbe Bedeutung gilt in der Einzahl und in der Mehrzahl.",
+        "definitionsTitle": "Begriffsbestimmungen",
+        "definitionsIntro": "Für diese Datenschutzerklärung gilt:",
+        "accountTitle": "Konto",
+        "accountText": "Ein eigenes Konto, das für Sie erstellt wird, damit Sie auf den Dienst oder Teile des Dienstes zugreifen können.",
+        "affiliateTitle": "Verbundenes Unternehmen",
+        "affiliateText": "Ein Unternehmen, das eine Partei beherrscht, von ihr beherrscht wird oder mit ihr unter gemeinsamer Beherrschung steht.",
+        "companyTitle": "Unternehmen",
+        "companyText": "Bezeichnet PeakNova.",
+        "cookiesTitle": "Cookies",
+        "cookiesText": "Kleine Dateien auf Ihrem Gerät, die den Verlauf der Nutzung festhalten.",
+        "countryTitle": "Land",
+        "countryText": "Bezeichnet die Türkei.",
+        "deviceTitle": "Gerät",
+        "deviceText": "Jedes Gerät, mit dem der Dienst erreichbar ist, zum Beispiel ein Computer oder ein Mobiltelefon.",
+        "dataCollectionTitle": "Erhebung und Nutzung Ihrer personenbezogenen Daten",
+        "dataTypesTitle": "Arten der erhobenen Daten",
+        "personalDataTitle": "Personenbezogene Daten",
+        "personalDataText": "Bei der Nutzung des Dienstes können wir Sie bitten, uns bestimmte personenbezogene Daten mitzuteilen.",
+        "email": "E-Mail-Adresse",
+        "phone": "Telefonnummer",
+        "usageData": "Nutzungsdaten",
+        "trackingTitle": "Tracking-Technologien und Cookies",
+        "trackingText": "Wir verwenden Cookies und ähnliche Technologien, um Aktivität nachzuvollziehen und bestimmte Informationen zu speichern.",
+        "cookiesLabel": "Cookies oder Browser-Cookies",
+        "cookiesDescription": "Eine kleine Datei auf Ihrem Gerät, die hilft, die Nutzung nachzuvollziehen.",
+        "webBeaconsLabel": "Web Beacons",
+        "webBeaconsDescription": "Kleine elektronische Dateien, mit denen Nutzer gezählt oder die Integrität eines Systems geprüft wird.",
+        "cookiesTypes": "Cookies können dauerhaft oder auf eine Sitzung beschränkt sein.",
+        "useOfDataTitle": "Nutzung Ihrer personenbezogenen Daten",
+        "useOfDataText": "Das Unternehmen kann personenbezogene Daten für folgende Zwecke nutzen:",
+        "provideService": "Um den Dienst bereitzustellen und zu betreiben.",
+        "manageAccount": "Um Ihr Konto zu verwalten.",
+        "contactYou": "Um Sie per E-Mail, Telefon oder auf anderem Weg zu erreichen.",
+        "contactUsTitle": "Kontakt",
+        "contactUsText": "Wenn Sie Fragen zu dieser Datenschutzerklärung haben, erreichen Sie uns so:",
+        "emailLabel": "Per E-Mail",
+        "websiteLabel": "Über unsere Website"
+    }
+}

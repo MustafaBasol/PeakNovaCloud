@@ -7,16 +7,31 @@ import { getProjectById, listProjectsByLanguage } from '@/repositories/projectRe
 import { listSeosByLanguage, listSeosByLanguageAndPage } from '@/repositories/seoRepository'
 import { listServicePagesByNameAndLanguage, listServicesByLanguage } from '@/repositories/serviceRepository'
 
+/** German content rows do not exist until the Language enum migration is applied. */
+async function rows(locale, load, fallback = []) {
+  try {
+    return await load()
+  } catch (error) {
+    const message = String(error?.message || '')
+    const germanNotReady = locale === 'de' && (
+      message.includes('Invalid value for argument') ||
+      message.includes('invalid input value for enum')
+    )
+    if (germanNotReady) return fallback
+    throw error
+  }
+}
+
 export async function getAboutData(locale) {
-  return { data: await listAboutByLanguage(locale) }
+  return { data: await rows(locale, () => listAboutByLanguage(locale)) }
 }
 
 export async function getProjects(locale) {
-  return { data: await listProjectsByLanguage(locale) }
+  return { data: await rows(locale, () => listProjectsByLanguage(locale)) }
 }
 
 export async function getFaq(locale) {
-  return { data: await listFaqByLanguage(locale) }
+  return { data: await rows(locale, () => listFaqByLanguage(locale)) }
 }
 
 export async function getProject(id) {
@@ -24,35 +39,35 @@ export async function getProject(id) {
 }
 
 export async function getService(servicename, locale) {
-  return { data: await listServicePagesByNameAndLanguage(servicename, locale) }
+  return { data: await rows(locale, () => listServicePagesByNameAndLanguage(servicename, locale)) }
 }
 
 export async function getServices(locale) {
-  return { data: await listServicesByLanguage(locale) }
+  return { data: await rows(locale, () => listServicesByLanguage(locale)) }
 }
 
 export async function getLogos(locale) {
-  return { data: await listLogosByLanguage(locale) }
+  return { data: await rows(locale, () => listLogosByLanguage(locale)) }
 }
 
 export async function getPage(locale, page) {
-  return { data: await listPagesByLanguageAndSection(locale, page) }
+  return { data: await rows(locale, () => listPagesByLanguageAndSection(locale, page)) }
 }
 
 export async function getBlogs(locale) {
-  return { data: await listBlogsByLanguage(locale) }
+  return { data: await rows(locale, () => listBlogsByLanguage(locale)) }
 }
 
 export async function getBlog(locale, slug) {
-  return { data: await getBlogBySlugAndLanguage(slug, locale) }
+  return { data: await rows(locale, () => getBlogBySlugAndLanguage(slug, locale), null) }
 }
 
 export async function getSeo(locale, page) {
-  return { data: await listSeosByLanguageAndPage(locale, page) }
+  return { data: await rows(locale, () => listSeosByLanguageAndPage(locale, page)) }
 }
 
 export async function getSeos(locale) {
-  return { data: await listSeosByLanguage(locale) }
+  return { data: await rows(locale, () => listSeosByLanguage(locale)) }
 }
 
 const DEFAULT_SITE_URL = 'https://www.peaknovas.com/'

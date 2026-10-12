@@ -20,7 +20,10 @@ export type ServiceItem = {
 };
 
 export type HomeContent = {
+  metaTitle: string;
   skipLink: string;
+  navLabel: string;
+  localeLabel: string;
   nav: { label: string; href: string }[];
   menuLabel: string;
   contactLabel: string;
@@ -42,8 +45,12 @@ export type HomeContent = {
     artCaption: string;
     pauseLabel: string;
     playLabel: string;
-    /** Link text after the area title, e.g. "çözümünü inceleyin". */
-    linkSuffix: string;
+    /** Wrapped around the problem sentence. French uses guillemets. */
+    quoteOpen: string;
+    quoteClose: string;
+    /** Placed around the area title to form the panel link. */
+    linkBefore: string;
+    linkAfter: string;
     /** Accessible name of the building-blocks list. */
     blocksLabel: string;
     /** 3 to 6 areas (decision O2). */
@@ -90,7 +97,10 @@ export type HomeContent = {
 };
 
 export const homeTr: HomeContent = {
+  metaTitle: "PeakNova | AI Ajanları, Otomasyon ve Özel Yazılım",
   skipLink: "İçeriğe geç",
+  navLabel: "Ana menü",
+  localeLabel: "Dil",
   // Information architecture from the senior review brief (2026-10-11), section 5.
   nav: [
     { label: "Çözümler", href: "/tr/solutions/" },
@@ -119,7 +129,10 @@ export const homeTr: HomeContent = {
     artCaption: "peaknova.mountain / ascii",
     pauseLabel: "durdur",
     playLabel: "başlat",
-    linkSuffix: "çözümünü inceleyin",
+    quoteOpen: "“",
+    quoteClose: "”",
+    linkBefore: "",
+    linkAfter: " çözümünü inceleyin",
     blocksLabel: "Yapı taşları",
     items: [
       {

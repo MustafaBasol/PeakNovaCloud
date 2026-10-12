@@ -1,9 +1,16 @@
 import type { HomeContent } from "../content/home.tr";
 
-type Props = { content: HomeContent; homeHref: string };
+type Props = { content: HomeContent; homeHref: string; locale: string };
 
-/** Header from E. Sis. Desktop: logo, 4 links, outlined contact pill. Under 900px: a no-JS disclosure menu. */
-export function SiteHeader({ content, homeHref }: Props) {
+const LOCALES = [
+  { code: "en", label: "English", short: "EN" },
+  { code: "fr", label: "Français", short: "FR" },
+  { code: "de", label: "Deutsch", short: "DE" },
+  { code: "tr", label: "Türkçe", short: "TR" },
+] as const;
+
+/** Header from E. Sis. Desktop: logo, links, language, outlined contact pill. Under 900px: a no-JS disclosure menu. */
+export function SiteHeader({ content, homeHref, locale }: Props) {
   return (
     <header className="pn-header">
       <a className="pn-skip" href="#main">{content.skipLink}</a>
@@ -12,7 +19,7 @@ export function SiteHeader({ content, homeHref }: Props) {
           {/* Horizontal lockup built from the original logo pieces. 950x200 source. */}
           <img src="/brand/logo-horizontal.png" alt="PeakNova" width={114} height={24} />
         </a>
-        <nav aria-label="Ana menü">
+        <nav aria-label={content.navLabel}>
           <ul className="pn-header__links">
             {content.nav.map((item) => (
               <li key={item.href}><a href={item.href}>{item.label}</a></li>
@@ -28,7 +35,23 @@ export function SiteHeader({ content, homeHref }: Props) {
             <li><a href={content.contactHref}>{content.contactLabel}</a></li>
           </ul>
         </details>
-        <a className="pn-header__cta" href={content.contactHref}>{content.contactLabel}</a>
+        <div className="pn-header__tools">
+          <nav className="pn-header__lang" aria-label={content.localeLabel}>
+            {LOCALES.map((item) => (
+              <a
+                key={item.code}
+                href={`/${item.code}/`}
+                hrefLang={item.code}
+                lang={item.code}
+                aria-label={item.label}
+                aria-current={item.code === locale ? "page" : undefined}
+              >
+                {item.short}
+              </a>
+            ))}
+          </nav>
+          <a className="pn-header__cta" href={content.contactHref}>{content.contactLabel}</a>
+        </div>
       </div>
     </header>
   );

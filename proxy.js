@@ -41,7 +41,7 @@ export default function proxy(request) {
 export const config = {
   matcher: [
     '/',
-    '/(en|fr|tr)/:path*',
+    '/(en|fr|de|tr)/:path*',
 
     // Invalid extensionless first segments such as /invalid-locale.
     '/((?!api|_next|_vercel|.*\\..*).*)',

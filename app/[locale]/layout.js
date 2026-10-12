@@ -26,7 +26,7 @@ export default async function RootLayout({ children, params }) {
 
   const messages = await getMessages();
   const pathname = (await headers()).get('x-pn-path') || '';
-  const isHome = /^\/(en|fr|tr)\/?$/.test(pathname);
+  const isHome = /^\/(en|fr|de|tr)\/?$/.test(pathname);
 
   return (
     <html lang={locale} className={montserrat.variable} suppressHydrationWarning>

@@ -23,6 +23,10 @@ export default function SmallLanguageMenu({ setIsSmallLanguageMenuOpen }) {
             lang:'fr'
         },
         {
+            img:'DE',
+            lang:'de'
+        },
+        {
             img:'TR',
             lang:'tr'
         }                

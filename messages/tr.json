@@ -79,7 +79,8 @@
     "LangMenu":{
         "tr":"Türkçe",
         "en":"İngilizce",
-        "fr":"Fransızca"        
+        "fr":"Fransızca",
+        "de":"Almanca"        
     },
     "ServiceMetaData": {
         "errorTitle": "Hizmet Bulunamadı | PeakNova",

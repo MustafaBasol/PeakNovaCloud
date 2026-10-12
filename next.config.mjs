@@ -42,10 +42,10 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/:locale(en|fr|tr)/work', destination: '/:locale/projects', permanent: false },
-      { source: '/:locale(en|fr|tr)/work/:path*', destination: '/:locale/projects', permanent: false },
-      { source: '/:locale(en|fr|tr)/blog', destination: '/:locale/blogs', permanent: false },
-      { source: '/:locale(en|fr|tr)/blog/:path*', destination: '/:locale/blogs/:path*', permanent: false },
+      { source: '/:locale(en|fr|de|tr)/work', destination: '/:locale/projects', permanent: false },
+      { source: '/:locale(en|fr|de|tr)/work/:path*', destination: '/:locale/projects', permanent: false },
+      { source: '/:locale(en|fr|de|tr)/blog', destination: '/:locale/blogs', permanent: false },
+      { source: '/:locale(en|fr|de|tr)/blog/:path*', destination: '/:locale/blogs/:path*', permanent: false },
     ]
   },
   images: {

@@ -22,6 +22,10 @@ export default function LanguageMenu({ isLanguageMenuOpen, setIsLanguageMenuOpen
             lang:'fr'
         },
         {
+            img:'DE',
+            lang:'de'
+        },
+        {
             img:'TR',
             lang:'tr'
         }                
